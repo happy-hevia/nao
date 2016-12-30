@@ -19,6 +19,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('bundles/naocore/images/favicon.ico') }}" />
         {# Chargement des styles commun à toutes les pages #}
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('bundles/naocore/css/styles.css') }}" rel="stylesheet">
         {# Pour permettre le chargement des styles spécifiques à une page #}
         {% block stylesheets %}{% endblock %}
 
@@ -26,82 +27,90 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div class="col-md-12">
-                <!-- HEADER -->
-                <header class="row">
-                    <div class="col-md-4">
-                        <a href="#"> {# TODO: Lien vers page d'accueil {{ url('accueil') }}#}
-                            <img  class="img" src="{{asset('bundles/naocore/images/v3.png')}}" height="100px" alt="Nos Amis les Oiseaux - Logo">
-                        </a>
-                    </div>
-                    <div class="col-md-4" style="display:flex;height:100px;">
-                        <h1 style="margin:auto;"><a href="#">Nos Amis les Oiseaux</a></h1> {# TODO: Lien vers page d'accueil {{ url('accueil') }}#}
-                    </div>
-                    <div class="col-md-4" style="display:flex;height:100px;">
-                        <div style="margin:auto;" class="row">
-                            <div class="col-md-12" style="display:flex;">
-                                <div style="margin:auto;">
-                                    <select> {# TODO: Revoir conditions d'affichage / masquage }}#}
-                                        <option value="mon_compte" data-off="[currentUser : null ]">Informations de compte</option>
-                                        <option value="identification" data-on="[currentUser: null ]">S'identifier</option>
-                                        <option value="creation_compte" data-on="[currentUser: null, connexionState : online ]">Créer un compte</option>
-                                        <option value="deconnection"  data-off="[currentUser : null ]">Se déconnecter</option>
-                                    </select>
-                                </div>
+            <!-- HEADER -->
+            <header class="row">
+                <div class="col-md-4">
+                    <a href="#"> {# TODO: Lien vers page d'accueil {{ url('accueil') }}#}
+                        <img  src="{{asset('bundles/naocore/images/v3.png')}}" height="100px" alt="Nos Amis les Oiseaux - Logo">
+                    </a>
+                </div>
+                <div class="col-md-4" style="display:flex;height:100px;">
+                    <h1 style="margin:auto;"><a href="#">Nos Amis les Oiseaux</a></h1> {# TODO: Lien vers page d'accueil {{ url('accueil') }}#}
+                </div>
+                <div class="col-md-4" style="display:flex;height:100px;">
+                    <div style="margin:auto;" class="row">
+                        <div class="col-md-12" style="display:flex;">
+                            <div style="margin:auto;">
+                                <select> {# TODO: Revoir conditions d'affichage / masquage }}#}
+                                    <option value="mon_compte" data-off="[currentUser : null ]">Informations de compte</option>
+                                    <option value="identification" data-on="[currentUser: null ]">S'identifier</option>
+                                    <option value="creation_compte" data-on="[currentUser: null, connexionState : online ]">Créer un compte</option>
+                                    <option value="deconnection"  data-off="[currentUser : null ]">Se déconnecter</option>
+                                </select>
                             </div>
-                            <div class="col-md-12"style="display:flex;">
-                                <div style="margin:auto;">
-                                    Ici état de connexion internet
-                                </div> {# TODO: Etat de connexion internet }}#}
-                            </div>
-                            <div class="col-md-12"style="display:flex;">
-                                <div style="margin:auto;">
-                                    Ici état de synchronisation
-                                </div>
+                        </div>
+                        <div class="col-md-12"style="display:flex;">
+                            <div style="margin:auto;">
+                                <img  data-on="[connexionState : online]" src="{{asset('bundles/naocore/images/internet_ok.png')}}" height="20px" alt="Internet OK">
+                                <img  data-on="[connexionState : offline]" src="{{asset('bundles/naocore/images/internet_ko.png')}}" height="20px" alt="Pas d'Internet">
+                            </div> {# TODO: Etat de connexion internet }}#}
+                        </div>
+                        <div class="col-md-12"style="display:flex;">
+                            <div style="margin:auto;">
+                                <img  data-on="[connexionState : online]" src="{{asset('bundles/naocore/images/sync_ok.png')}}" height="20px" alt="Synchronisation OK">
+                                <img  data-on="[connexionState : online]" src="{{asset('bundles/naocore/images/sync_ec.png')}}" height="20px" alt="Synchronisation en cours">
+                                <img  data-on="[connexionState : online]" src="{{asset('bundles/naocore/images/sync_ko.png')}}" height="20px" alt="Echec Synchronisation">
                             </div>
                         </div>
                     </div>
-                </header>
-
-                <!-- MENU -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <nav class="navbar navbar-default">
-                            <div class="navbar_header">
-                                {# Burger oblige... #}
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-control="navbar">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                            <div id="navbar" class="collapse navbar-collapse">
-                                <ul class="nav navbar-nav">
-                                    <li><a href="#">Observer</a></li> {# Observer #}
-                                    <li data-off="[currentUser : null ]"><a href="#">Mes observations</a></li> {# Mes observations #}
-                                    <li data-on="[currentUser : naturaliste ]"><a href="#" >Observations à valider</a></li> {# Observations à valider #}
-                                    <li data-off="[currentUser : null ]"><a href="#">Mon compte</a></li> {# Mon Compte #}
-                                    <li data-on="[currentUser : admin ]"><a href="#">Gestion des droits</a></li> {# Gestion des droits #}
-                                    <li><a href="#">CGU</a></li> {# Conditions Générales d'Utilisation #}
-                                    <li><a href="#">Mentions légales</a></li> {# Mentions Légales #}
-                                </ul>
-                            </div>
-                        </nav>
-
-                    </div>
                 </div>
+            </header>
 
-                <!-- CONTENU DES PAGES -->
-                <div class="row">
-                    {% block body %}{% endblock %}
+            <!-- MENU -->
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar_header">
+                            {# Burger oblige... #}
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-control="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div id="navbar" class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#">Observer</a></li> {# Observer #}
+                                <li data-off="[currentUser : null ]"><a href="#">Mes observations</a></li> {# Mes observations #}
+                                <li data-on="[currentUser : naturaliste ]"><a href="#" >Observations à valider</a></li> {# Observations à valider #}
+                                <li data-off="[currentUser : null ]"><a href="#">Mon compte</a></li> {# Mon Compte #}
+                                <li data-on="[currentUser : admin ]"><a href="#">Gestion des droits</a></li> {# Gestion des droits #}
+                                <li><a href="#">CGU</a></li> {# Conditions Générales d'Utilisation #}
+                                <li><a href="#">Mentions légales</a></li> {# Mentions Légales #}
+                            </ul>
+                        </div>
+                    </nav>
+
                 </div>
-
-                <!-- FOOTER -->
-                <footer class="row">
-
-                </footer>
             </div>
+
+            <!-- CONTENU DES PAGES -->
+            <div class="row">
+                {% block body %}{% endblock %}
+            </div>
+            <!-- FOOTER -->
+            <footer class="footer row">
+                <div class="col-md-4 col-sm-12" style="display:flex;"> {# TODO: Faire lien avec la page Mentions légales#}
+                    <a href="#" style="margin:auto;">Mentions légales</a>
+                </div>
+                <div class="col-md-4 col-sm-12" style="display:flex;"> {# TODO: Faire lien avec la page Conditions générales #}
+                    <a href="#" style="margin:auto;">Conditions générales d'utilisation</a>
+                </div>
+                <div class="col-md-4 col-sm-12" style="display:flex;">
+                    <a href="#" style="margin:auto;">Site réalisé par Lorem Web</a>
+                </div>
+            </footer>
         </div>
 
         <!-- JAVASCRIPT -->
