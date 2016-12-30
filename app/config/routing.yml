@@ -1,3 +1,8 @@
+nao_core:
+    resource: "@NAOCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

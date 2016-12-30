@@ -1,13 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
+        <!-- META -->
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {# Pour mettre les mots clés de chacune des pages #}
+        {% block meta %} {% endblock%}
+
+        <!-- TITLE -->
+        {# Pour permettre la customisation des titres de chacune des pages #}
+        <title>
+            {% block title %}
+                Bienvenu(e) à Nos Amis les Oiseaux !
+            {% endblock %}
+        </title>
+
+        <!-- LINK -->
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/naocore/images/favicon.ico') }}" />
+        {# Chargement des styles commun à toutes les pages #}
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+        {# Pour permettre le chargement des styles spécifiques à une page #}
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="container-fluid">
+            <div class="col-md-12">
+                <!-- HEADER -->
+                <header class="row">
+                    <div class="col-md-4">
+                        <a href="#"> {# TODO: Lien vers page d'accueil {{ url('accueil') }}#}
+                            <img  class="img" src="{{asset('bundles/naocore/images/v3.png')}}" height="100px" alt="Nos Amis les Oiseaux - Logo">
+                        </a>
+                    </div>
+                    <div class="col-md-4" style="display:flex;height:100px;">
+                        <h1 style="margin:auto;"><a href="#">Nos Amis les Oiseaux</a></h1> {# TODO: Lien vers page d'accueil {{ url('accueil') }}#}
+                    </div>
+                    <div class="col-md-4" style="display:flex;height:100px;">
+                        <div style="margin:auto;" class="row">
+                            <div class="col-md-12" style="display:flex;">
+                                <div style="margin:auto;">
+                                    <select> {# TODO: Revoir conditions d'affichage / masquage }}#}
+                                        <option value="mon_compte" data-off="[currentUser : null ]">Informations de compte</option>
+                                        <option value="identification" data-on="[currentUser: null ]">S'identifier</option>
+                                        <option value="creation_compte" data-on="[currentUser: null, connexionState : online ]">Créer un compte</option>
+                                        <option value="deconnection"  data-off="[currentUser : null ]">Se déconnecter</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12"style="display:flex;">
+                                <div style="margin:auto;">
+                                    Ici état de connexion internet
+                                </div> {# TODO: Etat de connexion internet }}#}
+                            </div>
+                            <div class="col-md-12"style="display:flex;">
+                                <div style="margin:auto;">
+                                    Ici état de synchronisation
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- MENU -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <nav class="navbar navbar-default">
+                            <div class="navbar_header">
+                                {# Burger oblige... #}
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-control="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <div id="navbar" class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#">Observer</a></li> {# Observer #}
+                                    <li data-off="[currentUser : null ]"><a href="#">Mes observations</a></li> {# Mes observations #}
+                                    <li data-on="[currentUser : naturaliste ]"><a href="#" >Observations à valider</a></li> {# Observations à valider #}
+                                    <li data-off="[currentUser : null ]"><a href="#">Mon compte</a></li> {# Mon Compte #}
+                                    <li data-on="[currentUser : admin ]"><a href="#">Gestion des droits</a></li> {# Gestion des droits #}
+                                    <li><a href="#">CGU</a></li> {# Conditions Générales d'Utilisation #}
+                                    <li><a href="#">Mentions légales</a></li> {# Mentions Légales #}
+                                </ul>
+                            </div>
+                        </nav>
+
+                    </div>
+                </div>
+
+                <!-- CONTENU DES PAGES -->
+                <div class="row">
+                    {% block body %}{% endblock %}
+                </div>
+
+                <!-- FOOTER -->
+                <footer class="row">
+
+                </footer>
+            </div>
+        </div>
+
+        <!-- JAVASCRIPT -->
+        {# Chargement des bibliothèques JS communes à toutes les pages #}
+        <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        {# Pour permettre le chargement des bibliothèques JS spécifiques à une page #}
         {% block javascripts %}{% endblock %}
+
     </body>
 </html>
