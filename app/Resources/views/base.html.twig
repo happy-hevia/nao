@@ -112,11 +112,16 @@
                 </div>
             </footer>
         </div>
-
+        <div id="cadre_message" style="display:flex;">
+            <p id="message" style="margin:auto;">test de message<br>Sur 2 lignes</p>
+        </div>
         <!-- JAVASCRIPT -->
         {# Chargement des bibliothèques JS communes à toutes les pages #}
         <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="{{ asset('bundles/naocore/js/offline-js.js') }}"></script>
+
+        <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
         {# Pour permettre le chargement des bibliothèques JS spécifiques à une page #}
         {% block javascripts %}{% endblock %}
 
