@@ -42,24 +42,25 @@
                         <div class="col-md-12" style="display:flex;">
                             <div style="margin:auto;">
                                 <select> {# TODO: Revoir conditions d'affichage / masquage }}#}
-                                    <option value="mon_compte" data-off="[currentUser : null ]">Informations de compte</option>
-                                    <option value="identification" data-on="[currentUser: null ]">S'identifier</option>
-                                    <option value="creation_compte" data-on="[currentUser: null, connexionState : online ]">Créer un compte</option>
-                                    <option value="deconnection"  data-off="[currentUser : null ]">Se déconnecter</option>
+                                    <option value="mon_compte" data-off="{'currentUser' : 'null' }">Informations de compte</option>
+                                    <option value="identification" data-on="{'currentUser': 'null' }">S'identifier</option>
+                                    <option value="creation_compte" data-on="{'currentUser': 'null', 'connexionState' : 'online'}">Créer un compte</option>
+                                    <option value="deconnection"  data-off="{'currentUser' : 'null' }">Se déconnecter</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-12"style="display:flex;">
                             <div style="margin:auto;">
-                                <img  data-on="[connexionState : online]" src="{{asset('bundles/naocore/images/internet_ok.png')}}" height="20px" alt="Internet OK">
-                                <img  data-on="[connexionState : offline]" src="{{asset('bundles/naocore/images/internet_ko.png')}}" height="20px" alt="Pas d'Internet">
+                                <img  data-on="{'connexionState' : 'online'}" src="{{asset('bundles/naocore/images/internet_ok.png')}}" height="20px" alt="Internet OK">
+                                <img  data-on="{'connexionState' : 'offline'}" src="{{asset('bundles/naocore/images/internet_ko.png')}}" height="20px" alt="Pas d'Internet">
                             </div> {# TODO: Etat de connexion internet }}#}
                         </div>
                         <div class="col-md-12"style="display:flex;">
                             <div style="margin:auto;">
-                                <img  data-on="[connexionState : online]" src="{{asset('bundles/naocore/images/sync_ok.png')}}" height="20px" alt="Synchronisation OK">
-                                <img  data-on="[connexionState : online]" src="{{asset('bundles/naocore/images/sync_ec.png')}}" height="20px" alt="Synchronisation en cours">
-                                <img  data-on="[connexionState : online]" src="{{asset('bundles/naocore/images/sync_ko.png')}}" height="20px" alt="Echec Synchronisation">
+                                <img  data-on="{'syncState' : 'sync_ok'}" src="{{asset('bundles/naocore/images/sync_ok.png')}}" height="20px" alt="Synchronisation OK">
+                                <img  data-on="{'syncState' : 'sync_ec'}" src="{{asset('bundles/naocore/images/sync_ec.png')}}" height="20px" alt="Synchronisation en cours">
+                                <img  data-on="{'syncState' : 'sync_ko'}" src="{{asset('bundles/naocore/images/sync_ko.png')}}" height="20px" alt="Echec Synchronisation">
+                                <img  data-on="{'syncState' : 'sync_todo'}" src="{{asset('bundles/naocore/images/sync_todo.png')}}" height="20px" alt="En attente de Synchronisation">
                             </div>
                         </div>
                     </div>
@@ -82,12 +83,10 @@
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="#">Observer</a></li> {# Observer #}
-                                <li data-off="[currentUser : null ]"><a href="#">Mes observations</a></li> {# Mes observations #}
-                                <li data-on="[currentUser : naturaliste ]"><a href="#" >Observations à valider</a></li> {# Observations à valider #}
-                                <li data-off="[currentUser : null ]"><a href="#">Mon compte</a></li> {# Mon Compte #}
-                                <li data-on="[currentUser : admin ]"><a href="#">Gestion des droits</a></li> {# Gestion des droits #}
-                                <li><a href="#">CGU</a></li> {# Conditions Générales d'Utilisation #}
-                                <li><a href="#">Mentions légales</a></li> {# Mentions Légales #}
+                                <li data-off="{'currentUser' : 'null' }"><a href="#">Mes observations</a></li> {# Mes observations #}
+                                <li data-on="{'currentUser' : 'Naturaliste' }"><a href="#" >Observations à valider</a></li> {# Observations à valider #}
+                                <li data-off="{'currentUser' : 'null' }"><a href="#">Mon compte</a></li> {# Mon Compte #}
+                                <li data-on="{'currentUser' : 'Admin','connexionState' : 'online' }"><a href="#">Gestion des droits</a></li> {# Gestion des droits #}
                             </ul>
                         </div>
                     </nav>
