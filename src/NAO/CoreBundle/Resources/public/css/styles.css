@@ -16,3 +16,32 @@
     background-color:palevioletred;
     color:white;
 }
+
+/* *******************************************************
+                       SOCIAL
+ *********************************************************
+ */
+.body_social{
+    display:flex;
+    flex-direction: row;
+    position: fixed;
+}
+.body_social__buttons {
+    /*margin:auto;*/
+    display:flex;
+    flex-direction: column;
+}
+.body_social__buttons_btn {
+    /*margin:auto;*/
+}
+.body_social__clips {
+    background-color: dimgrey;
+    border-radius: 0px 20px 20px 0px;
+    width:20px;
+    display:flex;
+    height:120px;
+}
+.body_social__clips_chevron {
+    margin:auto;
+    color:white;
+}

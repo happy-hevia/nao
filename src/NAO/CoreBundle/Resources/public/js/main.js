@@ -136,6 +136,7 @@ $(function() {
     currentUser ="visiteur";
     updateDOMElementVisibility();
     setMessage("");
+    initSocialEvent();
     //setMessage("Grossière Erreur !!!");
     // Détection présence de l'application en locale
 
