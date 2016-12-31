@@ -30,40 +30,45 @@
         <div class="container-fluid">
             <!-- HEADER -->
             <header class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-4">
                     <a href="#"> {# TODO: Lien vers page d'accueil {{ url('accueil') }}#}
                         <img  src="{{asset('bundles/naocore/images/v3.png')}}" height="100px" alt="Nos Amis les Oiseaux - Logo">
                     </a>
                 </div>
-                <div class="col-md-4" style="display:flex;height:100px;">
+                <div class="col-md-4 col-xs-4" style="display:flex;height:100px;">
                     <h1 style="margin:auto;"><a href="#">Nos Amis les Oiseaux</a></h1> {# TODO: Lien vers page d'accueil {{ url('accueil') }}#}
                 </div>
-                <div class="col-md-4" style="display:flex;height:100px;">
+                <div class="col-md-4 col-xs-4" style="display:flex;height:100px;">
                     <div style="margin:auto;" class="row">
                         <div class="col-md-12" style="display:flex;">
-                            <div style="margin:auto;">
-                                <select> {# TODO: Revoir conditions d'affichage / masquage }}#}
-                                    <option value="mon_compte" data-off="{'currentUser' : 'null' }">Informations de compte</option>
-                                    <option value="identification" data-on="{'currentUser': 'null' }">S'identifier</option>
-                                    <option value="creation_compte" data-on="{'currentUser': 'null', 'connexionState' : 'online'}">Créer un compte</option>
-                                    <option value="deconnection"  data-off="{'currentUser' : 'null' }">Se déconnecter</option>
-                                </select>
+                            <div style="margin:auto;" class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <p data-off="{'currentUser' : 'null' }">Mon Compte</p>
+                                    <p data-on="{'currentUser' : 'null'}">Identification</p>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mon_compte') }}">Informations de compte</a></li>
+                                    <li data-on="{'currentUser': 'null' }"><a href="#">S'identifier</a></li>    {# TODO: Lien avec modale de connexion #}
+                                    <li data-on="{'currentUser': 'null', 'connexionState' : 'online'}"><a href="#">Créer un compte</a></li> {# TODO: Lien avec modale de création de compte #}
+                                    <li  data-off="{'currentUser' : 'null' }"><a href="#">Se déconnecter</a></li>   {# TODO: évènement JS de déconnexion sur clic#}
+                                    <li role="separator" class="divider"></li>
+                                    {# <li><a href="#">Separated link</a></li> #}
+                                </ul>
                             </div>
                         </div>
                         <div class="col-md-12"style="display:flex;">
                             <div style="margin:auto;">
                                 <img  data-on="{'connexionState' : 'online'}" src="{{asset('bundles/naocore/images/internet_ok.png')}}" height="20px" alt="Internet OK">
                                 <img  data-on="{'connexionState' : 'offline'}" src="{{asset('bundles/naocore/images/internet_ko.png')}}" height="20px" alt="Pas d'Internet">
-                            </div> {# TODO: Etat de connexion internet }}#}
-                        </div>
-                        <div class="col-md-12"style="display:flex;">
-                            <div style="margin:auto;">
+
                                 <img  data-on="{'syncState' : 'sync_ok'}" src="{{asset('bundles/naocore/images/sync_ok.png')}}" height="20px" alt="Synchronisation OK">
                                 <img  data-on="{'syncState' : 'sync_ec'}" src="{{asset('bundles/naocore/images/sync_ec.png')}}" height="20px" alt="Synchronisation en cours">
                                 <img  data-on="{'syncState' : 'sync_ko'}" src="{{asset('bundles/naocore/images/sync_ko.png')}}" height="20px" alt="Echec Synchronisation">
                                 <img  data-on="{'syncState' : 'sync_todo'}" src="{{asset('bundles/naocore/images/sync_todo.png')}}" height="20px" alt="En attente de Synchronisation">
                             </div>
                         </div>
+
                     </div>
                 </div>
             </header>
@@ -83,11 +88,11 @@
                         </div>
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="#">Observer</a></li> {# Observer #}
-                                <li data-off="{'currentUser' : 'null' }"><a href="#">Mes observations</a></li> {# Mes observations #}
-                                <li data-on="{'currentUser' : 'Naturaliste' }"><a href="#" >Observations à valider</a></li> {# Observations à valider #}
-                                <li data-off="{'currentUser' : 'null' }"><a href="#">Mon compte</a></li> {# Mon Compte #}
-                                <li data-on="{'currentUser' : 'Admin','connexionState' : 'online' }"><a href="#">Gestion des droits</a></li> {# Gestion des droits #}
+                                <li><a href="{{ url('nao_observer') }}">Observer</a></li>
+                                <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mes_observations') }}">Mes observations</a></li>
+                                <li data-on="{'currentUser' : 'Naturaliste' }"><a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a></li>
+                                <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mon_compte') }}">Mon compte</a></li>
+                                <li data-on="{'currentUser' : 'Admin','connexionState' : 'online' }"><a href="{{ url('nao_gestion_droits') }}">Gestion des droits</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -101,11 +106,11 @@
             </div>
             <!-- FOOTER -->
             <footer class="footer row">
-                <div class="col-md-4 col-sm-12" style="display:flex;"> {# TODO: Faire lien avec la page Mentions légales#}
-                    <a href="#" style="margin:auto;">Mentions légales</a>
+                <div class="col-md-4 col-sm-12" style="display:flex;">
+                    <a href="{{ url('nao_mentions_legales') }}" style="margin:auto;">Mentions légales</a>
                 </div>
-                <div class="col-md-4 col-sm-12" style="display:flex;"> {# TODO: Faire lien avec la page Conditions générales #}
-                    <a href="#" style="margin:auto;">Conditions générales d'utilisation</a>
+                <div class="col-md-4 col-sm-12" style="display:flex;">
+                    <a href="{{ url('nao_cgu') }}" style="margin:auto;">Conditions générales d'utilisation</a>
                 </div>
                 <div class="col-md-4 col-sm-12" style="display:flex;">
                     <a href="#" style="margin:auto;">Site réalisé par Lorem Web</a>

@@ -132,11 +132,11 @@ $(function() {
     // Initialisation des variables globales
     connexionState= "online";   //TODO: lier au gestionnaire offline-js.js
     gpsState="gps_ko";
-    syncState="sync_ko";
-    currentUser ="Admin";
+    syncState="sync_ok";
+    currentUser ="visiteur";
     updateDOMElementVisibility();
     setMessage("");
-    setMessage("Grossière Erreur !!!");
+    //setMessage("Grossière Erreur !!!");
     // Détection présence de l'application en locale
 
     // Si application présente en locale,
