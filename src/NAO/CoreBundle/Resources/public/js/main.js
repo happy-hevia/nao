@@ -76,7 +76,6 @@ var testConditions = function(unObjetJSON) {
  * en fonction des valeurs des variables globales.
  */
 var updateDOMElementVisibility = function() {
-    console.log("****************** DATA-ON ************************");
     $("[data-on]").each(function(index, element) {
         // On récupère les conditions au format String
         var conditions=$(this).data("on");
@@ -92,7 +91,6 @@ var updateDOMElementVisibility = function() {
             $(this).hide();
         }
     });
-    console.log("***************** DATA-OFF ************************");
     $("[data-off]").each(function(index, element) {
         var conditions=$(this).data("off");
         conditionsJSON = convertDataToJSON(conditions);
@@ -107,6 +105,20 @@ var updateDOMElementVisibility = function() {
     });
 };
 
+var setMessage = function(aMessage) {
+    if (aMessage=="") {
+        $('#cadre_message').hide();
+    } else {
+        $('#message').html(aMessage);
+        $('#cadre_message').click(function() {
+            $('#message').html("");
+            $('#cadre_message').unbind('click');
+            $('#cadre_message').hide();
+        });
+        $('#cadre_message').show();
+    }
+}
+
 /**
  *
  */
@@ -119,7 +131,8 @@ $(function() {
     syncState="sync_ko";
     currentUser ="Admin";
     updateDOMElementVisibility();
-
+    setMessage("");
+    setMessage("Grossière Erreur !!!");
     // Détection présence de l'application en locale
 
     // Si application présente en locale,
