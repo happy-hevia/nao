@@ -19,6 +19,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('bundles/naocore/images/favicon.ico') }}" />
         {# Chargement des styles commun à toutes les pages #}
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ asset('bundles/naocore/css/awesomplete.css') }}" rel="stylesheet">
         <link href="{{ asset('bundles/naocore/css/styles.css') }}" rel="stylesheet">
         {# Pour permettre le chargement des styles spécifiques à une page #}
         {% block stylesheets %}{% endblock %}
@@ -119,6 +120,7 @@
         <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <script src="{{ asset('bundles/naocore/js/offline-js.js') }}"></script>
+        <script src="{{ asset('bundles/naocore/js/awesomplete.min.js') }}" async></script>
 
         <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
         {# Pour permettre le chargement des bibliothèques JS spécifiques à une page #}
