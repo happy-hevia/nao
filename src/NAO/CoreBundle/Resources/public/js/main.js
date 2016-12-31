@@ -104,13 +104,17 @@ var updateDOMElementVisibility = function() {
         }
     });
 };
-
+/**
+ * setMessage
+ * Effet : Affiche un bandeau contenant un message d'erreur qui disparait si l'on clique dessus.
+ * @param aMessage
+ */
 var setMessage = function(aMessage) {
-    if (aMessage=="") {
+    if (aMessage=="") { // Si le message est vide, on masque le bandeau
         $('#cadre_message').hide();
-    } else {
+    } else { // Sinon on met le message et on affiche le bandeau
         $('#message').html(aMessage);
-        $('#cadre_message').click(function() {
+        $('#cadre_message').click(function() { // Sur click le bandeau doit se refermer
             $('#message').html("");
             $('#cadre_message').unbind('click');
             $('#cadre_message').hide();
