@@ -1,0 +1,161 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-observation" tabindex="-1" role="dialog" aria-labelledby="modal-observation" >
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content" >
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                    <span aria-hidden="true" >&times;</span ></button >
+                {# En ligne #}
+                <h3 class="modal-title text-center" >Observation faite le 16/08/2016</h3 >
+            </div >
+            <div class="modal-body row" >
+
+                {# Onglets #}
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#observation-pane" aria-controls="home" role="tab" data-toggle="tab">Observation</a></li>
+                    <li role="presentation"><a href="#species-pane" aria-controls="profile" role="tab" data-toggle="tab">Espèce</a></li>
+                </ul>
+
+                {# Panneau #}
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="observation-pane">
+                        {# En ligne #}
+                        <div class="col-md-5" >
+
+                            {# Carousel #}
+                            <div id="modal-observation__carousel" class="carousel slide" data-ride="carousel" >
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators" >
+                                    <li data-target="modal-observation__carousel" data-slide-to="0" class="active" ></li >
+                                    <li data-target="modal-observation__carousel" data-slide-to="1" ></li >
+                                    <li data-target="modal-observation__carousel" data-slide-to="2" ></li >
+                                </ol >
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox" >
+                                    <div class="item active" >
+                                        <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
+                                        <div class="carousel-caption" >
+                                            test caption
+                                        </div >
+                                    </div >
+                                    <div class="item" >
+                                        <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
+                                        <div class="carousel-caption" >
+                                            test caption
+                                        </div >
+                                    </div >
+                                    <div class="item" >
+                                        <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
+                                        <div class="carousel-caption" >
+                                            test caption
+                                        </div >
+                                    </div >
+                                </div >
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#modal-observation__carousel" role="button" data-slide="prev" >
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span >
+                                    <span class="sr-only" >Précédent</span >
+                                </a >
+                                <a class="right carousel-control" href="#modal-observation__carousel" role="button" data-slide="next" >
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span >
+                                    <span class="sr-only" >Suivant</span >
+                                </a >
+                            </div >
+                        </div >
+                        {# Fin En ligne #}
+
+
+
+                        {# Formulaire #}
+                        <form class="form-horizontal col-md-7" >
+                            <div class="form-group" >
+                                <p>Espèce : nom d'un oiseau</p>
+                            </div >
+
+                            <fieldset >
+                                <legend >Lieu de l'observation</legend >
+                                <div class="form-group" >
+                                    <label for="form-observation__latitude" class="col-sm-4" >Latitude :</label >
+                                    <div class="col-sm-8" >
+                                        <input type="email" class="form-control" id="form-observation__latitude" placeholder="Latitude" disabled="disabled" value="96'45'34">
+                                    </div >
+                                </div >
+                                <div class="form-group" >
+                                    <label for="form-observation__longitude" class="col-sm-4" >Longitude :</label >
+                                    <div class="col-sm-8" >
+                                        <input type="text" class="form-control" id="form-observation__longitude" placeholder="Longitude" disabled="disabled" value="96'45'34">
+                                    </div >
+                                </div >
+                            </fieldset >
+                            <button type="button" class="btn btn-success" >Valider</button >
+                            <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button >
+                            <button type="submit" class="btn btn-danger" >Refuser</button >
+                        </form >
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="species-pane">
+                        <h3 class="text-center">Piaf</h3>
+
+                        {# Carousel #}
+                        <div id="modal-species__carousel" class="carousel slide" data-ride="carousel" >
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators" >
+                                <li data-target="modal-species__carousel" data-slide-to="0" class="active" ></li >
+                                <li data-target="modal-species__carousel" data-slide-to="1" ></li >
+                                <li data-target="modal-species__carousel" data-slide-to="2" ></li >
+                            </ol >
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox" >
+                                <div class="item active" >
+                                    <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
+                                    <div class="carousel-caption" >
+                                        test caption
+                                    </div >
+                                </div >
+                                <div class="item" >
+                                    <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
+                                    <div class="carousel-caption" >
+                                        test caption
+                                    </div >
+                                </div >
+                                <div class="item" >
+                                    <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
+                                    <div class="carousel-caption" >
+                                        test caption
+                                    </div >
+                                </div >
+                            </div >
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#modal-species__carousel" role="button" data-slide="prev" >
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span >
+                                <span class="sr-only" >Précédent</span >
+                            </a >
+                            <a class="right carousel-control" href="#modal-species__carousel" role="button" data-slide="next" >
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span >
+                                <span class="sr-only" >Suivant</span >
+                            </a >
+                        </div >
+
+                        {# description espèce texte #}
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#modal-species__description1" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation"><a href="#modal-species__description2" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                            <li role="presentation"><a href="#modal-species__description3" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="modal-species__description1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi magnam maiores, necessitatibus non odio quam quod reiciendis totam veniam! Alias commodi consectetur cum dignissimos dolor error est, eum facere ipsum, magni nemo numquam officia officiis omnis pariatur quod ratione rem sit tenetur veritatis.</div>
+                            <div role="tabpanel" class="tab-pane" id="modal-species__description2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet corporis eaque iste necessitatibus neque pariatur quaerat repudiandae. Ab ad alias cum, ea error facere harum iste labore maiores mollitia nemo non perspiciatis quae quam quia sequi sit soluta, tempore ullam ut vitae, voluptate?</div>
+                            <div role="tabpanel" class="tab-pane" id="modal-species__description3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad atque beatae blanditiis delectus deserunt dolorem earum enim hic illum ipsum magni maiores modi molestiae mollitia nemo neque nesciunt nobis, pariatur possimus quam quisquam quos repellendus, sequi soluta totam ut velit veritatis vitae voluptatibus.</div>
+                        </div>
+                    </div>
+                </div>
+            </div >
+        </div >
+    </div >
+</div >

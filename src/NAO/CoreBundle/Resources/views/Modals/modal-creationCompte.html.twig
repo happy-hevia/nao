@@ -1,0 +1,77 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-sign-up" tabindex="-1" role="dialog" aria-labelledby="modal-sign-up" >
+    <div class="modal-dialog" role="document" >
+        <div class="modal-content" >
+            <div class="modal-header" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                    <span aria-hidden="true" >&times;</span ></button >
+                {# En ligne #}
+                <h3 class="modal-title text-center" >Créer un compte</h3 >
+            </div >
+            <div class="modal-body row" >
+                <div class="col-xs-9 col-xs-offset-2 text-center" >
+                    <p class="modal-sign-up__introduction" >Veuillez renseigner les informations ci-dessous pour créer un nouveau compte.</p >
+                    <div class="alert alert-warning" ><span class="glyphicon glyphicon-warning-sign
+" ></span >Un seul compte par email est autorisé !
+                    </div >
+
+                    <form class="form-horizontal" >
+                        <div class="form-group" >
+                            <label for="form-sign-up__last-name" class="col-sm-4" >Nom (*):</label >
+                            <div class="col-sm-8" >
+                                <input type="text" class="form-control" id="form-sign-up__last-name" placeholder="Nom" >
+                                <div class="form-error" id="form-sign-up__last-name__error"></div>
+                            </div >
+                        </div >
+                        <div class="form-group" >
+                            <label for="form-sign-up__first-name" class="col-sm-4" >Prénom (*):</label >
+                            <div class="col-sm-8" >
+                                <input type="text" class="form-control" id="form-sign-up__first-name" placeholder="Prénom" >
+                                <div class="form-error" id="form-sign-up__first-name__error"></div>
+                            </div >
+                        </div >
+                        <div class="form-group" >
+                            <label for="form-sign-up__email" class="col-sm-4" >Adresse email (*):</label >
+                            <div class="col-sm-8" >
+                                <input type="email" class="form-control" id="form-sign-up__email" placeholder="Adresse email" >
+                                <div class="form-error" id="form-sign-up__email__error"></div>
+                            </div >
+                        </div >
+                        <div class="form-group" >
+                            <label for="form-sign-up__pseudo" class="col-sm-4" >Pseudo (*):</label >
+                            <div class="col-sm-8" >
+                                <input type="text" class="form-control" id="form-sign-up__pseudo" placeholder="Pseudo" >
+                                <div class="form-error" id="form-sign-up__pseudo__error"></div>
+                            </div >
+                        </div >
+
+                        <br >
+
+                        <div class="form-group" >
+                            <label for="form-sign-up__mdp" class="col-sm-4" >Mot de passe (*):</label >
+                            <div class="col-sm-8" >
+                                <input type="password" class="form-control" id="form-sign-up__password" placeholder="Mot de passe" >
+                                <div class="form-error" id="form-sign-up__password__error"></div>
+                            </div >
+                        </div >
+                        <div class="form-group" >
+                            <label for="form-sign-up__mdpConfirmation" class="col-sm-4" >Confirmation (*):</label >
+                            <div class="col-sm-8" >
+                                <input type="password" class="form-control" id="form-sign-up__password-confirmation" placeholder="Confirmation" >
+                                <div class="form-error" id="form-sign-up__password-confirmation__error"></div>
+                            </div >
+                        </div >
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="form-sign-up__cgu" value="form-sign-up_cgu
+                                "> J'accepte les conditions générales d'utilisation
+                            </label>
+                        </div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button >
+                        <button type="submit" class="btn btn-default" >créer</button >
+                    </form >
+                </div >
+            </div >
+        </div >
+    </div >
+</div >
