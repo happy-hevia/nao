@@ -19,6 +19,7 @@ class LoadOiseau implements FixtureInterface
         $fichierTaxref = fopen('C:\xampp\htdocs\nao\src\NAO\CoreBundle\DataFixtures\ORM\TAXREF_classe_AVES.txt','r');
 
         if ($fichierTaxref) {
+            $titre = fgets($fichierTaxref,4096); // Lecture de la ligne de titre inutile
             while(($buffer = fgets($fichierTaxref,4096)) != false) {
                 //$buffer contient une ligne
                 // extraction des champs de valeur d'une espèce qui sont espacées par des tabulations uniquement

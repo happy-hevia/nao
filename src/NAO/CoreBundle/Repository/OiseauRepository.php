@@ -10,4 +10,5 @@ namespace NAO\CoreBundle\Repository;
  */
 class OiseauRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
