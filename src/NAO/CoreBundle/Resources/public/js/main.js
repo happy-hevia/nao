@@ -10,10 +10,78 @@
  * // Création des variables globales
  * */
 
-var currentUser;
-var connexionState;
-var gpsState;
 var syncState;
+
+/* Définition de la classe Oiseau */
+function Oiseau(id, ordre, famille, lb_nom, nom_complet, nom_complet_html, nom_vern, nom_vern_eng) {
+    this.id=id;
+    this.ordre=ordre;
+    this.famille=famille;
+    this.lb_nom=lb_nom;
+    this.nom_complet=nom_complet;
+    this.nom_complet_html=nom_complet_html;
+    this.nom_vern=nom_vern;
+    this.nom_vern_eng = nom_vern_eng;
+    this.media=[];
+    this.description=[];
+}
+/* Définition de la classe Observation */
+function Observation(dateObservation, latitude, longitude, oiseauId, observateur) {
+    this.date=dateObservation;
+    this.latitude=latitude;
+    this.longitude=longitude;
+    this.oiseauId=oiseauId;
+    this.observateur=observateur;
+    this.stateList=["toValidate","validated", "inValidated"];
+    this.state="toValidate";
+    this.setToValidate=function(){
+        this.state=this.stateList[0];
+    };
+    this.setValidated = function() {
+        this.state=this.stateList[1];
+    };
+    this.setInValidated = function() {
+        this.state=this.stateList[2];
+    }
+}
+
+function MyStore (cle, typeStockage) {
+    this.typeStockage=typeStockage;
+    this.cle=cle;
+    this.getAll = function() {
+        return this.typeStockage.getItem(this.cle);
+    };
+    this.setAll = function(objectColl) {
+        this.typeStockage.setItem(this.cle,objectColl);
+    };
+}
+var userStorage = new MyStore("localUsers",sessionStorage);
+userStorage.prototype.add = function(newUser) { // Ajoute ou met à jour l'objet
+    var users=this.getAll();
+    users[newUser.email]=newUser;
+    this.setAll(users);
+};
+
+var observationStorage = new MyStore("observations",localStorage);
+observationStorage.prototype.add = function(newObservation) {
+    var observations=this.getAll();
+    observations[newObservation.date]=newObservation;
+    this.setAll(observations);
+};
+
+var storeDetector = function() {
+    this.key="nao";
+    this.test = false;
+    this.init = function() {
+      if (localStorage.getItem(this.key)) {
+          // Le stockage existe, on ne fait rien
+      } else {
+          // Il faut créer ici la base de données locale
+          localStorage.setItem(this.key, new Date());
+      }
+  }
+};
+
 
 /**
  * String.replaceAll
