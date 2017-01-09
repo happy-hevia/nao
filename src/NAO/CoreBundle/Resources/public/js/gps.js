@@ -26,6 +26,10 @@ function Localisation() {
     this.latitude=0.0;
     this.longitude=0.0;
     this.altitude=0.0;
+    this.isAvailable = function() {
+        this.testAvailable();
+        return gpsState===this.stateList[1];
+    };
     this.updatePosition = function (position) {
         this.latitude=position.coords.latitude;
         this.longitude=position.coords.longitude;

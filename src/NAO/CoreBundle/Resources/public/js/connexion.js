@@ -3,6 +3,7 @@
  */
 
 var connexionState;
+var syncState;
 
 /* Définition de la classe Connexion */
 function Connexion() {

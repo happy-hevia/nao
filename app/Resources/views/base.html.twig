@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr"  manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}">
     <head>
         <!-- META -->
         <meta charset="UTF-8" />
@@ -16,6 +16,7 @@
         </title>
 
         <!-- LINK -->
+        <link rel="manifest" href="{{ asset('bundles/naocore/manifest/manifest.appcache') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('bundles/naocore/images/favicon.ico') }}" />
         {# Chargement des styles commun à toutes les pages #}
         <link href="{{ asset('bundles/naocore/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -139,7 +140,14 @@
         <script src="{{ asset('bundles/naocore/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('bundles/naocore/js/offline-js.js') }}"></script>
         <script src="{{ asset('bundles/naocore/js/awesomplete.min.js') }}" async></script>
+
         <script src="{{ asset('bundles/naocore/js/social.js') }}"></script>
+        <script src="{{ asset('bundles/naocore/js/bdd.js') }}"></script>
+        <script src="{{ asset('bundles/naocore/js/connexion.js') }}"></script>
+        <script src="{{ asset('bundles/naocore/js/gps.js') }}"></script>
+        <script src="{{ asset('bundles/naocore/js/observations.js') }}"></script>
+        <script src="{{ asset('bundles/naocore/js/oiseau.js') }}"></script>
+        <script src="{{ asset('bundles/naocore/js/user.js') }}"></script>
 
         <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
         {# Pour permettre le chargement des bibliothèques JS spécifiques à une page #}
