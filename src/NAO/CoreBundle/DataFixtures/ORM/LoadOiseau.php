@@ -15,8 +15,8 @@ use NAO\CoreBundle\Entity\Oiseau;
 class LoadOiseau implements FixtureInterface
 {
     public function load(ObjectManager $manager) {
-        // Charger les données à partir d'un fichier texte
-        $fichierTaxref = fopen('C:\xampp\htdocs\nao\src\NAO\CoreBundle\DataFixtures\ORM\TAXREF_classe_AVES.txt','r');
+        // Charger les données à partir d'un fichier texte (lien relatif)
+        $fichierTaxref = fopen(__DIR__ . '\TAXREF_classe_AVES.txt','r');
 
         if ($fichierTaxref) {
             $titre = fgets($fichierTaxref,4096); // Lecture de la ligne de titre inutile
