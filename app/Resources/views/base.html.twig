@@ -21,6 +21,7 @@
         <link href="{{ asset('bundles/naocore/css/bootstrap.min.css') }}" rel="stylesheet">
         <link href="{{ asset('bundles/naocore/css/awesomplete.css') }}" rel="stylesheet">
         <link href="{{ asset('bundles/naocore/css/styles.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('bundles/naocore/css/parsley.css') }}" >
         {# Pour permettre le chargement des styles spécifiques à une page #}
         {% block stylesheets %}{% endblock %}
 
@@ -145,6 +146,7 @@
 
         {# Gestion des formulaires #}
         <script src="{{ asset('bundles/naocore/js/parsley.js') }}"></script >
+        <script src="{{ asset('bundles/naocore/js/parsley-fr.js') }}" ></script >
         <script src="{{ asset('bundles/naocore/js/gestionFormulaire.js') }}"></script >
         {# Pour permettre le chargement des bibliothèques JS spécifiques à une page #}
         {% block javascripts %}{% endblock %}

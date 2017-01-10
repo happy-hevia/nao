@@ -3,5 +3,9 @@
  - validation front
  **/
 
-console.log("plop");
+// Formulaire de création du compte
+// Entière intégré dans le html
+
+
+// Formulaire de connexion
 

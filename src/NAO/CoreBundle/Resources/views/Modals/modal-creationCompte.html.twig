@@ -15,56 +15,56 @@
 " ></span >Un seul compte par email est autorisé !
                     </div >
 
-                    <form class="form-horizontal" >
+                    <form class="form-horizontal" id="form-sign-up" data-parsley-validate>
                         <div class="form-group" >
                             <label for="form-sign-up__last-name" class="col-sm-4" >Nom (*):</label >
                             <div class="col-sm-8" >
-                                <input type="text" class="form-control" id="form-sign-up__last-name" placeholder="Nom" >
+                                <input type="text" class="form-control" id="form-sign-up__last-name" placeholder="Nom" required minlength="2" maxlength="26">
                                 <div class="form-error" id="form-sign-up__last-name__error"></div>
                             </div >
                         </div >
                         <div class="form-group" >
                             <label for="form-sign-up__first-name" class="col-sm-4" >Prénom (*):</label >
                             <div class="col-sm-8" >
-                                <input type="text" class="form-control" id="form-sign-up__first-name" placeholder="Prénom" >
+                                <input type="text" class="form-control" id="form-sign-up__first-name" placeholder="Prénom" required minlength="2" maxlength="26">
                                 <div class="form-error" id="form-sign-up__first-name__error"></div>
                             </div >
                         </div >
                         <div class="form-group" >
                             <label for="form-sign-up__email" class="col-sm-4" >Adresse email (*):</label >
                             <div class="col-sm-8" >
-                                <input type="email" class="form-control" id="form-sign-up__email" placeholder="Adresse email" >
+                                <input type="email" class="form-control" id="form-sign-up__email" placeholder="Adresse email" required >
                                 <div class="form-error" id="form-sign-up__email__error"></div>
                             </div >
                         </div >
                         <div class="form-group" >
                             <label for="form-sign-up__pseudo" class="col-sm-4" >Pseudo (*):</label >
                             <div class="col-sm-8" >
-                                <input type="text" class="form-control" id="form-sign-up__pseudo" placeholder="Pseudo" >
+                                <input type="text" class="form-control" id="form-sign-up__pseudo" placeholder="Pseudo" required minlength="2" maxlength="26">
                                 <div class="form-error" id="form-sign-up__pseudo__error"></div>
                             </div >
                         </div >
 
                         <br >
 
-                        <div class="form-group" >
+                        <div class="form-group has-feedback" >
                             <label for="form-sign-up__mdp" class="col-sm-4" >Mot de passe (*):</label >
                             <div class="col-sm-8" >
-                                <input type="password" class="form-control" id="form-sign-up__password" placeholder="Mot de passe" >
+                                <input type="password" class="form-control" id="form-sign-up__password" placeholder="Mot de passe" required minlength="8" maxlength="26" pattern="^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,26}$" data-parsley-error-message="Le mot de passe doit comporter au moins 8 caractères (1 lettre minuscule, 1 lettre majuscule, 1 chiffre et 1 caractère spécial) .">
                                 <div class="form-error" id="form-sign-up__password__error"></div>
                             </div >
                         </div >
                         <div class="form-group" >
                             <label for="form-sign-up__mdpConfirmation" class="col-sm-4" >Confirmation (*):</label >
                             <div class="col-sm-8" >
-                                <input type="password" class="form-control" id="form-sign-up__password-confirmation" placeholder="Confirmation" >
+                                <input type="password" class="form-control" id="form-sign-up__password-confirmation" placeholder="Confirmation" required
+data-parsley-equalto="#form-sign-up__password">
                                 <div class="form-error" id="form-sign-up__password-confirmation__error"></div>
                             </div >
                         </div >
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" id="form-sign-up__cgu" value="form-sign-up_cgu
-                                "> J'accepte les conditions générales d'utilisation
+                                <input type="checkbox" id="form-sign-up__cgu" value="form-sign-up_cgu" required > J'accepte les conditions générales d'utilisation
                             </label>
                         </div>
                         <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button >
