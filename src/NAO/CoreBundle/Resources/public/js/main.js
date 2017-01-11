@@ -2,19 +2,6 @@
  * Created by marcd on 30/12/2016.
  */
 
-/** Liste des fonctions de cette bibliothèque
- * - updateModalTarget  :    change de data-target des fenêtres modales pour que la bonne modale puisse se charger
- * - updateDOMElementVisibility   :   mets à jour les éléments du DOM suite à l'identification ou déconnexion de l'utilisateur
- *
- * *
- * // Création des variables globales
- * */
-
-var currentUser;
-var connexionState;
-var gpsState;
-var syncState;
-
 /**
  * String.replaceAll
  * Effet : Remplace toutes les occurences trouvées d'une chaine texte "search" et la remplace par "replacement"
