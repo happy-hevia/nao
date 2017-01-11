@@ -1,0 +1,12 @@
+{# Si le formulaire de création a des erreurs#}
+{% if formulaireCreation is defined %}
+    {% form_theme formulaireCreation 'bootstrap_3_horizontal_layout.html.twig' %}
+    {{ form_start(formulaireCreation, {'method' : 'POST', 'action' : 'http://localhost/nao/web/app_dev.php/utilisateur/nouveau'}) }}
+    {{ form(formulaireCreation) }}
+{% else %}
+    {# Sinon affiche le formulaire de validation vide #}
+{% form_theme formulaire.creerFormulaireCreation 'bootstrap_3_horizontal_layout.html.twig' %}
+
+    {{ form_start(formulaire.creerFormulaireCreation, {'method' : 'POST', 'action' : 'http://localhost/nao/web/app_dev.php/utilisateur/nouveau'}) }}
+    {{ form(formulaire.creerFormulaireCreation) }}
+{% endif %}

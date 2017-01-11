@@ -6,23 +6,4 @@ Hello World!
     <h1>Test d'autocomplete</h1>
     <input class="awesomplete" data-list="Ada, Java, JavaScript, Brainfuck, LOLCODE, Node.js, Ruby on Rails"/>
 
-    {# Test modal #}
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-addObservation">
-        Ajouter une observation
-    </button>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-login">
-        Se connecter
-    </button>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-sign-up">
-        Créer un compte
-    </button>
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-observation">
-        Information sur observation
-    </button>
-
-    {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
-    {% include '@NAOCore/Modals/modal-connexion.html.twig' %}
-    {% include '@NAOCore/Modals/modal-creationCompte.html.twig' %}
-    {% include '@NAOCore/Modals/modal-descriptionObservation.html.twig' %}
-
 {% endblock %}

@@ -3,6 +3,7 @@
 namespace NAO\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Utilisateur
@@ -25,6 +26,11 @@ class Utilisateur
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 26
+     * )
      */
     private $prenom;
 
@@ -32,13 +38,32 @@ class Utilisateur
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 26
+     * )
      */
     private $nom;
 
     /**
      * @var string
      *
+     * @ORM\Column(name="pseudo", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 26
+     * )
+     */
+    private $pseudo;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -53,8 +78,41 @@ class Utilisateur
      * @var string
      *
      * @ORM\Column(name="mdp", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 26
+     * )
+     * @Assert\Regex("/^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,26}$/")
      */
     private $mdp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mdpConfirmation", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 26
+     * )
+     */
+    private $mdpConfirmation;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="mentions", type="boolean")
+     * @Assert\IsTrue()
+     */
+    private $mentions;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="datetime")
+     */
+    private $date_creation;
 
 
     /**
@@ -186,5 +244,100 @@ class Utilisateur
     {
         return $this->mdp;
     }
-}
 
+    /**
+     * Set mdpConfirmation
+     *
+     * @param string $mdpConfirmation
+     *
+     * @return Utilisateur
+     */
+    public function setMdpConfirmation($mdpConfirmation)
+    {
+        $this->mdpConfirmation = $mdpConfirmation;
+
+        return $this;
+    }
+
+    /**
+     * Get mdpConfirmation
+     *
+     * @return string
+     */
+    public function getMdpConfirmation()
+    {
+        return $this->mdpConfirmation;
+    }
+
+    /**
+     * Set dateCreation
+     *
+     * @param \DateTime $dateCreation
+     *
+     * @return Utilisateur
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->date_creation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreation
+     *
+     * @return \DateTime
+     */
+    public function getDateCreation()
+    {
+        return $this->date_creation;
+    }
+
+    /**
+     * Set pseudo
+     *
+     * @param string $pseudo
+     *
+     * @return Utilisateur
+     */
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    /**
+     * Get pseudo
+     *
+     * @return string
+     */
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * Set mentions
+     *
+     * @param boolean $mentions
+     *
+     * @return Utilisateur
+     */
+    public function setMentions($mentions)
+    {
+        $this->mentions = $mentions;
+
+        return $this;
+    }
+
+    /**
+     * Get mentions
+     *
+     * @return boolean
+     */
+    public function getMentions()
+    {
+        return $this->mentions;
+    }
+}

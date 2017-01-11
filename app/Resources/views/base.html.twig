@@ -103,7 +103,32 @@
 
             <!-- CONTENU DES PAGES -->
             <div class="row">
-                {% block body %}{% endblock %}
+                {% block body %}
+
+                {% endblock %}
+
+                {# Ce bloc test sert simplement pour l'environnement de developpement, il devra être enlevé par la suite#}
+                {% block test %}
+
+                    {# Test modal #}
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-addObservation">
+                        Ajouter une observation
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-login">
+                        Se connecter
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-sign-up">
+                        Créer un compte
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-observation">
+                        Information sur observation
+                    </button>
+
+                    {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
+                    {% include '@NAOCore/Modals/modal-connexion.html.twig' %}
+                    {% include '@NAOCore/Modals/modal-creationCompte.html.twig' %}
+                    {% include '@NAOCore/Modals/modal-descriptionObservation.html.twig' %}
+                {% endblock %}
             </div>
             <!-- FOOTER -->
             <footer class="footer row">

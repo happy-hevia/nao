@@ -40,6 +40,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+#    permet d'ajouter le geestionnaire de formulaire dans tous les templates
+        formulaire: "@nao_core.gestion_formulaire"
 
 # Doctrine Configuration
 doctrine:
