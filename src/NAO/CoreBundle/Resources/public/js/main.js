@@ -40,8 +40,8 @@ var testConditions = function(unObjetJSON) {
     var test=[];
     for (var i=0;i<numberOfConditions;i++) {
         var key = Object.keys(unObjetJSON)[i];
-        var valeur = unObjetJSON[key].toLowerCase();
-        if (valeur==eval(key).toLowerCase()) {
+        var valeur = unObjetJSON[key];
+        if (valeur==eval(key)) {
             test[i]=true;
         } else {
             test[i]=false;
@@ -129,7 +129,6 @@ $(function() {
     connexionState= "online";   //TODO: lier au gestionnaire offline-js.js
     gpsState="gps_ko";
     syncState="sync_ok";
-    User.setNull();
     updateDOMElementVisibility();
     setMessage("");
     initSocialEvent();

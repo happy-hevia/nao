@@ -56,7 +56,7 @@ class GestionFormulaire
         //        Gestion soumission formulaire
         if ($this->form->isSubmitted() && $this->form->isValid()) {
 
-            $this->utilisateur->setDroit("particulier"); // définit l'utilisateur comme particulier
+            $this->utilisateur->setDroit("Visiteur"); // définit l'utilisateur comme particulier
             $this->utilisateur->setDateCreation(new \DateTime()); // remplit la date de création à l'heure actuelle
 
             $em = $this->entityManager;

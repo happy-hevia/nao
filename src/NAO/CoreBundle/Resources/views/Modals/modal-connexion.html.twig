@@ -17,7 +17,7 @@
                     <p class="modal-login__introduction" >Connectez-vous pour accéder à votre espace membre et à toutes les fonctionnalités du site.</p >
 
                     {# En ligne #}
-                    <form class="form-horizontal" data-parsley-validate data-on="{'connexionState' : 'online' }" >
+                    <form class="form-horizontal" data-parsley-validate data-on="{'connexionState' : 'online' }" id="form-login-online" method="post" action="{{ path('utilisateur_connexion') }}" >
                         <div class="form-group" >
                             <label for="form-login__email" class="col-sm-4" >Adresse email :</label >
                             <div class="col-sm-8" >

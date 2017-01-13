@@ -57,7 +57,7 @@ var currentUserStorage = new MyWebStore("currentUser",sessionStorage);
         if (currentUserEmail !== null ) {
             currentUser = userStorage.coll[currentUserEmail].role;
         } else {
-            currentUser = null;
+            currentUser = 'null';
         }
         // Je met à jour les pages selon le nouveau utilisateur
         updateDOMElementVisibility()
@@ -70,10 +70,10 @@ var currentUserStorage = new MyWebStore("currentUser",sessionStorage);
         // Je récupère l'ensemble des utilisateurs locaux
         userStorage.getAll();
         // Je définie le rôle de l'utilisateur dans la variable global
-        if (currentUserStorage.coll != null) {
+        if (currentUserStorage.coll != 'null' && currentUserStorage.coll != null) {
             currentUser = userStorage.coll[currentUserStorage.coll].role;
         } else {
-            currentUser = null;
+            currentUser = 'null';
         }
         // Je met à jour les pages selon le nouveau utilisateur
         updateDOMElementVisibility()
