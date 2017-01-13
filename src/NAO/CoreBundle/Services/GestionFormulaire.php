@@ -69,4 +69,43 @@ class GestionFormulaire
         return $this->form;
 
     }
+
+    /**
+     * @param $request
+     * @return string|\Symfony\Component\Form\FormInterface
+     *
+     * Permet de gérer la validation du formulaire de connexion en mode en ligne
+     */
+    public function gestionConnexion($request)
+    {
+//        récupère l'utilisateur concerné si il existe
+        $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
+//        Si l'utilisateur exite
+        if ($utilisateur[0] != null) {
+//            récupère le mot de passe serveur
+            $mdpServeur = $utilisateur[0]->getMdp();
+
+//            Si les identifiant renseigné ne sont pas correct alors retourne false
+            if ($mdpServeur != $request->request->get("mdp")) {
+                return "false";
+            }
+        } else{
+//            Si l'utilisateur n'exite pas retourne false
+            return "false";
+        }
+
+//        création de l'objet utilisateur pour le front
+        $utilisateurJs = array(
+            "valueList" => ["null","Visiteur","Naturaliste","Admin"],
+        "nom" =>$utilisateur[0]->getNom(),
+        "prenom"=>$utilisateur[0]->getPrenom(),
+        "pseudo"=>$utilisateur[0]->getPseudo(),
+        "email"=>$utilisateur[0]->getEmail(),
+        "role"=>$utilisateur[0]->getDroit()
+        );
+
+//        Si les identifiants renseignés sont correct alors on retourne les informations de l'utilisateur
+        return json_encode($utilisateurJs);
+
+    }
 }

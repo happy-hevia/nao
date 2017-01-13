@@ -4,35 +4,35 @@
 
 var currentUser;
 
+
 /* Définition de la classe User */
-function User() {
-    this.nom = "";
-    this.prenom = "";
-    this.email = "";
-}
-User.valueList=["null", "particulier","naturaliste", "administrateur"];
-User.setNull = function () {
-    console.log("User=Null");
-    currentUser=User.valueList[0];
-    updateDOMElementVisibility();
-};
-User.setUserData = function (nom, prenom, email) {
+function User(nom, prenom, email, pseudo, role) {
+    this.valueList=["null", "Visiteur","Naturaliste", "Admin"];
     this.nom = nom;
     this.prenom = prenom;
+    this.pseudo = pseudo;
     this.email = email;
-};
-User.setVisiteur = function () {
-    console.log("User=particulier");
-    currentUser=User.valueList[1];
-    updateDOMElementVisibility();
-};
-User.setNaturaliste = function() {
-    console.log("User=naturaliste");
-    currentUser=User.valueList[2];
-    updateDOMElementVisibility();
-};
-User.setAdmin = function() {
-    console.log("User=administrateur");
-    currentUser=User.valueList[3];
-    updateDOMElementVisibility();
-};
+    this.role = role;
+    this.setNull = function () {
+        console.log("User=Null");
+        currentUser=this.valueList[0];
+        updateDOMElementVisibility();
+    };
+    this.setVisiteur = function () {
+        console.log("User=Visiteur");
+        currentUser=this.valueList[1];
+        updateDOMElementVisibility();
+    };
+    this.setNaturaliste = function() {
+        console.log("User=Naturaliste");
+        currentUser=this.valueList[2];
+        updateDOMElementVisibility();
+    };
+    this.setAdmin = function() {
+        console.log("User=Administrateur");
+        currentUser=this.valueList[3];
+        updateDOMElementVisibility();
+    };
+}
+
+

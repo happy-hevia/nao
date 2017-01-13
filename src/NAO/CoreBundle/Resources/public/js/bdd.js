@@ -13,14 +13,16 @@
 function MyWebStore (cle, typeStockage) {
     this.typeStockage=typeStockage;
     this.cle=cle;
-    this.coll={};
+    this.coll= {};
     this.loaded=false;
     this.getAll = function() {
-        this.coll= this.typeStockage.getItem(this.cle);
+        // récuperation de la valeur et parse JSON
+        this.coll= JSON.parse(this.typeStockage.getItem(this.cle));
         this.loaded=true;
     };
     this.setAll = function(objectColl) {
-        this.typeStockage.setItem(this.cle,objectColl);
+        // Stockage de la valeur stringifié
+        this.typeStockage.setItem(this.cle, JSON.stringify(objectColl));
         this.getAll(); // On recharge l'objet après la modification
     };
 }
@@ -34,10 +36,49 @@ userStorage.add = function(newUser) { // Ajoute ou met à jour l'objet
     if (!this.loaded) {
         this.getAll();
     }
-    var users=this.coll;
+    var users = this.coll || {};
     users[newUser.email]=newUser;
     this.setAll(users);
 };
+
+/**
+ * Objet : currentUserStorage
+ * Description : Permet la persistence et la récupération de l'utilisateur courant
+ * @type {MyWebStore}
+ */
+var currentUserStorage = new MyWebStore("currentUser",sessionStorage);
+    // Ajoute ou met à jour l'utilsateur courant dans la session, null pour indiquer qu'il n'y a pas d'utilisateur courrant
+        currentUserStorage.setCurrentUser = function(currentUserEmail) {
+        // Je stocke l'email dans la session
+        this.setAll(currentUserEmail);
+        // Je récupère l'ensemble des utilisateurs locaux
+        userStorage.getAll();
+        // Je définie le rôle de l'utilisateur dans la variable global
+        if (currentUserEmail !== null ) {
+            currentUser = userStorage.coll[currentUserEmail].role;
+        } else {
+            currentUser = null;
+        }
+        // Je met à jour les pages selon le nouveau utilisateur
+        updateDOMElementVisibility()
+    }
+
+    // Récupère l'utilisateur courant dans la session
+        currentUserStorage.getCurrentUser = function() {
+        // Je récupère l'adresse email de l'utilisateur courant
+        this.getAll();
+        // Je récupère l'ensemble des utilisateurs locaux
+        userStorage.getAll();
+        // Je définie le rôle de l'utilisateur dans la variable global
+        if (currentUserStorage.coll != null) {
+            currentUser = userStorage.coll[currentUserStorage.coll].role;
+        } else {
+            currentUser = null;
+        }
+        // Je met à jour les pages selon le nouveau utilisateur
+        updateDOMElementVisibility()
+};
+
 
 /**
  * Objet : observationStorage
