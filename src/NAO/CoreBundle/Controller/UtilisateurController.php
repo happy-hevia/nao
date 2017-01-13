@@ -5,7 +5,8 @@ namespace NAO\CoreBundle\Controller;
 use NAO\CoreBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -35,9 +36,25 @@ class UtilisateurController extends Controller
             return new Response("valide");
         }
 
-        return $this->render('@NAOCore/formulaire/creation.html.twig', array(
-            'formulaireCreation' => $form->createView(),
-        ));
+        return $this->render('@NAOCore/formulaire/creation.html.twig', array('formulaireCreation' => $form->createView(),));
+    }
+
+    /**
+     * Créé un nouveau utilisateur
+     * Retourne simplement le formulaire mis en page
+     * ou "valide" si le formulaire est complet
+     * Cette fonction est appelée depuis une requête ajax
+     *
+     * @Route("/connexion", name="utilisateur_connexion")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function connexionAction(Request $request)
+    {
+        $form = $this->get('nao_core.gestion_formulaire')->gestionConnexion($request);
+
+        return new Response($form);
     }
 
 }

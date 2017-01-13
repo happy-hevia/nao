@@ -40,8 +40,8 @@ var testConditions = function(unObjetJSON) {
     var test=[];
     for (var i=0;i<numberOfConditions;i++) {
         var key = Object.keys(unObjetJSON)[i];
-        var valeur = unObjetJSON[key].toLowerCase();
-        if (valeur==eval(key).toLowerCase()) {
+        var valeur = unObjetJSON[key];
+        if (valeur==eval(key)) {
             test[i]=true;
         } else {
             test[i]=false;
@@ -111,6 +111,15 @@ var setMessage = function(aMessage) {
 }
 
 /**
+ * deconnecte l'utilsateur lorsqu'il clique sur le bouton deconnection
+ */
+function gestionBoutonConnexion(){
+    $('#menu__deconnexion').click(function(){
+        currentUserStorage.setCurrentUser(null);
+    })
+}
+
+/**
  *
  */
 $(function() {
@@ -118,7 +127,6 @@ $(function() {
     connexionState= "online";   //TODO: lier au gestionnaire offline-js.js
     gpsState="gps_ko";
     syncState="sync_ok";
-    User.setNull();
     updateDOMElementVisibility();
     setMessage("");
     initSocialEvent();
@@ -131,4 +139,12 @@ $(function() {
     //      récupération des informations web storage
     //      mise à jour des éléments
 
+
+    // Récupère l'utilisateur courant à chaque chargement de page depuis le local storage
+    currentUserStorage.getCurrentUser()
+
+    gestionFormulaireCreation();
+    gestionFormulaireConnexionHorsLigne();
+    gestionFormulaireConnexionEnLigne()
+    gestionBoutonConnexion();
 });
