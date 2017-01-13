@@ -91,7 +91,7 @@ Localisation.testGPS = function(){
 
 Localisation.initListener = function() {
     Localisation.setIndisponible();
-    setTimeout(Localisation.testGPS(),5000);
+    setInterval(Localisation.testGPS,2000);
 };
 
 
