@@ -74,7 +74,7 @@ var oiseauStorage = function() {
     };
     // Ici pas de Setter car on ne va créer aucun oiseau
     this.getMedia = function (espece) {
-        if (Connexion().isConnected() && espece!=null) {
+        if (Connexion.isConnected() && espece!=null) {
             var mediaList=[];
             //TODO: Exploiter le fichier JSON this.coll pour :
             // -> récupérer la liste URL des images correspondantes
@@ -108,48 +108,3 @@ var storeDetector = function() {
     }
 };
 
-/**
- * Fonction : startListeners
- * Description :
- *      Lance les boucles de détection Localisation et connexion internet
- */
-function Listeners() {
-    this.testGPS = function(){
-        // Mémorisation de l'état initial
-        var gpsStateMemo = gpsState;
-        if (Localisation().isAvailable()) {
-            if (gpsStateMemo!=gpsState) {
-                // On vient de passer de l'état "gps_ko" à "gps_ok"
-                updateDOMElementVisibility();
-            } // S'il n'y a pas de changement d'état, on ne fait rien
-        } else {
-            if (gpsStateMemo!=gpsState) {
-                // On vient de passer de l'état "gps_ok" à "gps_ko"
-                updateDOMElementVisibility();
-            } // S'il n'y a pas de changement d'état, on ne fait rien
-        }
-    };
-    this.start = function (){
-        // La disponibilité de la localisation est testée toutes les 5 secondes
-        setTimeout(this.testGPS(),5000);
-
-        Offline.options = {
-            checkOnLoad: true,
-            checks: {
-                image: {
-                    url: 'http://www.vitaminedz.com/photos/49/02-49565-front-de-mer-a-oran.jpg' //TODO: Générer lien test
-                },
-                active: 'image'
-            }
-        };
-        // La disponibilité de la connexion est testée toutes les 3 secondes par défault
-        Offline.on('up', function(){
-            Connexion().connecter();
-            updateDOMElementVisibility();
-        });
-        Offline.on('down', function(){
-            Connexion().deconnecter();
-            updateDOMElementVisibility();
-        });
-    };
-}

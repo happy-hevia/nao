@@ -68,6 +68,10 @@
                                 <img  data-on="{'syncState' : 'sync_ec'}" src="{{asset('bundles/naocore/images/sync_ec.png')}}" height="20px" alt="Synchronisation en cours">
                                 <img  data-on="{'syncState' : 'sync_ko'}" src="{{asset('bundles/naocore/images/sync_ko.png')}}" height="20px" alt="Echec Synchronisation">
                                 <img  data-on="{'syncState' : 'sync_todo'}" src="{{asset('bundles/naocore/images/sync_todo.png')}}" height="20px" alt="En attente de Synchronisation">
+
+                                <span data-on="{'gpsState' : 'gps_ok'}" class="glyphicon glyphicon-record" aria-hidden="true" style="color:green;"></span>
+                                <span data-on="{'gpsState' : 'gps_ko'}" class="glyphicon glyphicon-ban-circle" aria-hidden="true" style="color:red;"></span>
+
                             </div>
                         </div>
 
@@ -170,6 +174,7 @@
         <script src="{{ asset('bundles/naocore/js/observations.js') }}"></script>
         <script src="{{ asset('bundles/naocore/js/oiseau.js') }}"></script>
         <script src="{{ asset('bundles/naocore/js/user.js') }}"></script>
+        <script src="{{ asset('bundles/naocore/js/listener.js') }}"></script>
 
         <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
 
