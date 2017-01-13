@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr"  manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}">
+<html lang="fr"
+      {#manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}"#}
+>
     <head>
         <!-- META -->
         <meta charset="UTF-8" />
@@ -16,7 +18,7 @@
         </title>
 
         <!-- LINK -->
-        <link rel="manifest" href="{{ asset('bundles/naocore/manifest/manifest.appcache') }}">
+        {#<link rel="manifest" href="{{ asset('bundles/naocore/manifest/manifest.appcache') }}">#}
         <link rel="icon" type="image/x-icon" href="{{ asset('bundles/naocore/images/favicon.ico') }}" />
         {# Chargement des styles commun à toutes les pages #}
         <link href="{{ asset('bundles/naocore/css/bootstrap.min.css') }}" rel="stylesheet">
