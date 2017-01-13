@@ -111,6 +111,15 @@ var setMessage = function(aMessage) {
 }
 
 /**
+ * deconnecte l'utilsateur lorsqu'il clique sur le bouton deconnection
+ */
+function gestionBoutonConnexion(){
+    $('#menu__deconnexion').click(function(){
+        currentUserStorage.setCurrentUser(null);
+    })
+}
+
+/**
  *
  */
 $(function() {
@@ -135,5 +144,8 @@ $(function() {
     // Récupère l'utilisateur courant à chaque chargement de page depuis le local storage
     currentUserStorage.getCurrentUser()
 
+    gestionFormulaireCreation();
     gestionFormulaireConnexionHorsLigne();
+    gestionFormulaireConnexionEnLigne()
+    gestionBoutonConnexion();
 });

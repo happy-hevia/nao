@@ -55,7 +55,7 @@
                                     <li data-off="{'currentUser' : null }"><a href="{{ url('nao_mon_compte') }}">Informations de compte</a></li>
                                     <li data-on="{'currentUser': null }"><a href="#">S'identifier</a></li>    {# TODO: Lien avec modale de connexion #}
                                     <li data-on="{'currentUser': null, 'connexionState' : 'online'}"><a href="#">Créer un compte</a></li> {# TODO: Lien avec modale de création de compte #}
-                                    <li  data-off="{'currentUser' : null }"><a href="#">Se déconnecter</a></li>   {# TODO: évènement JS de déconnexion sur clic#}
+                                    <li  data-off="{'currentUser' : null }"><a id="menu__deconnexion" href="#">Se déconnecter</a></li>   {# TODO: évènement JS de déconnexion sur clic#}
                                     <li role="separator" class="divider"></li>
                                     {# <li><a href="#">Separated link</a></li> #}
                                 </ul>

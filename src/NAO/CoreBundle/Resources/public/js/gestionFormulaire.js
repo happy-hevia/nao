@@ -1,9 +1,6 @@
 /**
- Ce script permet de gérer l'ensemble des formulaires du site : ce qui comprends les fonctionnalités suivantes
- - validation front
+ Ce script permet de définir l'ensemble des fonctions en relation avec les formulaires
  **/
-
-gestionFormulaireCreation();
 
 /**
  * Permet de gérer la validation du formulaire de création
@@ -44,11 +41,48 @@ function gestionFormulaireCreation() {
 }
 
 
-// Formulaire de connexion
-// @todo gestion connexion en mode en ligne
+/**
+ * Permet de gérer la soumission du formulaire de connexion en mode en ligne
+ */
+function gestionFormulaireConnexionEnLigne(){
+    var $formulaireConnexion = $('#form-login-online');
+
+    // Lorsque je soumets le formulaire
+    $formulaireConnexion.on('submit', function (e) {
+        e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
+
+        var $this = $(this); // L'objet jQuery du formulaire
+        // Envoi de la requête HTTP en mode asynchrone
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
+            type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+            data: { email : $('#form-login__email').val(),
+                    mdp : $('#form-login__password').val()},
+            success: function (jsonUtilisateur) { // Je récupère la réponse
+
+                // Si les identifiant sont invalide
+                if (jsonUtilisateur === "false"){
+                    // J'affiche un message d'erreur en dessous du formulaire
+                    $('#form-login-online__wrapper-error').html("<div class='alert alert-danger' role='alert'>Votre email ou mot de passe est incorrect</div>");
+                } else {
+                    $('#modal-login').modal('hide');
+                    var utilisateur = JSON.parse(jsonUtilisateur);
+
+                    // j'ajoute l'utilisateur dans la liste des utilisateurs disponible
+                    userStorage.add(utilisateur);
+                    // Je connecte cette utilisateur
+                    currentUserStorage.setCurrentUser(utilisateur.email)
+                }
+            }
+        });
+    });
+}
 
 
-// Gestion du formualaire de connexion en mode hors ligne
+/**
+ * Permet de gérer la soumission du formulaire en mode hors ligne
+ */
 function gestionFormulaireConnexionHorsLigne(){
     var formulaire = $('#form-login-offline');
     var select = $('#form-login__user');
