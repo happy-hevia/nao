@@ -6,10 +6,10 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                     <span aria-hidden="true" >&times;</span ></button >
                 {# En ligne #}
-                <h3 class="modal-title text-center" >Connexion</h3 >
+                <h3 class="modal-title text-center" data-on="{'connexionState' : 'online' }"  >Connexion</h3 >
                 {# Fin En ligne #}
                 {# Hors ligne #}
-                <h3 class="modal-title text-center" >Connexion (hors ligne)</h3 >
+                <h3 class="modal-title text-center" data-on="{'connexionState' : 'offline' }" >Connexion (hors ligne)</h3 >
                 {# Fin Hors ligne #}
             </div >
             <div class="modal-body row" >
@@ -17,7 +17,7 @@
                     <p class="modal-login__introduction" >Connectez-vous pour accéder à votre espace membre et à toutes les fonctionnalités du site.</p >
 
                     {# En ligne #}
-                    <form class="form-horizontal" data-parsley-validate >
+                    <form class="form-horizontal" data-parsley-validate data-on="{'connexionState' : 'online' }" >
                         <div class="form-group" >
                             <label for="form-login__email" class="col-sm-4" >Adresse email :</label >
                             <div class="col-sm-8" >
@@ -35,7 +35,7 @@
                     </form >
                     {# Fin En ligne #}
                     {# Hors ligne #}
-                    <form class="form-horizontal" data-parsley-validate >
+                    <form class="form-horizontal" data-parsley-validate data-on="{'connexionState' : 'offline' }">
                         <div class="form-group" >
                             <label for="form-login__user" class="col-sm-4" >Adresse email :</label >
                             <div class="col-sm-8" >

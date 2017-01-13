@@ -38,7 +38,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 col-xs-4" style="display:flex;height:100px;">
-                    <h1 style="margin:auto;"><a href="{{ url('nao_accueil') }}">Nos Amis les Oiseaux</a></h1> #}
+                    <h1 style="margin:auto;"><a href="{{ url('nao_accueil') }}">Nos Amis les Oiseaux</a></h1>
                 </div>
                 <div class="col-md-4 col-xs-4" style="display:flex;height:100px;">
                     <div style="margin:auto;" class="row">
@@ -51,8 +51,8 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                     <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mon_compte') }}">Informations de compte</a></li>
-                                    <li data-on="{'currentUser': 'null' }"><a href="#">S'identifier</a></li>    {# TODO: Lien avec modale de connexion #}
-                                    <li data-on="{'currentUser': 'null', 'connexionState' : 'online'}"><a href="#">Créer un compte</a></li> {# TODO: Lien avec modale de création de compte #}
+                                    <li data-on="{'currentUser': 'null' }" data-toggle="modal" data-target="#modal-login"><a>S'identifier</a></li>
+                                    <li data-on="{'currentUser': 'null', 'connexionState' : 'online'}" data-toggle="modal" data-target="#modal-sign-up"><a>Créer un compte</a></li>
                                     <li  data-off="{'currentUser' : 'null' }"><a href="#">Se déconnecter</a></li>   {# TODO: évènement JS de déconnexion sur clic#}
                                     <li role="separator" class="divider"></li>
                                     {# <li><a href="#">Separated link</a></li> #}
@@ -92,9 +92,9 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="{{ url('nao_observer') }}">Observer</a></li>
                                 <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mes_observations') }}">Mes observations</a></li>
-                                <li data-on="{'currentUser' : 'Naturaliste' }"><a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a></li>
+                                <li data-on="{'currentUser' : 'naturaliste' }"><a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a></li>
                                 <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mon_compte') }}">Mon compte</a></li>
-                                <li data-on="{'currentUser' : 'Admin','connexionState' : 'online' }"><a href="{{ url('nao_gestion_droits') }}">Gestion des droits</a></li>
+                                <li data-on="{'currentUser' : 'administrateur','connexionState' : 'online' }"><a href="{{ url('nao_gestion_droits') }}">Gestion des droits</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -115,21 +115,17 @@
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-addObservation">
                         Ajouter une observation
                     </button>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-login">
-                        Se connecter
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-sign-up">
-                        Créer un compte
-                    </button>
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-observation">
                         Information sur observation
                     </button>
 
-                    {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
-                    {% include '@NAOCore/Modals/modal-connexion.html.twig' %}
-                    {% include '@NAOCore/Modals/modal-creationCompte.html.twig' %}
-                    {% include '@NAOCore/Modals/modal-descriptionObservation.html.twig' %}
+
                 {% endblock %}
+                {# Il faut garder les inclusions ici #}
+                {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
+                {% include '@NAOCore/Modals/modal-connexion.html.twig' %}
+                {% include '@NAOCore/Modals/modal-creationCompte.html.twig' %}
+                {% include '@NAOCore/Modals/modal-descriptionObservation.html.twig' %}
             </div>
             <!-- FOOTER -->
             <footer class="footer row">

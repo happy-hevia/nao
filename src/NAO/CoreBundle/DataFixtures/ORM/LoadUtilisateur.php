@@ -24,7 +24,11 @@ class LoadUtilisateur implements FixtureInterface
         $particulier->setNom("tesx");
         $particulier->setemail("particulier@hotmail.fr");
         $particulier->setMdp("particulier");
+        $particulier->setMdpConfirmation("particulier");
         $particulier->setDroit("particulier");
+        $particulier->setMentions(true);
+        $particulier->setPseudo("Boby");
+        $particulier->setDateCreation(new \DateTime());
 
 //        Création d'un naturaliste
         $naturaliste = new Utilisateur();
@@ -32,7 +36,11 @@ class LoadUtilisateur implements FixtureInterface
         $naturaliste->setNom("molox");
         $naturaliste->setemail("naturaliste@hotmail.fr");
         $naturaliste->setMdp("naturaliste");
+        $naturaliste->setMdpConfirmation("naturaliste");
         $naturaliste->setDroit("naturaliste");
+        $naturaliste->setMentions(true);
+        $naturaliste->setPseudo("Totoff");
+        $naturaliste->setDateCreation(new \DateTime());
 
 //        Création d'un administrateur
         $administrateur = new Utilisateur();
@@ -40,7 +48,11 @@ class LoadUtilisateur implements FixtureInterface
         $administrateur->setNom("asticot");
         $administrateur->setemail("administrateur@hotmail.fr");
         $administrateur->setMdp("administrateur");
+        $administrateur->setMdpConfirmation("administrateur");
         $administrateur->setDroit("administrateur");
+        $administrateur->setMentions(true);
+        $administrateur->setPseudo("Cocotte");
+        $administrateur->setDateCreation(new \DateTime());
 
 //        Persist
         $manager->persist($particulier);

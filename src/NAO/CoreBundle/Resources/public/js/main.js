@@ -15,7 +15,7 @@ String.prototype.replaceAll = function(search, replacement) {
 };
 
 /**
- * convertDataToJSON
+ * convertDataToJSON utilisé par updateDOMElementVisibility
  * Effet : Convertis une chaîne texte au format JSON en objet JSON.
  * @param uneData
  * @returns {*}
@@ -29,7 +29,7 @@ var convertDataToJSON = function(uneData) {
 }
 
 /**
- * testConditions
+ * testConditions (utilisé par updateDOMElementVisibility)
  * Effet : Retourne TRUE si toutes les conditions sont réunies. Retourne FALSE sinon.
  * @param unObjetJSON
  * @returns {boolean}
@@ -40,8 +40,8 @@ var testConditions = function(unObjetJSON) {
     var test=[];
     for (var i=0;i<numberOfConditions;i++) {
         var key = Object.keys(unObjetJSON)[i];
-        var valeur = unObjetJSON[key];
-        if (valeur==eval(key)) {
+        var valeur = unObjetJSON[key].toLowerCase();
+        if (valeur==eval(key).toLowerCase()) {
             test[i]=true;
         } else {
             test[i]=false;
@@ -120,7 +120,7 @@ $(function() {
     connexionState= "online";   //TODO: lier au gestionnaire offline-js.js
     gpsState="gps_ko";
     syncState="sync_ok";
-    currentUser ="visiteur";
+    User.setNull();
     updateDOMElementVisibility();
     setMessage("");
     initSocialEvent();
