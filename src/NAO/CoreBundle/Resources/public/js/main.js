@@ -131,4 +131,9 @@ $(function() {
     //      récupération des informations web storage
     //      mise à jour des éléments
 
+
+    // Récupère l'utilisateur courant à chaque chargement de page depuis le local storage
+    currentUserStorage.getCurrentUser()
+
+    gestionFormulaireConnexionHorsLigne();
 });

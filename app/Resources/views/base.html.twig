@@ -47,15 +47,15 @@
                         <div class="col-md-12" style="display:flex;">
                             <div style="margin:auto;" class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <p data-off="{'currentUser' : 'null' }">Mon Compte</p>
-                                    <p data-on="{'currentUser' : 'null'}">Identification</p>
+                                    <p data-off="{'currentUser' : null }">Mon Compte</p>
+                                    <p data-on="{'currentUser' : null}">Identification</p>
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mon_compte') }}">Informations de compte</a></li>
-                                    <li data-on="{'currentUser': 'null' }"><a href="#">S'identifier</a></li>    {# TODO: Lien avec modale de connexion #}
-                                    <li data-on="{'currentUser': 'null', 'connexionState' : 'online'}"><a href="#">Créer un compte</a></li> {# TODO: Lien avec modale de création de compte #}
-                                    <li  data-off="{'currentUser' : 'null' }"><a href="#">Se déconnecter</a></li>   {# TODO: évènement JS de déconnexion sur clic#}
+                                    <li data-off="{'currentUser' : null }"><a href="{{ url('nao_mon_compte') }}">Informations de compte</a></li>
+                                    <li data-on="{'currentUser': null }"><a href="#">S'identifier</a></li>    {# TODO: Lien avec modale de connexion #}
+                                    <li data-on="{'currentUser': null, 'connexionState' : 'online'}"><a href="#">Créer un compte</a></li> {# TODO: Lien avec modale de création de compte #}
+                                    <li  data-off="{'currentUser' : null }"><a href="#">Se déconnecter</a></li>   {# TODO: évènement JS de déconnexion sur clic#}
                                     <li role="separator" class="divider"></li>
                                     {# <li><a href="#">Separated link</a></li> #}
                                 </ul>
@@ -93,9 +93,9 @@
                         <div id="navbar" class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="{{ url('nao_observer') }}">Observer</a></li>
-                                <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mes_observations') }}">Mes observations</a></li>
+                                <li data-off="{'currentUser' : null }"><a href="{{ url('nao_mes_observations') }}">Mes observations</a></li>
                                 <li data-on="{'currentUser' : 'Naturaliste' }"><a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a></li>
-                                <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mon_compte') }}">Mon compte</a></li>
+                                <li data-off="{'currentUser' : null }"><a href="{{ url('nao_mon_compte') }}">Mon compte</a></li>
                                 <li data-on="{'currentUser' : 'Admin','connexionState' : 'online' }"><a href="{{ url('nao_gestion_droits') }}">Gestion des droits</a></li>
                             </ul>
                         </div>
@@ -177,12 +177,14 @@
         <script src="{{ asset('bundles/naocore/js/oiseau.js') }}"></script>
         <script src="{{ asset('bundles/naocore/js/user.js') }}"></script>
 
-        <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
-
         {# Gestion des formulaires #}
         <script src="{{ asset('bundles/naocore/js/parsley.js') }}"></script >
         <script src="{{ asset('bundles/naocore/js/parsley-fr.js') }}" ></script >
         <script src="{{ asset('bundles/naocore/js/gestionFormulaire.js') }}"></script >
+
+        <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
+
+
         {# Pour permettre le chargement des bibliothèques JS spécifiques à une page #}
         {% block javascripts %}{% endblock %}
 

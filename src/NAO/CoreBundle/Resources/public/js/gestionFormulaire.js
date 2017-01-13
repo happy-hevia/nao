@@ -30,8 +30,8 @@ function gestionFormulaireCreation() {
 
                 // si le formulaire est valide alors je ferme la modal et j'affiche le message d'information
                 if (html === "valide"){
-                    $('#modal-sign-up').modal('hide')
-                    setMessage("Votre compte a bien été enregistré. Merci de vous connecter !")
+                    $('#modal-sign-up').modal('hide');
+                    setMessage("Votre compte a bien été enregistré. Merci de vous connecter !");
                 } else {
                     // sinon j'affiche le formulaire avec les erreurs
                     $('#emplacement__formulaire-creation').html(html);
@@ -46,7 +46,34 @@ function gestionFormulaireCreation() {
 
 // Formulaire de connexion
 // @todo gestion connexion en mode en ligne
-// @todo gestion connexion en mode hors ligne
+
+
+// Gestion du formualaire de connexion en mode hors ligne
+function gestionFormulaireConnexionHorsLigne(){
+    var formulaire = $('#form-login-offline');
+    var select = $('#form-login__user');
+    var boutonSoumission = $('#form-login-offline__submit');
+
+    //Je récupère les utilisateurs locaux
+    userStorage.getAll();
+
+    // si il n'y a pas d'utilisateurs locaux, on le notifie à l'internaute
+    if (userStorage.coll == null) {
+        formulaire.replaceWith("<div class='alert alert-warning' role='alert'><strong>OUPS !</strong> Il n'y a d'utilisateur disponible en mode hors ligne, merci de vous connectez à votre compte en ligne avant de pouvoir accéder à votre compte en mode hors ligne</div>")
+
+        //    si il y a des utilisateurs locaux, on les intégrent dans le select du formulaire
+    } else {
+        for(var utilisateur in userStorage.coll) {
+            select.append("<option value='" + utilisateur + "'>" + utilisateur + "</option>");
+        }
+    }
+
+//    si le formulaire est validé
+    boutonSoumission.on('click', function() {
+        $('#modal-login').modal('hide') // Je ferme la modal
+        currentUserStorage.setCurrentUser($('#form-login__user option:selected').val()); // Je définie le nouveau utilisateur courant
+    });
+}
 
 
 // Formulaire d'ajout d'observation
