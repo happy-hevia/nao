@@ -123,8 +123,6 @@ function gestionBoutonConnexion(){
  *
  */
 $(function() {
-
-
     // Initialisation des variables globales
     connexionState= "online";   //TODO: lier au gestionnaire offline-js.js
     gpsState="gps_ko";
@@ -132,6 +130,8 @@ $(function() {
     updateDOMElementVisibility();
     setMessage("");
     initSocialEvent();
+    Listeners.start();
+
     //setMessage("Grossière Erreur !!!");
     // Détection présence de l'application en locale
 
