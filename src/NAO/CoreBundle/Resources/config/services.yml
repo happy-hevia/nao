@@ -1,4 +1,4 @@
 services:
     nao_core.gestion_formulaire:
         class: NAO\CoreBundle\Services\GestionFormulaire
-        arguments: ["@form.factory", "@doctrine.orm.entity_manager"]
+        arguments: ["@form.factory", "@doctrine.orm.entity_manager", "@validator"]

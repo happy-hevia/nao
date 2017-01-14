@@ -147,4 +147,5 @@ $(function() {
     gestionFormulaireConnexionHorsLigne();
     gestionFormulaireConnexionEnLigne();
     gestionBoutonConnexion();
+    gestionFormulaireModificationMotDePasse();
 });
