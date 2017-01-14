@@ -88,7 +88,7 @@ class GestionFormulaire
 //        récupère l'utilisateur concerné si il existe
         $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
 //        Si l'utilisateur exite
-        if ($utilisateur[0] != null) {
+        if (isset($utilisateur[0]) && $utilisateur[0] != null) {
 
 //            récupère le mot de passe encodé du serveur
             $mdpServeur = $utilisateur[0]->getMdp();
@@ -105,11 +105,12 @@ class GestionFormulaire
 //        création de l'objet utilisateur pour le front
         $utilisateurJs = array(
             "valueList" => ["null", "particulier","naturaliste", "administrateur"],
-        "nom" =>$utilisateur[0]->getNom(),
-        "prenom"=>$utilisateur[0]->getPrenom(),
-        "pseudo"=>$utilisateur[0]->getPseudo(),
-        "email"=>$utilisateur[0]->getEmail(),
-        "role"=>$utilisateur[0]->getDroit()
+            "date" => $utilisateur[0]->getDateCreation()->format('d/m/Y'),
+            "nom" =>$utilisateur[0]->getNom(),
+            "prenom"=>$utilisateur[0]->getPrenom(),
+            "pseudo"=>$utilisateur[0]->getPseudo(),
+            "email"=>$utilisateur[0]->getEmail(),
+            "role"=>$utilisateur[0]->getDroit()
         );
 
 //        Si les identifiants renseignés sont correct alors on retourne les informations de l'utilisateur

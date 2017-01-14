@@ -1,4 +1,22 @@
 {% extends 'base.html.twig' %}
 {%  block body %}
-    <h1>Page Mon Compte (en construction)</h1>
+
+    <div class="col-xs-12" >
+        <div class="panel panel-primary" >
+            <div class="panel-heading" >
+                <h1 class="panel-title" >Mon Compte</h1 >
+            </div >
+            <div class="panel-body" >
+                <div id="date-inscription__wrapper"><p>Date d'inscription : <span id="date-inscription__data">test</span></p></div>
+                <div id="nom__wrapper"><p>Nom : <span id="nom__data">test</span></p></div>
+                <div id="prenom__wrapper"><p>Prenom : <span id="prenom__data">test</span></p></div>
+                <div id="email__wrapper"><p>Email : <span id="email__data">test</span></p></div>
+                <div id="pseudo__wrapper"><p>Pseudo : <span id="pseudo__data">test</span></p></div>
+            </div >
+        </div >
+    </div >
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/naocore/js/page-compte.js') }}"></script >
 {% endblock %}
