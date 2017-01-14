@@ -7,32 +7,30 @@ var currentUser;
 
 /* Définition de la classe User */
 function User(nom, prenom, email, pseudo, role) {
-    this.valueList=["null", "Visiteur","Naturaliste", "Admin"];
+    this.valueList=["null", "particulier","naturaliste", "administrateur"];
     this.nom = nom;
     this.prenom = prenom;
     this.pseudo = pseudo;
     this.email = email;
     this.role = role;
-    this.setNull = function () {
-        console.log("User=Null");
-        currentUser=this.valueList[0];
-        updateDOMElementVisibility();
-    };
-    this.setVisiteur = function () {
-        console.log("User=Visiteur");
-        currentUser=this.valueList[1];
-        updateDOMElementVisibility();
-    };
-    this.setNaturaliste = function() {
-        console.log("User=Naturaliste");
-        currentUser=this.valueList[2];
-        updateDOMElementVisibility();
-    };
-    this.setAdmin = function() {
-        console.log("User=Administrateur");
-        currentUser=this.valueList[3];
-        updateDOMElementVisibility();
-    };
 }
-
-
+User.setNull = function () {
+    console.log("User=null");
+    currentUser=this.valueList[0];
+    updateDOMElementVisibility();
+};
+User.setVisiteur = function () {
+    console.log("User=particulier");
+    currentUser=this.valueList[1];
+    updateDOMElementVisibility();
+};
+User.setNaturaliste = function() {
+    console.log("User=naturaliste");
+    currentUser=this.valueList[2];
+    updateDOMElementVisibility();
+};
+User.setAdmin = function() {
+    console.log("User=administrateur");
+    currentUser=this.valueList[3];
+    updateDOMElementVisibility();
+};

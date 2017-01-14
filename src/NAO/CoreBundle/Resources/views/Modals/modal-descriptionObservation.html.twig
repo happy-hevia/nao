@@ -20,7 +20,7 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="observation-pane">
                         {# En ligne #}
-                        <div class="col-md-5" >
+                        <div class="col-md-5" data-on="{'connexionState' : 'online' }">
 
                             {# Carousel #}
                             <div id="modal-observation__carousel" class="carousel slide" data-ride="carousel" >
@@ -89,9 +89,9 @@
                                     </div >
                                 </div >
                             </fieldset >
-                            <button type="button" class="btn btn-success" >Valider</button >
-                            <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button >
-                            <button type="submit" class="btn btn-danger" >Refuser</button >
+                            <button type="button" class="btn btn-success" data-on="{'currentUser' : 'naturaliste' }">Valider</button >
+                            <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button > {# TODO: Ne rendre accessible qu'au propriétaire de l'observation #}
+                            <button type="submit" class="btn btn-danger" data-on="{'currentUser' : 'naturaliste' }">Refuser</button >
                         </form >
                     </div>
                     <div role="tabpanel" class="tab-pane" id="species-pane">

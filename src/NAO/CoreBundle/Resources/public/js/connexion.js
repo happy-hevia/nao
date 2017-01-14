@@ -26,6 +26,7 @@ Connexion.isConnected = function() {
 }
 
 Connexion.initListener = function() {
+    console.log("\tLANCEMENT CONNEXION INIT-LISTENER");
     Offline.options = {
         checkOnLoad:true,
         interceptRequests: true,
@@ -43,10 +44,12 @@ Connexion.initListener = function() {
     };
     Offline.on('up', function(){
         Connexion.connecter();
+        console.log("\tPASSAGE EN MODE CONNECTE");
         updateDOMElementVisibility();
     });
     Offline.on('down', function(){
         Connexion.deconnecter();
+        console.log("\tPASSAGE EN MODE HORS-CONNEXION");
         updateDOMElementVisibility();
     });
 };

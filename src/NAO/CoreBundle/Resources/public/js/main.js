@@ -124,7 +124,7 @@ function gestionBoutonConnexion(){
  */
 $(function() {
     // Initialisation des variables globales
-    connexionState= "online";   //TODO: lier au gestionnaire offline-js.js
+    connexionState= "online";
     gpsState="gps_ko";
     syncState="sync_ok";
     updateDOMElementVisibility();
@@ -141,10 +141,10 @@ $(function() {
 
 
     // Récupère l'utilisateur courant à chaque chargement de page depuis le local storage
-    currentUserStorage.getCurrentUser()
+    currentUserStorage.getCurrentUser();
 
     gestionFormulaireCreation();
     gestionFormulaireConnexionHorsLigne();
-    gestionFormulaireConnexionEnLigne()
+    gestionFormulaireConnexionEnLigne();
     gestionBoutonConnexion();
 });
