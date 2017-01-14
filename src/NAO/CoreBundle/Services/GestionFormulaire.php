@@ -13,12 +13,15 @@ use Doctrine\ORM\EntityManager;
 use NAO\CoreBundle\Entity\Utilisateur;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
+use Symfony\Component\Security\Core\Tests\Encoder\PasswordEncoder;
 
 class GestionFormulaire
 {
     private $formFactory;
     private $entityManager;
     private $utilisateur;
+    private $mdpEncoder;
     private $form;
 
     public function __construct(FormFactory $formFactory, EntityManager $entityManager)
@@ -56,8 +59,12 @@ class GestionFormulaire
         //        Gestion soumission formulaire
         if ($this->form->isSubmitted() && $this->form->isValid()) {
 
-            $this->utilisateur->setDroit("Visiteur"); // définit l'utilisateur comme particulier
+            $this->utilisateur->setDroit("particulier"); // définit l'utilisateur comme particulier
             $this->utilisateur->setDateCreation(new \DateTime()); // remplit la date de création à l'heure actuelle
+
+//            On encode le mot de passe
+            $this->utilisateur->setMdp(md5($this->utilisateur->getMdp()));
+            $this->utilisateur->setMdpConfirmation(md5($this->utilisateur->getMdpConfirmation()));
 
             $em = $this->entityManager;
             $em->persist($this->utilisateur);
@@ -82,11 +89,12 @@ class GestionFormulaire
         $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
 //        Si l'utilisateur exite
         if ($utilisateur[0] != null) {
-//            récupère le mot de passe serveur
+
+//            récupère le mot de passe encodé du serveur
             $mdpServeur = $utilisateur[0]->getMdp();
 
 //            Si les identifiant renseigné ne sont pas correct alors retourne false
-            if ($mdpServeur != $request->request->get("mdp")) {
+            if (md5($request->request->get('mdp')) != $mdpServeur) {
                 return "false";
             }
         } else{
@@ -96,7 +104,7 @@ class GestionFormulaire
 
 //        création de l'objet utilisateur pour le front
         $utilisateurJs = array(
-            "valueList" => ["null","Visiteur","Naturaliste","Admin"],
+            "valueList" => ["null", "particulier","naturaliste", "administrateur"],
         "nom" =>$utilisateur[0]->getNom(),
         "prenom"=>$utilisateur[0]->getPrenom(),
         "pseudo"=>$utilisateur[0]->getPseudo(),

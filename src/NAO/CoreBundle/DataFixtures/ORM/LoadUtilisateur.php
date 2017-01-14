@@ -23,8 +23,8 @@ class LoadUtilisateur implements FixtureInterface
         $particulier->setPrenom("bob");
         $particulier->setNom("tesx");
         $particulier->setemail("particulier@hotmail.fr");
-        $particulier->setMdp("particulier");
-        $particulier->setMdpConfirmation("particulier");
+        $particulier->setMdp(md5("particulier"));
+        $particulier->setMdpConfirmation(md5("particulier"));
         $particulier->setDroit("particulier");
         $particulier->setMentions(true);
         $particulier->setPseudo("Boby");
@@ -35,8 +35,8 @@ class LoadUtilisateur implements FixtureInterface
         $naturaliste->setPrenom("toto");
         $naturaliste->setNom("molox");
         $naturaliste->setemail("naturaliste@hotmail.fr");
-        $naturaliste->setMdp("naturaliste");
-        $naturaliste->setMdpConfirmation("naturaliste");
+        $naturaliste->setMdp(md5("naturaliste"));
+        $naturaliste->setMdpConfirmation(md5("naturaliste"));
         $naturaliste->setDroit("naturaliste");
         $naturaliste->setMentions(true);
         $naturaliste->setPseudo("Totoff");
@@ -47,8 +47,8 @@ class LoadUtilisateur implements FixtureInterface
         $administrateur->setPrenom("coco");
         $administrateur->setNom("asticot");
         $administrateur->setemail("administrateur@hotmail.fr");
-        $administrateur->setMdp("administrateur");
-        $administrateur->setMdpConfirmation("administrateur");
+        $administrateur->setMdp(md5("administrateur"));
+        $administrateur->setMdpConfirmation(md5("administrateur"));
         $administrateur->setDroit("administrateur");
         $administrateur->setMentions(true);
         $administrateur->setPseudo("Cocotte");

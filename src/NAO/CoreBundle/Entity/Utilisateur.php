@@ -3,13 +3,16 @@
 namespace NAO\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Utilisateur
  *
  * @ORM\Table(name="utilisateur")
  * @ORM\Entity(repositoryClass="NAO\CoreBundle\Repository\UtilisateurRepository")
+ * @UniqueEntity("email", message="Il existe déjà un compte pour cet email !")
  */
 class Utilisateur
 {
