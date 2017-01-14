@@ -1,4 +1,43 @@
 {% extends 'base.html.twig' %}
 {%  block body %}
-    <h1>Page Mon Compte (en construction)</h1>
+
+    <div class="col-xs-12" >
+        <div class="panel panel-primary" >
+            <div class="panel-heading" >
+                <h1 class="panel-title" >Mon Compte</h1 >
+            </div >
+            <div class="panel-body" >
+                <h2>Information du compte</h2>
+                <div id="date-inscription__wrapper"><p>Date d'inscription : <span id="date-inscription__data"></span></p></div>
+                <div id="nom__wrapper"><p>Nom : <span id="nom__data"></span></p></div>
+                <div id="prenom__wrapper"><p>Prenom : <span id="prenom__data"></span></p></div>
+                <div id="email__wrapper"><p>Email : <span id="email__data"></span></p></div>
+                <div id="pseudo__wrapper"><p>Pseudo : <span id="pseudo__data"></span></p></div>
+
+                <h2> Modifier son mot de passe</h2>
+                <div class="alert alert-danger" data-on="{'connexionState' : 'offline' }">Vous devez être en ligne pour pouvoir changer votre mot de passe</div>
+                <form class="form-horizontal" data-parsley-validate data-on="{'connexionState' : 'online' }" id="form-change" method="post" action="{{ path('utilisateur_modification') }}" >
+                    <div class="form-group" >
+                        <label for="form-change__mdp-actuel" class="col-sm-4" >Mot de passe actuel :</label >
+                        <div class="col-sm-8" >
+                            <input type="password" class="form-control" id="form-change__mdp-actuel" placeholder="Mot de passe actuel" required >
+                        </div >
+                    </div >
+                    <div class="form-group" >
+                        <label for="form-change__mdp-nouveau" class="col-sm-4" >Nouveau mot de passe :</label >
+                        <div class="col-sm-8" >
+                            <input type="password" class="form-control" id="form-change__mdp-nouveau" placeholder="Nouveau mot de passe" required >
+                        </div >
+                    </div >
+                    <div id="form-change__wrapper-error"></div>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button >
+                    <button type="submit" class="btn btn-default" >Changer de mot de passe</button >
+                </form >
+            </div >
+        </div >
+    </div >
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/naocore/js/page-compte.js') }}"></script >
 {% endblock %}

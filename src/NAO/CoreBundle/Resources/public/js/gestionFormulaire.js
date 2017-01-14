@@ -79,6 +79,44 @@ function gestionFormulaireConnexionEnLigne(){
     });
 }
 
+/**
+ * Permet de gérer la soumission du formulaire de modification de mot passe sur la page "Mon Compte"
+ */
+function gestionFormulaireModificationMotDePasse(){
+    var $formulaireModification = $('#form-change');
+
+    // Lorsque je soumets le formulaire
+    $formulaireModification.on('submit', function (e) {
+        e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
+
+        //Je récupère l'email de l'utilisateur courrant
+        currentUserStorage.getCurrentUser();
+        var emailUtilisateur = userStorage.coll[currentUserStorage.coll].email;
+
+        var $this = $(this); // L'objet jQuery du formulaire
+        // Envoi de la requête HTTP en mode asynchrone
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
+            type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+            data: { email : emailUtilisateur,
+                    mdpancien : $('#form-change__mdp-actuel').val(),
+                    mdpnouveau : $('#form-change__mdp-nouveau').val()},
+            success: function (data) { // Je récupère la réponse
+                if(data === "true"){
+                    $formulaireModification.reset();
+                    setMessage("Votre mot de passe a été validé avec succès");
+                    $('#form-change__wrapper-error').html("");
+                } else if ( data === "false"){
+                    $('#form-change__wrapper-error').html("<div class='alert alert-warning'>Le mot de passe actuel renseigné n'est pas correct !</div>");
+                } else{
+                    $('#form-change__wrapper-error').html("<div class='alert alert-warning'>" + data + "</div>");
+                }
+            }
+        });
+    });
+}
+
 
 /**
  * Permet de gérer la soumission du formulaire en mode hors ligne

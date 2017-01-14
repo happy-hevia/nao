@@ -83,7 +83,7 @@ class Utilisateur
      * @ORM\Column(name="mdp", type="text")
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = 2,
+     *      min = 8,
      *      max = 26
      * )
      * @Assert\Regex("/^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,26}$/")

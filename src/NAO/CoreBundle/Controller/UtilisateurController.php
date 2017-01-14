@@ -40,10 +40,7 @@ class UtilisateurController extends Controller
     }
 
     /**
-     * Créé un nouveau utilisateur
-     * Retourne simplement le formulaire mis en page
-     * ou "valide" si le formulaire est complet
-     * Cette fonction est appelée depuis une requête ajax
+     * Permet de connecté l'internaute
      *
      * @Route("/connexion", name="utilisateur_connexion")
      * @Method({"GET", "POST"})
@@ -53,6 +50,20 @@ class UtilisateurController extends Controller
     public function connexionAction(Request $request)
     {
         $form = $this->get('nao_core.gestion_formulaire')->gestionConnexion($request);
+
+        return new Response($form);
+    }
+    /**
+     * Permet de changer de mot de passe
+     *
+     * @Route("/modification", name="utilisateur_modification")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function modificationAction(Request $request)
+    {
+        $form = $this->get('nao_core.gestion_formulaire')->gestionModification($request);
 
         return new Response($form);
     }
