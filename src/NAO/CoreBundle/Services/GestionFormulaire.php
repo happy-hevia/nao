@@ -174,4 +174,24 @@ class GestionFormulaire
 
 
     }
+
+    /**
+     * @param $request
+     *
+     * Permet de gérer la soumission du formulaire de modification de droit dans la page "Gestion des droits"
+     */
+    public function gestionDroit($request)
+    {
+        //        récupère l'utilisateur concerné
+        $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
+
+        //        On modifie les droits
+        $utilisateur[0]->setDroit($request->request->get('nouveaudroit'));
+
+        //        On enregistre dans la bdd
+        $this->entityManager->persist($utilisateur[0]);
+        $this->entityManager->flush();
+
+        return "true";
+    }
 }

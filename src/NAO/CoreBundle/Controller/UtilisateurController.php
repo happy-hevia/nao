@@ -68,4 +68,19 @@ class UtilisateurController extends Controller
         return new Response($form);
     }
 
+    /**
+     * Permet de changer les droits d'un utilisateur
+     *
+     * @Route("/change-droit", name="utilisateur_change_droit")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function droitAction(Request $request)
+    {
+        $success = $this->get('nao_core.gestion_formulaire')->gestionDroit($request);
+
+        return new Response($success);
+    }
+
 }

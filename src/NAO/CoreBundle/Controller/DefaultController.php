@@ -46,7 +46,10 @@ class DefaultController extends Controller
      * @Route("/admin", name="nao_gestion_droits")
      */
     public function adminAction() {
-        return $this->render('NAOCoreBundle:Utilisateur:gestionDroits.html.twig');
+        return $this->render('NAOCoreBundle:Utilisateur:gestionDroits.html.twig', array(
+            "utilisateurs" => $this->getDoctrine()->getRepository("NAOCoreBundle:Utilisateur")->findAll(),
+
+        ));
     }
 
     /**

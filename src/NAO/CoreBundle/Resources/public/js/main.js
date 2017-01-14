@@ -116,6 +116,8 @@ var setMessage = function(aMessage) {
 function gestionBoutonConnexion(){
     $('#menu__deconnexion').click(function(){
         currentUserStorage.setCurrentUser(null);
+        // redirige vers la page d'accueil
+        window.location.href = "http://localhost/nao/web/app_dev.php";
     })
 }
 
