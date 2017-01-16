@@ -99,38 +99,26 @@ observationStorage.add = function(newObservation) {
  * Description : Permet la récupération en mémoire de la liste des oiseaux
  */
     var oiseauStorage = {
-        coll : {},
+        store : [],
         loaded : false,
-        nom_completColl : [],
-        getAll : function() {
-            // Ici exploitation du fichier JSON fourni par Matthias
-            //TODO: Récupérer la liste des oiseaux à partir du fichier JSON "oiseau.json" de Matthias => this.coll
-
-            // Extraction de la liste des désignations pour l'autocompletion => this.nom_completColl
-            oiseauStorage.nom_completColl=[];
-            for (var i=0; i<this.coll.length; i++) {
-                oiseauStorage.nom_completColl.push(oiseauStorage.coll[i].nom_complet);
+        loadAll : function() {
+            if (!oiseauStorage.loaded) { // TODO: Changer URL par URL de prod window.location.host+
+                $.getJSON("/nao/web/bundles/naocore/file/test.json", function (data) {
+                    console.log("\t#########   Il y a " + data.length + " espèces");
+                    for (var i = 0; i < data.length; i++) {
+                        oiseauStorage.store.push(data[i]["name"]);
+                    }
+                    // On active les listes d'autocomplétion
+                    var inputsAutocompletion = $(".liste_espece");
+                    $(function() {
+                        inputsAutocompletion.each(function() {
+                            var awesomplete = new Awesomplete($(this).get()[0]);
+                            awesomplete.list=oiseauStorage.store;
+                        });
+                    });
+                    oiseauStorage.loaded = true;
+                });
             }
-            oiseauStorage.loaded=true;
-        },
-        getMedia : function (espece) {
-            if (Connexion.isConnected() && espece!=null) {
-                var mediaList=[];
-                //TODO: Exploiter le fichier JSON this.coll pour :
-                
-                // -> récupérer la liste URL des images correspondantes
-                // -> et retourner le tableau
-                return mediaList;
-            } else {
-                return false;
-            }
-        },
-        getDescriptions : function (espece) {
-        var descriptionList=[];
-        //TODO: Exploiter le fichier JSON this.coll pour:
-        // -> Récupérer la liste des descriptions et leur type.
-        // -> et retourner le tableau
-        return descriptionList;
         }
     };
 

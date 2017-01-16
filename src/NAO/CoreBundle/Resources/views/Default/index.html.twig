@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 {%  block body %}
     <h1>Test d'autocomplete</h1>
-    <input class="awesomplete liste_espece"/>
+    <input class="awesomplete liste_espece"/><hr>
+    <input class="awesomplete liste_espece"/><hr>
+{% endblock %}
+{% block javascripts %}
+    <script>oiseauStorage.loadAll();</script>
 {% endblock %}
