@@ -100,26 +100,24 @@ observationStorage.add = function(newObservation) {
  */
     var oiseauStorage = {
         store : [],
-        loaded : false,
         loadAll : function() {
-            if (!oiseauStorage.loaded) { // TODO: Changer URL par URL de prod window.location.host+
-                $.getJSON("/nao/web/bundles/naocore/file/test.json", function (data) {
-                    console.log("\t#########   Il y a " + data.length + " espèces");
-                    for (var i = 0; i < data.length; i++) {
-                        oiseauStorage.store.push(data[i]["name"]);
-                    }
-                    // On active les listes d'autocomplétion
-                    var inputsAutocompletion = $(".liste_espece");
-                    $(function() {
-                        inputsAutocompletion.each(function() {
-                            var awesomplete = new Awesomplete($(this).get()[0]);
-                            awesomplete.list=oiseauStorage.store;
-                        });
+            // on charge le fichier JSON
+            $.getJSON("/nao/web/bundles/naocore/file/test.json", function (data) { // TODO: Changer URL par URL de prod window.location.host
+                // un petit espion...
+                console.log("\t#########   Il y a " + data.length + " espèces");
+                for (var i = 0; i < data.length; i++) {
+                    oiseauStorage.store.push(data[i]["name"]);
+                }
+                // On active les listes d'autocomplétion
+                var inputsAutocompletion = $(".liste_espece");
+                $(function() {
+                    inputsAutocompletion.each(function() {
+                        var awesomplete = new Awesomplete($(this).get()[0]);
+                        awesomplete.list=oiseauStorage.store;
                     });
-                    oiseauStorage.loaded = true;
                 });
+            });
             }
-        }
     };
 
 var storeDetector = function() {
