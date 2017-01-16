@@ -150,4 +150,5 @@ $(function() {
     gestionFormulaireConnexionEnLigne();
     gestionBoutonConnexion();
     gestionFormulaireModificationMotDePasse();
+    gestionFormulaireRechercheUtilisateur();
 });

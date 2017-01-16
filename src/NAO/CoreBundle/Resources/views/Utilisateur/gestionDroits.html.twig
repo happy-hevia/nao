@@ -1,41 +1,50 @@
 {% extends 'base.html.twig' %}
-{%  block body %}
+{% block body %}
     <div class="col-xs-12" >
         <div class="panel panel-primary" >
             <div class="panel-heading" >
                 <h1 class="panel-title" >Gestion des droits</h1 >
             </div >
             <div class="panel-body" >
-                <h2>Rechercher un utilisateur</h2>
-                <h2>Liste des utilisateurs</h2>
-                <table class="table table-striped">
-                    <tr>
-                        <th>Compte</th>
-                        <th>Email</th>
-                        <th>Droit</th>
-                        <th>Attribution de rôle</th>
-                    </tr>
+                <h2 >Rechercher un utilisateur</h2 >
+                <form class="form-inline" id="form-recherche-utilisateur" method="post" action="{{ path('utilisateur_utilisateur_par_email') }}" >
+                    <div class="form-group" >
+                        <label for="form-recherche-utilisateur__email" >Adresse email :</label >
+                        <input type="email" class="form-control" id="form-recherche-utilisateur__email" placeholder="Email" >
+                    </div >
+                    <button type="submit" class="btn btn-default" >Rechercher</button >
+                </form >
+
+                <table class="table table-striped" >
+                    <tr >
+                        <th >Compte</th >
+                        <th >Email</th >
+                        <th >Droit</th >
+                        <th >Attribution de rôle</th >
+                    </tr >
+                    <tr id="emplacement__recherche-utilisateur" >
+
+                    </tr >
+                </table >
+
+                <h2 >Liste des utilisateurs</h2 >
+                <table class="table table-striped" >
+                    <tr >
+                        <th >Compte</th >
+                        <th >Email</th >
+                        <th >Droit</th >
+                        <th >Attribution de rôle</th >
+                    </tr >
                     {% for user in utilisateurs %}
-                    <tr>
-                        <td>{{ user.pseudo }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.droit }}</td>
-                        <td>
-                            <form action="{{ path('utilisateur_change_droit') }}" method="post">
-                                <select name="form-droit__select-droit" class="form-droit__select-droit" data-email="{{ user.email }}" data-action="{{ path('utilisateur_change_droit') }}" data-method="post">
-                                    <option value="particulier" >particulier</option >
-                                    <option value="naturaliste" >naturaliste</option >
-                                    <option value="administrateur" >administrateur</option >
-                                </select >
-                            </form >
-                        </td>
-                    </tr>
+                        <tr >
+                            {% include '@NAOCore/formulaire/ligneUtilisateur.html.twig' %}
+                        </tr >
                     {% endfor %}
-                </table>
+                </table >
             </div >
         </div >
     </div >
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('bundles/naocore/js/page-gestion.js') }}"></script >
+    <script src="{{ asset('bundles/naocore/js/page-gestion.js') }}" ></script >
 {% endblock %}

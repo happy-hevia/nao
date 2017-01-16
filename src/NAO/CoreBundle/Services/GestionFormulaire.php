@@ -194,4 +194,24 @@ class GestionFormulaire
 
         return "true";
     }
+
+    /**
+     * @param $request
+     *
+     * Permet de récuperer un utilisateur en renseignant son adresse email
+     */
+    public function utilisateurParEmail($request)
+    {
+        //        récupère l'utilisateur concerné si il existe
+        $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
+
+        //        Si l'utilisateur n'existe pas on retourne false
+        if (!isset($utilisateur[0]) || $utilisateur[0] == null) {
+            return null;
+        }
+
+//        Sinon on retourne l'utilisateur
+        return $utilisateur[0];
+
+    }
 }

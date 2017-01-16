@@ -36,7 +36,7 @@ class UtilisateurController extends Controller
             return new Response("valide");
         }
 
-        return $this->render('@NAOCore/formulaire/creation.html.twig', array('formulaireCreation' => $form->createView(),));
+        return $this->render('@NAOCore/formulaire/creation.html.twig', array('formulaireCreation' => $form->createView()));
     }
 
     /**
@@ -81,6 +81,22 @@ class UtilisateurController extends Controller
         $success = $this->get('nao_core.gestion_formulaire')->gestionDroit($request);
 
         return new Response($success);
+    }
+
+    /**
+     * Permet de récuperer un utilisateur particulier selon son adresse email
+     *
+     * @Route("/utilisateur-par-email", name="utilisateur_utilisateur_par_email")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function utilisateurParEmailAction(Request $request)
+    {
+
+        $user = $this->get('nao_core.gestion_formulaire')->utilisateurParEmail($request);
+
+        return $this->render('@NAOCore/formulaire/ligneUtilisateur.html.twig', array('user' => $user));
     }
 
 }

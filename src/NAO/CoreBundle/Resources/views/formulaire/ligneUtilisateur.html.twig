@@ -1,0 +1,16 @@
+{% if user is not null %}
+    <td >{{ user.pseudo }}</td >
+    <td >{{ user.email }}</td >
+    <td >{{ user.droit }}</td >
+    <td >
+        <form action="{{ path('utilisateur_change_droit') }}" method="post" >
+            <select name="form-droit__select-droit" class="form-droit__select-droit" data-email="{{ user.email }}" data-action="{{ path('utilisateur_change_droit') }}" data-method="post" >
+                <option value="particulier" >particulier</option >
+                <option value="naturaliste" >naturaliste</option >
+                <option value="administrateur" >administrateur</option >
+            </select >
+        </form >
+    </td >
+{% else %}
+    <td colspan="4" class="danger" >Aucun utilisateur ne correspond à cet email !</td >
+{% endif %}

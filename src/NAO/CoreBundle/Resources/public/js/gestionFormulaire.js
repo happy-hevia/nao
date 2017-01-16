@@ -26,7 +26,7 @@ function gestionFormulaireCreation() {
             success: function (html) { // Je récupère la réponse du fichier PHP
 
                 // si le formulaire est valide alors je ferme la modal et j'affiche le message d'information
-                if (html === "valide"){
+                if (html === "valide") {
                     $('#modal-sign-up').modal('hide');
                     setMessage("Votre compte a bien été enregistré. Merci de vous connecter !");
                 } else {
@@ -44,7 +44,7 @@ function gestionFormulaireCreation() {
 /**
  * Permet de gérer la soumission du formulaire de connexion en mode en ligne
  */
-function gestionFormulaireConnexionEnLigne(){
+function gestionFormulaireConnexionEnLigne() {
     var $formulaireConnexion = $('#form-login-online');
 
     // Lorsque je soumets le formulaire
@@ -57,12 +57,14 @@ function gestionFormulaireConnexionEnLigne(){
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
             type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-            data: { email : $('#form-login__email').val(),
-                    mdp : $('#form-login__password').val()},
+            data: {
+                email: $('#form-login__email').val(),
+                mdp: $('#form-login__password').val()
+            },
             success: function (jsonUtilisateur) { // Je récupère la réponse
 
                 // Si les identifiant sont invalide
-                if (jsonUtilisateur === "false"){
+                if (jsonUtilisateur === "false") {
                     // J'affiche un message d'erreur en dessous du formulaire
                     $('#form-login-online__wrapper-error').html("<div class='alert alert-danger' role='alert'>Votre email ou mot de passe est incorrect</div>");
                 } else {
@@ -80,9 +82,39 @@ function gestionFormulaireConnexionEnLigne(){
 }
 
 /**
+ * Permet de gérer la soumission du formulaire en mode hors ligne
+ */
+function gestionFormulaireConnexionHorsLigne() {
+    var formulaire = $('#form-login-offline');
+    var select = $('#form-login__user');
+    var boutonSoumission = $('#form-login-offline__submit');
+
+    //Je récupère les utilisateurs locaux
+    userStorage.getAll();
+
+    // si il n'y a pas d'utilisateurs locaux, on le notifie à l'internaute
+    if (userStorage.coll == null) {
+        formulaire.replaceWith("<div class='alert alert-warning' role='alert'><strong>OUPS !</strong> Il n'y a d'utilisateur disponible en mode hors ligne, merci de vous connectez à votre compte en ligne avant de pouvoir accéder à votre compte en mode hors ligne</div>")
+
+        //    si il y a des utilisateurs locaux, on les intégrent dans le select du formulaire
+    } else {
+        for (var utilisateur in userStorage.coll) {
+            select.append("<option value='" + utilisateur + "'>" + utilisateur + "</option>");
+        }
+    }
+
+//    si le formulaire est validé
+    boutonSoumission.on('click', function () {
+        $('#modal-login').modal('hide') // Je ferme la modal
+        currentUserStorage.setCurrentUser($('#form-login__user option:selected').val()); // Je définie le nouveau utilisateur courant
+    });
+}
+
+
+/**
  * Permet de gérer la soumission du formulaire de modification de mot passe sur la page "Mon Compte"
  */
-function gestionFormulaireModificationMotDePasse(){
+function gestionFormulaireModificationMotDePasse() {
     var $formulaireModification = $('#form-change');
 
     // Lorsque je soumets le formulaire
@@ -99,17 +131,19 @@ function gestionFormulaireModificationMotDePasse(){
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
             url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
             type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-            data: { email : emailUtilisateur,
-                    mdpancien : $('#form-change__mdp-actuel').val(),
-                    mdpnouveau : $('#form-change__mdp-nouveau').val()},
+            data: {
+                email: emailUtilisateur,
+                mdpancien: $('#form-change__mdp-actuel').val(),
+                mdpnouveau: $('#form-change__mdp-nouveau').val()
+            },
             success: function (data) { // Je récupère la réponse
-                if(data === "true"){
+                if (data === "true") {
                     $formulaireModification.reset();
                     setMessage("Votre mot de passe a été validé avec succès");
                     $('#form-change__wrapper-error').html("");
-                } else if ( data === "false"){
+                } else if (data === "false") {
                     $('#form-change__wrapper-error').html("<div class='alert alert-warning'>Le mot de passe actuel renseigné n'est pas correct !</div>");
-                } else{
+                } else {
                     $('#form-change__wrapper-error').html("<div class='alert alert-warning'>" + data + "</div>");
                 }
             }
@@ -117,33 +151,34 @@ function gestionFormulaireModificationMotDePasse(){
     });
 }
 
-
 /**
- * Permet de gérer la soumission du formulaire en mode hors ligne
+ * Permet de gérer le formulaire de recherche d'utilisateur par email
  */
-function gestionFormulaireConnexionHorsLigne(){
-    var formulaire = $('#form-login-offline');
-    var select = $('#form-login__user');
-    var boutonSoumission = $('#form-login-offline__submit');
+function gestionFormulaireRechercheUtilisateur() {
+    var $formulaireRecherche = $('#form-recherche-utilisateur');
 
-    //Je récupère les utilisateurs locaux
-    userStorage.getAll();
+    // Lorsque je soumets le formulaire
+    $formulaireRecherche.on('submit', function (e) {
+        e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
 
-    // si il n'y a pas d'utilisateurs locaux, on le notifie à l'internaute
-    if (userStorage.coll == null) {
-        formulaire.replaceWith("<div class='alert alert-warning' role='alert'><strong>OUPS !</strong> Il n'y a d'utilisateur disponible en mode hors ligne, merci de vous connectez à votre compte en ligne avant de pouvoir accéder à votre compte en mode hors ligne</div>")
+        var $this = $(this); // L'objet jQuery du formulaire
 
-        //    si il y a des utilisateurs locaux, on les intégrent dans le select du formulaire
-    } else {
-        for(var utilisateur in userStorage.coll) {
-            select.append("<option value='" + utilisateur + "'>" + utilisateur + "</option>");
-        }
-    }
+        // Envoi de la requête HTTP en mode asynchrone
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
+            type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+            data: {
+                email: $('#form-recherche-utilisateur__email').val()
+            },
+            success: function (data) { // Je récupère la réponse
+                // et je l'affiche
+                $('#emplacement__recherche-utilisateur').html(data);
 
-//    si le formulaire est validé
-    boutonSoumission.on('click', function() {
-        $('#modal-login').modal('hide') // Je ferme la modal
-        currentUserStorage.setCurrentUser($('#form-login__user option:selected').val()); // Je définie le nouveau utilisateur courant
+                // Permet d'activer la fonctionnalité de modification de droit sur la nouvelle ligne
+                gestionPageGestion();
+            }
+        });
     });
 }
 
