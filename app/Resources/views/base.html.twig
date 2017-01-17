@@ -125,13 +125,16 @@
                         Information sur observation
                     </button>
 
-
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-description">
+                        Information sur une espèce
+                    </button>
                 {% endblock %}
                 {# Il faut garder les inclusions ici #}
                 {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
                 {% include '@NAOCore/Modals/modal-connexion.html.twig' %}
                 {% include '@NAOCore/Modals/modal-creationCompte.html.twig' %}
                 {% include '@NAOCore/Modals/modal-descriptionObservation.html.twig' %}
+                {% include '@NAOCore/Modals/modal-descriptionEspece.html.twig' %}
             </div>
             <!-- FOOTER -->
             <footer class="footer row">

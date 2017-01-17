@@ -260,4 +260,24 @@ class GestionFormulaire
 
         return array("toValidate", $this->formObservation->createView());
     }
+
+    /**
+     * @param $request
+     *
+     * Permet de gérer la soumission du formulaire de modification des statuts dans la page "Observations à valider"
+     */
+    public function gestionStatut($request)
+    {
+        //        récupère l'observation concernée
+        $observation = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findById($request->request->get("id"));
+
+        //        On modifie le statut
+        $observation[0]->setStatut($request->request->get('nouveaustatut'));
+
+        //        On enregistre dans la bdd
+        $this->entityManager->persist($observation[0]);
+        $this->entityManager->flush();
+
+        return "true";
+    }
 }

@@ -32,7 +32,10 @@ class DefaultController extends Controller
      * @Route("/validations", name="nao_observations_a_valider")
      */
     public function validationsAction() {
-        return $this->render('NAOCoreBundle:Observer:observationAValider.html.twig');
+        return $this->render('NAOCoreBundle:Observer:observationAValider.html.twig', array(
+            "observations" => $this->getDoctrine()->getRepository("NAOCoreBundle:Observation")->findByStatut('toValidate'),
+
+        ));
     }
 
     /**
