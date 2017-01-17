@@ -12,47 +12,18 @@
                 {############################################
                                image
                 ###############################################}
-                <form class="form-horizontal" data-parsley-validate enctype="multipart/form-data" >
-                    <div class="col-md-5" >
-                        <img class="center-block" src="http://lorempixel.com/300/200/" alt="..." >
-                        <input type="file" name="form-add__image" id="form-add__image" >
-                    </div >
+                <div class="col-md-5" >
+                    <img class="center-block" src="http://lorempixel.com/300/200/" alt="..." >
+                </div >
 
-                    {############################################
-                                   Formulaire
-                    ###############################################}
+                {############################################
+                               Formulaire
+                ###############################################}
 
-                    <div class="col-md-7" >
-                        <div class="form-group" >
-                            <label for="form-add__species" class="col-sm-4" >Espèce :</label >
-                            <div class="col-sm-8" >
-                                <input type="text" class="form-control" id="form-add__species" placeholder="Sélectionner une espèce" required >
-                                <div class="form-erreur" id="form-creationCompte__add__species" ></div >
-                            </div >
-                        </div >
 
-                        <fieldset >
-                            <legend >Lieu de l'observation</legend >
-                            <div class="form-group" >
-                                <label for="form-add__latitude" class="col-sm-4" >Latitude :</label >
-                                <div class="col-sm-8" >
-                                    <input type="text" class="form-control" id="form-add__latitude" placeholder="Latitude" required data-parsley-pattern="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$" data-parsley-error-message="Les Coordonnées sont incorrects" >
-                                    <div class="form-erreur" id="form-creationCompte__email__erreur" ></div >
-                                </div >
-                            </div >
-                            <div class="form-group" >
-                                <label for="form-add__longitude" class="col-sm-4" >Longitude :</label >
-                                <div class="col-sm-8" >
-                                    <input type="text" class="form-control" id="form-add__longitude" placeholder="Longitude" required data-parsley-pattern="^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$" data-parsley-error-message="Les Coordonnées sont incorrects" >
-                                    <div class="form-erreur" id="form-creationCompte__pseudo__erreur" ></div >
-                                </div >
-                            </div >
-                            <button class="btn btn-sm btn-default pull-right" >Emplacement actuel</button >
-                        </fieldset >
-                        <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button >
-                        <button type="submit" class="btn btn-default" >créer</button >
-                    </div >
-                </form >
+                <div class="col-md-7" >
+                   {% include '@NAOCore/formulaire/observation.html.twig' %}
+                </div >
             </div >
         </div >
     </div >

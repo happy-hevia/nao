@@ -182,6 +182,23 @@ function gestionFormulaireRechercheUtilisateur() {
     });
 }
 
+/**
+ * Permet de gérer le formulaire d'ajout d'une observation
+ */
+function gestionFormulaireAjoutObservation() {
+    var $formulaireObservation = $('form[name="nao_corebundle_observation"]');
+
+    if ( $('#form-have-error').length >= 1){
+        $formulaireObservation.modal('show');
+    }
+
+    // Lorsque je soumets le formulaire
+    $formulaireObservation.on('submit', function (e) {
+        $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
+
+    });
+}
+
 
 // Formulaire d'ajout d'observation
 // @todo vérifier que l'espèce existe bien

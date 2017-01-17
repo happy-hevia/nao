@@ -151,4 +151,5 @@ $(function() {
     gestionBoutonConnexion();
     gestionFormulaireModificationMotDePasse();
     gestionFormulaireRechercheUtilisateur();
+    gestionFormulaireAjoutObservation();
 });

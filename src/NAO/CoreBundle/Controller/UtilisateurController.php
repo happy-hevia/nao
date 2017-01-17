@@ -93,7 +93,6 @@ class UtilisateurController extends Controller
      */
     public function utilisateurParEmailAction(Request $request)
     {
-
         $user = $this->get('nao_core.gestion_formulaire')->utilisateurParEmail($request);
 
         return $this->render('@NAOCore/formulaire/ligneUtilisateur.html.twig', array('user' => $user));

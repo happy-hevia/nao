@@ -10,6 +10,7 @@ namespace NAO\CoreBundle\Services;
 
 
 use Doctrine\ORM\EntityManager;
+use NAO\CoreBundle\Entity\Observation;
 use NAO\CoreBundle\Entity\Utilisateur;
 use Symfony\Component\Config\Tests\Util\Validator;
 use Symfony\Component\Form\FormFactory;
@@ -25,8 +26,9 @@ class GestionFormulaire
     private $entityManager;
     private $validator;
     private $utilisateur;
-    private $mdpEncoder;
-    private $form;
+    private $observation;
+    private $formUtilisateur;
+    private $formObservation;
 
     public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator)
     {
@@ -34,9 +36,13 @@ class GestionFormulaire
         $this->entityManager = $entityManager;
         $this->validator = $validator;
         $this->utilisateur = new Utilisateur();
+        $this->observation = new Observation();
 
-//        Création du formulaire de création
-        $this->form = $this->formFactory->create('NAO\CoreBundle\Form\UtilisateurType', $this->utilisateur);
+        // Création du formulaire de création d'utilisateur
+        $this->formUtilisateur = $this->formFactory->create('NAO\CoreBundle\Form\UtilisateurType', $this->utilisateur);
+
+        // Création du formulaire de création d'observation
+        $this->formObservation = $this->formFactory->create('NAO\CoreBundle\Form\ObservationType', $this->observation);
     }
 
     /**
@@ -45,7 +51,7 @@ class GestionFormulaire
      */
     public function creerFormulaireCreation()
     {
-        return $this->form->createView();
+        return $this->formUtilisateur->createView();
     }
 
     /**
@@ -59,10 +65,10 @@ class GestionFormulaire
     public function gestionFormulaireCreation($request)
     {
         $form = $request->request->get('request');
-        $this->form->handleRequest($request);
+        $this->formUtilisateur->handleRequest($request);
 
         //        Gestion soumission formulaire
-        if ($this->form->isSubmitted() && $this->form->isValid()) {
+        if ($this->formUtilisateur->isSubmitted() && $this->formUtilisateur->isValid()) {
 
             $this->utilisateur->setDroit("particulier"); // définit l'utilisateur comme particulier
             $this->utilisateur->setDateCreation(new \DateTime()); // remplit la date de création à l'heure actuelle
@@ -78,7 +84,7 @@ class GestionFormulaire
             return "valide";
         }
 
-        return $this->form;
+        return $this->formUtilisateur;
 
     }
 
@@ -213,5 +219,43 @@ class GestionFormulaire
 //        Sinon on retourne l'utilisateur
         return $utilisateur[0];
 
+    }
+
+    /**
+     * Retourne le formulaire de création vide
+     * Cette fonction est appelée depuis twig
+     */
+    public function creerFormulaireObservation()
+    {
+        return $this->formObservation->createView();
+    }
+
+    /**
+     * @param $request
+     *
+     * Permet de gérer le formulaire d'ajout d'une observation
+     */
+    public function gestionFormulaireObservation($request)
+    {
+
+        $this->formObservation->handleRequest($request);
+
+        //        Gestion soumission formulaire
+        if ($this->formObservation->isSubmitted() && $this->formObservation->isValid()) {
+
+            $this->observation->setStatut("toValidate"); // définit l'observation comme à valider
+            $this->observation->setDateCreation(new \DateTime()); // remplit la date de création à l'heure actuelle
+            $this->observation->setValideur(null);
+
+            $em = $this->entityManager;
+            $em->persist($this->observation);
+            $em->flush($this->observation);
+
+            $this->observation = new Observation();
+            // Création du formulaire de création d'observation
+            $this->formObservation = $this->formFactory->create('NAO\CoreBundle\Form\ObservationType', $this->observation);
+        }
+
+        return $this->formObservation->createView();
     }
 }

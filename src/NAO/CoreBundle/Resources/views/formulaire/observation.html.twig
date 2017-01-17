@@ -1,0 +1,21 @@
+{% set form = formulaire.gestionFormulaireObservation(app.request) %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+    {% if not form.vars.valid %}
+        <div id="form-have-error"></div>
+    {% endif %}
+    {{ form_start(form, {'method' : 'POST', 'action' : path(app.request.attributes.get('_route')) } ) }}
+    {{ form_row(form.imageFile) }}
+    {{ form_row(form.oiseau) }}
+
+<fieldset >
+    <legend >Lieu de l'observation</legend >
+    {{ form_row(form.latitude) }}
+    {{ form_row(form.longitude) }}
+    <button class="btn btn-sm btn-default pull-right" >Emplacement actuel</button >
+</fieldset >
+
+    {{ form_errors(form) }}
+
+<button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button >
+{{ form_row(form.submit) }}
+{{ form_end(form) }}
