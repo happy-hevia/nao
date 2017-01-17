@@ -890,7 +890,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       // Diff between two validation results
       var diff = diffResults(this.validationResult, this._ui.lastValidationResult);
 
-      // Then store current validation result for next reflow
+      // Then storeName current validation result for next reflow
       this._ui.lastValidationResult = this.validationResult;
 
       // Handle valid / invalid / none field class
@@ -1030,7 +1030,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       // Give field its Parsley id in DOM
       this.$element.attr(this.options.namespace + 'id', this.__id__);
 
-      /** Generate important UI elements and store them in this **/
+      /** Generate important UI elements and storeName them in this **/
       // $errorClassHandler is the $element that woul have parsley-error and parsley-success classes
       _ui.$errorClassHandler = this._manageClassHandler();
 
@@ -2250,7 +2250,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         type: 'GET'
       }, remoteOptions);
 
-      // Generate store key based on ajax options
+      // Generate storeName key based on ajax options
       instance.trigger('field:ajaxoptions', instance, ajaxOptions);
 
       csr = $.param(ajaxOptions);
