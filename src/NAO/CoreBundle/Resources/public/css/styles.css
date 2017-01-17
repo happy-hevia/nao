@@ -1,5 +1,5 @@
 .footer {
-    position: absolute;
+    position: relative;
     bottom: 0px;
     width: 100%;
     height: auto;
@@ -48,4 +48,19 @@ body {
 .body_social__clips_chevron {
     margin:auto;
     color:white;
+}
+/* *********************************************************
+                MODAL DESCRIPTION OBSERVATION
+ ***********************************************************
+ */
+#espece-nom__ {
+    margin:auto;
+    text-align: center;
+}
+#espece-image__ {
+
+}
+#espece-description__ {
+    margin:20px;
+    text-align: justify;
 }

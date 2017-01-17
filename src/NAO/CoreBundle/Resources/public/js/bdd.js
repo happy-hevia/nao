@@ -99,25 +99,34 @@ observationStorage.add = function(newObservation) {
  * Description : Permet la récupération en mémoire de la liste des oiseaux
  */
     var oiseauStorage = {
-        store : [],
+        storeName : [],
+        storeData : [],
         loadAll : function() {
             // on charge le fichier JSON
             $.getJSON("/nao/web/bundles/naocore/file/test.json", function (data) { // TODO: Changer URL par URL de prod window.location.host
                 // un petit espion...
                 console.log("\t#########   Il y a " + data.length + " espèces");
+
                 for (var i = 0; i < data.length; i++) {
-                    oiseauStorage.store.push(data[i]["name"]);
+                    oiseauStorage.storeName.push(data[i]["name"]);
+                    oiseauStorage.storeData[data[i]["name"]]={
+                        description : data[i]["description"],
+                        image : data[i]["link"]
+                    };
                 }
                 // On active les listes d'autocomplétion
                 var inputsAutocompletion = $(".liste_espece");
                 $(function() {
                     inputsAutocompletion.each(function() {
                         var awesomplete = new Awesomplete($(this).get()[0]);
-                        awesomplete.list=oiseauStorage.store;
+                        awesomplete.list=oiseauStorage.storeName;
                     });
                 });
             });
-            }
+            },
+        getImage500300 : function(nomEspece) { //window.location.host+
+            return "/nao/web/bundles/naocore/images/oiseaux/"+nomEspece+".jpg";
+        }
     };
 
 var storeDetector = function() {
