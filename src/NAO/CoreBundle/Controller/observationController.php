@@ -35,5 +35,18 @@ class ObservationController extends Controller
 
         return $this->render('@NAOCore/formulaire/observation.html.twig', array('formulaireObservation' => $form->createView()));
     }
+    /**
+     * Permet de changer le statut d'une observation
+     *
+     * @Route("/change-statut", name="observation_change_statut")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function statutAction(Request $request)
+    {
+        $success = $this->get('nao_core.gestion_formulaire')->gestionStatut($request);
 
+        return new Response($success);
+    }
 }

@@ -1,4 +1,32 @@
 {% extends 'base.html.twig' %}
+{% block title %}
+NAO - Validation des observations
+{% endblock %}
 {%  block body %}
-    <h1>Page Observations à valider (en construction)</h1>
+    <div class="col-xs-12" >
+        <div class="panel panel-primary" >
+            <div class="panel-heading" >
+                <h1 class="panel-title" >Observations à valider</h1>
+            </div >
+            <div class="panel-body" >
+                <table class="table table-striped">
+                    <tr>
+                        <th>Espèce</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Observée le</th>
+                        <th>Statut</th>
+                    </tr>
+                    {% for observation in observations %}
+                        <tr >
+                            {% include '@NAOCore/formulaire/ligneObservation.html.twig' %}
+                        </tr >
+                    {% endfor %}
+                </table >
+            </div >
+        </div >
+    </div >
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/naocore/js/page-validation.js') }}" ></script >
 {% endblock %}

@@ -33,18 +33,18 @@ class Observation
     private $dateCreation;
 
     /**
-     * @var int
+     * @var float
      *
-     * @ORM\Column(name="latitude", type="integer")
+     * @ORM\Column(name="latitude", type="float")
      * @Assert\NotBlank()
      * @Assert\Regex("/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/")
      */
     private $latitude;
 
     /**
-     * @var int
+     * @var float
      *
-     * @ORM\Column(name="longitude", type="integer")
+     * @ORM\Column(name="longitude", type="float")
      * @Assert\NotBlank()
      * @Assert\Regex("/^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/")
      */
@@ -134,7 +134,7 @@ class Observation
     /**
      * Set latitude
      *
-     * @param integer $latitude
+     * @param float $latitude
      *
      * @return Observation
      */
@@ -148,7 +148,7 @@ class Observation
     /**
      * Get latitude
      *
-     * @return int
+     * @return float
      */
     public function getLatitude()
     {
@@ -158,7 +158,7 @@ class Observation
     /**
      * Set longitude
      *
-     * @param integer $longitude
+     * @param float $longitude
      *
      * @return Observation
      */
@@ -172,7 +172,7 @@ class Observation
     /**
      * Get longitude
      *
-     * @return int
+     * @return float
      */
     public function getLongitude()
     {

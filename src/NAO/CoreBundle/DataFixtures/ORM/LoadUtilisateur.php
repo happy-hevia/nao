@@ -4,7 +4,6 @@ namespace NAO\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use NAO\CoreBundle\Entity\Oiseau;
 use NAO\CoreBundle\Entity\Utilisateur;
 
 

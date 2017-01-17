@@ -1,0 +1,13 @@
+<td >{{ observation.oiseau }}</td >
+<td >{{ observation.latitude }}</td >
+<td >{{ observation.longitude }}</td >
+<td >{{ observation.dateCreation|date("d/m/Y") }}</td >
+<td >
+  <form action="{{ path('observation_change_statut') }}" method="post" >
+    <select name="form-observation__select-statut" class="form-observation__select-statut" data-id="{{ observation.id }}" data-action="{{ path('observation_change_statut') }}" data-method="post" >
+      <option value="toValidate" >A valider</option >
+      <option value="validated" >Valider</option >
+      <option value="inValidated" >Invalider</option >
+    </select >
+  </form >
+</td >
