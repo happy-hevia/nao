@@ -5,6 +5,7 @@ namespace NAO\CoreBundle\Entity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Observation
@@ -35,6 +36,8 @@ class Observation
      * @var int
      *
      * @ORM\Column(name="latitude", type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$/")
      */
     private $latitude;
 
@@ -42,6 +45,8 @@ class Observation
      * @var int
      *
      * @ORM\Column(name="longitude", type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/")
      */
     private $longitude;
 
@@ -49,18 +54,20 @@ class Observation
      * @var string
      *
      * @ORM\Column(name="oiseau", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $oiseau;
 
     /**
-     * @var \stdClass
+     * @var string
      *
      * @ORM\Column(name="observateur", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $observateur;
 
     /**
-     * @var \stdClass
+     * @var string
      *
      * @ORM\Column(name="valideur", type="string", length=255, nullable=true)
      */
@@ -83,7 +90,7 @@ class Observation
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */

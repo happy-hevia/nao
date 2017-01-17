@@ -189,7 +189,7 @@ function gestionFormulaireAjoutObservation() {
     var $formulaireObservation = $('form[name="nao_corebundle_observation"]');
 
     if ( $('#form-have-error').length >= 1){
-        $formulaireObservation.modal('show');
+        $('#modal-addObservation').modal('show');
     }
 
     // Lorsque je soumets le formulaire

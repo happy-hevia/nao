@@ -9,6 +9,9 @@
             </div >
             <div class="modal-body row" >
 
+                <div class="alert alert-warning" data-on="{'currentUser' : 'null' }" >Vous devez être connecté pour ajouter une observation !</div>
+                <div data-off="{'currentUser' : 'null' }" >
+
                 {############################################
                                image
                 ###############################################}
@@ -24,6 +27,7 @@
                 <div class="col-md-7" >
                    {% include '@NAOCore/formulaire/observation.html.twig' %}
                 </div >
+                    </div>
             </div >
         </div >
     </div >

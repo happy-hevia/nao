@@ -24,8 +24,8 @@ class ObservationType extends AbstractType
     {
 //        Je défini bien l'ensemble des attributs de validation pour les différents champs du formulaire
         $builder->setAttribute('data-parsley-validate', 'zef')
-            ->add('imageFile', FileType::class, array('attr' => array(
-        'required' => 'false',)))
+            ->add('imageFile', FileType::class, array('label' => 'Image :', 'attr' => array(
+        'required' => false)))
             ->add('observateur', HiddenType::class)
             ->add('oiseau', TextType::class, array('label' => 'Oiseau (*):', 'attr' => array(
                 'required' => 'required',

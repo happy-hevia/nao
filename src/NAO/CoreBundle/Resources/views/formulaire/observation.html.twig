@@ -1,10 +1,12 @@
-{% set form = formulaire.gestionFormulaireObservation(app.request) %}
+{% set form = formulaire.gestionFormulaireObservation(app.request)[1] %}
 {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
     {% if not form.vars.valid %}
         <div id="form-have-error"></div>
+    {% elseif formulaire.gestionFormulaireObservation(app.request)[0] == "validated"  %}
+        <div id="message-dom" data-content="L'observation a été enregistré avec succès !" ></div>
     {% endif %}
     {{ form_start(form, {'method' : 'POST', 'action' : path(app.request.attributes.get('_route')) } ) }}
-    {{ form_row(form.imageFile) }}
+    {{ form_row(form.imageFile, {required : false}) }}
     {{ form_row(form.oiseau) }}
 
 <fieldset >

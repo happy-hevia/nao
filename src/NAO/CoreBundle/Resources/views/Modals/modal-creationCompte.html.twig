@@ -1,4 +1,3 @@
-
 <!-- Modal -->
 <div class="modal fade" id="modal-sign-up" tabindex="-1" role="dialog" aria-labelledby="modal-sign-up" >
     <div class="modal-dialog" role="document" >
@@ -12,7 +11,9 @@
             <div class="modal-body row" >
                 <div class="col-xs-12 text-center" >
                     <p class="modal-sign-up__introduction" >Veuillez renseigner les informations ci-dessous pour créer un nouveau compte.</p >
-                    <div class="alert alert-warning" ><span class="glyphicon glyphicon-warning-sign" ></span >Un seul compte par email est autorisé !</div >
+                    <div class="alert alert-warning" >
+                        <span class="glyphicon glyphicon-warning-sign" ></span >Un seul compte par email est autorisé !
+                    </div >
                     {# Emplacement du formulaire de creation, c'est ici que le formulaire va être intégré lors de la requête ajax #}
                     <div id="emplacement__formulaire-creation" >
                         {% include '@NAOCore/formulaire/creation.html.twig' %}
