@@ -90,7 +90,12 @@ observationStorage.add = function(newObservation) {
     if (!this.loaded) {
         this.getAll();
     }
-    var observations=this.coll;
+    var observation;
+    if (this.coll == null) {
+        observations = {};
+    } else {
+        observations = this.coll;
+    }
     observations[newObservation.date]=newObservation;
     this.setAll(observations);
 };
