@@ -122,6 +122,14 @@ function gestionBoutonConnexion(){
 }
 
 /**
+ * Affiche le message d'information depuis le dom #message
+ */
+function afficheMessageDepuisDom(){
+    var contenuMessage = $('#message-dom').data('content');
+    setMessage(contenuMessage);
+}
+
+/**
  *
  */
 $(function() {
@@ -152,4 +160,5 @@ $(function() {
     gestionFormulaireModificationMotDePasse();
     gestionFormulaireRechercheUtilisateur();
     gestionFormulaireAjoutObservation();
+    afficheMessageDepuisDom();
 });

@@ -29,7 +29,8 @@ class ObservationType extends AbstractType
             ->add('observateur', HiddenType::class)
             ->add('oiseau', TextType::class, array('label' => 'Oiseau (*):', 'attr' => array(
                 'required' => 'required',
-                'placeholder' => 'Selectionner une espèce'
+                'placeholder' => 'Selectionner une espèce',
+                'data-parsley-species' => ''
             )))
             ->add('latitude', NumberType::class, array('label' => 'Latitude (*):', 'attr' => array(
                 'required' => 'required',

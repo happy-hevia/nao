@@ -7,13 +7,13 @@
     {% endif %}
     {{ form_start(form, {'method' : 'POST', 'action' : path(app.request.attributes.get('_route')) } ) }}
     {{ form_row(form.imageFile, {required : false}) }}
-    {{ form_row(form.oiseau) }}
+    {{ form_row(form.oiseau,{ 'attr': {'class': 'awesomplete liste_espece', 'autocomplete' : 'off', 'aria-autocomplete' : 'list'} }) }}
 
 <fieldset >
     <legend >Lieu de l'observation</legend >
     {{ form_row(form.latitude) }}
     {{ form_row(form.longitude) }}
-    <button class="btn btn-sm btn-default pull-right" >Emplacement actuel</button >
+    <div id="btn-emplacement-actuel" class="btn btn-sm btn-default pull-right" >Emplacement actuel</div >
 </fieldset >
 
     {{ form_errors(form) }}

@@ -182,11 +182,28 @@ function gestionFormulaireRechercheUtilisateur() {
     });
 }
 
+
+
 /**
  * Permet de gérer le formulaire d'ajout d'une observation
  */
 function gestionFormulaireAjoutObservation() {
     var $formulaireObservation = $('form[name="nao_corebundle_observation"]');
+
+    // j'ajoute la contrainte de validation sur le choix oiseau pour vérifier que l'oiseaux est valide
+    window.Parsley
+        .addValidator('species', {
+            requirementType: 'string',
+            validateString: function(value) {
+                var index = $.inArray(value, oiseauStorage.storeName);
+                return index >= 0;
+            },
+            messages: {
+                fr: 'Vous devez renseigner un oiseau valide'
+            }
+        });
+
+    $formulaireObservation.parsley();
 
     if ( $('#form-have-error').length >= 1){
         $('#modal-addObservation').modal('show');
@@ -197,6 +214,16 @@ function gestionFormulaireAjoutObservation() {
         $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
 
     });
+
+//    Lorsque l'internaute clique sur le bouton emplacement actuel, rempli les champs longitude et latitude
+    $('#btn-emplacement-actuel').click(function(){
+        if (gpsState == "gps_ok") {
+            $('#nao_corebundle_observation_latitude').val(gpsCoords.latitude);
+            $('#nao_corebundle_observation_longitude').val(gpsCoords.longitude);
+        } else {
+            setMessage("Impossible d'accéder à la localisation courrante !")
+        }
+    })
 }
 
 

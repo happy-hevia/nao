@@ -15,6 +15,7 @@
     line-height: 30px;
     background-color:palevioletred;
     color:white;
+    z-index: 99999;
 }
 
 body {
@@ -63,4 +64,8 @@ body {
 #espece-description__ {
     margin:20px;
     text-align: justify;
+}
+
+.modal__image{
+
 }
