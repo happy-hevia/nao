@@ -3,6 +3,7 @@
  */
 
 gestionPageValidation();
+oiseauStorage.loadAll();
 
 function gestionPageValidation() {
 
@@ -28,6 +29,20 @@ function gestionPageValidation() {
                     setMessage("Impossible de modifier le statut");
                 }
 
+            }
+        });
+    });
+    //Lorsque on clique sur un nom d'oiseau
+    $('.observation_oiseau__').click(function() {
+        var nom = $(this).text();
+        console.log('\t click sur '+nom);
+        $('#modal-description').modal('show');
+        $('#description_espece-nom__').html(nom);
+        $("#description_espece-description__").html(oiseauStorage.storeData[nom].description);
+        $('#description_espece-image__').attr("src",oiseauStorage.getImage500300(nom)).attr("alt",nom).click(function() {
+            // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
+            if (Connexion.isConnected()) {
+                window.open(oiseauStorage.storeData[nom].image);
             }
         });
     });
