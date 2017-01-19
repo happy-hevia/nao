@@ -74,7 +74,7 @@ Localisation.testAvailable = function () {
 Localisation.testGPS = function(){
     // Mémorisation de l'état initial de la variable globale
     var gpsStateMemo = gpsState;
-    console.log("test position");
+    console.log(gpsCoords);
     if (Localisation.isAvailable()) {
         if (gpsStateMemo!=gpsState) {
             // On vient de passer de l'état "gps_ko" à "gps_ok"
