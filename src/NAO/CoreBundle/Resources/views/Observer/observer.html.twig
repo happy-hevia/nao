@@ -1,8 +1,32 @@
 {% extends 'base.html.twig' %}
-{%  block body %}
-    <h1>Page Observer (en construction)</h1>
-    <input class="awesomplete liste_espece"/><hr>
-    <img src="{{ asset('bundles/naocore/images/oiseaux/Accipiter poliogaster (Temminck, 1824).jpg') }}" alt="Nos Amis les Oiseaux - Photo">
+{% block title %}
+    NAO - Observer les oiseaux
+{% endblock %}
+{% block body %}
+    <div class="col-xs-12" >
+        <div class="panel panel-primary" >
+            <div class="panel-heading" >
+                <h1 class="panel-title" >Observer les oiseaux</h1 >
+            </div >
+            <div class="panel-body" >
+                <button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#modal-addObservation">
+                    Ajouter une observation
+                </button>
+                <table class="table table-striped" id="emplacement__ligne">
+                    <thead>
+                    <tr >
+                        <th >Espèce</th >
+                        <th >Coordonnées</th >
+                        <th >Distance</th >
+                    </tr >
+                    </thead>
+                    <tbody id="emplacement__ligne" >
+
+                    </tbody>
+                </table >
+            </div >
+        </div >
+    </div >
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('bundles/naocore/js/page-observer.js') }}" ></script >
