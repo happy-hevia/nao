@@ -302,6 +302,9 @@ function gestionPageValidation() {
     $('.form-observation__select-statut').change(function () {
         var id = $(this).data('id');
         var nouveauStatut = this.value;
+        // Je récupère l'email de l'utilisateur courant
+        currentUserStorage.getCurrentUser();
+        var emailUtilisateur = userStorage.coll[currentUserStorage.coll].email;
 
         var $this = $(this); // L'objet jQuery du formulaire
         // Envoi de la requête HTTP en mode asynchrone
@@ -311,7 +314,8 @@ function gestionPageValidation() {
             type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
             data: {
                 id: id,
-                nouveaustatut: nouveauStatut
+                nouveaustatut: nouveauStatut,
+                valideur: emailUtilisateur
             },
             success: function (data) { // Je récupère la réponse
                 if (data === "true"){
