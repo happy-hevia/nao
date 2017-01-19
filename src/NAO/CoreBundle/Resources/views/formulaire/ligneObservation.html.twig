@@ -1,4 +1,4 @@
-<td class="observation_oiseau__">{{ observation.oiseau }}</td >
+<td class="observation_oiseau__" data-date="{{ observation.dateCreation|date("d/m/Y") }}" data-latitude="{{ observation.latitude }}" data-longitude="{{ observation.longitude }}">{{ observation.oiseau }}</td >
 <td >{{ observation.latitude }}</td >
 <td >{{ observation.longitude }}</td >
 <td >{{ observation.dateCreation|date("d/m/Y") }}</td >

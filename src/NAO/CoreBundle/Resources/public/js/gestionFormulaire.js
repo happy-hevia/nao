@@ -226,6 +226,25 @@ function gestionFormulaireAjoutObservation() {
     })
 }
 
+/**
+ * Permet l'affichage des détails d'une espèce dans l'onglet de la modale descriptionObservation
+ */
+function activationDescriptionEspece() {
+    $("#onglet_espece").click(function() {
+        //On récupère le nom de l'espèce dans le span form-observation__espece
+        var espece = $("#form-observation__espece").text();
+        // On récupère l'image et on lui change le href et sa description alt
+        $("#espece-image__").attr("src",oiseauStorage.getImage500300(espece)).attr("alt",espece).click(function() {
+            // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
+            if (Connexion.isConnected()) {
+                window.open(oiseauStorage.storeData[espece].image);
+            }
+        });
+        // On met son nom et sa description
+        $("#espece-nom__").text(espece);
+        $("#espece-description__").html(oiseauStorage.storeData[espece].description);
+    });
+}
 
 // Formulaire d'ajout d'observation
 // @todo vérifier que l'espèce existe bien
@@ -233,3 +252,44 @@ function gestionFormulaireAjoutObservation() {
 // @todo emplacement actuel
 
 // formulaire de validation espèce
+/**
+ * Permet la gestion du clic sur une observation à Valider permettant l'affichage de la modale descriptionObservation
+ */
+function gestionPageValidation() {
+
+    //Lorsque le select est modifié
+    $('.form-observation__select-statut').change(function () {
+        var id = $(this).data('id');
+        var nouveauStatut = this.value;
+
+        var $this = $(this); // L'objet jQuery du formulaire
+        // Envoi de la requête HTTP en mode asynchrone
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            url: $this.data('action'), // Le nom du fichier indiqué dans le formulaire
+            type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
+            data: {
+                id: id,
+                nouveaustatut: nouveauStatut
+            },
+            success: function (data) { // Je récupère la réponse
+                if (data === "true"){
+                    setMessage("le statut a bien été modifié");
+                } else {
+                    setMessage("Impossible de modifier le statut");
+                }
+
+            }
+        });
+    });
+    //Lorsque on clique sur un nom d'oiseau
+    $('.observation_oiseau__').click(function() {
+        var nom = $(this).text();
+        $('.modal-title').text('Observation faite le'+$(this).data('date'));
+        console.log('\t click sur '+nom);
+        $('#modal-observation').modal('show');
+        $('#form-observation__espece').html(nom);
+        $('#form-observation__latitude').val($(this).data('latitude'));
+        $('#form-observation__longitude').val($(this).data('longitude'));
+    });
+}
