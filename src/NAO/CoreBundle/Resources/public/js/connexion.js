@@ -15,7 +15,6 @@ Connexion.connecter =function(){
     // Je synchronize les observations vers le serveur
     synchronizeObservation();
     updateDOMElementVisibility();
-    // TODO: Lancer la synchronisation
 
 };
 Connexion.deconnecter = function() {

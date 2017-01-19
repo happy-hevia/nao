@@ -55,6 +55,7 @@ class GestionSynchronisation
                 $observationEntitee->setOiseau($observation['oiseauId']);
                 $observationEntitee->setObservateur($observation['observateur']);
                 $observationEntitee->setStatut($observation['state']);
+                $observationEntitee->setValideur($observation['valideur']);
 
 //                ... et je la persist
                 $this->entityManager->persist($observationEntitee);

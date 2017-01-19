@@ -233,7 +233,10 @@ function gestionFormulaireAjoutObservation() {
 
         //    je ferme la modal et j'affiche le message de confirmation
             $('#modal-addObservation').modal('hide');
-            setMessage("L'observation a été enregisrté avec succès !")
+            setMessage("L'observation a été enregistrée avec succès !")
+            //On positionne l'indicateur syncState à "sync_todo"
+            syncState="sync_todo";
+            updateDOMElementVisibility();
         }
 
     });
@@ -244,7 +247,7 @@ function gestionFormulaireAjoutObservation() {
             $('#nao_corebundle_observation_latitude').val(gpsCoords.latitude);
             $('#nao_corebundle_observation_longitude').val(gpsCoords.longitude);
         } else {
-            setMessage("Impossible d'accéder à la localisation courrante !")
+            setMessage("Impossible d'accéder à la localisation courante !")
         }
     })
 

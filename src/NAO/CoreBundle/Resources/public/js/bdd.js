@@ -149,13 +149,15 @@ function synchronizeObservation(){
     updateStorage.getAll();
     var last_update = updateStorage.coll;
 
-    // Je crée un tableau avec tout les observations à envoyé au serveur
+    // Je crée un tableau avec toutes les observations à envoyer au serveur
     var observationsAjax = [];
     for (var observation in observations){
         if (observations[observation].date >= last_update) {
             observationsAjax.push(observations[observation]);
         }
     }
+
+    //TODO:Ajouter les observations validées en mode hors connexion.
 
     if(observationsAjax.length == 0) {
         return;
@@ -164,6 +166,7 @@ function synchronizeObservation(){
     // je définie la synchronisation comme en cours
     syncState = "sync_ec";
     updateDOMElementVisibility();
+
 
     // J'envois les observations aux serveur
     $.ajax({
