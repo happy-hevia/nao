@@ -316,6 +316,8 @@ function gestionPageValidation() {
             success: function (data) { // Je récupère la réponse
                 if (data === "true"){
                     setMessage("le statut a bien été modifié");
+                    // Je rafraichis la page validation
+                    window.location.reload();
                 } else {
                     setMessage("Impossible de modifier le statut");
                 }
