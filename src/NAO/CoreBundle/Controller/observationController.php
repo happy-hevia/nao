@@ -36,4 +36,19 @@ class ObservationController extends Controller
         return $this->render('@NAOCore/formulaire/observation.html.twig', array('formulaireObservation' => $form->createView()));
     }
 
+    /**
+     * Permet d'ajouter une nouvelle observation
+     *
+     * @Route("/synchronisation", name="observation_synchronisation")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function synchronisationAction(Request $request)
+    {
+        $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservation($request);
+
+        return new Response($retour);
+    }
+
 }

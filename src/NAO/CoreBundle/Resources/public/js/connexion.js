@@ -11,6 +11,9 @@ Connexion.stateList=["online","offline"];
 Connexion.connecter =function(){
     console.log("Internet=online");
     connexionState = Connexion.stateList[0];
+
+    // Je synchronize les observations vers le serveur
+    synchronizeObservation();
     updateDOMElementVisibility();
     // TODO: Lancer la synchronisation
 
