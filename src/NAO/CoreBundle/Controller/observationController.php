@@ -67,10 +67,12 @@ class ObservationController extends Controller
     /**
      * Permet de synchroniser du Serveur vers le stockage local du client
      *
+     * @Route("/synchronisation_local", name="observation_synchronisation_local")
      * @Method({"GET", "POST"})
      * @param Request $request
      * @return Response
      */
+    public function synchronisationLocalAction(Request $request)
     {
         $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservationLocal($request);
 
