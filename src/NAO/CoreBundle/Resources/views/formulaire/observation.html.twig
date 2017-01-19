@@ -6,7 +6,10 @@
         <div id="message-dom" data-content="L'observation a été enregistré avec succès !" ></div>
     {% endif %}
     {{ form_start(form, {'method' : 'POST', 'action' : path(app.request.attributes.get('_route')) } ) }}
-    {{ form_row(form.imageFile, {required : false}) }}
+    <div data-on="{'connexionState' : 'online'}" >
+        {{ form_row(form.imageFile, {required : false}) }}
+    </div>
+
     {{ form_row(form.oiseau,{ 'attr': {'class': 'awesomplete liste_espece', 'autocomplete' : 'off', 'aria-autocomplete' : 'list'} }) }}
 
 <fieldset >

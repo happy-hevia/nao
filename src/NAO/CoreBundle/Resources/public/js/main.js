@@ -161,4 +161,7 @@ $(function() {
     gestionFormulaireRechercheUtilisateur();
     gestionFormulaireAjoutObservation();
     afficheMessageDepuisDom();
+
+    synchronizeObservation();
+
 });

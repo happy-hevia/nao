@@ -46,7 +46,22 @@ class ObservationController extends Controller
     public function statutAction(Request $request)
     {
         $success = $this->get('nao_core.gestion_formulaire')->gestionStatut($request);
-
         return new Response($success);
     }
+
+    /**
+     * Permet d'ajouter une nouvelle observation
+     *
+     * @Route("/synchronisation", name="observation_synchronisation")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function synchronisationAction(Request $request)
+    {
+        $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservation($request);
+
+        return new Response($retour);
+    }
+
 }

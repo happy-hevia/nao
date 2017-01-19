@@ -67,5 +67,6 @@ body {
 }
 
 .modal__image{
-
+    max-width: 100%;
+    max-height: 300px;
 }

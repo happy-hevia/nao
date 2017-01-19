@@ -183,18 +183,18 @@ function gestionFormulaireRechercheUtilisateur() {
 }
 
 
-
 /**
  * Permet de gérer le formulaire d'ajout d'une observation
  */
 function gestionFormulaireAjoutObservation() {
     var $formulaireObservation = $('form[name="nao_corebundle_observation"]');
 
+
     // j'ajoute la contrainte de validation sur le choix oiseau pour vérifier que l'oiseaux est valide
     window.Parsley
         .addValidator('species', {
             requirementType: 'string',
-            validateString: function(value) {
+            validateString: function (value) {
                 var index = $.inArray(value, oiseauStorage.storeName);
                 return index >= 0;
             },
@@ -205,7 +205,7 @@ function gestionFormulaireAjoutObservation() {
 
     $formulaireObservation.parsley();
 
-    if ( $('#form-have-error').length >= 1){
+    if ($('#form-have-error').length >= 1) {
         $('#modal-addObservation').modal('show');
     }
 
@@ -213,15 +213,56 @@ function gestionFormulaireAjoutObservation() {
     $formulaireObservation.on('submit', function (e) {
         $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
 
+        // Gestion de la soumission en mode hors ligne
+        if (connexionState == "offline") {
+            e.preventDefault();
+
+            // Je récolte les informations de l'observation
+            var dateCourrante = new Date();
+            var dateObservation = dateCourrante.getTime();
+            var latitude = $('#nao_corebundle_observation_latitude').val();
+            var longitude = $('#nao_corebundle_observation_longitude').val();
+            var oiseauId = $('#nao_corebundle_observation_oiseau').val();
+            var observateur = currentUserStorage.coll;
+
+            // je crée l'objet javascript observation
+            var observation = new Observation(dateObservation, latitude, longitude, oiseauId, observateur);
+
+            // je le stocke dans le bdd local
+            observationStorage.add(observation);
+
+        //    je ferme la modal et j'affiche le message de confirmation
+            $('#modal-addObservation').modal('hide');
+            setMessage("L'observation a été enregisrté avec succès !")
+        }
+
     });
 
 //    Lorsque l'internaute clique sur le bouton emplacement actuel, rempli les champs longitude et latitude
-    $('#btn-emplacement-actuel').click(function(){
+    $('#btn-emplacement-actuel').click(function () {
         if (gpsState == "gps_ok") {
             $('#nao_corebundle_observation_latitude').val(gpsCoords.latitude);
             $('#nao_corebundle_observation_longitude').val(gpsCoords.longitude);
         } else {
             setMessage("Impossible d'accéder à la localisation courrante !")
+        }
+    })
+
+//    Lorsque l'internaute change la valeur de l'oiseau, change l'image si elle existe
+    $('#nao_corebundle_observation_oiseau').on("blur", function () {
+        if (connexionState == "online") {
+            var image_url = oiseauStorage.getImage500300($(this).val());
+
+            // affiche l'image correspondante à l'oiseau seulement si elle existe
+            // sinon affiche l'image par defaut
+            $.get(image_url)
+                .done(function () {
+                    $('#modal__image').attr('src', image_url);
+
+                }).fail(function () {
+                $('#modal__image').attr('src', "http://lorempixel.com/500/300/");
+
+            })
         }
     })
 }
