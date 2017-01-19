@@ -311,7 +311,8 @@ function gestionPageValidation() {
             type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
             data: {
                 id: id,
-                nouveaustatut: nouveauStatut
+                nouveaustatut: nouveauStatut,
+                valideur: currentUser.email
             },
             success: function (data) { // Je récupère la réponse
                 if (data === "true"){

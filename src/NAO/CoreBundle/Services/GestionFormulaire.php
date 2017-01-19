@@ -273,6 +273,8 @@ class GestionFormulaire
 
         //        On modifie le statut
         $observation[0]->setStatut($request->request->get('nouveaustatut'));
+        //        On modifie l'email du valideur
+        $observation[0]->setValideur($request->request->get('valideur'));
 
         //        On enregistre dans la bdd
         $this->entityManager->persist($observation[0]);
