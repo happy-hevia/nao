@@ -69,4 +69,14 @@ class GestionSynchronisation
         return "true";
     }
 
+    public function gestionSynchronisationObservationLocal($request)
+    {
+//        récupération des observations envoyées
+        $lastLocalUpdate = $request->request->get('lastUpdate');
+        // On récupère toutes les observations dont la date de dernier update est supérieure à la dernière date de mise à jour de la base Locale
+        $observationASynchroniser = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findAfterDate($lastLocalUpdate);
+
+        return "true";
+    }
+
 }
