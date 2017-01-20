@@ -75,8 +75,8 @@ class ObservationController extends Controller
     public function synchronisationLocalAction(Request $request)
     {
         $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservationLocal($request);
-
-        return new Response($retour);
+        $json=$this->get('nao_core.gestion_encodage')->json($retour);
+        return new Response($json);
     }
 
 }

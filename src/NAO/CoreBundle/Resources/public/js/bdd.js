@@ -26,6 +26,9 @@ function MyWebStore(cle, typeStockage) {
         this.getAll(); // On recharge l'objet après la modification
     };
 }
+//########################################################################
+//                  GESTION UTILISATEURS
+//########################################################################
 /**
  * Objet : userStorage
  * Description : Permet la persistence et la récupération des données User
@@ -79,13 +82,62 @@ currentUserStorage.getCurrentUser = function () {
     updateDOMElementVisibility()
 };
 
-
+//########################################################################
+//                  GESTION OBSERVATIONS
+//########################################################################
 /**
  * Objet : observationStorage
  * Description : Permet la persistence et la récupération des données Observation
  * @type {MyWebStore}
  */
 var observationStorage = new MyWebStore("observations", localStorage);
+//Fonction qui récupère une observation à partir de sa date de création et l'email de l'observateur
+observationStorage.getObservation = function(dateCreation, observeur) {
+    if (!this.loaded) {
+        this.getAll();
+    }
+    var observations = this.coll || [];
+    console.log(observations);
+    observations.forEach(function(uneObservation) {
+        if ((uneObservation.observateur==observeur) && (uneObservation.date = dateCreation)) {
+            return uneObservation;
+        }
+    });
+    return null;
+};
+
+observationStorage.updateFromServer = function() {
+    //Construction de la requête AJAX pour récupérer les observations à synchroniser
+    $.ajax({
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        url: urlSynchroServeurLocal, // Le nom du fichier indiqué dans le formulaire
+        type: "POST", // La méthode indiquée dans le formulaire (get ou post)
+        dataType: 'json',
+        data: {
+            lastUpdate: new Date()
+        },
+        success: function (data) { // Je récupère la réponse
+            console.log("Données AJAX reçues");
+            console.log(data);
+            // Lecture de chacun des éléments
+            data.forEach(function(element) {
+                console.log(element);
+                var observationLocale = observationStorage.getObservation(element.dateCreation, element.observateur);
+                if (observationLocale!=null) {
+                    // TODO: Supprimer élément observationLocale du Tableau
+
+                }
+                observationStorage.add(element);
+            });
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+        }
+    });
+
+};
+
 observationStorage.add = function (newObservation) {
     if (!this.loaded) {
         this.getAll();
@@ -96,9 +148,17 @@ observationStorage.add = function (newObservation) {
     } else {
         observations = this.coll;
     }
-    observations[newObservation.date] = newObservation;
+    observations.push(newObservation);
     this.setAll(observations);
 };
+// Au 1er chargement on charge l'intégralité de la base
+
+// Au chargement d'après on ne charge que les éléments qui ont été modifiés
+
+
+//########################################################################
+//                  GESTION OISEAUX
+//########################################################################
 /**
  * Objet : oiseauStorage
  * Description : Permet la récupération en mémoire de la liste des oiseaux
@@ -133,6 +193,11 @@ var oiseauStorage = {
         return "/nao/web/bundles/naocore/images/oiseaux/" + nomEspece + ".jpg";
     }
 };
+
+
+//########################################################################
+//                  GESTION SYNCHRONISATION LOCAL<->SERVEUR
+//########################################################################
 
 var updateStorage = new MyWebStore("last_update", localStorage);
 updateStorage.update = function () { // Ajoute ou met à jour l'objet

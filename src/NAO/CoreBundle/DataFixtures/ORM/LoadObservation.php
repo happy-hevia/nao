@@ -30,6 +30,7 @@ class LoadObservation implements FixtureInterface
         $obs1->setOiseau("Strix Linnaeus, 1758");
         $obs1->setObservateur("particulier@hotmail.fr");
         $obs1->setStatut("toValidate");
+        $obs1->setLastUpdate(new \DateTime());
 
         $obs2 = new Observation();
         $obs2->setDateCreation(new \DateTime);
@@ -38,6 +39,7 @@ class LoadObservation implements FixtureInterface
         $obs2->setOiseau("Bubo bubo (Linnaeus, 1758)");
         $obs2->setObservateur("particulier@hotmail.fr");
         $obs2->setStatut("inValidated");
+        $obs2->setLastUpdate(new \DateTime());
 
         $obs3 = new Observation();
         $obs3->setDateCreation(new \DateTime);
@@ -46,7 +48,7 @@ class LoadObservation implements FixtureInterface
         $obs3->setOiseau("Pygoscelis adeliae (Hombron & Jacquinot, 1841)");
         $obs3->setObservateur("particulier@hotmail.fr");
         $obs3->setStatut("validated");
-
+        $obs3->setLastUpdate(new \DateTime());
         //        Persist
         $manager->persist($obs1);
         $manager->persist($obs2);

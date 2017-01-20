@@ -98,7 +98,7 @@ class Observation
     private $imageName;
 
     /**
-     * @var\DateTime
+     * @var \DateTime
      *
      * @ORM\Column(name="lastUpdate", type="datetime")
      */
