@@ -43,7 +43,7 @@ class GestionSynchronisation
         foreach ($observations as $observation) {
 //            Si l'observation existe déjà je l'ignore
             $dateTimeObservation = new \DateTime();
-            $dateTimeObservation = $dateTimeObservation->setTimestamp($observation['date'] / 1000);
+            $dateTimeObservation = $dateTimeObservation->setTimestamp($observation['dateCreation'] / 1000);
             $observationBdd = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByDateCreation($dateTimeObservation);
 //            Si l'observation existe on ignore
             if (isset($observationBdd[0]) && $observationBdd[0] != null) {
@@ -54,9 +54,9 @@ class GestionSynchronisation
                 $observationEntitee->setDateCreation($dateTimeObservation);
                 $observationEntitee->setLatitude($observation['latitude']);
                 $observationEntitee->setLongitude($observation['longitude']);
-                $observationEntitee->setOiseau($observation['oiseauId']);
+                $observationEntitee->setOiseau($observation['oiseau']);
                 $observationEntitee->setObservateur($observation['observateur']);
-                $observationEntitee->setStatut($observation['state']);
+                $observationEntitee->setStatut($observation['statut']);
                 $observationEntitee->setValideur($observation['valideur']);
 
 //                ... et je la persist
@@ -77,12 +77,15 @@ class GestionSynchronisation
      */
     public function gestionSynchronisationObservationLocal($request)
     {
-//        récupération des observations envoyées
-        $lastLocalUpdate = $request->request->get('lastUpdate');
+//        récupération des données de la requête
+        $observationAEnvoyer = array();
+        $collStatus = $request->request->get('status');
         // On récupère toutes les observations dont la date de dernier update est supérieure à la dernière date de mise à jour de la base Locale
-        $observationASynchroniser = $this->entityManager->getRepository("NAOCoreBundle:Observation")->getAllObservationsUpdatedAfterDate($lastLocalUpdate);
-
-        return $observationASynchroniser;
+        foreach ($collStatus as $status) {
+            $observationASynchroniser = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByStatut($status);
+            $observationAEnvoyer=array_merge($observationAEnvoyer, $observationASynchroniser);
+        }
+        return $observationAEnvoyer;
     }
 
 }
