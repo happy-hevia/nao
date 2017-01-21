@@ -2,6 +2,9 @@
 {% block title %}
     NAO - Observer les oiseaux
 {% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+{% endblock %}
 {% block body %}
     <div class="col-xs-12" >
         <div class="panel panel-primary" >
@@ -9,15 +12,31 @@
                 <h1 class="panel-title" >Observer les oiseaux</h1 >
             </div >
             <div class="panel-body" >
+                <form class="form-inline" id="form-tri-observation" data-parsley-validate >
+                    <div class="form-group" >
+                        <input type="text" class="form-control awesomplete liste_espece" autocomplete="off" aria-autocomplete="list" id="form-tri-observation__espece" placeholder="Espèce d'oiseau" data-parsley-species >
+                    </div >
+                    <button type="submit" class="btn btn-default" >Filtrer</button >
+                </form >
+                <div class="checkbox" data-on="{'currentUser': 'naturaliste' }">
+                    <label>
+                        <input id="checkbox-observation-a-valider"  type="checkbox" > Observation à valider
+                    </label>
+                </div>
+                <div data-on="{'connexionState' : 'online'}" id="mapid">
+                    <button class="bouton-ajouter-observation btn btn-success" >
+                        Ajouter une observation
+                    </button >
+                </div>
                 <button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#modal-addObservation">
                     Ajouter une observation
                 </button>
-                <table class="table table-striped" id="emplacement__ligne">
+                <table class="table table-striped" id="tableau-observation">
                     <thead>
                     <tr >
                         <th >Espèce</th >
                         <th >Coordonnées</th >
-                        <th >Distance</th >
+                        <th data-sort="string" >Distance</th >
                     </tr >
                     </thead>
                     <tbody id="emplacement__ligne" >
@@ -29,5 +48,8 @@
     </div >
 {% endblock %}
 {% block javascripts %}
+    {# map #}
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="{{ asset('bundles/naocore/js/stupidtable.min.js') }}"></script >
     <script src="{{ asset('bundles/naocore/js/page-observer.js') }}" ></script >
 {% endblock %}

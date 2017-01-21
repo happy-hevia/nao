@@ -6,62 +6,29 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                     <span aria-hidden="true" >&times;</span ></button >
                 {# En ligne #}
-                <h3 class="modal-title text-center" >Observation faite le 16/08/2016</h3 >
+                <h3 class="modal-title text-center" ><span id="form-observation__espece"></span> - <span id="form-observation__date"></span></h3 >
             </div >
             <div class="modal-body row" >
 
                 {# Onglets #}
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#observation-pane" aria-controls="home" role="tab" data-toggle="tab">Observation</a></li>
-                    <li role="presentation"><a id="onglet_espece" href="#species-pane" aria-controls="profile" role="tab" data-toggle="tab">Espèce</a></li>
-                </ul>
+                <ul class="nav nav-tabs" role="tablist" >
+                    <li role="presentation" class="active" >
+                        <a href="#observation-pane" aria-controls="home" role="tab" data-toggle="tab" >Observation</a >
+                    </li >
+                    <li role="presentation" >
+                        <a id="onglet_espece" href="#species-pane" aria-controls="profile" role="tab" data-toggle="tab" >Espèce</a >
+                    </li >
+                </ul >
 
                 {# Panneau #}
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="observation-pane">
+                <div class="tab-content" >
+                    <div role="tabpanel" class="tab-pane active" id="observation-pane" >
                         {# En ligne #}
-                        <div class="col-md-5" data-on="{'connexionState' : 'online' }">
+                        <div class="col-md-5" data-on="{'connexionState' : 'online' }" >
 
-                            {# Carousel #}
+                            {# Image #}
                             <div id="modal-observation__carousel" class="carousel slide" data-ride="carousel" >
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators" >
-                                    <li data-target="modal-observation__carousel" data-slide-to="0" class="active" ></li >
-                                    <li data-target="modal-observation__carousel" data-slide-to="1" ></li >
-                                    <li data-target="modal-observation__carousel" data-slide-to="2" ></li >
-                                </ol >
-
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner" role="listbox" >
-                                    <div class="item active" >
-                                        <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
-                                        <div class="carousel-caption" >
-                                            test caption
-                                        </div >
-                                    </div >
-                                    <div class="item" >
-                                        <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
-                                        <div class="carousel-caption" >
-                                            test caption
-                                        </div >
-                                    </div >
-                                    <div class="item" >
-                                        <img class="center-block" src="http://lorempixel.com/400/200/" alt="..." >
-                                        <div class="carousel-caption" >
-                                            test caption
-                                        </div >
-                                    </div >
-                                </div >
-
-                                <!-- Controls -->
-                                <a class="left carousel-control" href="#modal-observation__carousel" role="button" data-slide="prev" >
-                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true" ></span >
-                                    <span class="sr-only" >Précédent</span >
-                                </a >
-                                <a class="right carousel-control" href="#modal-observation__carousel" role="button" data-slide="next" >
-                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true" ></span >
-                                    <span class="sr-only" >Suivant</span >
-                                </a >
+                                <img src="http://lorempixel.com/500/300/" alt="image oiseau" >
                             </div >
                         </div >
                         {# Fin En ligne #}
@@ -70,44 +37,38 @@
 
                         {# Formulaire #}
                         <form class="form-horizontal col-md-7" >
-                            <div class="form-group" >
-                                <p>Espèce :
-                                    <span id="form-observation__espece">Cathartes aura (Linnaeus, 1758)</span>
-                                </p>
-                            </div >
-
                             <fieldset >
                                 <legend >Lieu de l'observation</legend >
                                 <div class="form-group" >
                                     <label for="form-observation__latitude" class="col-sm-4" >Latitude :</label >
                                     <div class="col-sm-8" >
-                                        <input type="text" class="form-control" id="form-observation__latitude" placeholder="Latitude" disabled="disabled" value="96'45'34">
+                                        <input type="email" class="form-control" id="form-observation__latitude" placeholder="Latitude" disabled="disabled" value="" >
                                     </div >
                                 </div >
                                 <div class="form-group" >
                                     <label for="form-observation__longitude" class="col-sm-4" >Longitude :</label >
                                     <div class="col-sm-8" >
-                                        <input type="text" class="form-control" id="form-observation__longitude" placeholder="Longitude" disabled="disabled" value="96'45'34">
+                                        <input type="text" class="form-control" id="form-observation__longitude" placeholder="Longitude" disabled="disabled" value="" >
                                     </div >
                                 </div >
                             </fieldset >
-                            <button type="button" class="btn btn-success" data-on="{'currentUser' : 'naturaliste' }">Valider</button >
+                            <button type="button" class="btn btn-success" data-on="{'currentUser' : 'naturaliste' }" >Valider</button >
                             <button type="button" class="btn btn-default" data-dismiss="modal" >Annuler</button > {# TODO: Ne rendre accessible qu'au propriétaire de l'observation #}
-                            <button type="submit" class="btn btn-danger" data-on="{'currentUser' : 'naturaliste' }">Refuser</button >
+                            <button type="submit" class="btn btn-danger" data-on="{'currentUser' : 'naturaliste' }" >Refuser</button >
                         </form >
-                    </div>
+                    </div >
 
 
-                    <div role="tabpanel" class="tab-pane" id="species-pane">
-                        <h3 class="text-center" id="espece-nom__">Piaf</h3>
+                    <div role="tabpanel" class="tab-pane" id="species-pane" >
+                        <h3 class="text-center" id="espece-nom__" >Piaf</h3 >
 
                         {# Image de l'espece #}
-                        <img id="espece-image__" class="center-block" href="localhost/nao/web/bundles/naocore/images/oiseaux/Circus buffoni (Gmelin, 1788).jpg" alt="Circus buffoni (Gmelin, 1788)">
+                        <img id="espece-image__" class="center-block" href="localhost/nao/web/bundles/naocore/images/oiseaux/Circus buffoni (Gmelin, 1788).jpg" alt="Circus buffoni (Gmelin, 1788)" >
 
                         {# description espèce texte #}
-                        <p id="espece-description__"></p>
-                    </div>
-                </div>
+                        <p id="espece-description__" ></p >
+                    </div >
+                </div >
             </div >
         </div >
     </div >
