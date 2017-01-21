@@ -183,7 +183,7 @@ class GestionFormulaire
 
     /**
      * @param $request
-     *
+     * @return String
      * Permet de gérer la soumission du formulaire de modification de droit dans la page "Gestion des droits"
      */
     public function gestionDroit($request)
@@ -203,7 +203,7 @@ class GestionFormulaire
 
     /**
      * @param $request
-     *
+     * @return Utilisateur
      * Permet de récuperer un utilisateur en renseignant son adresse email
      */
     public function utilisateurParEmail($request)
@@ -232,7 +232,7 @@ class GestionFormulaire
 
     /**
      * @param $request
-     *
+     * @return Array
      * Permet de gérer le formulaire d'ajout d'une observation
      */
     public function gestionFormulaireObservation($request)
@@ -244,8 +244,9 @@ class GestionFormulaire
         if ($this->formObservation->isSubmitted() && $this->formObservation->isValid()) {
 
             $this->observation->setStatut("toValidate"); // définit l'observation comme à valider
-            $this->observation->setDateCreation(new \DateTime()); // remplit la date de création à l'heure actuelle
+            $this->observation->setDateCreation(new \DateTime()); // remplit la date de création à la date actuelle
             $this->observation->setValideur(null);
+            $this->observation->setlastUpdate(new \DateTime()); // initie lastUpdate à la date actuelle
 
             $em = $this->entityManager;
             $em->persist($this->observation);
@@ -263,7 +264,7 @@ class GestionFormulaire
 
     /**
      * @param $request
-     *
+     * @return String
      * Permet de gérer la soumission du formulaire de modification des statuts dans la page "Observations à valider"
      */
     public function gestionStatut($request)

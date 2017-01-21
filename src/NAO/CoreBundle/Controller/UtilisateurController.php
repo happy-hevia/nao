@@ -40,7 +40,7 @@ class UtilisateurController extends Controller
     }
 
     /**
-     * Permet de connecté l'internaute
+     * Permet de connecter l'internaute
      *
      * @Route("/connexion", name="utilisateur_connexion")
      * @Method({"GET", "POST"})
