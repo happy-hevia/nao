@@ -10,7 +10,7 @@
  * @param typeStockage
  * @constructor
  */
-function MyWebStore(cle, typeStockage) {
+function MyWebStore (cle, typeStockage) {
     this.typeStockage = typeStockage;
     this.cle = cle;
     this.coll = {};
@@ -26,6 +26,30 @@ function MyWebStore(cle, typeStockage) {
         this.getAll(); // On recharge l'objet après la modification
     };
 }
+
+function myJsonAjax (url, requestData, successFunction) {
+    $.ajax({
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        url: url,
+        type: "POST",
+        dataType: 'json',
+        data: requestData,                               //{ lastUpdate: new Date()    },
+        success: successFunction,
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+        }
+    });
+}
+
+Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
 //########################################################################
 //                  GESTION UTILISATEURS
 //########################################################################
@@ -44,6 +68,27 @@ userStorage.add = function (newUser) { // Ajoute ou met à jour l'objet
     this.setAll(users);
 };
 
+userStorage.clean = function() {
+  this.setAll({});
+};
+
+userStorage.hasNaturaliste = function() {
+    // Je charge la collection des utilisateurs de la sessionStorage
+    userStorage.getAll();
+    // Pour chaque utilisateur, je regarde s'il a les droits de naturaliste.
+    if (userStorage.coll != null) {
+        for(var email in userStorage.coll) {
+            if (isNaturaliste(userStorage.coll[email])) {
+                // Je retourne True si au moins un utilisateur a les droits de Naturaliste
+                return true;
+            }
+        }
+    }
+    // Je retourne False si aucun utilisateur n'est Naturaliste.
+    return false;
+};
+
+
 /**
  * Objet : currentUserStorage
  * Description : Permet la persistence et la récupération de l'utilisateur courant
@@ -57,10 +102,11 @@ currentUserStorage.setCurrentUser = function (currentUserEmail) {
     // Je récupère l'ensemble des utilisateurs locaux
     userStorage.getAll();
     // Je définie le rôle de l'utilisateur dans la variable global
-    if (currentUserEmail !== null) {
+    if (currentUserEmail !== null && Object.size(userStorage.coll)>0 ) {
         currentUser = userStorage.coll[currentUserEmail].role;
     } else {
         currentUser = 'null';
+        console.log("Impossible de mémoriser "+currentUserEmail)
     }
     // Je met à jour les pages selon le nouveau utilisateur
     updateDOMElementVisibility()
@@ -73,7 +119,7 @@ currentUserStorage.getCurrentUser = function () {
     // Je récupère l'ensemble des utilisateurs locaux
     userStorage.getAll();
     // Je définie le rôle de l'utilisateur dans la variable global
-    if (currentUserStorage.coll != 'null' && currentUserStorage.coll != null) {
+    if (currentUserStorage.coll != 'null' && currentUserStorage.coll != null && userStorage.coll.length>0) {
         currentUser = userStorage.coll[currentUserStorage.coll].role;
     } else {
         currentUser = 'null';
@@ -91,70 +137,66 @@ currentUserStorage.getCurrentUser = function () {
  * @type {MyWebStore}
  */
 var observationStorage = new MyWebStore("observations", localStorage);
-//Fonction qui récupère une observation à partir de sa date de création et l'email de l'observateur
-observationStorage.getObservation = function(dateCreation, observeur) {
-    if (!this.loaded) {
-        this.getAll();
-    }
-    var observations = this.coll || [];
-    console.log(observations);
-    observations.forEach(function(uneObservation) {
-        if ((uneObservation.observateur==observeur) && (uneObservation.date = dateCreation)) {
-            return uneObservation;
-        }
-    });
-    return null;
-};
-
-observationStorage.updateFromServer = function() {
-    //Construction de la requête AJAX pour récupérer les observations à synchroniser
-    $.ajax({
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        url: urlSynchroServeurLocal, // Le nom du fichier indiqué dans le formulaire
-        type: "POST", // La méthode indiquée dans le formulaire (get ou post)
-        dataType: 'json',
-        data: {
-            lastUpdate: new Date()
-        },
-        success: function (data) { // Je récupère la réponse
-            console.log("Données AJAX reçues");
-            console.log(data);
-            // Lecture de chacun des éléments
-            data.forEach(function(element) {
-                console.log(element);
-                var observationLocale = observationStorage.getObservation(element.dateCreation, element.observateur);
-                if (observationLocale!=null) {
-                    // TODO: Supprimer élément observationLocale du Tableau
-
-                }
-                observationStorage.add(element);
-            });
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status);
-            console.log(thrownError);
-        }
-    });
-
-};
-
 observationStorage.add = function (newObservation) {
     if (!this.loaded) {
         this.getAll();
     }
     var observation;
     if (this.coll == null) {
-        observations = {};
+        observations = [];
     } else {
         observations = this.coll;
     }
     observations.push(newObservation);
     this.setAll(observations);
 };
-// Au 1er chargement on charge l'intégralité de la base
 
-// Au chargement d'après on ne charge que les éléments qui ont été modifiés
+/**
+ * Cette fonction vide le stockage local des Observations
+ */
+observationStorage.clean = function() {
+    this.setAll(null);
+}
 
+/**
+ * Cette fonction gère le traitement des données Observations reçues via AJAX et les ajoute en localStorage
+ * @param data
+ */
+observationStorage.loadSuccess = function(data) {
+    console.log("Téléchargement des données du Serveur -- Terminé !");
+    syncState="sync_ok";
+    updateDOMElementVisibility();
+    updateStorage.update();
+    // Je récupère la réponse
+    // console.log("Données AJAX Observations reçues");
+    // Lecture de chacun des éléments
+    data.forEach(function(element) {
+        // J'ajoute l'élément au stockage local
+        observationStorage.add(element);
+    });
+};
+
+/**
+ * Cette fonction charge l'ensemble des Observations validées et les ajoutes au stockage local
+ * Requiert : MyJsonAjax
+ */
+observationStorage.loadFromServeur = function() {
+    //Construction de la requête AJAX pour récupérer les observations à synchroniser
+    // On souhaite récupérer toutes les observations validées
+    var status =["validated"];
+    // Si un des utilisateurs du navigateur a les droits de Naturaliste, on charge en plus les observations à valider
+    if (userStorage.hasNaturaliste()) {
+        status.push("toValidate");
+    }
+    // Je lance la requête AJAX
+    myJsonAjax(
+        urlSynchroServeurLocal,
+        {   status: status, // Etats des observations à récupérer
+            lastUpdate: updateStorage.getLastUpdate // On précise la date du dernier update de la base locale
+        },
+        this.loadSuccess // Fonction callback en cas de succès de la requête AJAX.
+    )
+};
 
 //########################################################################
 //                  GESTION OISEAUX
@@ -204,6 +246,19 @@ updateStorage.update = function () { // Ajoute ou met à jour l'objet
     var dateCourrante = new Date();
     this.setAll(dateCourrante.getTime());
 };
+updateStorage.getLastUpdate = function() {
+    if (typeof this.typeStockage == 'undefined' || this.typeStockage.getItem(this.cle) == null) {
+        return null;
+    } else {
+        return new Date().setTime(this.typeStockage.getItem(this.cle));
+    }
+};
+
+updateStorage.init = function() {
+    syncState="sync_ec";
+    updateDOMElementVisibility();
+    observationStorage.loadFromServeur();
+};
 
 function synchronizeObservation(){
     // Je récupère les observations
@@ -217,14 +272,14 @@ function synchronizeObservation(){
     // Je crée un tableau avec toutes les observations à envoyer au serveur
     var observationsAjax = [];
     for (var observation in observations){
-        if (observations[observation].date >= last_update) {
+        // On transfert toutes les observations modifiées en locale
+        if (observations[observation].lastUpdate.timestamp >= last_update) {
             observationsAjax.push(observations[observation]);
         }
     }
-
-    //TODO:Ajouter les observations validées en mode hors connexion.
-
     if(observationsAjax.length == 0) {
+        console.log("Pas d'élément à synchroniser");
+        console.log("Synchronisation avec le serveur  -- Terminée");
         return;
     }
 
@@ -240,7 +295,13 @@ function synchronizeObservation(){
         type: "post", // La méthode indiquée dans le formulaire (get ou post)
         data: { observations : observationsAjax }, // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
         success: function (html) { // Je récupère la réponse du fichier PHP
+
+            // Je vide de la base locale
+            observationStorage.clean();
+            // Je lance alors la synchronisation globale Serveur-> Locale
+            observationStorage.loadFromServeur();
             // Je définie la synchronisation comme ok
+            console.log("Synchronisation avec le serveur  -- Terminée");
             syncState = "sync_ok";
             updateDOMElementVisibility();
 

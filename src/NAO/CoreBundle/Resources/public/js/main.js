@@ -152,6 +152,28 @@ $(function() {
 
     // Récupère l'utilisateur courant à chaque chargement de page depuis le local storage
     currentUserStorage.getCurrentUser();
+    if (Connexion.isConnected()) {
+        // Je teste l'existence d'un stockage local via la présence de la dernière date de synchronisation (updateStorage)
+        updateStorage.getAll();
+        if (updateStorage.getLastUpdate != null) { // Si le stockage local existe,
+            // Je teste l'existence d'un stockage local d'observation (observationStorage)
+            observationStorage.getAll();
+            if(observationStorage.coll!=null) { // Si le stockage local d'observation existe
+                console.log("Le Stockage local OBSERVATION trouvé -- Lancement Synchronisation avec le serveur");
+                // Je lance la synchronisation avec le Serveur
+                synchronizeObservation();
+            } else { // Si le stockage local d'observation n'existe pas
+                // Je lance la récupération de l'ensemble des Observations du Serveur
+                console.log("Le Stockage local OBSERVATION n'existe PAS -- Téléchargement des données du Serveur");
+                updateStorage.init();
+            }
+        } else { // Le Stockage local n'existe pas
+            // Je lance la récupération de l'ensemble des Observations du Serveur
+            console.log("Le Stockage local n'existe PAS");
+            updateStorage.init();
+        }
+
+    }
 
     gestionFormulaireCreation();
     gestionFormulaireConnexionHorsLigne();
@@ -162,6 +184,6 @@ $(function() {
     gestionFormulaireAjoutObservation();
     afficheMessageDepuisDom();
 
-    synchronizeObservation();
+
 
 });

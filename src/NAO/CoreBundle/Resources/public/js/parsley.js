@@ -1185,14 +1185,14 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
       var promise = this.whenValidate({ event: event });
 
-      if ('resolved' === promise.state() && false !== this._trigger('submit')) {
+      if ('resolved' === promise.statut() && false !== this._trigger('submit')) {
         // All good, let event go through. We make this distinction because browsers
         // differ in their handling of `submit` being called from inside a submit event [#1047]
       } else {
           // Rejected or pending: cancel this submit
           event.stopImmediatePropagation();
           event.preventDefault();
-          if ('pending' === promise.state()) promise.done(function () {
+          if ('pending' === promise.statut()) promise.done(function () {
             _this5._submit($submitSource);
           });
         }
@@ -1236,7 +1236,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         options = { group: group, force: force, event: event };
       }
-      return ParsleyForm__statusMapping[this.whenValidate(options).state()];
+      return ParsleyForm__statusMapping[this.whenValidate(options).statut()];
     },
 
     whenValidate: function whenValidate() {
@@ -1296,7 +1296,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         options = { group: group, force: force };
       }
-      return ParsleyForm__statusMapping[this.whenValid(options).state()];
+      return ParsleyForm__statusMapping[this.whenValid(options).statut()];
     },
 
     // Iterate over refreshed fields and validate them.
@@ -1450,7 +1450,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var promise = this.whenValidate(options);
       if (!promise) // If excluded with `group` option
         return true;
-      switch (promise.state()) {
+      switch (promise.statut()) {
         case 'pending':
           return null;
         case 'resolved':
@@ -1530,7 +1530,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var promise = this.whenValid(options);
       if (!promise) // Excluded via `group`
         return true;
-      return parsley_field__statusMapping[promise.state()];
+      return parsley_field__statusMapping[promise.statut()];
     },
 
     // Just validate field. Do not trigger any event.
@@ -1573,7 +1573,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           return _this11._validateConstraint(value, constraint);
         }));
         promises.push(promise);
-        if (promise.state() === 'rejected') return false; // Interrupt processing if a group has already failed
+        if (promise.statut() === 'rejected') return false; // Interrupt processing if a group has already failed
       });
       return ParsleyUtils__default.all(promises);
     },

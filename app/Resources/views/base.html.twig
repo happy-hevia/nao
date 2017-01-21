@@ -117,21 +117,6 @@
                 {# Ce bloc test sert simplement pour l'environnement de developpement, il devra être enlevé par la suite#}
                 {% block test %}
 
-                    {# Test modal #}
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-addObservation">
-                        Ajouter une observation
-                    </button>
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-observation">
-                        Information sur observation
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal-description">
-                        Information sur une espèce
-                    </button>
-
-                    <button type="button" class="btn btn-primary btn-lg" id="syncro_test">
-                        Synchroniser Serveur->Local
-                    </button>
                 {% endblock %}
                 {# Il faut garder les inclusions ici #}
                 {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
@@ -192,8 +177,6 @@
 
         <script>
             var urlSynchroServeurLocal = "{{ url('observation_synchronisation_local')  }}";
-            // On crée le listener de clic sur le bouton de test
-            $("#syncro_test").click(observationStorage.updateFromServer);
         </script>
         <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
 

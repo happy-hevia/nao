@@ -47,7 +47,7 @@ function fillTabObserver() {
     var tableContent;
     for (var observation in observations) {
         var distance = "inconnu";
-        tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].state + "' data-oiseau='" +  cleanClassName(observations[observation].oiseauId) + "' ><td data-time='" + observations[observation].date + "'>" + observations[observation].oiseauId + " - " + observations[observation].observateur + "</td >" +
+        tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].statut + "' data-oiseau='" +  cleanClassName(observations[observation].oiseau) + "' ><td data-time='" + observations[observation].dateCreation + "'>" + observations[observation].oiseau + " - " + observations[observation].observateur + "</td >" +
             "<td >" + observations[observation].latitude + ", " + observations[observation].longitude + "</td >" +
             "<td class='cellule-distance' data-latitude='" + observations[observation].latitude + "' data-longitude ='" + observations[observation].longitude + "'>" + distance + "</td ></tr>";
     }
@@ -88,7 +88,7 @@ function affichageInformationObservation() {
         var observation = observations[$(this).data('time')];
 
         //    On récupère la date de l'observation
-        var dateObservation = new Date(observation.date);
+        var dateObservation = new Date(observation.dateCreation);
         var moisTab = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         var annee = dateObservation.getFullYear();
         var mois = moisTab[dateObservation.getMonth()];
@@ -98,7 +98,7 @@ function affichageInformationObservation() {
         //    On l'affiche dans la modal
         $('#form-observation__latitude').val(observation.latitude);
         $('#form-observation__longitude').val(observation.longitude);
-        $('#form-observation__espece').text(observation.oiseauId);
+        $('#form-observation__espece').text(observation.oiseau);
         $('#form-observation__date').text(dateFormatee);
 
 
@@ -195,7 +195,7 @@ function gestionCarte() {
 function onclick(observation) {
 // Lors du clic sur le marcker j'affiche la popup avec les informations associés à l'observation
     //    On récupère la date de l'observation
-    var dateObservation = new Date(observation.date);
+    var dateObservation = new Date(observation.dateCreation);
     var moisTab = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var annee = dateObservation.getFullYear();
     var mois = moisTab[dateObservation.getMonth()];
@@ -205,7 +205,7 @@ function onclick(observation) {
     //    On l'affiche dans la modal
     $('#form-observation__latitude').val(observation.latitude);
     $('#form-observation__longitude').val(observation.longitude);
-    $('#form-observation__espece').text(observation.oiseauId);
+    $('#form-observation__espece').text(observation.oiseau);
     $('#form-observation__date').text(dateFormatee);
 
 
@@ -239,19 +239,19 @@ function afficheMarker() {
         dataArray.push(observations[o]);
     }
 
-    // cette fonction permet d'activer la fonctionnalité de closure pour chacun des listeners appele les bonnes inforamtions de la modale
+    // cette fonction permet d'activer la fonctionnalité de closure pour chacun des listeners appele les bonnes informations de la modale
     dataArray.forEach(function (observation) {
         var marker;
-        if (observation.state == "toValidate") {
+        if (observation.statut == "toValidate") {
             marker = L.marker([observation.latitude, observation.longitude], {icon: observationAValider}).on('click', function () {
                 onclick(observation);
             }).addTo(map);
-            $(marker._icon).addClass(cleanClassName(observation.oiseauId));
-        } else if (observation.state == "validated") {
+            $(marker._icon).addClass(cleanClassName(observation.oiseau));
+        } else if (observation.statut == "validated") {
             marker = L.marker([observation.latitude, observation.longitude], {icon: observationValide}).on('click', function () {
                 onclick(observation);
             }).addTo(map);
-            $(marker._icon).addClass(cleanClassName(observation.oiseauId));
+            $(marker._icon).addClass(cleanClassName(observation.oiseau));
         }
         markerArray.push(marker);
     });

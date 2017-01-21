@@ -4,7 +4,7 @@
 
 var currentUser;
 
-
+var valueList=["null", "particulier","naturaliste", "administrateur"];
 /* Définition de la classe User */
 function User(nom, prenom, email, pseudo, role, date ) {
     this.valueList=["null", "particulier","naturaliste", "administrateur"];
@@ -34,4 +34,7 @@ User.setAdmin = function() {
     console.log("User=administrateur");
     currentUser=this.valueList[3];
     updateDOMElementVisibility();
+};
+isNaturaliste = function(user) {
+    return valueList[2] === user.role;
 };

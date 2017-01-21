@@ -10,14 +10,4 @@ namespace NAO\CoreBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getAllObservationsUpdatedAfterDate($uneDate) {
-        $queryBuilder = $this->createQueryBuilder('a');
-        $queryBuilder
-            ->where('a.lastUpdate > :uneDate')
-            ->setParameter('uneDate', $uneDate);
-
-        $query = $queryBuilder->getQuery();
-        $results = $query->getResult();
-        return $results;
-    }
 }
