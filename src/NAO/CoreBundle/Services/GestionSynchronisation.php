@@ -44,9 +44,9 @@ class GestionSynchronisation
 //            Si l'observation existe déjà je l'ignore
             $dateTimeObservation = new \DateTime();
             $dateTimeObservation = $dateTimeObservation->setTimestamp($observation['date'] / 1000);
-            $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByDateCreation($dateTimeObservation);
+            $observationBdd = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByDateCreation($dateTimeObservation);
 //            Si l'observation existe on ignore
-            if (isset($utilisateur[0]) && $utilisateur[0] != null) {
+            if (isset($observationBdd[0]) && $observationBdd[0] != null) {
                 continue;
             } else {
 //                si elle n'existe pas alors je crée l'entité observation
