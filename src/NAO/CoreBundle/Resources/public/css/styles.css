@@ -70,3 +70,75 @@ body {
     max-width: 100%;
     max-height: 300px;
 }
+
+/* *********************************************************
+                         MAP
+ ***********************************************************
+ */
+#mapid {
+    height: 70vh;
+    position: relative;
+    padding: 0;
+}
+
+.bouton-ajouter-observation {
+    position: absolute;
+    top: 5px;
+    left: 45px;
+    z-index: 1000;
+}
+
+img[src="http://localhost/nao/web/bundles/naocore/images/marker-jaune.png"] {
+    display: none;
+}
+
+.awesomplete > ul {
+    z-index: 1005;
+}
+
+.ligne-observation[data-state="toValidate"]{
+    display: none;
+}
+
+/* rend le tableau responsive sur mobile*/
+
+@media screen and (max-width: 480px) {
+    .table-collapse-phone {
+        display: block;
+    }
+    .table-collapse-phone caption,
+    .table-collapse-phone tbody,
+    .table-collapse-phone tr,
+    .table-collapse-phone th,
+    .table-collapse-phone td {
+        display: block;
+    }
+    .table-collapse-phone thead,
+    .table-collapse-phone tfoot {
+        display: none;
+    }
+    .table-collapse-phone tr {
+        border-top: 1px solid #ddd;
+    }
+    .table-collapse-phone tr:first-child {
+        border: 0;
+    }
+    .table-collapse-phone > tbody > tr > th:first-child,
+    .table-collapse-phone > tbody > tr > td:first-child {
+        border: 0;
+        /* perso ! Permet de mettre en évidence la première cellule*/
+        background-color: #c9dabf;
+    }
+    .table-collapse-phone .has-label[data-label] {
+        position: relative;
+        padding-left: 50%;
+    }
+    .table-collapse-phone .has-label[data-label]:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 8px;
+        content: attr(data-label);
+        font-weight: bold;
+    }
+}
