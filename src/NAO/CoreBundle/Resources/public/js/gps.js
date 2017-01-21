@@ -36,7 +36,7 @@ Localisation.isAvailable = function() {
     return gpsState===Localisation.stateList[1];
 };
 Localisation.updatePosition = function (position) {
-    console.log(position);
+    //console.log(position);
     gpsCoords = new Localisation.Coords(position.coords.latitude,position.coords.longitude,position.coords.altitude);
     $(".glyphicon-record").attr("title","Localisation Disponible");
     Localisation.setDisponible();
@@ -74,7 +74,7 @@ Localisation.testAvailable = function () {
 Localisation.testGPS = function(){
     // Mémorisation de l'état initial de la variable globale
     var gpsStateMemo = gpsState;
-    console.log(gpsCoords);
+    console.log("Latitude : "+gpsCoords.latitude+"\tLongitude : "+gpsCoords.longitude);
     if (Localisation.isAvailable()) {
         if (gpsStateMemo!=gpsState) {
             // On vient de passer de l'état "gps_ko" à "gps_ok"

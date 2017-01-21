@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="observation")
  * @ORM\Entity(repositoryClass="NAO\CoreBundle\Repository\ObservationRepository")
+ * @ORM\HasLifecycleCallbacks()
  * @Vich\Uploadable
  */
 class Observation
@@ -96,6 +97,12 @@ class Observation
      */
     private $imageName;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="lastUpdate", type="datetime")
+     */
+    private $lastUpdate;
 
     /**
      * Get id
@@ -117,6 +124,30 @@ class Observation
     public function setDateCreation($dateCreation)
     {
         $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreation
+     *
+     * @return \DateTime
+     */
+    public function getLastUpdate()
+    {
+        return $this->lastUpdate;
+    }
+
+    /**
+     * Set dateCreation
+     *
+     * @param \DateTime $lastUpdate
+     *
+     * @return Observation
+     */
+    public function setLastUpdate($dateUpdate)
+    {
+        $this->lastUpdate = $dateUpdate;
 
         return $this;
     }
@@ -327,4 +358,14 @@ class Observation
     {
         return $this->imageName;
     }
+
+    // CALLBACK
+    /**
+     * @ORM\PreUpdate
+     */
+    public function updateDate() {
+        $this->setLastUpdate(new \DateTime());
+    }
+
+
 }

@@ -5,3 +5,6 @@ services:
     nao_core.gestion_synchronisation:
         class: NAO\CoreBundle\Services\GestionSynchronisation
         arguments: ["@form.factory", "@doctrine.orm.entity_manager", "@validator"]
+    nao_core.gestion_encodage:
+        class: NAO\CoreBundle\Services\GestionEncodage
+        arguments: ["@form.factory", "@doctrine.orm.entity_manager", "@validator"]

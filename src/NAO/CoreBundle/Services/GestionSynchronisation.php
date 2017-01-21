@@ -9,6 +9,8 @@
 namespace NAO\CoreBundle\Services;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 use NAO\CoreBundle\Controller\ObservationController;
 use NAO\CoreBundle\Entity\Observation;
@@ -55,6 +57,7 @@ class GestionSynchronisation
                 $observationEntitee->setOiseau($observation['oiseauId']);
                 $observationEntitee->setObservateur($observation['observateur']);
                 $observationEntitee->setStatut($observation['state']);
+                $observationEntitee->setValideur($observation['valideur']);
 
 //                ... et je la persist
                 $this->entityManager->persist($observationEntitee);
@@ -66,6 +69,20 @@ class GestionSynchronisation
 
         }
         return "true";
+    }
+
+    /**
+     * @param $request
+     * @return ArrayCollection
+     */
+    public function gestionSynchronisationObservationLocal($request)
+    {
+//        récupération des observations envoyées
+        $lastLocalUpdate = $request->request->get('lastUpdate');
+        // On récupère toutes les observations dont la date de dernier update est supérieure à la dernière date de mise à jour de la base Locale
+        $observationASynchroniser = $this->entityManager->getRepository("NAOCoreBundle:Observation")->getAllObservationsUpdatedAfterDate($lastLocalUpdate);
+
+        return $observationASynchroniser;
     }
 
 }
