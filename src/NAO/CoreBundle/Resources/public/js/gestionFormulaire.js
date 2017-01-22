@@ -72,10 +72,14 @@ function gestionFormulaireConnexionEnLigne() {
                     var utilisateur = JSON.parse(jsonUtilisateur);
 
                     // j'ajoute l'utilisateur dans la liste des utilisateurs disponible
-                    userStorage.add(utilisateur);
+                    usersStorage.add(utilisateur);
                     // Je connecte cette utilisateur
                     currentUserStorage.setCurrentUser(utilisateur.email)
                 }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
             }
         });
     });
@@ -90,15 +94,15 @@ function gestionFormulaireConnexionHorsLigne() {
     var boutonSoumission = $('#form-login-offline__submit');
 
     //Je récupère les utilisateurs locaux
-    userStorage.getAll();
+    usersStorage.getAll();
 
     // si il n'y a pas d'utilisateurs locaux, on le notifie à l'internaute
-    if (userStorage.coll == null) {
+    if (usersStorage.coll == null) {
         formulaire.replaceWith("<div class='alert alert-warning' role='alert'><strong>OUPS !</strong> Il n'y a d'utilisateur disponible en mode hors ligne, merci de vous connectez à votre compte en ligne avant de pouvoir accéder à votre compte en mode hors ligne</div>")
 
         //    si il y a des utilisateurs locaux, on les intégrent dans le select du formulaire
     } else {
-        for (var utilisateur in userStorage.coll) {
+        for (var utilisateur in usersStorage.coll) {
             select.append("<option value='" + utilisateur + "'>" + utilisateur + "</option>");
         }
     }
@@ -122,8 +126,8 @@ function gestionFormulaireModificationMotDePasse() {
         e.preventDefault(); // J'empêche le comportement par défaut du navigateur, c-à-d de soumettre le formulaire
 
         //Je récupère l'email de l'utilisateur courrant
-        currentUserStorage.getCurrentUser();
-        var emailUtilisateur = userStorage.coll[currentUserStorage.coll].email;
+        currentUserStorage.recoverCurrentUser();
+        var emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
 
         var $this = $(this); // L'objet jQuery du formulaire
         // Envoi de la requête HTTP en mode asynchrone
@@ -306,8 +310,8 @@ function gestionPageValidation() {
         var id = $(this).data('id');
         var nouveauStatut = this.value;
         // Je récupère l'email de l'utilisateur courant
-        currentUserStorage.getCurrentUser();
-        var emailUtilisateur = userStorage.coll[currentUserStorage.coll].email;
+        currentUserStorage.recoverCurrentUser();
+        var emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
 
         var $this = $(this); // L'objet jQuery du formulaire
         // Envoi de la requête HTTP en mode asynchrone

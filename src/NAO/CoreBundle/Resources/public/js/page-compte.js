@@ -7,8 +7,8 @@ rempliInformationCompte()
 function rempliInformationCompte(){
 
 // Je récupère l'utilisateur courant depuis la sessions storage
-    currentUserStorage.getCurrentUser();
-    var utilisateur = userStorage.coll[currentUserStorage.coll];
+    currentUserStorage.recoverCurrentUser();
+    var utilisateur = usersStorage.coll[currentUserStorage.coll];
 
 //    Je stocke les informations dans le DOM
     $('#date-inscription__data').text(utilisateur.date);

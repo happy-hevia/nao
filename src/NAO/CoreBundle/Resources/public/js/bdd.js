@@ -54,12 +54,12 @@ Object.size = function(obj) {
 //                  GESTION UTILISATEURS
 //########################################################################
 /**
- * Objet : userStorage
+ * Objet : usersStorage
  * Description : Permet la persistence et la récupération des données User
  * @type {MyWebStore}
  */
-var userStorage = new MyWebStore("localUsers", sessionStorage);
-userStorage.add = function (newUser) { // Ajoute ou met à jour l'objet
+var usersStorage = new MyWebStore("localUsers", sessionStorage);
+usersStorage.add = function (newUser) { // Ajoute ou met à jour l'objet
     if (!this.loaded) {
         this.getAll();
     }
@@ -68,17 +68,17 @@ userStorage.add = function (newUser) { // Ajoute ou met à jour l'objet
     this.setAll(users);
 };
 
-userStorage.clean = function() {
+usersStorage.clean = function() {
   this.setAll({});
 };
 
-userStorage.hasNaturaliste = function() {
+usersStorage.hasNaturaliste = function() {
     // Je charge la collection des utilisateurs de la sessionStorage
-    userStorage.getAll();
+    usersStorage.getAll();
     // Pour chaque utilisateur, je regarde s'il a les droits de naturaliste.
-    if (userStorage.coll != null) {
-        for(var email in userStorage.coll) {
-            if (isNaturaliste(userStorage.coll[email])) {
+    if (usersStorage.coll != null) {
+        for(var email in usersStorage.coll) {
+            if (isNaturaliste(usersStorage.coll[email])) {
                 // Je retourne True si au moins un utilisateur a les droits de Naturaliste
                 return true;
             }
@@ -100,10 +100,10 @@ currentUserStorage.setCurrentUser = function (currentUserEmail) {
     // Je stocke l'email dans la session
     this.setAll(currentUserEmail);
     // Je récupère l'ensemble des utilisateurs locaux
-    userStorage.getAll();
+    usersStorage.getAll();
     // Je définie le rôle de l'utilisateur dans la variable global
-    if (currentUserEmail !== null && Object.size(userStorage.coll)>0 ) {
-        currentUser = userStorage.coll[currentUserEmail].role;
+    if (currentUserEmail !== null && Object.size(usersStorage.coll)>0 ) {
+        currentUser = usersStorage.coll[currentUserEmail].role;
     } else {
         currentUser = 'null';
         console.log("Impossible de mémoriser "+currentUserEmail)
@@ -113,19 +113,29 @@ currentUserStorage.setCurrentUser = function (currentUserEmail) {
 }
 
 // Récupère l'utilisateur courant dans la session
-currentUserStorage.getCurrentUser = function () {
+currentUserStorage.recoverCurrentUser = function () {
     // Je récupère l'adresse email de l'utilisateur courant
     this.getAll();
     // Je récupère l'ensemble des utilisateurs locaux
-    userStorage.getAll();
+    usersStorage.getAll();
     // Je définie le rôle de l'utilisateur dans la variable global
-    if (currentUserStorage.coll != 'null' && currentUserStorage.coll != null && userStorage.coll.length>0) {
-        currentUser = userStorage.coll[currentUserStorage.coll].role;
+    if (currentUserStorage.coll != 'null' && currentUserStorage.coll != null && typeof usersStorage.coll[currentUserStorage.coll] != 'undefined') {
+        currentUser = usersStorage.coll[currentUserStorage.coll].role;
     } else {
         currentUser = 'null';
     }
     // Je met à jour les pages selon le nouveau utilisateur
     updateDOMElementVisibility()
+};
+/**
+ * Retourne les données de l'utilisateur courant
+ */
+currentUserStorage.getCurrentUser = function() {
+    if (currentUser!="null" && currentUserStorage.coll != 'null' && currentUserStorage.coll != null && typeof usersStorage.coll[currentUserStorage.coll] != 'undefined') {
+        return usersStorage.coll[currentUserStorage.coll];
+    } else {
+        return null;
+    }
 };
 
 //########################################################################
@@ -185,7 +195,7 @@ observationStorage.loadFromServeur = function() {
     // On souhaite récupérer toutes les observations validées
     var status =["validated"];
     // Si un des utilisateurs du navigateur a les droits de Naturaliste, on charge en plus les observations à valider
-    if (userStorage.hasNaturaliste()) {
+    if (usersStorage.hasNaturaliste()) {
         status.push("toValidate");
     }
     // Je lance la requête AJAX
@@ -196,6 +206,32 @@ observationStorage.loadFromServeur = function() {
         },
         this.loadSuccess // Fonction callback en cas de succès de la requête AJAX.
     )
+};
+
+/**
+ * Renvoie la collection des observations réalisées par l'utilisateur courant
+ * @returns {boolean}
+ */
+observationStorage.mesObservations = function() {
+    if (currentUser!="null" && typeof currentUser != 'undefined') { // Je vérifie que l'utilisateur courant est bien connecté
+        console.log("Utilisateur connecté :"+currentUserStorage.getCurrentUser().email);
+        if (observationStorage.coll.length>0) {// Je vérifie que le stockage local d'observation n'est pas vide
+            var mesObservations= new Array();
+            // Je parcours les observations effectuées
+            console.log("MesObservation -- Parcours des observations");
+            console.log(typeof observationStorage.coll);
+            for (var i=0; i<observationStorage.coll.length; i++) {
+                console.log(observationStorage.coll[i]);
+                if (currentUserStorage.getCurrentUser().email===observationStorage.coll[i].observateur) {
+                    // Je mémorise l'observation
+                    mesObservations.push(observationStorage.coll[i]);
+                }
+            }
+            // Je retourne la collection d'observation obtenue
+            return mesObservations;
+        }
+    }
+    return false
 };
 
 //########################################################################

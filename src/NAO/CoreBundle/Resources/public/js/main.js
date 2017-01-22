@@ -150,14 +150,18 @@ $(function() {
     //      mise à jour des éléments
 
 
-    // Récupère l'utilisateur courant à chaque chargement de page depuis le local storage
-    currentUserStorage.getCurrentUser();
+    // Récupèration de l'ensemble des données des bases locales
+    usersStorage.getAll();
+    currentUserStorage.getAll();
+    observationStorage.getAll();
+
+    currentUserStorage.recoverCurrentUser();
     if (Connexion.isConnected()) {
         // Je teste l'existence d'un stockage local via la présence de la dernière date de synchronisation (updateStorage)
         updateStorage.getAll();
         if (updateStorage.getLastUpdate != null) { // Si le stockage local existe,
             // Je teste l'existence d'un stockage local d'observation (observationStorage)
-            observationStorage.getAll();
+
             if(observationStorage.coll!=null) { // Si le stockage local d'observation existe
                 console.log("Le Stockage local OBSERVATION trouvé -- Lancement Synchronisation avec le serveur");
                 // Je lance la synchronisation avec le Serveur
@@ -183,7 +187,7 @@ $(function() {
     gestionFormulaireRechercheUtilisateur();
     gestionFormulaireAjoutObservation();
     afficheMessageDepuisDom();
-
+    gestionMesObservations();
 
 
 });
