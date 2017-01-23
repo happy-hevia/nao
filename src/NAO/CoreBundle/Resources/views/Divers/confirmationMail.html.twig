@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Confirmer son compte
+{% endblock %}
+
+{% block body %}
+    {% if etat == true %}
+        <div class="alert alert-success">Votre adresse email a été confirmée, vous pouvez mainenant vous connecter !</div>
+    {% else %}
+        <div class="alert alert-danger">Impossible de trouver votre compte, merci d'essayer de créer un nouveau compte ou contactez le service technique !</div>
+    {% endif %}
+{% endblock %}
+
+
+

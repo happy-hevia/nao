@@ -12,6 +12,7 @@ namespace NAO\CoreBundle\Services;
 use Doctrine\ORM\EntityManager;
 use NAO\CoreBundle\Entity\Observation;
 use NAO\CoreBundle\Entity\Utilisateur;
+use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Config\Tests\Util\Validator;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,12 +30,17 @@ class GestionFormulaire
     private $observation;
     private $formUtilisateur;
     private $formObservation;
+    private $templating;
+    private $mailer;
 
-    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator)
+    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator, \Swift_Mailer $mailer, TwigEngine $templating)
     {
         $this->formFactory = $formFactory;
         $this->entityManager = $entityManager;
         $this->validator = $validator;
+        $this->mailer = $mailer;
+        $this->templating = $templating;
+
         $this->utilisateur = new Utilisateur();
         $this->observation = new Observation();
 
@@ -85,6 +91,15 @@ class GestionFormulaire
             $em = $this->entityManager;
             $em->persist($this->utilisateur);
             $em->flush($this->utilisateur);
+
+            //            On envoie l'email
+            $message = \Swift_Message::newInstance()
+                ->setSubject("NAO : Confirmer votre adresse mail")
+                ->setFrom('naoconfirmation@gmail.com')
+                ->setTo($this->utilisateur->getEmail())
+                ->setBody($this->templating->renderResponse('@NAOCore/mail/mail.html.twig', array('utilisateur' => $this->utilisateur ))->getContent(), 'text/html');
+
+            $this->mailer->send($message);
 
             return "valide";
         }
@@ -287,5 +302,33 @@ class GestionFormulaire
         $this->entityManager->flush();
 
         return "true";
+    }
+
+    /**
+     * @param $request
+     * @param $code
+     *
+     * Permet de vérifier que l'email renseigné lors du formulaire d'inscription est correct
+     */
+    public function confirmerMail($request, $code)
+    {
+        //        récupère l'utilisateur concernée
+        $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByMailCode($code);
+
+        //        Si l'utilisateur exite
+        if (isset($utilisateur[0]) && $utilisateur[0] != null) {
+            //        On modifie le statut
+            $utilisateur[0]->setEmailValide(true);
+
+            //        On enregistre dans la bdd
+            $this->entityManager->persist($utilisateur[0]);
+            $this->entityManager->flush();
+
+            return true;
+
+        } else{
+            //            Si l'utilisateur n'exite pas retourne false
+            return false;
+        }
     }
 }

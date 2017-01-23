@@ -98,4 +98,19 @@ class UtilisateurController extends Controller
         return $this->render('@NAOCore/formulaire/ligneUtilisateur.html.twig', array('user' => $user));
     }
 
+    /**
+     * Permet de confirmer son mail depuis l'email de confirmation
+     *
+     * @Route("/confirmer-mail/{code}", name="utilisateur_confirmer_email")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @return Response
+     */
+    public function confirmerEmailAction(Request $request, $code)
+    {
+        $etat = $this->get('nao_core.gestion_formulaire')->confirmerMail($request, $code);
+
+        return $this->render('@NAOCore/Divers/confirmationMail.html.twig', array('etat' => $etat));
+    }
+
 }
