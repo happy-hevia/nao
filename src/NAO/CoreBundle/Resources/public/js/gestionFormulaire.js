@@ -296,8 +296,6 @@ function activationDescriptionEspece() {
 
 // Formulaire d'ajout d'observation
 // @todo vérifier que l'espèce existe bien
-// @todo autocomplétion espèce
-// @todo emplacement actuel
 
 // formulaire de validation espèce
 /**
@@ -313,28 +311,53 @@ function gestionPageValidation() {
         currentUserStorage.recoverCurrentUser();
         var emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
 
-        var $this = $(this); // L'objet jQuery du formulaire
-        // Envoi de la requête HTTP en mode asynchrone
-        $.ajax({
-            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            url: $this.data('action'), // Le nom du fichier indiqué dans le formulaire
-            type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
-            data: {
-                id: id,
-                nouveaustatut: nouveauStatut,
-                valideur: emailUtilisateur
-            },
-            success: function (data) { // Je récupère la réponse
-                if (data === "true"){
-                    setMessage("le statut a bien été modifié");
-                    // Je rafraichis la page validation
-                    window.location.reload();
-                } else {
-                    setMessage("Impossible de modifier le statut");
-                }
+        // Je change récupère l'Id de l'observation
+        var observation = observationStorage.getById(id);
+        if (observation != false) {
+            // Je mets à jour les champs de l'observation concernée
+            observation.valideur = emailUtilisateur;
+            observation.statut=nouveauStatut;
+            observation.lastUpdate.timestamp = Math.round(new Date().valueOf()/1000);
+            // Je mets à jour la base locale
+            observationStorage.setAll(observationStorage.coll);
+            updateStorage.update();
+            // J'informe l'utilisateur que le statut a bien été modifié
+            setMessage("le statut a bien été modifié");
 
+            // Je positionne l'indicateur de synchronisation local -> Serveur à sync_todo
+            syncState="sync_todo";
+            // Je mets à jour l'affichage
+            updateDOMElementVisibility();
+            // Si on est connecté à internet, on lance la synchronisation
+            if (Connexion.isConnected()) {
+                console.log("lancement de la synchronisation");
+                var $this = $(this); // L'objet jQuery du formulaire
+                // Envoi de la requête HTTP en mode asynchrone
+                $.ajax({
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    url: $this.data('action'), // Le nom du fichier indiqué dans le formulaire
+                    type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
+                    data: {
+                        id: id,
+                        nouveaustatut: nouveauStatut,
+                        valideur: emailUtilisateur
+                    },
+                    success: function (data) { // Je récupère la réponse
+                        if (data === "true"){
+
+                        } else {
+                            setMessage("Impossible de modifier le statut");
+                        }
+
+                    }
+                });
+                synchronizeObservation();
             }
-        });
+            // Je rafraichis la page validation
+            window.location.reload();
+        }
+        /**
+**/
     });
     //Lorsque on clique sur un nom d'oiseau
     $('.observation_oiseau__').click(function() {

@@ -1,7 +1,9 @@
 /**
  * Created by marcd on 22/01/2017.
  */
-gestionMesObservations();
+$(function() {
+    gestionMesObservations();
+});
 
 function gestionMesObservations() {
     // Je récupère l'utilisateur courant
@@ -25,7 +27,7 @@ function gestionMesObservations() {
                     ligneObservation+="<td>En attente de Validation</td>";
                     break;
                 case 'inValidated':
-                    ligneObservation+="<td>Non validée</td>";
+                    ligneObservation+="<td>Rejetée</td>";
                     break;
             }
 

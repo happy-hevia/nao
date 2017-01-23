@@ -46,8 +46,10 @@ Connexion.initListener = function() {
     };
     Offline.on('up', function(){
         Connexion.connecter();
-        console.log("\tPASSAGE EN MODE CONNECTE");
         updateDOMElementVisibility();
+        console.log("\tPASSAGE EN MODE CONNECTE");
+        // On synchronise la base locale -> Serveur
+        synchronizeObservation();
     });
     Offline.on('down', function(){
         Connexion.deconnecter();

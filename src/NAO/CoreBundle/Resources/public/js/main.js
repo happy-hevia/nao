@@ -187,7 +187,7 @@ $(function() {
     gestionFormulaireRechercheUtilisateur();
     gestionFormulaireAjoutObservation();
     afficheMessageDepuisDom();
-    gestionMesObservations();
+    //gestionMesObservations();
 
 
 });

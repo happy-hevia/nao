@@ -47,7 +47,7 @@ function fillTabObserver() {
     var tableContent;
     for (var observation in observations) {
         var distance = "inconnu";
-        tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].statut + "' data-oiseau='" +  cleanClassName(observations[observation].oiseau) + "' ><td data-time='" + observations[observation].dateCreation + "'>" + observations[observation].oiseau + " - " + observations[observation].observateur + "</td >" +
+        tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].statut + "' data-oiseau='" +  cleanClassName(observations[observation].oiseau) + "' ><td data-id='" + observations[observation].id + "'>" + observations[observation].oiseau + " - " + observations[observation].observateur + "</td >" +
             "<td >" + observations[observation].latitude + ", " + observations[observation].longitude + "</td >" +
             "<td class='cellule-distance' data-latitude='" + observations[observation].latitude + "' data-longitude ='" + observations[observation].longitude + "'>" + distance + "</td ></tr>";
     }
@@ -85,7 +85,7 @@ function affichageInformationObservation() {
         //    On récupère les informations de l'observation
         observationStorage.getAll();
         var observations = observationStorage.coll;
-        var observation = observations[$(this).data('time')];
+        var observation = observationStorage.getById($(this).data('id'));
 
         //    On récupère la date de l'observation
         var dateObservation = new Date(observation.dateCreation);

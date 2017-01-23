@@ -9,25 +9,27 @@ NAO - Validation des observations
                 <h1 class="panel-title" >Observations à valider</h1>
             </div >
             <div class="panel-body" >
-                <table class="table table-striped">
+                <table class="table table-striped" id="observationsAValider_table__">
                     <tr>
                         <th>Espèce</th>
                         <th>Latitude</th>
                         <th>Longitude</th>
                         <th>Observée le</th>
-                        <th>Par</th>
                         <th>Statut</th>
                     </tr>
-                    {% for observation in observations %}
+                    {#{% for observation in observations %}
                         <tr >
                             {% include '@NAOCore/formulaire/ligneObservation.html.twig' %}
                         </tr >
-                    {% endfor %}
+                    {% endfor %}#}
                 </table >
             </div >
         </div >
     </div >
 {% endblock %}
 {% block javascripts %}
+    <script>
+        var pathValidationObservation = "{{ path('observation_change_statut') }}";
+    </script>
     <script src="{{ asset('bundles/naocore/js/page-validation.js') }}" ></script >
 {% endblock %}
