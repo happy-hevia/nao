@@ -73,6 +73,11 @@ class GestionFormulaire
             $this->utilisateur->setDroit("particulier"); // définit l'utilisateur comme particulier
             $this->utilisateur->setDateCreation(new \DateTime()); // remplit la date de création à l'heure actuelle
 
+//            On crée le code pour la confirmation par mail
+            $this->utilisateur->setMailCode(md5($this->utilisateur->getEmail()));
+            $this->utilisateur->setEmailValide(false);
+
+
 //            On encode le mot de passe
             $this->utilisateur->setMdp(md5($this->utilisateur->getMdp()));
             $this->utilisateur->setMdpConfirmation(md5($this->utilisateur->getMdpConfirmation()));
