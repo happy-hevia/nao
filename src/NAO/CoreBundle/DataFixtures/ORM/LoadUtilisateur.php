@@ -28,6 +28,7 @@ class LoadUtilisateur implements FixtureInterface
         $particulier->setMentions(true);
         $particulier->setPseudo("Boby");
         $particulier->setDateCreation(new \DateTime());
+        $particulier->setEmailValide(true);
 
 //        Création d'un naturaliste
         $naturaliste = new Utilisateur();
@@ -40,6 +41,7 @@ class LoadUtilisateur implements FixtureInterface
         $naturaliste->setMentions(true);
         $naturaliste->setPseudo("Totoff");
         $naturaliste->setDateCreation(new \DateTime());
+        $naturaliste->setEmailValide(true);
 
 //        Création d'un administrateur
         $administrateur = new Utilisateur();
@@ -52,6 +54,7 @@ class LoadUtilisateur implements FixtureInterface
         $administrateur->setMentions(true);
         $administrateur->setPseudo("Cocotte");
         $administrateur->setDateCreation(new \DateTime());
+        $administrateur->setEmailValide(true);
 
 //        Persist
         $manager->persist($particulier);
