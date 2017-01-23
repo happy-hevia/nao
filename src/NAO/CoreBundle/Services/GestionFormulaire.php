@@ -30,16 +30,14 @@ class GestionFormulaire
     private $observation;
     private $formUtilisateur;
     private $formObservation;
-    private $templating;
     private $mailer;
 
-    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator, \Swift_Mailer $mailer, TwigEngine $templating)
+    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator, \Swift_Mailer $mailer)
     {
         $this->formFactory = $formFactory;
         $this->entityManager = $entityManager;
         $this->validator = $validator;
         $this->mailer = $mailer;
-        $this->templating = $templating;
 
         $this->utilisateur = new Utilisateur();
         $this->observation = new Observation();
@@ -92,16 +90,7 @@ class GestionFormulaire
             $em->persist($this->utilisateur);
             $em->flush($this->utilisateur);
 
-            //            On envoie l'email
-            $message = \Swift_Message::newInstance()
-                ->setSubject("NAO : Confirmer votre adresse mail")
-                ->setFrom('naoconfirmation@gmail.com')
-                ->setTo($this->utilisateur->getEmail())
-                ->setBody($this->templating->renderResponse('@NAOCore/mail/mail.html.twig', array('utilisateur' => $this->utilisateur ))->getContent(), 'text/html');
-
-            $this->mailer->send($message);
-
-            return "valide";
+            return $this->utilisateur;
         }
 
         return $this->formUtilisateur;
@@ -130,6 +119,11 @@ class GestionFormulaire
             }
         } else{
 //            Si l'utilisateur n'exite pas retourne false
+            return "false";
+        }
+
+//        Si le compte n'a pas été validé, on retourne false
+        if (!$utilisateur[0]->getEmailValide()){
             return "false";
         }
 
@@ -305,15 +299,15 @@ class GestionFormulaire
     }
 
     /**
-     * @param $request
      * @param $code
      *
      * Permet de vérifier que l'email renseigné lors du formulaire d'inscription est correct
+     * @return bool
      */
-    public function confirmerMail($request, $code)
+    public function confirmerMail( $code)
     {
         //        récupère l'utilisateur concernée
-        $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByMailCode($code);
+        $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByMailCode($code);
 
         //        Si l'utilisateur exite
         if (isset($utilisateur[0]) && $utilisateur[0] != null) {
