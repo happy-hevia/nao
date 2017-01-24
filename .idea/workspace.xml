@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aea46f9-8220-48a1-b216-abd42da07253" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587d45bd2847b.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587d45f8f3097.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587d4621c2d3e.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587d466557e6c.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587e0a362a48d.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587e0d5dbe68f.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587e0daf95fb3.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587e0e1d026c5.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587e11fe8af35.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587e12ac9a76a.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587e12f04f6fb.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/images/observation/587e1c4075c0c.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/nao.iml" afterPath="$PROJECT_DIR$/.idea/nao.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/DataFixtures/ORM/LoadUtilisateur.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/DataFixtures/ORM/LoadUtilisateur.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/observationController.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/observationController.php" />
     </list>
     <ignored path="nao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,113 +37,35 @@
     <favorites_list name="nao" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="UtilisateurController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/UtilisateurController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.692308">
-              <caret line="60" column="71" selection-start-line="60" selection-start-column="71" selection-end-line="60" selection-end-column="71" />
+            <state vertical-scroll-proportion="-7.1923075">
+              <caret line="70" column="23" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Observation.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-21.576923">
+              <caret line="144" column="6" selection-start-line="144" selection-start-column="6" selection-end-line="144" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ObservationController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2729927">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
               <folding>
-                <element signature="e#1670#1710#0#PHP" expanded="true" />
-                <element signature="e#3458#3506#0#PHP" expanded="true" />
-                <element signature="e#4030#4074#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GestionFormulaire.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.692307">
-              <caret line="126" column="27" selection-start-line="126" selection-start-column="27" selection-end-line="126" selection-end-column="27" />
-              <folding>
-                <element signature="e#128#159#0#PHP" expanded="true" />
-                <element signature="e#3673#3700#1#PHP" expanded="true" />
-                <element signature="e#5419#5446#1#PHP" expanded="true" />
-                <element signature="e#7488#7515#1#PHP" expanded="true" />
-                <element signature="e#8170#8197#1#PHP" expanded="true" />
-                <element signature="e#10356#10383#1#PHP" expanded="true" />
-                <element signature="e#11151#11178#1#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/config/services.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="92" selection-start-line="3" selection-start-column="92" selection-end-line="3" selection-end-column="92" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="confirmationMail.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Divers/confirmationMail.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.3076923">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Utilisateur.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Utilisateur.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.384615">
-              <caret line="403" column="34" selection-start-line="403" selection-start-column="20" selection-end-line="403" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoadUtilisateur.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/DataFixtures/ORM/LoadUtilisateur.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5269168">
-              <caret line="51" column="67" selection-start-line="51" selection-start-column="67" selection-end-line="51" selection-end-column="67" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mail.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/mail/mail.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6385542">
-              <caret line="206" column="388" selection-start-line="206" selection-start-column="388" selection-end-line="206" selection-end-column="388" />
-              <folding>
-                <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1485206998619" expanded="true" signature="289:447" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="324:436" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="5531:5564" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="5535:5564" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="5539:5564" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="5717:5812" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="5750:5812" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="5787:5812" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="6835:6847" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="10146:10179" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="10150:10179" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="10154:10179" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="10332:10427" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="10365:10427" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="10402:10427" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="11466:11478" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="18378:18427" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="18487:18885" placeholder="..." />
-                <marker date="1485206998619" expanded="false" signature="18705:18795" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="18796:18885" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="23284:23317" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="23288:23317" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="23292:23317" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="23470:23565" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="23503:23565" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="23540:23565" placeholder="..." />
-                <marker date="1485206998619" expanded="true" signature="24601:24613" placeholder="..." />
+                <element signature="e#43#81#0#PHP" expanded="true" />
+                <element signature="e#952#995#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,6 +75,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="amelioration" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -154,6 +93,7 @@
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/UtilisateurController.php" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/DataFixtures/ORM/LoadUtilisateur.php" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php" />
       </list>
     </option>
   </component>
@@ -194,6 +134,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -302,6 +244,96 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="Entity" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -336,16 +368,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="SearchEverywhereHistoryKey" value="ser&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;serv&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;service&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;config.yml&#9;FILE&#9;file://C:/wamp/www/nao/app/config/config.yml&#10;services.ym&#9;FILE&#9;file://C:/wamp/www/nao/app/config/services.yml&#10;Utilisate&#9;null&#9;null&#10;Utilisa&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Controller/UtilisateurController.php" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -368,6 +426,11 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -411,24 +474,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16791044" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1017316" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5170576" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="676" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27735645" sideWeight="0.49573562" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19934994" sideWeight="0.48294243" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1663113" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27345416" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27735645" sideWeight="0.49573562" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19934994" sideWeight="0.48294243" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="676" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.49791667" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -436,6 +498,7 @@
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17910448" sideWeight="0.29127726" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -453,7 +516,49 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/UtilisateurController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="71" selection-start-line="60" selection-start-column="71" selection-end-line="60" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="27" selection-start-line="126" selection-start-column="27" selection-end-line="126" selection-end-column="27" />
+          <folding>
+            <element signature="e#128#159#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="92" selection-start-line="3" selection-start-column="92" selection-end-line="3" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Divers/confirmationMail.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Utilisateur.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="403" column="34" selection-start-line="403" selection-start-column="20" selection-end-line="403" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/DataFixtures/ORM/LoadUtilisateur.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -461,39 +566,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/mail/mail.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="206" column="388" selection-start-line="206" selection-start-column="388" selection-end-line="206" selection-end-column="388" />
+          <folding>
+            <marker date="1485256506064" expanded="true" signature="289:447" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="324:436" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5531:5564" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5535:5564" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5539:5564" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5717:5812" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5750:5812" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5787:5812" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="6835:6847" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10146:10179" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10150:10179" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10154:10179" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10332:10427" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10365:10427" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10402:10427" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="11466:11478" placeholder="..." />
+            <marker date="1485256506064" expanded="false" signature="18378:18427" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="18487:18885" placeholder="..." />
+            <marker date="1485256506064" expanded="false" signature="18705:18795" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="18796:18885" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23284:23317" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23288:23317" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23292:23317" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23470:23565" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23503:23565" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23540:23565" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="24601:24613" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Documents/dessin/ec891b6c-e04c-4204-b0f4-05961d93d3df.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49635038">
           <caret line="19" column="86" selection-start-line="0" selection-start-column="0" selection-end-line="279" selection-end-column="14" />
-          <folding>
-            <marker date="1485204648899" expanded="true" signature="287:417" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="317:408" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="4786:4815" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="4790:4815" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="4794:4815" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="4960:5043" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="4989:5043" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="5022:5043" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="6062:6074" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="8602:8631" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="8606:8631" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="8610:8631" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="8776:8859" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="8805:8859" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="8838:8859" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="9894:9906" placeholder="..." />
-            <marker date="1485204648899" expanded="false" signature="14464:14513" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="14573:14741" placeholder="..." />
-            <marker date="1485204648899" expanded="false" signature="14637:14727" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="14728:14741" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="17461:17490" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="17465:17490" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="17469:17490" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="17635:17718" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="17664:17718" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="17697:17718" placeholder="..." />
-            <marker date="1485204648899" expanded="true" signature="18750:18762" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -501,7 +620,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23909986">
           <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -509,50 +627,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0998594">
           <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/mail/mail.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6385542">
-          <caret line="206" column="388" selection-start-line="206" selection-start-column="388" selection-end-line="206" selection-end-column="388" />
-          <folding>
-            <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1485206998619" expanded="true" signature="289:447" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="324:436" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="5531:5564" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="5535:5564" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="5539:5564" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="5717:5812" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="5750:5812" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="5787:5812" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="6835:6847" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="10146:10179" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="10150:10179" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="10154:10179" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="10332:10427" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="10365:10427" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="10402:10427" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="11466:11478" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="18378:18427" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="18487:18885" placeholder="..." />
-            <marker date="1485206998619" expanded="false" signature="18705:18795" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="18796:18885" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="23284:23317" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="23288:23317" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="23292:23317" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="23470:23565" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="23503:23565" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="23540:23565" placeholder="..." />
-            <marker date="1485206998619" expanded="true" signature="24601:24613" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Divers/confirmationMail.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3076923">
+        <state vertical-scroll-proportion="0.0">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding />
         </state>
@@ -574,47 +654,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/UtilisateurController.php">
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/mail/mail.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.692308">
-          <caret line="60" column="71" selection-start-line="60" selection-start-column="71" selection-end-line="60" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.9446254">
+          <caret line="206" column="388" selection-start-line="206" selection-start-column="388" selection-end-line="206" selection-end-column="388" />
           <folding>
-            <element signature="e#1670#1710#0#PHP" expanded="true" />
-            <element signature="e#3458#3506#0#PHP" expanded="true" />
-            <element signature="e#4030#4074#0#PHP" expanded="true" />
+            <marker date="1485256506064" expanded="true" signature="289:447" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="324:436" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5531:5564" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5535:5564" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5539:5564" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5717:5812" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5750:5812" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="5787:5812" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="6835:6847" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10146:10179" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10150:10179" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10154:10179" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10332:10427" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10365:10427" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="10402:10427" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="11466:11478" placeholder="..." />
+            <marker date="1485256506064" expanded="false" signature="18378:18427" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="18487:18885" placeholder="..." />
+            <marker date="1485256506064" expanded="false" signature="18705:18795" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="18796:18885" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23284:23317" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23288:23317" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23292:23317" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23470:23565" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23503:23565" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="23540:23565" placeholder="..." />
+            <marker date="1485256506064" expanded="true" signature="24601:24613" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307">
-          <caret line="126" column="27" selection-start-line="126" selection-start-column="27" selection-end-line="126" selection-end-column="27" />
-          <folding>
-            <element signature="e#128#159#0#PHP" expanded="true" />
-            <element signature="e#3673#3700#1#PHP" expanded="true" />
-            <element signature="e#5419#5446#1#PHP" expanded="true" />
-            <element signature="e#7488#7515#1#PHP" expanded="true" />
-            <element signature="e#8170#8197#1#PHP" expanded="true" />
-            <element signature="e#10356#10383#1#PHP" expanded="true" />
-            <element signature="e#11151#11178#1#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Utilisateur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.384615">
-          <caret line="403" column="34" selection-start-line="403" selection-start-column="20" selection-end-line="403" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/DataFixtures/ORM/LoadUtilisateur.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5269168">
+        <state vertical-scroll-proportion="0.752443">
           <caret line="51" column="67" selection-start-line="51" selection-start-column="67" selection-end-line="51" selection-end-column="67" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Utilisateur.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69543976">
+          <caret line="403" column="34" selection-start-line="403" selection-start-column="20" selection-end-line="403" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.027687296">
+          <caret line="126" column="27" selection-start-line="126" selection-start-column="27" selection-end-line="126" selection-end-column="27" />
+          <folding>
+            <element signature="e#128#159#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/UtilisateurController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075">
+          <caret line="70" column="23" selection-start-line="70" selection-start-column="23" selection-end-line="70" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.8063241">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.576923">
+          <caret line="144" column="6" selection-start-line="144" selection-start-column="6" selection-end-line="144" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2729927">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="e#43#81#0#PHP" expanded="true" />
+            <element signature="e#952#995#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
