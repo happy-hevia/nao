@@ -47,7 +47,7 @@ function fillTabObserver() {
     var tableContent;
     for (var observation in observations) {
         var distance = "inconnu";
-        tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].statut + "' data-oiseau='" +  cleanClassName(observations[observation].oiseau) + "' ><td data-id='" + observations[observation].id + "'>" + observations[observation].oiseau + " - " + observations[observation].observateur + "</td >" +
+        tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].statut + "' data-oiseau='" + cleanClassName(observations[observation].oiseau) + "' ><td data-id='" + observations[observation].id + "'>" + observations[observation].oiseau + " - " + observations[observation].observateur + "</td >" +
             "<td >" + observations[observation].latitude + ", " + observations[observation].longitude + "</td >" +
             "<td class='cellule-distance' data-latitude='" + observations[observation].latitude + "' data-longitude ='" + observations[observation].longitude + "'>" + distance + "</td ></tr>";
     }
@@ -100,6 +100,16 @@ function affichageInformationObservation() {
         $('#form-observation__longitude').val(observation.longitude);
         $('#form-observation__espece').text(observation.oiseau);
         $('#form-observation__date').text(dateFormatee);
+
+        //si il y a une image perso on l'affiche
+
+        $.get(window.location.origin + "/nao/web/images/observation/" + observation.imageName)
+            .done(function () {
+                $('#observation-image').attr('src', window.location.origin + "/nao/web/images/observation/" + observation.imageName);
+
+            }).fail(function () {
+            $('#observation-image').attr('src', window.location.origin + "/nao/web/bundles/naocore/images/v3-500.png");
+        })
 
 
         //    ouvre la modal information sur l'observation
@@ -207,6 +217,16 @@ function onclick(observation) {
     $('#form-observation__longitude').val(observation.longitude);
     $('#form-observation__espece').text(observation.oiseau);
     $('#form-observation__date').text(dateFormatee);
+
+    //si il y a une image perso on l'affiche
+
+    $.get(window.location.origin + "/nao/web/images/observation/" + observation.imageName)
+        .done(function () {
+            $('#observation-image').attr('src', window.location.origin + "/nao/web/images/observation/" + observation.imageName);
+        }).fail(function () {
+        $('#observation-image').attr('src', window.location.origin + "/nao/web/bundles/naocore/images/v3-500.png");
+
+    })
 
 
     //    ouvre la modal information sur l'observation
