@@ -30,13 +30,22 @@ class UtilisateurController extends Controller
      */
     public function nouveauAction(Request $request)
     {
-        $form = $this->get('nao_core.gestion_formulaire')->gestionFormulaireCreation($request);
+        $data = $this->get('nao_core.gestion_formulaire')->gestionFormulaireCreation($request);
 
-        if ($form === "valide") {
+        if ($data instanceof Utilisateur) {
+            //            On envoie l'email
+//            $message = \Swift_Message::newInstance()
+            //                ->setSubject("NAO : Confirmer votre adresse mail")
+            //                ->setFrom('naoconfirmation@gmail.com')
+            //                ->setTo($data->getEmail())
+            //                ->setBody($this->get('templating')->renderResponse('@NAOCore/mail/mail.html.twig', array('utilisateur' => $data ))->getContent(), 'text/html');
+            //
+            //            $this->get('mailer')->send($message);
+
             return new Response("valide");
         }
 
-        return $this->render('@NAOCore/formulaire/creation.html.twig', array('formulaireCreation' => $form->createView()));
+        return $this->render('@NAOCore/formulaire/creation.html.twig', array('formulaireCreation' => $data->createView()));
     }
 
     /**
@@ -96,6 +105,22 @@ class UtilisateurController extends Controller
         $user = $this->get('nao_core.gestion_formulaire')->utilisateurParEmail($request);
 
         return $this->render('@NAOCore/formulaire/ligneUtilisateur.html.twig', array('user' => $user));
+    }
+
+    /**
+     * Permet de confirmer son mail depuis l'email de confirmation
+     *
+     * @Route("/confirmer-mail/{code}", defaults={"code" = "null"}, name="utilisateur_confirmer_email")
+     * @Method({"GET", "POST"})
+     * @param Request $request
+     * @param $code
+     * @return Response
+     */
+    public function confirmerEmailAction(Request $request, $code = "")
+    {
+        $etat = $this->get('nao_core.gestion_formulaire')->confirmerMail( $code);
+
+        return $this->render('@NAOCore/Divers/confirmationMail.html.twig', array('etat' => $etat));
     }
 
 }

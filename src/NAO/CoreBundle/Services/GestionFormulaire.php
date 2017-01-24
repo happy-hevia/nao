@@ -12,6 +12,7 @@ namespace NAO\CoreBundle\Services;
 use Doctrine\ORM\EntityManager;
 use NAO\CoreBundle\Entity\Observation;
 use NAO\CoreBundle\Entity\Utilisateur;
+use Symfony\Bundle\TwigBundle\TwigEngine;
 use Symfony\Component\Config\Tests\Util\Validator;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,12 +30,15 @@ class GestionFormulaire
     private $observation;
     private $formUtilisateur;
     private $formObservation;
+    private $mailer;
 
-    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator)
+    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator, \Swift_Mailer $mailer)
     {
         $this->formFactory = $formFactory;
         $this->entityManager = $entityManager;
         $this->validator = $validator;
+        $this->mailer = $mailer;
+
         $this->utilisateur = new Utilisateur();
         $this->observation = new Observation();
 
@@ -73,6 +77,11 @@ class GestionFormulaire
             $this->utilisateur->setDroit("particulier"); // définit l'utilisateur comme particulier
             $this->utilisateur->setDateCreation(new \DateTime()); // remplit la date de création à l'heure actuelle
 
+//            On crée le code pour la confirmation par mail
+            $this->utilisateur->setMailCode(md5($this->utilisateur->getEmail()));
+            $this->utilisateur->setEmailValide(false);
+
+
 //            On encode le mot de passe
             $this->utilisateur->setMdp(md5($this->utilisateur->getMdp()));
             $this->utilisateur->setMdpConfirmation(md5($this->utilisateur->getMdpConfirmation()));
@@ -81,7 +90,7 @@ class GestionFormulaire
             $em->persist($this->utilisateur);
             $em->flush($this->utilisateur);
 
-            return "valide";
+            return $this->utilisateur;
         }
 
         return $this->formUtilisateur;
@@ -110,6 +119,11 @@ class GestionFormulaire
             }
         } else{
 //            Si l'utilisateur n'exite pas retourne false
+            return "false";
+        }
+
+//        Si le compte n'a pas été validé, on retourne false
+        if (!$utilisateur[0]->getEmailValide()){
             return "false";
         }
 
@@ -282,5 +296,33 @@ class GestionFormulaire
         $this->entityManager->flush();
 
         return "true";
+    }
+
+    /**
+     * @param $code
+     *
+     * Permet de vérifier que l'email renseigné lors du formulaire d'inscription est correct
+     * @return bool
+     */
+    public function confirmerMail( $code)
+    {
+        //        récupère l'utilisateur concernée
+        $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByMailCode($code);
+
+        //        Si l'utilisateur exite
+        if (isset($utilisateur[0]) && $utilisateur[0] != null) {
+            //        On modifie le statut
+            $utilisateur[0]->setEmailValide(true);
+
+            //        On enregistre dans la bdd
+            $this->entityManager->persist($utilisateur[0]);
+            $this->entityManager->flush();
+
+            return true;
+
+        } else{
+            //            Si l'utilisateur n'exite pas retourne false
+            return false;
+        }
     }
 }

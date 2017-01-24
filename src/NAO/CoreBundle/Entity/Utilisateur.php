@@ -117,6 +117,20 @@ class Utilisateur
      */
     private $date_creation;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mail_code", type="string", length=255)
+     */
+    private $mailCode;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="email_valide", type="boolean", length=255)
+     */
+    private $emailValide;
+
 
     /**
      * Get id
@@ -342,5 +356,53 @@ class Utilisateur
     public function getMentions()
     {
         return $this->mentions;
+    }
+
+    /**
+     * Set mailCode
+     *
+     * @param string $mailCode
+     *
+     * @return Utilisateur
+     */
+    public function setMailCode($mailCode)
+    {
+        $this->mailCode = $mailCode;
+
+        return $this;
+    }
+
+    /**
+     * Get mailCode
+     *
+     * @return string
+     */
+    public function getMailCode()
+    {
+        return $this->mailCode;
+    }
+
+    /**
+     * Set emailValide
+     *
+     * @param boolean $emailValide
+     *
+     * @return Utilisateur
+     */
+    public function setEmailValide($emailValide)
+    {
+        $this->emailValide = $emailValide;
+
+        return $this;
+    }
+
+    /**
+     * Get emailValide
+     *
+     * @return boolean
+     */
+    public function getEmailValide()
+    {
+        return $this->emailValide;
     }
 }
