@@ -31,9 +31,9 @@ class ObservationController extends Controller
 
         if ($form === "valide") {
             return new Response("valide");
+        } else {
+            return $this->render('@NAOCore/formulaire/observation.html.twig', array('formulaireObservation' => $form->createView()));
         }
-
-        return $this->render('@NAOCore/formulaire/observation.html.twig', array('formulaireObservation' => $form->createView()));
     }
     /**
      * Permet de changer le statut d'une observation
@@ -60,7 +60,6 @@ class ObservationController extends Controller
     public function synchronisationAction(Request $request)
     {
         $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservation($request);
-
         return new Response($retour);
     }
 
