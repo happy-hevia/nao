@@ -6,6 +6,7 @@ $(function() {
     activationDescriptionEspece();
     loadObservationsAValider();
     gestionPageValidation();
+    affichageInformationObservation('td.observation_oiseau');
 });
 function loadObservationsAValider() {
     // Je récupère l'utilisateur courant
@@ -15,11 +16,10 @@ function loadObservationsAValider() {
         // On parcourt la liste et pour chaque item on ajoute une ligne dans le tableau
         for (var i=0; i<observationsAValider.length; i++) {
             var ligneObservation="<tr>";
-            ligneObservation+="<td>"+observationsAValider[i].oiseau+"</td>";
+            ligneObservation+="<td class='observation_oiseau' data-id='"+observationsAValider[i].id+"'>"+observationsAValider[i].oiseau+"</td>";
             ligneObservation+="<td>"+observationsAValider[i].latitude+"</td>";
             ligneObservation+="<td>"+observationsAValider[i].longitude+"</td>";
-            console.log(observationsAValider[i].dateCreation.timestamp);
-            var date = new Date(observationsAValider[i].dateCreation.timestamp*1000);
+            var date = new Date(observationsAValider[i].dateCreation*1000);
             ligneObservation+="<td>"+date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+"</td>";
             ligneObservation+="<td>";
             ligneObservation+="<form action='"+pathValidationObservation+"' method='post' >";

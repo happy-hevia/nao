@@ -182,8 +182,23 @@ observationStorage.loadSuccess = function(data) {
     // Lecture de chacun des éléments
     data.forEach(function(element) {
         // J'ajoute l'élément au stockage local
-        observationStorage.add(element);
+        var dateCreation = parseFloat(element.dateCreation);
+        var latitude=element.latitude;
+        var longitude=element.longitude;
+        var oiseau=element.oiseau;
+        var observateur=element.observateur;
+
+
+        var observation = new Observation(dateCreation, latitude, longitude, oiseau, observateur);
+        observation.id = element.id;
+        observation.valideur=element.valideur;
+        observation.statut=element.statut;
+        observation.imageFile=element.imageFile;
+        observation.imageName=element.imageName;
+        observation.lastUpdate=parseFloat(element.lastUpdate);
+        observationStorage.add(observation);
     });
+    window.location.reload();
 };
 
 /**
@@ -399,10 +414,11 @@ function synchronizeObservation(){
     var observationsAjax = [];
     for (var observation in observations){
         // On transfert toutes les observations modifiées en locale
-        if (observations[observation].lastUpdate.timestamp >= last_update) {
+        if (observations[observation].lastUpdate >= last_update) {
             observationsAjax.push(observations[observation]);
         }
     }
+    console.log(observationsAjax);
     if(observationsAjax.length == 0) {
         console.log("Pas d'élément à synchroniser");
         console.log("Synchronisation avec le serveur  -- Terminée");
@@ -417,11 +433,11 @@ function synchronizeObservation(){
     // J'envois les observations aux serveur
     $.ajax({
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        url: "http://localhost/nao/web/app_dev.php/observation/synchronisation",
+        url: urlSynchronLocalServeur,
         type: "post", // La méthode indiquée dans le formulaire (get ou post)
         data: { observations : observationsAjax }, // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
         success: function (html) { // Je récupère la réponse du fichier PHP
-
+            console.log(html);
             // Je vide de la base locale
             observationStorage.clean();
             // Je lance alors la synchronisation globale Serveur-> Locale
@@ -435,6 +451,8 @@ function synchronizeObservation(){
             var dateCourrante = new Date();
             dateCourrante = dateCourrante.getTime();
             updateStorage.setAll(dateCourrante);
+            // Je rafraichis la page
+            window.location.reload();
         },
         error: function(){
             // Je définie la synchronisation comme ko en cas d'erreur
