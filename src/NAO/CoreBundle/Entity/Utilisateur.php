@@ -120,14 +120,14 @@ class Utilisateur
     /**
      * @var string
      *
-     * @ORM\Column(name="mail_code", type="string", length=255)
+     * @ORM\Column(name="mail_code", type="string", length=255, nullable=true)
      */
     private $mailCode;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="email_valide", type="boolean", length=255)
+     * @ORM\Column(name="email_valide", type="boolean", length=255, nullable=true)
      */
     private $emailValide;
 

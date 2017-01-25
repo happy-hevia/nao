@@ -1,188 +1,208 @@
 <!DOCTYPE html>
 <html lang="fr"
-      {#manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}"#}
+        {#manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}"#}
 >
-    <head>
-        <!-- META -->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {# Pour mettre les mots clés de chacune des pages #}
-        {% block meta %} {% endblock%}
+<head >
+    <!-- META -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    {# Pour mettre les mots clés de chacune des pages #}
+    {% block meta %} {% endblock %}
 
-        <!-- TITLE -->
-        {# Pour permettre la customisation des titres de chacune des pages #}
-        <title>
-            {% block title %}
-                Bienvenu(e) à Nos Amis les Oiseaux !
-            {% endblock %}
-        </title>
+    <!-- TITLE -->
+    {# Pour permettre la customisation des titres de chacune des pages #}
+    <title >
+        {% block title %}
+            Bienvenu(e) à Nos Amis les Oiseaux !
+        {% endblock %}
+    </title >
 
-        <!-- LINK -->
-        {#<link rel="manifest" href="{{ asset('bundles/naocore/manifest/manifest.appcache') }}">#}
-        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/naocore/images/favicon.ico') }}" />
-        {# Chargement des styles commun à toutes les pages #}
-        <link href="{{ asset('bundles/naocore/css/bootstrap.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('bundles/naocore/css/awesomplete.css') }}" rel="stylesheet">
-        <link href="{{ asset('bundles/naocore/css/styles.css') }}" rel="stylesheet">
-        <link rel="stylesheet" href="{{ asset('bundles/naocore/css/parsley.css') }}" >
-        {# Pour permettre le chargement des styles spécifiques à une page #}
-        {% block stylesheets %}{% endblock %}
+    <!-- LINK -->
+    {#<link rel="manifest" href="{{ asset('bundles/naocore/manifest/manifest.appcache') }}">#}
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/naocore/images/favicon.ico') }}" />
+    {# Chargement des styles commun à toutes les pages #}
+    <link href="{{ asset('bundles/naocore/css/bootstrap.min.css') }}" rel="stylesheet" >
+    <link href="{{ asset('bundles/naocore/css/awesomplete.css') }}" rel="stylesheet" >
+    <link href="{{ asset('bundles/naocore/css/styles.css') }}" rel="stylesheet" >
+    <link rel="stylesheet" href="{{ asset('bundles/naocore/css/parsley.css') }}" >
+    {# Pour permettre le chargement des styles spécifiques à une page #}
+    {% block stylesheets %}{% endblock %}
 
-        <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    </head>
-    <body>
-        <div class="container">
-            <!-- HEADER -->
-            <header class="row">
-                <div class="col-md-4 col-xs-4">
-                    <a href="{{ url('nao_accueil') }}">
-                        <img  src="{{asset('bundles/naocore/images/v3.png')}}" height="100px" alt="Nos Amis les Oiseaux - Logo">
-                    </a>
-                </div>
-                <div class="col-md-4 col-xs-4" style="display:flex;height:100px;">
-                    <h1 style="margin:auto;"><a href="{{ url('nao_accueil') }}">Nos Amis les Oiseaux</a></h1>
-                </div>
-                <div class="col-md-4 col-xs-4" style="display:flex;height:100px;">
-                    <div style="margin:auto;" class="row">
-                        <div class="col-md-12" style="display:flex;">
-                            <div style="margin:auto;" class="dropdown">
-                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    <p data-off="{'currentUser' : 'null' }">Mon Compte</p>
-                                    <p data-on="{'currentUser' : 'null'}">Identification</p>
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                    <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mon_compte') }}">Informations de compte</a></li>
-                                    <li data-on="{'currentUser': 'null' }" data-toggle="modal" data-target="#modal-login" ><a href="#">S'identifier</a></li>
-                                    <li data-on="{'currentUser': 'null', 'connexionState' : 'online'}" data-toggle="modal" data-target="#modal-sign-up" ><a href="#">Créer un compte</a></li>
-                                    <li  data-off="{'currentUser' : 'null' }"><a id="menu__deconnexion" href="#">Se déconnecter</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    {# <li><a href="#">Separated link</a></li> #}
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-12"style="display:flex;">
-                            <div style="margin:auto;">
-                                <img  data-on="{'connexionState' : 'online'}" src="{{asset('bundles/naocore/images/internet_ok.png')}}" height="20px" alt="Internet OK">
-                                <img  data-on="{'connexionState' : 'offline'}" src="{{asset('bundles/naocore/images/internet_ko.png')}}" height="20px" alt="Pas d'Internet">
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js" ></script ><![endif]-->
+</head >
+<body >
 
-                                <img  data-on="{'syncState' : 'sync_ok'}" src="{{asset('bundles/naocore/images/sync_ok.png')}}" height="20px" alt="Synchronisation OK">
-                                <img  data-on="{'syncState' : 'sync_ec'}" src="{{asset('bundles/naocore/images/sync_ec.png')}}" height="20px" alt="Synchronisation en cours">
-                                <img  data-on="{'syncState' : 'sync_ko'}" src="{{asset('bundles/naocore/images/sync_ko.png')}}" height="20px" alt="Echec Synchronisation">
-                                <img  data-on="{'syncState' : 'sync_todo'}" src="{{asset('bundles/naocore/images/sync_todo.png')}}" height="20px" alt="En attente de Synchronisation">
+<!-- HEADER -->
+<header class="row" >
+    <div class="container" >
+        <div class="col-sm-2 col-xs-4" >
+            <a href="{{ url('nao_accueil') }}" >
+                <img src="{{ asset('bundles/naocore/images/v3.png') }}" height="100px" alt="Nos Amis les Oiseaux - Logo" >
+            </a >
+        </div >
+        <div class="hidden-xs col-sm-8" style="display:flex;margin-top: 22px;" >
+            <h1 style="margin:auto;" ><a href="{{ url('nao_accueil') }}" >Nos Amis les Oiseaux</a ></h1 >
+        </div >
+        <div class="visible-xs hidden-sm col-xs-3" style="display:flex;margin-top: 22px;" >
+            <h1 style="margin:auto;" ><a href="{{ url('nao_accueil') }}" >NAO</a ></h1 >
+        </div >
+        <div class="col-sm-2 col-xs-5" style="display:flex;height:100px;" >
+            <div style="margin:auto;" class="row" >
+                <div class="col-md-12" style="display:flex;" >
+                    <div style="margin:auto;" class="dropdown" >
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" >
+                            <p data-off="{'currentUser' : 'null' }" >Mon Compte</p >
+                            <p data-on="{'currentUser' : 'null'}" >Identification</p >
+                            <span class="caret" ></span >
+                        </button >
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
+                            <li data-off="{'currentUser' : 'null' }" >
+                                <a href="{{ url('nao_mon_compte') }}" >Informations de compte</a ></li >
+                            <li data-on="{'currentUser': 'null' }" data-toggle="modal" data-target="#modal-login" >
+                                <a href="#" >S'identifier</a ></li >
+                            <li data-on="{'currentUser': 'null', 'connexionState' : 'online'}" data-toggle="modal" data-target="#modal-sign-up" >
+                                <a href="#" >Créer un compte</a ></li >
+                            <li data-off="{'currentUser' : 'null' }" >
+                                <a id="menu__deconnexion" href="#" >Se déconnecter</a ></li >
+                            <li role="separator" class="divider" ></li >
+                            {# <li><a href="#">Separated link</a></li> #}
+                        </ul >
+                    </div >
+                </div >
+                <div class="col-md-12" style="display:flex;" >
+                    <div style="margin:auto;" >
+                        <img data-on="{'connexionState' : 'online'}" src="{{ asset('bundles/naocore/images/internet_ok.png') }}" height="20px" alt="Internet OK" >
+                        <img data-on="{'connexionState' : 'offline'}" src="{{ asset('bundles/naocore/images/internet_ko.png') }}" height="20px" alt="Pas d'Internet" >
 
-                                <span data-on="{'gpsState' : 'gps_ok'}" class="glyphicon glyphicon-record" aria-hidden="true" style="color:green;"></span>
-                                <span data-on="{'gpsState' : 'gps_ko'}" class="glyphicon glyphicon-ban-circle" aria-hidden="true" style="color:red;"></span>
+                        <img data-on="{'syncState' : 'sync_ok'}" src="{{ asset('bundles/naocore/images/sync_ok.png') }}" height="20px" alt="Synchronisation OK" >
+                        <img data-on="{'syncState' : 'sync_ec'}" src="{{ asset('bundles/naocore/images/sync_ec.png') }}" height="20px" alt="Synchronisation en cours" >
+                        <img data-on="{'syncState' : 'sync_ko'}" src="{{ asset('bundles/naocore/images/sync_ko.png') }}" height="20px" alt="Echec Synchronisation" >
+                        <img data-on="{'syncState' : 'sync_todo'}" src="{{ asset('bundles/naocore/images/sync_todo.png') }}" height="20px" alt="En attente de Synchronisation" >
 
-                            </div>
-                        </div>
+                        <span data-on="{'gpsState' : 'gps_ok'}" class="glyphicon glyphicon-record" aria-hidden="true" style="color:green;" ></span >
+                        <span data-on="{'gpsState' : 'gps_ko'}" class="glyphicon glyphicon-ban-circle" aria-hidden="true" style="color:red;" ></span >
 
-                    </div>
-                </div>
-            </header>
+                    </div >
+                </div >
 
-            <!-- MENU -->
-            <div class="row">
-                <div class="col-md-12">
-                    <nav class="navbar navbar-default">
-                        <div class="navbar_header">
-                            {# Burger oblige... #}
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-control="navbar">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-                        <div id="navbar" class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li><a href="{{ url('nao_observer') }}">Observer</a></li>
-                                <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mes_observations') }}">Mes observations</a></li>
-                                <li data-on="{'currentUser' : 'naturaliste' }"><a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a></li>
-                                <li data-off="{'currentUser' : 'null' }"><a href="{{ url('nao_mon_compte') }}">Mon compte</a></li>
-                                <li data-on="{'currentUser' : 'administrateur','connexionState' : 'online' }"><a href="{{ url('nao_gestion_droits') }}">Gestion des droits</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+            </div >
+        </div >
+    </div >
+</header >
 
-                </div>
-            </div>
+<!-- MENU -->
+<div class="row" >
+    <div class="col-md-12" >
+        <nav class="navbar navbar-default" >
+            <div class="container" >
+                <div class="navbar_header" >
+                    {# Burger oblige... #}
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-control="navbar" >
+                        <span class="sr-only" >Toggle navigation</span >
+                        <span class="icon-bar" ></span >
+                        <span class="icon-bar" ></span >
+                        <span class="icon-bar" ></span >
+                    </button >
+                </div >
+                <div id="navbar" class="collapse navbar-collapse" >
+                    <ul class="nav navbar-nav" >
+                        <li ><a href="{{ url('nao_observer') }}" >Observer</a ></li >
+                        <li data-off="{'currentUser' : 'null' }" >
+                            <a href="{{ url('nao_mes_observations') }}" >Mes observations</a ></li >
+                        <li data-on="{'currentUser' : 'naturaliste' }" >
+                            <a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a >
+                        </li >
+                        <li data-off="{'currentUser' : 'null' }" >
+                            <a href="{{ url('nao_mon_compte') }}" >Mon compte</a ></li >
+                        <li data-on="{'currentUser' : 'administrateur','connexionState' : 'online' }" >
+                            <a href="{{ url('nao_gestion_droits') }}" >Gestion des droits</a ></li >
+                    </ul >
+                </div >
+            </div >
+        </nav >
+    </div >
+</div >
 
-            <!-- CONTENU DES PAGES -->
-            <div class="row">
-                {% block body %}
+<div class="container" >
 
-                {% endblock %}
+    <!-- CONTENU DES PAGES -->
+    <div class="row" >
+        {% block body %}
 
-                {# Ce bloc test sert simplement pour l'environnement de developpement, il devra être enlevé par la suite#}
-                {% block test %}
+        {% endblock %}
 
-                {% endblock %}
-                {# Il faut garder les inclusions ici #}
-                {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
-                {% include '@NAOCore/Modals/modal-connexion.html.twig' %}
-                {% include '@NAOCore/Modals/modal-creationCompte.html.twig' %}
-                {% include '@NAOCore/Modals/modal-descriptionObservation.html.twig' %}
-                {% include '@NAOCore/Modals/modal-descriptionEspece.html.twig' %}
-            </div>
-            <!-- FOOTER -->
-            <footer class="footer row">
-                <div class="col-md-4 col-sm-12" style="display:flex;">
-                    <a href="{{ url('nao_mentions_legales') }}" style="margin:auto;">Mentions légales</a>
-                </div>
-                <div class="col-md-4 col-sm-12" style="display:flex;">
-                    <a href="{{ url('nao_cgu') }}" style="margin:auto;">Conditions générales d'utilisation</a>
-                </div>
-                <div class="col-md-4 col-sm-12" style="display:flex;">
-                    <a href="#" style="margin:auto;">Site réalisé par Lorem Web</a>
-                </div>
-            </footer>
-        </div>
-        <div id="cadre_message" style="display:flex;">
-            <p id="message" style="margin:auto;"></p>
-        </div>
-        <div class="body_social" data-on="{'connexionState' : 'online'}">
-            <div class="body_social__buttons">
-                <a class="body_social__buttons_btn" href="https://www.facebook.com/sharer/sharer.php?u="><img src="{{ asset('bundles/naocore/images/facebook.png') }}" alt="Facebook" width="30"/></a>
-                <a class="body_social__buttons_btn" href="https://www.linkedin.com/shareArticle?url="><img src="{{ asset('bundles/naocore/images/linkedin.png') }}" alt="LinkedIn" width="30"/></a>
-                <a class="body_social__buttons_btn" href="https://twitter.com/intent/tweet/?url="><img src="{{ asset('bundles/naocore/images/twitter.png') }}" alt="Twitter" width="30"/></a>
-                <a class="body_social__buttons_btn" href="https://plus.google.com/share?url="><img src="{{ asset('bundles/naocore/images/google_plus.png') }}" alt="Google+" width="30"/></a>
-            </div>
-            <div class="body_social__clips">
-                <!-- Ici bouton pour masquer/ouvrir panneau latéral -->
-                <span class="body_social__clips_chevron"><</span>
-            </div>
-        </div>
-        <!-- JAVASCRIPT -->
-        {# Chargement des bibliothèques JS communes à toutes les pages #}
+        {# Ce bloc test sert simplement pour l'environnement de developpement, il devra être enlevé par la suite#}
+        {% block test %}
 
-        <script src="{{ asset('bundles/naocore/js/jquery.min.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/offline-js.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/awesomplete.min.js') }}" async></script>
+        {% endblock %}
+        {# Il faut garder les inclusions ici #}
+        {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
+        {% include '@NAOCore/Modals/modal-connexion.html.twig' %}
+        {% include '@NAOCore/Modals/modal-creationCompte.html.twig' %}
+        {% include '@NAOCore/Modals/modal-descriptionObservation.html.twig' %}
+        {% include '@NAOCore/Modals/modal-descriptionEspece.html.twig' %}
+    </div >
+</div >
+<!-- FOOTER -->
+<footer class="footer" >
+    <div class="container" >
+        <div class="col-md-4 col-sm-12" style="display:flex;" >
+            <a href="{{ url('nao_mentions_legales') }}" style="margin:auto;" >Mentions légales</a >
+        </div >
+        <div class="col-md-4 col-sm-12" style="display:flex;" >
+            <a href="{{ url('nao_cgu') }}" style="margin:auto;" >Conditions générales d'utilisation</a >
+        </div >
+        <div class="col-md-4 col-sm-12" style="display:flex;" >
+            <a href="#" style="margin:auto;" >Site réalisé par Lorem Web</a >
+        </div >
+    </div >
+</footer >
+<div id="cadre_message" style="display:flex;" >
+    <p id="message" style="margin:auto;" ></p >
+</div >
+<div class="body_social" data-on="{'connexionState' : 'online'}" >
+    <div class="body_social__buttons" >
+        <a class="body_social__buttons_btn" href="https://www.facebook.com/sharer/sharer.php?u=" ><img src="{{ asset('bundles/naocore/images/facebook.png') }}" alt="Facebook" width="30" /></a >
+        <a class="body_social__buttons_btn" href="https://www.linkedin.com/shareArticle?url=" ><img src="{{ asset('bundles/naocore/images/linkedin.png') }}" alt="LinkedIn" width="30" /></a >
+        <a class="body_social__buttons_btn" href="https://twitter.com/intent/tweet/?url=" ><img src="{{ asset('bundles/naocore/images/twitter.png') }}" alt="Twitter" width="30" /></a >
+        <a class="body_social__buttons_btn" href="https://plus.google.com/share?url=" ><img src="{{ asset('bundles/naocore/images/google_plus.png') }}" alt="Google+" width="30" /></a >
+    </div >
+    <div class="body_social__clips" >
+        <!-- Ici bouton pour masquer/ouvrir panneau latéral -->
+        <span class="body_social__clips_chevron" ><</span >
+    </div >
+</div >
+<!-- JAVASCRIPT -->
+{# Chargement des bibliothèques JS communes à toutes les pages #}
 
-        <script src="{{ asset('bundles/naocore/js/social.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/bdd.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/connexion.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/gps.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/observations.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/oiseau.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/user.js') }}"></script>
-        <script src="{{ asset('bundles/naocore/js/listener.js') }}"></script>
+<script src="{{ asset('bundles/naocore/js/jquery.min.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/bootstrap.min.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/offline-js.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/awesomplete.min.js') }}" async ></script >
 
-        {# Gestion des formulaires #}
-        <script src="{{ asset('bundles/naocore/js/parsley.js') }}"></script >
-        <script src="{{ asset('bundles/naocore/js/parsley-fr.js') }}" ></script >
-        <script src="{{ asset('bundles/naocore/js/gestionFormulaire.js') }}"></script >
+<script src="{{ asset('bundles/naocore/js/social.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/bdd.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/connexion.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/gps.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/observations.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/oiseau.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/user.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/listener.js') }}" ></script >
 
-        <script>
-            var urlSynchroServeurLocal = "{{ url('observation_synchronisation_local')  }}";
-        </script>
-        <script src="{{ asset('bundles/naocore/js/main.js') }}"></script>
+{# Gestion des formulaires #}
+<script src="{{ asset('bundles/naocore/js/parsley.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/parsley-fr.js') }}" ></script >
+<script src="{{ asset('bundles/naocore/js/gestionFormulaire.js') }}" ></script >
+
+<script >
+    var urlSynchroServeurLocal = "{{ url('observation_synchronisation_local') }}";
+</script >
+<script src="{{ asset('bundles/naocore/js/main.js') }}" ></script >
 
 
-        {# Pour permettre le chargement des bibliothèques JS spécifiques à une page #}
-        {% block javascripts %}{% endblock %}
+{# Pour permettre le chargement des bibliothèques JS spécifiques à une page #}
+{% block javascripts %}{% endblock %}
 
-    </body>
-</html>
+</body >
+</html >

@@ -14,6 +14,7 @@ function User(nom, prenom, email, pseudo, role, date ) {
     this.pseudo = pseudo;
     this.email = email;
     this.role = role;
+    this.clef = null;
 }
 User.setNull = function () {
     console.log("User=null");
