@@ -63,7 +63,7 @@ function gestionFormulaireConnexionEnLigne() {
             },
             success: function (jsonUtilisateur) { // Je récupère la réponse
 
-                // Si les identifiant sont invalide
+                // Si les identifiant sont invalides
                 if (jsonUtilisateur === "false") {
                     // J'affiche un message d'erreur en dessous du formulaire
                     $('#form-login-online__wrapper-error').html("<div class='alert alert-danger' role='alert'>Votre email ou mot de passe est incorrect</div>");
@@ -75,6 +75,8 @@ function gestionFormulaireConnexionEnLigne() {
                     usersStorage.add(utilisateur);
                     // Je connecte cette utilisateur
                     currentUserStorage.setCurrentUser(utilisateur.email)
+                    // Je rafraichis la page pour rafraichir les listes en regard des droits de l'utilisateur
+                    window.location.reload();
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -216,9 +218,6 @@ function gestionFormulaireAjoutObservation() {
     // Lorsque je soumets le formulaire
     $formulaireObservation.on('submit', function (e) {
         $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
-
-        // Gestion de la soumission en mode hors ligne
-        if (connexionState == "offline") {
             e.preventDefault();
 
             // Je récolte les informations de l'observation
@@ -241,7 +240,8 @@ function gestionFormulaireAjoutObservation() {
             //On positionne l'indicateur syncState à "sync_todo"
             syncState="sync_todo";
             updateDOMElementVisibility();
-        }
+            // En mode connecté on lance immédiatement la synchronisation
+            if (Connexion.isConnected()) { synchronizeObservation();}
 
     });
 
@@ -317,7 +317,7 @@ function gestionPageValidation() {
             // Je mets à jour les champs de l'observation concernée
             observation.valideur = emailUtilisateur;
             observation.statut=nouveauStatut;
-            observation.lastUpdate.timestamp = Math.round(new Date().valueOf()/1000);
+            observation.lastUpdate = Math.round(new Date().valueOf()/1000);
             // Je mets à jour la base locale
             observationStorage.setAll(observationStorage.coll);
             updateStorage.update();

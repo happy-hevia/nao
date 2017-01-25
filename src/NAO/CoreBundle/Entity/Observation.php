@@ -29,7 +29,7 @@ class Observation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreation", type="datetime")
+     * @ORM\Column(name="dateCreation", type="bigint")
      */
     private $dateCreation;
 
@@ -100,7 +100,7 @@ class Observation
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="lastUpdate", type="datetime")
+     * @ORM\Column(name="lastUpdate", type="bigint")
      */
     private $lastUpdate;
 

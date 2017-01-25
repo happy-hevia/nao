@@ -130,6 +130,52 @@ function afficheMessageDepuisDom(){
 }
 
 /**
+ * Permet d'afficher la modal avec les informations de l'espèce quand l'internaute clique sur le nom de l'espèce
+ */
+function affichageInformationObservation(selectionDomStr) {
+    $(selectionDomStr).click(function () {
+        //    On récupère les informations de l'observation
+        observationStorage.getAll();
+        var observations = observationStorage.coll;
+        var observation = observationStorage.getById($(this).data('id'));
+
+        //    On récupère la date de l'observation
+        var dateObservation = new Date(observation.dateCreation*1000);
+        console.log(observation.dateCreation);
+        console.log(dateObservation);
+        var moisTab = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        var annee = dateObservation.getFullYear();
+        var mois = moisTab[dateObservation.getMonth()];
+        var jours = dateObservation.getDate();
+        var dateFormatee = jours + " " + mois + " " + annee;
+
+        //    On l'affiche dans la modal
+        $('#form-observation__latitude').val(observation.latitude);
+        $('#form-observation__longitude').val(observation.longitude);
+        $('#form-observation__espece').text(observation.oiseau);
+        $('#form-observation__date').text(dateFormatee);
+
+        // On initialise l'onglet "espèce"
+        var espece = observation.oiseau;
+        // On récupère l'image et on lui change le href et sa description alt
+        $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
+            // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
+            if (Connexion.isConnected()) {
+                window.open(oiseauStorage.storeData[espece].image);
+            }
+        });
+        // On met son nom et sa description
+        $("#espece-nom__").text(espece);
+        $("#espece-description__").html(oiseauStorage.storeData[espece].description);
+
+        //    ouvre la modal information sur l'observation
+        $('#modal-observation').modal('show');
+    })
+}
+
+
+
+/**
  *
  */
 $(function() {
@@ -154,6 +200,7 @@ $(function() {
     usersStorage.getAll();
     currentUserStorage.getAll();
     observationStorage.getAll();
+    oiseauStorage.loadAll();
 
     currentUserStorage.recoverCurrentUser();
     if (Connexion.isConnected()) {
@@ -163,12 +210,12 @@ $(function() {
             // Je teste l'existence d'un stockage local d'observation (observationStorage)
 
             if(observationStorage.coll!=null) { // Si le stockage local d'observation existe
-                console.log("Le Stockage local OBSERVATION trouvé -- Lancement Synchronisation avec le serveur");
+                console.log("Le Stockage local OBSERVATION trouvé");
                 // Je lance la synchronisation avec le Serveur
                 synchronizeObservation();
             } else { // Si le stockage local d'observation n'existe pas
                 // Je lance la récupération de l'ensemble des Observations du Serveur
-                console.log("Le Stockage local OBSERVATION n'existe PAS -- Téléchargement des données du Serveur");
+                console.log("Le Stockage local OBSERVATION n'existe PAS");
                 updateStorage.init();
             }
         } else { // Le Stockage local n'existe pas
