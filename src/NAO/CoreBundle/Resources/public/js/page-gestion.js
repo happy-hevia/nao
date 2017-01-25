@@ -12,6 +12,11 @@ function gestionPageGestion() {
         var email = $(this).data('email');
         var nouveauDroit = this.value;
 
+        // Je récupère l'utilisateur courrant pour pouvoir vérifier qu'il a bien les droits
+        currentUserStorage.getAll();
+        usersStorage.getAll();
+        var modificateur = usersStorage.coll[currentUserStorage.coll];
+
 
         var $this = $(this); // L'objet jQuery du formulaire
         // Envoi de la requête HTTP en mode asynchrone
@@ -20,6 +25,7 @@ function gestionPageGestion() {
             url: $this.data('action'), // Le nom du fichier indiqué dans le formulaire
             type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
             data: {
+                modificateur: modificateur,
                 email: email,
                 nouveaudroit: nouveauDroit
             },

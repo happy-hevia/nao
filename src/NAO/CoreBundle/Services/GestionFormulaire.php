@@ -135,7 +135,8 @@ class GestionFormulaire
             "prenom"=>$utilisateur[0]->getPrenom(),
             "pseudo"=>$utilisateur[0]->getPseudo(),
             "email"=>$utilisateur[0]->getEmail(),
-            "role"=>$utilisateur[0]->getDroit()
+            "role"=>$utilisateur[0]->getDroit(),
+            "clef"=>md5($utilisateur[0]->getEmail() + $utilisateur[0]->getDroit())
         );
 
 //        Si les identifiants renseignés sont correct alors on retourne les informations de l'utilisateur
@@ -202,6 +203,13 @@ class GestionFormulaire
      */
     public function gestionDroit($request)
     {
+        $modificateur = $request->request->get("modificateur");
+
+//        Si la clef de vérification n'est pas bonne (si l'utilisateur ment sur son rôle) alors on annule la modification
+        if (md5($modificateur['email'] + $modificateur['role']) !==  $modificateur['clef'] ){
+            return "false";
+        }
+
         //        récupère l'utilisateur concerné
         $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
 
