@@ -63,7 +63,8 @@ class UtilisateurType extends AbstractType
                         'required' => 'required',
                 )
                      ))
-            ->add('submit', SubmitType::class, array('label' => 'créer'));
+            ->add('submit', SubmitType::class, array('label' => 'Créer un compte', 'attr' => array(
+                'class' => 'btn btn-success')));
     }
 
     /**
