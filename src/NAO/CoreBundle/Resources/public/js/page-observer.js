@@ -46,7 +46,7 @@ function fillTabObserver() {
     var tableContent;
     for (var observation in observations) {
         var distance = "inconnu";
-        tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].statut + "' data-oiseau='" +  cleanClassName(observations[observation].oiseau) + "' ><td data-id='" + observations[observation].id + "'>" + observations[observation].oiseau + " - " + observations[observation].observateur + "</td >" +
+        tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].statut + "' data-oiseau='" + cleanClassName(observations[observation].oiseau) + "' ><td data-id='" + observations[observation].id + "' class='badge'>" + observations[observation].oiseau + " - " + observations[observation].observateur + "</td >" +
             "<td >" + observations[observation].latitude + ", " + observations[observation].longitude + "</td >" +
             "<td class='cellule-distance' data-latitude='" + observations[observation].latitude + "' data-longitude ='" + observations[observation].longitude + "'>" + distance + "</td ></tr>";
     }
@@ -175,6 +175,15 @@ function onclick(observation) {
     $('#form-observation__longitude').val(observation.longitude);
     $('#form-observation__espece').text(observation.oiseau);
     $('#form-observation__date').text(dateFormatee);
+    //si il y a une image perso on l'affiche
+
+    $.get(window.location.origin + "/nao/web/images/observation/" + observation.imageName)
+        .done(function () {
+            $('#observation-image').attr('src', window.location.origin + "/nao/web/images/observation/" + observation.imageName);
+        }).fail(function () {
+        $('#observation-image').attr('src', window.location.origin + "/nao/web/bundles/naocore/images/v3-500.png");
+
+    })
 
     // On initialise l'onglet "espèce"
     var espece = observation.oiseau;
@@ -268,12 +277,22 @@ function gestionFormulaireTri() {
         var valeurChampEspece = $('#form-tri-observation__espece').val();
 
         if (valeurChampEspece == "") {
-            $('.leaflet-marker-icon').fadeIn('slow');
 
-            $('.ligne-observation').fadeIn('slow');
+            // si la checkbox est coché
+            if($('#checkbox-observation-a-valider').checked){
+                // affiche tout les markeurs
+                $('.leaflet-marker-icon').fadeIn('slow');
+                $('.ligne-observation').fadeIn('slow');
+            } else {
+            //    sinon affiche simplement les markeurs validé
+                $('img[src="http://localhost/nao/web/bundles/naocore/images/marker-vert.png"]').fadeIn('slow');
+                $('.ligne-observation[data-state="validated"]').fadeIn('slow');
+            }
+
         } else {
             $('.leaflet-marker-icon').fadeOut('slow');
             $('.' + cleanClassName(valeurChampEspece)).fadeIn('slow');
+            $('img[src="http://localhost/nao/web/bundles/naocore/images/marker-bleue.png"]').fadeIn('slow');
 
             $('.ligne-observation').fadeOut('slow');
             $('.ligne-observation[data-oiseau="' + cleanClassName(valeurChampEspece) + '"]').fadeIn('slow');

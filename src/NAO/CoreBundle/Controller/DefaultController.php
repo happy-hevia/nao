@@ -7,14 +7,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/", name="nao_accueil")
-     */
-    public function accueilAction() {
-        return $this->render('@NAOCore/Default/index.html.twig');
-    }
+//    /**
+//     * @Route("/", name="nao_accueil")
+//     */
+//    public function accueilAction() {
+//        return $this->render('@NAOCore/Default/index.html.twig');
+//    }
 
     /**
+     * @Route("/", name="nao_accueil")
      * @Route("/observer", name="nao_observer")
      */
     public function observerAction() {

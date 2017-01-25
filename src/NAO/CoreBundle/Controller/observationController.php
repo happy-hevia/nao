@@ -1,14 +1,11 @@
 <?php
-
 namespace NAO\CoreBundle\Controller;
-
 use NAO\CoreBundle\Entity\Utilisateur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
 /**
  * Observation controller.
  *
@@ -16,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ObservationController extends Controller
 {
-
     /**
      * Permet d'ajouter une nouvelle observation
      *
@@ -28,7 +24,6 @@ class ObservationController extends Controller
     public function nouveauAction(Request $request)
     {
         $form = $this->get('nao_core.gestion_formulaire')->gestionFormulaireObservation($request);
-
         if ($form === "valide") {
             return new Response("valide");
         } else {
@@ -48,7 +43,6 @@ class ObservationController extends Controller
         $success = $this->get('nao_core.gestion_formulaire')->gestionStatut($request);
         return new Response($success);
     }
-
     /**
      * Permet de synchroniser du local vers le Serveur
      *
@@ -62,7 +56,6 @@ class ObservationController extends Controller
         $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservation($request);
         return new Response($retour);
     }
-
     /**
      * Permet de synchroniser du Serveur vers le stockage local du client
      *
@@ -77,5 +70,4 @@ class ObservationController extends Controller
         $json=$this->get('nao_core.gestion_encodage')->json($retour);
         return new Response($json);
     }
-
 }

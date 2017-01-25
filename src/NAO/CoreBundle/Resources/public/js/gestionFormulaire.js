@@ -256,7 +256,7 @@ function gestionFormulaireAjoutObservation() {
     })
 
 //    Lorsque l'internaute change la valeur de l'oiseau, change l'image si elle existe
-    $('#nao_corebundle_observation_oiseau').on("blur", function () {
+    $('#nao_corebundle_observation_oiseau').on("awesomplete-selectcomplete", function () {
         if (connexionState == "online") {
             var image_url = oiseauStorage.getImage500300($(this).val());
 
