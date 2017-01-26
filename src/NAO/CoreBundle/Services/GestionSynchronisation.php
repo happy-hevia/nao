@@ -36,14 +36,11 @@ class GestionSynchronisation
     {
 //        récupération des observations envoyées
         $observations = $request->request->get('observations');
-
-
-
 //        Pour chaque observation
         foreach ($observations as $observation) {
 //            Si l'observation existe déjà je l'ignore
-            $dateTimeObservation = new \DateTime();
-            $dateTimeObservation = $dateTimeObservation->setTimestamp($observation['dateCreation'] / 1000);
+
+            $dateTimeObservation = $observation['dateCreation'];
             $observationBdd = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByDateCreation($dateTimeObservation);
 //            Si l'observation existe on ignore
             if (isset($observationBdd[0]) && $observationBdd[0] != null) {
@@ -51,7 +48,8 @@ class GestionSynchronisation
             } else {
 //                si elle n'existe pas alors je crée l'entité observation
                 $observationEntitee = new Observation();
-                $observationEntitee->setDateCreation($dateTimeObservation);
+                $observationEntitee->setDateCreation($dateTimeObservation/1000);
+                $observationEntitee->setLastUpdate($dateTimeObservation/1000);
                 $observationEntitee->setLatitude($observation['latitude']);
                 $observationEntitee->setLongitude($observation['longitude']);
                 $observationEntitee->setOiseau($observation['oiseau']);
@@ -87,5 +85,4 @@ class GestionSynchronisation
         }
         return $observationAEnvoyer;
     }
-
 }

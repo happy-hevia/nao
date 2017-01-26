@@ -24,31 +24,31 @@ class LoadObservation implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $obs1 = new Observation();
-        $obs1->setDateCreation(new \DateTime);
+        $obs1->setDateCreation(time());
         $obs1->setLatitude(47.5);
         $obs1->setLongitude(1.35);
         $obs1->setOiseau("Strix Linnaeus, 1758");
         $obs1->setObservateur("particulier@hotmail.fr");
         $obs1->setStatut("toValidate");
-        $obs1->setLastUpdate(new \DateTime());
+        $obs1->setLastUpdate(time());
 
         $obs2 = new Observation();
-        $obs2->setDateCreation(new \DateTime);
+        $obs2->setDateCreation(time());
         $obs2->setLatitude(49.5);
         $obs2->setLongitude(-1.35);
         $obs2->setOiseau("Bubo bubo (Linnaeus, 1758)");
         $obs2->setObservateur("particulier@hotmail.fr");
         $obs2->setStatut("inValidated");
-        $obs2->setLastUpdate(new \DateTime());
+        $obs2->setLastUpdate(time());
 
         $obs3 = new Observation();
-        $obs3->setDateCreation(new \DateTime);
+        $obs3->setDateCreation(time());
         $obs3->setLatitude(-49.5);
         $obs3->setLongitude(1.35);
         $obs3->setOiseau("Pygoscelis adeliae (Hombron & Jacquinot, 1841)");
         $obs3->setObservateur("particulier@hotmail.fr");
         $obs3->setStatut("validated");
-        $obs3->setLastUpdate(new \DateTime());
+        $obs3->setLastUpdate(time());
         //        Persist
         $manager->persist($obs1);
         $manager->persist($obs2);

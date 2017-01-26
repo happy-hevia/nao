@@ -279,9 +279,9 @@ class GestionFormulaire
             $this->formObservation = $this->formFactory->create('NAO\CoreBundle\Form\ObservationType', $this->observation);
 
             return array("validated", $this->formObservation->createView());
+        } else {
+            return array("toValidate", $this->formObservation->createView());
         }
-
-        return array("toValidate", $this->formObservation->createView());
     }
 
     /**
