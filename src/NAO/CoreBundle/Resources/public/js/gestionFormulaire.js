@@ -305,60 +305,16 @@ function gestionPageValidation() {
 
     //Lorsque le select est modifié
     $('.form-observation__select-statut').change(function () {
+        // Je récupère l'Id de l'observation
         var id = $(this).data('id');
+        // Je récupère le nouveau statut à mettre
         var nouveauStatut = this.value;
-        // Je récupère l'email de l'utilisateur courant
-        currentUserStorage.recoverCurrentUser();
-        var emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
-
-        // Je change récupère l'Id de l'observation
-        var observation = observationStorage.getById(id);
-        if (observation != false) {
-            // Je mets à jour les champs de l'observation concernée
-            observation.valideur = emailUtilisateur;
-            observation.statut=nouveauStatut;
-            observation.lastUpdate = Math.round(new Date().valueOf()/1000);
-            // Je mets à jour la base locale
-            observationStorage.setAll(observationStorage.coll);
-            updateStorage.update();
-            // J'informe l'utilisateur que le statut a bien été modifié
-            setMessage("le statut a bien été modifié");
-
-            // Je positionne l'indicateur de synchronisation local -> Serveur à sync_todo
-            syncState="sync_todo";
-            // Je mets à jour l'affichage
-            updateDOMElementVisibility();
-            // Si on est connecté à internet, on lance la synchronisation
-            if (Connexion.isConnected()) {
-                console.log("lancement de la synchronisation");
-                var $this = $(this); // L'objet jQuery du formulaire
-                // Envoi de la requête HTTP en mode asynchrone
-                $.ajax({
-                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                    url: $this.data('action'), // Le nom du fichier indiqué dans le formulaire
-                    type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
-                    data: {
-                        id: id,
-                        nouveaustatut: nouveauStatut,
-                        valideur: emailUtilisateur
-                    },
-                    success: function (data) { // Je récupère la réponse
-                        if (data === "true"){
-
-                        } else {
-                            setMessage("Impossible de modifier le statut");
-                        }
-
-                    }
-                });
-                synchronizeObservation();
-            }
-            // Je rafraichis la page validation
-            window.location.reload();
-        }
-        /**
-**/
+        // Je mets à jour le nouveau statut
+        updateObservationStatut(id, nouveauStatut);
     });
+
+
+
     //Lorsque on clique sur un nom d'oiseau
     $('.observation_oiseau__').click(function() {
         var nom = $(this).text();
@@ -369,4 +325,63 @@ function gestionPageValidation() {
         $('#form-observation__latitude').val($(this).data('latitude'));
         $('#form-observation__longitude').val($(this).data('longitude'));
     });
+}
+
+/**
+ * Positionne le statut de l'observation n°id à nouveauStatut
+ * @param id    : numéro de l'observation dans la base de données
+ * @param nouveauStatut     : statut à positionner
+ */
+function updateObservationStatut(id, nouveauStatut) {
+    // Je récupère l'email de l'utilisateur courant
+    currentUserStorage.recoverCurrentUser();
+    var emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
+    // Je récupère l'observation ayant l'id correspondant
+    var observation = observationStorage.getById(id);
+    if (observation != false) {
+        // Je mets à jour les champs de l'observation concernée
+        observation.valideur = emailUtilisateur;
+        observation.statut=nouveauStatut;
+        observation.lastUpdate = Math.round(new Date().valueOf()/1000);
+        // Je mets à jour la base locale
+        observationStorage.setAll(observationStorage.coll);
+        updateStorage.update();
+
+        // J'informe l'utilisateur que le statut a bien été modifié
+        setMessage(Observation().getMessageStatut(nouveauStatut));
+
+        // Je positionne l'indicateur de synchronisation local -> Serveur à sync_todo
+        syncState="sync_todo";
+        // Je mets à jour l'affichage
+        updateDOMElementVisibility();
+        // Si on est connecté à internet, on lance la synchronisation
+        if (Connexion.isConnected()) {
+            console.log("lancement de la synchronisation");
+            var $this = $(this); // L'objet jQuery du formulaire
+            // Envoi de la requête HTTP en mode asynchrone
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                url: $this.data('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
+                data: {
+                    id: id,
+                    nouveaustatut: nouveauStatut,
+                    valideur: emailUtilisateur
+                },
+                success: function (data) { // Je récupère la réponse
+                    if (data === "true"){
+
+                    } else {
+                        setMessage("Impossible de modifier le statut");
+                        // Dans ce cas on positionne l'indicateur de synchronisation en erreur
+                        syncState="Sync_ko";
+                        updateDOMElementVisibility();
+                    }
+                }
+            });
+            synchronizeObservation();
+        }
+        // Je rafraichis la page validation
+        window.location.reload();
+    }
 }

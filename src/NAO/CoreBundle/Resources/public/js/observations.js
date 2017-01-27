@@ -27,4 +27,17 @@ function Observation(dateObservation, latitude, longitude, oiseauId, observateur
         this.statut=this.stateList[2];
         this.lastUpdate= new Date();
     }
+    this.getMessageStatut=function(statut) {
+        switch (statut) {
+            case this.stateList[0]:
+                return "L'observation doit désormais être validée";
+                break;
+            case this.stateList[1]:
+                return "L'observation a bien été validée";
+                break;
+            case this.stateList[2]:
+                return "L'observation a bien été invalidée";
+                break;
+        }
+    }
 }

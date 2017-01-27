@@ -176,14 +176,15 @@ function onclick(observation) {
     $('#form-observation__espece').text(observation.oiseau);
     $('#form-observation__date').text(dateFormatee);
     //si il y a une image perso on l'affiche
+    if (observation.imageName != null) {
+        $.get(window.location.origin + "/nao/web/images/observation/" + observation.imageName)
+            .done(function () {
+                $('#observation-image').attr('src', window.location.origin + "/nao/web/images/observation/" + observation.imageName);
+            }).fail(function () {
+            $('#observation-image').attr('src', window.location.origin + "/nao/web/bundles/naocore/images/v3-500.png");
 
-    $.get(window.location.origin + "/nao/web/images/observation/" + observation.imageName)
-        .done(function () {
-            $('#observation-image').attr('src', window.location.origin + "/nao/web/images/observation/" + observation.imageName);
-        }).fail(function () {
-        $('#observation-image').attr('src', window.location.origin + "/nao/web/bundles/naocore/images/v3-500.png");
-
-    })
+        });
+    }
 
     // On initialise l'onglet "espèce"
     var espece = observation.oiseau;

@@ -137,12 +137,11 @@ function affichageInformationObservation(selectionDomStr) {
         //    On récupère les informations de l'observation
         observationStorage.getAll();
         var observations = observationStorage.coll;
-        var observation = observationStorage.getById($(this).data('id'));
+        var id = $(this).data('id');
+        var observation = observationStorage.getById(id);
 
         //    On récupère la date de l'observation
         var dateObservation = new Date(observation.dateCreation*1000);
-        console.log(observation.dateCreation);
-        console.log(dateObservation);
         var moisTab = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         var annee = dateObservation.getFullYear();
         var mois = moisTab[dateObservation.getMonth()];
@@ -155,6 +154,52 @@ function affichageInformationObservation(selectionDomStr) {
         $('#form-observation__espece').text(observation.oiseau);
         $('#form-observation__date').text(dateFormatee);
 
+        //    On affiche le bouton #annuler_observation uniquement si l'utilisateur courant est l'observateur.
+        currentUserStorage.recoverCurrentUser();
+        var emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
+        if (observation != false) {
+            var emailObservateur = observation.observateur;
+            if (emailUtilisateur===emailObservateur) {
+                // Si l'utilisateur courant est l'observateur, on active le bouton d'annulation de l'observation
+                $('#annuler_observation').attr("data-id",id).click(function() {
+                    // Sur clic je récupère l'id de l'observation
+                    var id=$(this).data('id');
+                    // On met à jour le statut de l'observation
+                    updateObservationStatut(id,"inValidated");
+                    // On ferme la modale
+                    $('#modal-observation').modal('hide');
+                }).show();
+            } else {
+                // On masque le bouton annuler si l'utilisateur courant n'est pas l'observateur
+                $('#annuler_observation').hide();
+            }
+            if (observation.statut==="validated") {
+                // Si l'observation est déjà validée, on masque les boutons de validation et d'invalidation de l'observation
+                $('#valider_observation').hide();
+                $('#refuser_observation').hide();
+            } else {
+                $('#valider_observation').attr("data-id",id).click(function() {
+                    // Sur clic je récupère l'id de l'observation
+                    var id=$(this).data('id');
+                    // On met à jour le statut de l'observation
+                    updateObservationStatut(id,"validated");
+                    // On ferme la modale
+                    $('#modal-observation').modal('hide');
+                }).show();
+                $('#refuser_observation').attr("data-id",id).click(function() {
+                    // Sur clic je récupère l'id de l'observation
+                    var id=$(this).data('id');
+                    // On met à jour le statut de l'observation
+                    updateObservationStatut(id,"inValidated");
+                    // On ferme la modale
+                    $('#modal-observation').modal('hide');
+                }).show();
+            }
+
+        } else {
+            setMessage("Observation non trouvée dans la base locale !");
+            console.log("Observation non trouvée d'id :"+id);
+        }
         // On initialise l'onglet "espèce"
         var espece = observation.oiseau;
         // On récupère l'image et on lui change le href et sa description alt
