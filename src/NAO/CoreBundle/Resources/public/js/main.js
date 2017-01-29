@@ -137,12 +137,18 @@ function affichageInformationObservation(selectionDomStr) {
         //    On récupère les informations de l'observation
         observationStorage.getAll();
         var observations = observationStorage.coll;
-        var observation = observationStorage.getById($(this).data('id'));
+        var id = $(this).data('id');
+        var observation = observationStorage.getById(id);
+        onclick(observation);
+    })
+}
 
+
+function onclick(observation) {
+    if (observation != false) {
+        var id = observation.id;
         //    On récupère la date de l'observation
         var dateObservation = new Date(observation.dateCreation*1000);
-        console.log(observation.dateCreation);
-        console.log(dateObservation);
         var moisTab = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         var annee = dateObservation.getFullYear();
         var mois = moisTab[dateObservation.getMonth()];
@@ -168,9 +174,64 @@ function affichageInformationObservation(selectionDomStr) {
         $("#espece-nom__").text(espece);
         $("#espece-description__").html(oiseauStorage.storeData[espece].description);
 
+        // On filtre ou affiche les boutons d'action de la modale en fonction du contexte
+        if (observation.statut==="validated" || observation.statut==="inValidated") {
+            // Si l'observation est déjà validée, on masque les boutons de validation et d'invalidation de l'observation
+            $('#valider_observation').hide();
+            $('#refuser_observation').hide();
+            $('#annuler_observation').hide();
+        } else {
+            // le statut est donc "toValidate
+            // J'active les listeners
+            $('#valider_observation').attr("data-id",id).click(function() {
+                // Sur clic je récupère l'id de l'observation
+                var id=$(this).data('id');
+                // On met à jour le statut de l'observation
+                updateObservationStatut(id,"validated");
+                // On ferme la modale
+                $('#modal-observation').modal('hide');
+            }).show();
+            $('#refuser_observation').attr("data-id",id).click(function() {
+                // Sur clic je récupère l'id de l'observation
+                var id=$(this).data('id');
+                // On met à jour le statut de l'observation
+                updateObservationStatut(id,"inValidated");
+                // On ferme la modale
+                $('#modal-observation').modal('hide');
+            }).show();
+            //    On affiche le bouton #annuler_observation uniquement si l'utilisateur courant est l'observateur.
+            currentUserStorage.recoverCurrentUser();
+            var emailUtilisateur=null;
+            if (currentUserStorage.coll!=null) {
+                emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
+            }
+            var emailObservateur = observation.observateur;
+            // Si l'observation est déjà validée ou est invalidée, l'ensemble des boutons est désactivé
+
+            if (emailUtilisateur != null && emailUtilisateur===emailObservateur) {
+                // Si l'utilisateur courant est l'observateur, on active le bouton d'annulation de l'observation
+                $('#annuler_observation').attr("data-id",id).click(function() {
+                    // Sur clic je récupère l'id de l'observation
+                    var id=$(this).data('id');
+                    // On met à jour le statut de l'observation
+                    updateObservationStatut(id,"inValidated");
+                    // On ferme la modale
+                    $('#modal-observation').modal('hide');
+                }).show();
+            } else {
+                // On masque le bouton annuler si l'utilisateur courant n'est pas l'observateur
+                $('#annuler_observation').hide();
+            }
+        }
+
         //    ouvre la modal information sur l'observation
         $('#modal-observation').modal('show');
-    })
+    } else {
+        setMessage("Observation non trouvée dans la base locale !");
+        console.log("Observation non trouvée d'id :"+id);
+    }
+
+
 }
 
 
