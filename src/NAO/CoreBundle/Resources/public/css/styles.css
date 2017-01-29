@@ -58,6 +58,7 @@ header{
     display:flex;
     flex-direction: row;
     position: fixed;
+    left:0px;
 }
 .body_social__buttons {
     /*margin:auto;*/
