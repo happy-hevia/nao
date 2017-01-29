@@ -231,7 +231,6 @@ observationStorage.loadFromServeur = function() {
 observationStorage.getById = function(id) {
     if (observationStorage.coll.length>0) {// Je vérifie que le stockage local d'observation n'est pas vide
         for (var i=0; i<observationStorage.coll.length; i++) {
-            console.log(observationStorage.coll[i]);
             if (observationStorage.coll[i].id===id) {
                 // Je retourne l'élément
                 return observationStorage.coll[i];
@@ -380,16 +379,21 @@ function synchronizeObservation(){
 
     //Je récupère la date du dernier update
     updateStorage.getAll();
-    var last_update = updateStorage.coll;
+    var last_update = Math.ceil(updateStorage.coll/1000);
 
     // Je crée un tableau avec toutes les observations à envoyer au serveur
     var observationsAjax = [];
     for (var observation in observations){
         // On transfert toutes les observations modifiées en locale
-        if (observations[observation].lastUpdate >= last_update) {
+        var test = observations[observation].lastUpdate >= last_update;
+        console.log(""+observations[observation].lastUpdate+" >= "+last_update+" => "+test);
+        if (test) {
             observationsAjax.push(observations[observation]);
         }
     }
+    console.log("--------------------------------------------------------------");
+    console.log("synchronizeObservation : Liste des observations à synchroniser");
+    console.log("--------------------------------------------------------------");
     console.log(observationsAjax);
     if(observationsAjax.length == 0) {
         console.log("Pas d'élément à synchroniser");

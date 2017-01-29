@@ -345,41 +345,40 @@ function updateObservationStatut(id, nouveauStatut) {
         observation.lastUpdate = Math.round(new Date().valueOf()/1000);
         // Je mets à jour la base locale
         observationStorage.setAll(observationStorage.coll);
-        updateStorage.update();
         // Je positionne l'indicateur de synchronisation local -> Serveur à sync_todo
         syncState="sync_todo";
         // Je mets à jour l'affichage
         updateDOMElementVisibility();
         // Si on est connecté à internet, on lance la synchronisation
-        if (Connexion.isConnected()) {
-            console.log("lancement de la synchronisation");
-            var $this = $(this); // L'objet jQuery du formulaire
-            // Envoi de la requête HTTP en mode asynchrone
-            $.ajax({
-                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-                url: $this.data('action'), // Le nom du fichier indiqué dans le formulaire
-                type: $this.data('method'), // La méthode indiquée dans le formulaire (get ou post)
-                data: {
-                    id: id,
-                    nouveaustatut: nouveauStatut,
-                    valideur: emailUtilisateur
-                },
-                success: function (data) { // Je récupère la réponse
-                    if (data === "true"){
+        var requestData ={
+            id: id,
+            nouveaustatut: nouveauStatut,
+            valideur: emailUtilisateur
+        };
 
-                    } else {
-                        setMessage("Impossible de modifier le statut");
-                        // Dans ce cas on positionne l'indicateur de synchronisation en erreur
-                        syncState="Sync_ko";
-                        updateDOMElementVisibility();
-                    }
-                }
-            });
-            synchronizeObservation();
+        if (Connexion.isConnected()) {
+            console.log("lancement de la synchronisation Local -> Serveur / Statut");
+            // Envoi de la requête HTTP en mode asynchrone
+            myJsonAjax (urlSynchroStatut, requestData, statutUpdateSuccess);
+        } else {
+            // J'informe l'utilisateur que le statut a bien été modifié
+            setMessage("En attente de synchronisation, mémorisation locale bien effectuée");
+            // Je rafraichis la page validation
+            window.location.reload();
         }
+
+    }
+}
+function statutUpdateSuccess (data) { // Je récupère la réponse
+    if (data === "true") {
         // J'informe l'utilisateur que le statut a bien été modifié
         setMessage("Modifications bien mémorisée");
         // Je rafraichis la page validation
         window.location.reload();
+    } else {
+        setMessage("Impossible de modifier le statut");
+        // Dans ce cas on positionne l'indicateur de synchronisation en erreur
+        syncState = "Sync_ko";
+        updateDOMElementVisibility();
     }
 }

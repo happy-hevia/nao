@@ -160,50 +160,6 @@ function gestionCarte() {
     });
 }
 
-function onclick(observation) {
-// Lors du clic sur le marcker j'affiche la popup avec les informations associés à l'observation
-    //    On récupère la date de l'observation
-    var dateObservation = new Date(observation.dateCreation);
-    var moisTab = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    var annee = dateObservation.getFullYear();
-    var mois = moisTab[dateObservation.getMonth()];
-    var jours = dateObservation.getDate();
-    var dateFormatee = jours + " " + mois + " " + annee;
-
-    //    On l'affiche dans la modal
-    $('#form-observation__latitude').val(observation.latitude);
-    $('#form-observation__longitude').val(observation.longitude);
-    $('#form-observation__espece').text(observation.oiseau);
-    $('#form-observation__date').text(dateFormatee);
-    //si il y a une image perso on l'affiche
-    if (observation.imageName != null) {
-        $.get(window.location.origin + "/nao/web/images/observation/" + observation.imageName)
-            .done(function () {
-                $('#observation-image').attr('src', window.location.origin + "/nao/web/images/observation/" + observation.imageName);
-            }).fail(function () {
-            $('#observation-image').attr('src', window.location.origin + "/nao/web/bundles/naocore/images/v3-500.png");
-
-        });
-    }
-
-    // On initialise l'onglet "espèce"
-    var espece = observation.oiseau;
-    // On récupère l'image et on lui change le href et sa description alt
-    $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
-        // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
-        if (Connexion.isConnected()) {
-            window.open(oiseauStorage.storeData[espece].image);
-        }
-    });
-    // On met son nom et sa description
-    $("#espece-nom__").text(espece);
-    $("#espece-description__").html(oiseauStorage.storeData[espece].description);
-
-    //    ouvre la modal information sur l'observation
-    $('#modal-observation').modal('show');
-
-}
-
 function afficheMarker() {
     // Création des icones des markers
 
