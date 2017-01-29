@@ -346,10 +346,6 @@ function updateObservationStatut(id, nouveauStatut) {
         // Je mets à jour la base locale
         observationStorage.setAll(observationStorage.coll);
         updateStorage.update();
-
-        // J'informe l'utilisateur que le statut a bien été modifié
-        setMessage(Observation().getMessageStatut(nouveauStatut));
-
         // Je positionne l'indicateur de synchronisation local -> Serveur à sync_todo
         syncState="sync_todo";
         // Je mets à jour l'affichage
@@ -381,6 +377,8 @@ function updateObservationStatut(id, nouveauStatut) {
             });
             synchronizeObservation();
         }
+        // J'informe l'utilisateur que le statut a bien été modifié
+        setMessage("Modifications bien mémorisée");
         // Je rafraichis la page validation
         window.location.reload();
     }

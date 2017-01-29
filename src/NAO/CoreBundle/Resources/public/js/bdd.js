@@ -291,50 +291,22 @@ observationStorage.observationsAValider = function() {
 };
 
 /**
- * Renvoie la collection des observations validées (pour utilisation dans la page Observer pour un particulier)
+ * Renvoie la collection des observations validées et à valider (pour utilisation dans la page Observer)
  * @returns {boolean}
  */
-observationStorage.observationsValidees = function() {
-    if (currentUser!="null" && typeof currentUser != 'undefined') { // Je vérifie que l'utilisateur courant est bien connecté
-        if (currentUser===valueList[2]) {// si l'utilisateur est un naturaliste
-            if (observationStorage.coll.length>0) {// Je vérifie que le stockage local d'observation n'est pas vide
-                var observationsAValider= new Array();
-                // Je parcours les observations effectuées
-                for (var i=0; i<observationStorage.coll.length; i++) {
-                    // Je ne récupère que les observations qui ont un statut à validated
-                    if (observationStorage.coll[i].statut==="validated") {
-                        // Je mémorise l'observation
-                        observationsAValider.push(observationStorage.coll[i]);
-                    }
-                }
-                // Je retourne la collection d'observation obtenue
-                return observationsAValider;
+observationStorage.observationsPageObserver = function() {
+    if (observationStorage.coll.length>0) {// Je vérifie que le stockage local d'observation n'est pas vide
+        var observationsAValider= new Array();
+        // Je parcours les observations effectuées
+        for (var i=0; i<observationStorage.coll.length; i++) {
+            // Je récupère les observations validées et à valider
+            if (observationStorage.coll[i].statut==="validated" || observationStorage.coll[i].statut==="toValidate") {
+                // Je mémorise l'observation
+                observationsAValider.push(observationStorage.coll[i]);
             }
         }
-    }
-    return false
-};
-/**
- * Renvoie la collection des observations validées et à valider (pour utilisation dans la page Observer pour un naturaliste)
- * @returns {boolean}
- */
-observationStorage.observationsValidees = function() {
-    if (currentUser!="null" && typeof currentUser != 'undefined') { // Je vérifie que l'utilisateur courant est bien connecté
-        if (currentUser===valueList[2]) {// si l'utilisateur est un naturaliste
-            if (observationStorage.coll.length>0) {// Je vérifie que le stockage local d'observation n'est pas vide
-                var observationsAValider= new Array();
-                // Je parcours les observations effectuées
-                for (var i=0; i<observationStorage.coll.length; i++) {
-                    // Je récupère les observations validées et à valider
-                    if (observationStorage.coll[i].statut==="validated" || observationStorage.coll[i].statut==="toValidate") {
-                        // Je mémorise l'observation
-                        observationsAValider.push(observationStorage.coll[i]);
-                    }
-                }
-                // Je retourne la collection d'observation obtenue
-                return observationsAValider;
-            }
-        }
+        // Je retourne la collection d'observation obtenue
+        return observationsAValider;
     }
     return false
 };

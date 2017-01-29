@@ -41,7 +41,7 @@ $("#onglet_espece").click(function () {
  */
 function fillTabObserver() {
     observationStorage.getAll();
-    var observations = observationStorage.coll;
+    var observations = observationStorage.observationsPageObserver();
 
     var tableContent;
     for (var observation in observations) {
@@ -222,7 +222,7 @@ function afficheMarker() {
     var markerArray = [];
 
     observationStorage.getAll();
-    var observations = observationStorage.coll;
+    var observations = observationStorage.observationsPageObserver();
 
     var dataArray = [];
     for (var o in observations) {

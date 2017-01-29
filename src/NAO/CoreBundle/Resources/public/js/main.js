@@ -156,10 +156,14 @@ function affichageInformationObservation(selectionDomStr) {
 
         //    On affiche le bouton #annuler_observation uniquement si l'utilisateur courant est l'observateur.
         currentUserStorage.recoverCurrentUser();
-        var emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
+        var emailUtilisateur=null;
+        if (currentUserStorage.coll!=null) {
+            emailUtilisateur = usersStorage.coll[currentUserStorage.coll].email;
+        }
+
         if (observation != false) {
             var emailObservateur = observation.observateur;
-            if (emailUtilisateur===emailObservateur) {
+            if (emailUtilisateur != null && emailUtilisateur===emailObservateur) {
                 // Si l'utilisateur courant est l'observateur, on active le bouton d'annulation de l'observation
                 $('#annuler_observation').attr("data-id",id).click(function() {
                     // Sur clic je récupère l'id de l'observation
