@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"
-        {#manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}"#}
+        manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}"
 >
 <head >
     <!-- META -->
@@ -161,18 +161,6 @@
 <div id="cadre_message" style="display:flex;" >
     <p id="message" style="margin:auto;" ></p >
 </div >
-<div class="body_social" data-on="{'connexionState' : 'online'}" >
-    <div class="body_social__buttons" >
-        <a class="body_social__buttons_btn" href="https://www.facebook.com/sharer/sharer.php?u=" ><img src="{{ asset('bundles/naocore/images/facebook.png') }}" alt="Facebook" width="30" /></a >
-        <a class="body_social__buttons_btn" href="https://www.linkedin.com/shareArticle?url=" ><img src="{{ asset('bundles/naocore/images/linkedin.png') }}" alt="LinkedIn" width="30" /></a >
-        <a class="body_social__buttons_btn" href="https://twitter.com/intent/tweet/?url=" ><img src="{{ asset('bundles/naocore/images/twitter.png') }}" alt="Twitter" width="30" /></a >
-        <a class="body_social__buttons_btn" href="https://plus.google.com/share?url=" ><img src="{{ asset('bundles/naocore/images/google_plus.png') }}" alt="Google+" width="30" /></a >
-    </div >
-    <div class="body_social__clips" >
-        <!-- Ici bouton pour masquer/ouvrir panneau latéral -->
-        <span class="body_social__clips_chevron" ><</span >
-    </div >
-</div >
 <!-- JAVASCRIPT -->
 {# Chargement des bibliothèques JS communes à toutes les pages #}
 
@@ -198,6 +186,7 @@
 <script >
     var urlSynchroServeurLocal = "{{ url('observation_synchronisation_local') }}";
     var urlSynchronLocalServeur= "{{ url('observation_synchronisation')  }}";
+    var urlSynchroStatut="{{ url('observation_change_statut') }}";
 </script >
 <script src="{{ asset('bundles/naocore/js/main.js') }}" ></script >
 

@@ -273,9 +273,9 @@ class GestionFormulaire
         if ($this->formObservation->isSubmitted() && $this->formObservation->isValid()) {
 
             $this->observation->setStatut("toValidate"); // définit l'observation comme à valider
-            $this->observation->setDateCreation(new \DateTime()); // remplit la date de création à la date actuelle
+            $this->observation->setDateCreation(time()); // remplit la date de création à la date actuelle
             $this->observation->setValideur(null);
-            $this->observation->setlastUpdate(new \DateTime()); // initie lastUpdate à la date actuelle
+            $this->observation->setlastUpdate(time()); // initie lastUpdate à la date actuelle
 
             $em = $this->entityManager;
             $em->persist($this->observation);
@@ -305,6 +305,8 @@ class GestionFormulaire
         $observation[0]->setStatut($request->request->get('nouveaustatut'));
         //        On modifie l'email du valideur
         $observation[0]->setValideur($request->request->get('valideur'));
+        //        On modifie la date de la dernière modification
+        $observation[0]->setLastUpdate($request->request->get('lastUpdate'));
 
         //        On enregistre dans la bdd
         $this->entityManager->persist($observation[0]);

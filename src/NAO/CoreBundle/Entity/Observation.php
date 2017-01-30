@@ -364,7 +364,7 @@ class Observation
      * @ORM\PreUpdate
      */
     public function updateDate() {
-        $this->setLastUpdate(new \DateTime());
+        $this->setLastUpdate(time());
     }
 
 

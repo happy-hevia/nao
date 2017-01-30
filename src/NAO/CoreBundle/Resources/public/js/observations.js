@@ -26,5 +26,5 @@ function Observation(dateObservation, latitude, longitude, oiseauId, observateur
     this.setInValidated = function() {
         this.statut=this.stateList[2];
         this.lastUpdate= new Date();
-    }
+    };
 }
