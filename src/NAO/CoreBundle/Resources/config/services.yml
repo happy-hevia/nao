@@ -1,7 +1,9 @@
+parameters:
+    secret: 8830224482301cdea99e83534450264ec28417e0
 services:
     nao_core.gestion_formulaire:
         class: NAO\CoreBundle\Services\GestionFormulaire
-        arguments: ["@form.factory", "@doctrine.orm.entity_manager", "@validator", "@mailer"]
+        arguments: ["@form.factory", "@doctrine.orm.entity_manager", "@validator", "@mailer", "%secret%"]
     nao_core.gestion_synchronisation:
         class: NAO\CoreBundle\Services\GestionSynchronisation
         arguments: ["@form.factory", "@doctrine.orm.entity_manager", "@validator"]
