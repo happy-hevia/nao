@@ -236,7 +236,7 @@ function gestionFormulaireTri() {
         if (valeurChampEspece == "") {
 
             // si la checkbox est coché
-            if($('#checkbox-observation-a-valider').checked){
+            if($('#checkbox-observation-a-valider').is(':checked')){
                 // affiche tout les markeurs
                 $('.leaflet-marker-icon').fadeIn('slow');
                 $('.ligne-observation').fadeIn('slow');
