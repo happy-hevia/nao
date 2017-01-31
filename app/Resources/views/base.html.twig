@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"
-        manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}"
+        {#manifest="{{ asset('bundles/naocore/manifest/manifest.appcache') }}"#}
 >
 <head >
     <!-- META -->
@@ -188,6 +188,7 @@
     var urlSynchronLocalServeur= "{{ url('observation_synchronisation')  }}";
     var urlSynchroStatut="{{ url('observation_change_statut') }}";
     var urlAccueil ="{{ url('nao_accueil') }}";
+    var urlServiceWorkerJS="/nao/web/service-worker.js";
 </script >
 <script src="{{ asset('bundles/naocore/js/main.js') }}" ></script >
 

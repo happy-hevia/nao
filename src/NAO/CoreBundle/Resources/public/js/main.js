@@ -2,6 +2,13 @@
  * Created by marcd on 30/12/2016.
  */
 
+var sw = navigator.serviceWorker.register(urlServiceWorkerJS).then(function(reg){
+    console.log("Registration SUCCEEDED. Scope is "+reg.scope);
+}).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+});
+
 /**
  * String.replaceAll
  * Effet : Remplace toutes les occurences trouvées d'une chaine texte "search" et la remplace par "replacement"
