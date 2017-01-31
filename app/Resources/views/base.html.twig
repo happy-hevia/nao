@@ -34,7 +34,7 @@
 <body >
 
 <!-- HEADER -->
-<header class="row" >
+<header >
     <div class="container" >
         <div class="col-sm-2 col-xs-4" >
             <a href="{{ url('nao_accueil') }}" >
@@ -92,36 +92,34 @@
 </header >
 
 <!-- MENU -->
-<div class="row" >
-    <div class="col-md-12" >
-        <nav class="navbar navbar-default" >
-            <div class="container" >
-                <div class="navbar_header" >
-                    {# Burger oblige... #}
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-control="navbar" >
-                        <span class="sr-only" >Toggle navigation</span >
-                        <span class="icon-bar" ></span >
-                        <span class="icon-bar" ></span >
-                        <span class="icon-bar" ></span >
-                    </button >
-                </div >
-                <div id="navbar" class="collapse navbar-collapse" >
-                    <ul class="nav navbar-nav" >
-                        <li ><a href="{{ url('nao_observer') }}" >Observer</a ></li >
-                        <li data-off="{'currentUser' : 'null' }" >
-                            <a href="{{ url('nao_mes_observations') }}" >Mes observations</a ></li >
-                        <li data-on="{'currentUser' : 'naturaliste' }" >
-                            <a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a >
-                        </li >
-                        <li data-off="{'currentUser' : 'null' }" >
-                            <a href="{{ url('nao_mon_compte') }}" >Mon compte</a ></li >
-                        <li data-on="{'currentUser' : 'administrateur','connexionState' : 'online' }" >
-                            <a href="{{ url('nao_gestion_droits') }}" >Gestion des droits</a ></li >
-                    </ul >
-                </div >
+<div >
+    <nav class="navbar navbar-default" >
+        <div class="container" >
+            <div class="navbar_header" >
+                {# Burger oblige... #}
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-control="navbar" >
+                    <span class="sr-only" >Toggle navigation</span >
+                    <span class="icon-bar" ></span >
+                    <span class="icon-bar" ></span >
+                    <span class="icon-bar" ></span >
+                </button >
             </div >
-        </nav >
-    </div >
+            <div id="navbar" class="collapse navbar-collapse" >
+                <ul class="nav navbar-nav" >
+                    <li ><a href="{{ url('nao_observer') }}" >Observer</a ></li >
+                    <li data-off="{'currentUser' : 'null' }" >
+                        <a href="{{ url('nao_mes_observations') }}" >Mes observations</a ></li >
+                    <li data-on="{'currentUser' : 'naturaliste' }" >
+                        <a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a >
+                    </li >
+                    <li data-off="{'currentUser' : 'null' }" >
+                        <a href="{{ url('nao_mon_compte') }}" >Mon compte</a ></li >
+                    <li data-on="{'currentUser' : 'administrateur','connexionState' : 'online' }" >
+                        <a href="{{ url('nao_gestion_droits') }}" >Gestion des droits</a ></li >
+                </ul >
+            </div >
+        </div >
+    </nav >
 </div >
 
 <div class="container" >
@@ -187,7 +185,6 @@
     var urlSynchroServeurLocal = "{{ url('observation_synchronisation_local') }}";
     var urlSynchronLocalServeur= "{{ url('observation_synchronisation')  }}";
     var urlSynchroStatut="{{ url('observation_change_statut') }}";
-    var urlAccueil ="{{ url('nao_accueil') }}";
 </script >
 <script src="{{ asset('bundles/naocore/js/main.js') }}" ></script >
 
