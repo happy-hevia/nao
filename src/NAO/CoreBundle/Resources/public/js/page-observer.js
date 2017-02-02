@@ -48,7 +48,7 @@ function fillTabObserver() {
         var distance = "inconnu";
         tableContent = tableContent + "<tr class='ligne-observation' data-state='" + observations[observation].statut + "' data-oiseau='" + cleanClassName(observations[observation].oiseau) + "' ><td data-id='" + observations[observation].id + "' class='badge'>" + observations[observation].oiseau + " - " + observations[observation].observateur + "</td >" +
             "<td >" + observations[observation].latitude + ", " + observations[observation].longitude + "</td >" +
-            "<td class='cellule-distance' data-latitude='" + observations[observation].latitude + "' data-longitude ='" + observations[observation].longitude + "'>" + distance + "</td ></tr>";
+            "<td class='cellule-distance' data-latitude='" + observations[observation].latitude + "' data-longitude ='" + observations[observation].longitude + "' >" + distance + "</td ></tr>";
     }
 
     $('#emplacement__ligne').append(tableContent);
@@ -65,7 +65,7 @@ function fillTabObserver() {
                 distance = "inconnu"
             } else {
                 var distanceKM = Localisation.distance(gpsCoords.latitude, gpsCoords.longitude, $(this).data('latitude'), $(this).data('longitude'));
-                distance = Math.round(distanceKM * 1000) + "m";
+                distance = Math.round(distanceKM * 1000);
             }
             $(this).text(distance);
         });
@@ -236,7 +236,7 @@ function gestionFormulaireTri() {
         if (valeurChampEspece == "") {
 
             // si la checkbox est coché
-            if($('#checkbox-observation-a-valider').checked){
+            if($('#checkbox-observation-a-valider').is(':checked')){
                 // affiche tout les markeurs
                 $('.leaflet-marker-icon').fadeIn('slow');
                 $('.ligne-observation').fadeIn('slow');

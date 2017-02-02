@@ -5,9 +5,9 @@
     <td >
         <form action="{{ path('utilisateur_change_droit') }}" method="post" >
             <select name="form-droit__select-droit" class="form-droit__select-droit" data-email="{{ user.email }}" data-action="{{ path('utilisateur_change_droit') }}" data-method="post" >
-                <option value="particulier" >particulier</option >
-                <option value="naturaliste" >naturaliste</option >
-                <option value="administrateur" >administrateur</option >
+                <option value="particulier" {% if user.droit == "particulier" %} selected {% endif %} >particulier</option >
+                <option value="naturaliste" {% if user.droit == "naturaliste" %} selected {% endif %} >naturaliste</option >
+                <option value="administrateur" {% if user.droit == "administrateur" %} selected {% endif %} >administrateur</option >
             </select >
         </form >
     </td >

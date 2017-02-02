@@ -31,13 +31,15 @@ class GestionFormulaire
     private $formUtilisateur;
     private $formObservation;
     private $mailer;
+    private $secret;
 
-    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator, \Swift_Mailer $mailer)
+    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator, \Swift_Mailer $mailer, $secret)
     {
         $this->formFactory = $formFactory;
         $this->entityManager = $entityManager;
         $this->validator = $validator;
         $this->mailer = $mailer;
+        $this->secret = $secret;
 
         $this->utilisateur = new Utilisateur();
         $this->observation = new Observation();
@@ -136,7 +138,7 @@ class GestionFormulaire
             "pseudo"=>$utilisateur[0]->getPseudo(),
             "email"=>$utilisateur[0]->getEmail(),
             "role"=>$utilisateur[0]->getDroit(),
-            "clef"=>md5($utilisateur[0]->getEmail() + $utilisateur[0]->getDroit())
+            "clef"=>md5($utilisateur[0]->getEmail() . $this->secret .  $utilisateur[0]->getDroit())
         );
 
 //        Si les identifiants renseignés sont correct alors on retourne les informations de l'utilisateur
@@ -206,12 +208,17 @@ class GestionFormulaire
         $modificateur = $request->request->get("modificateur");
 
 //        Si la clef de vérification n'est pas bonne (si l'utilisateur ment sur son rôle) alors on annule la modification
-        if (md5($modificateur['email'] + $modificateur['role']) !==  $modificateur['clef'] ){
+        if (md5($modificateur['email'] . $this->secret . "administrateur" ) !==  $modificateur['clef'] ){
             return "false";
         }
 
         //        récupère l'utilisateur concerné
         $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
+
+//        L'utilisateur ne peux pas modifier son propre droit
+        if ($utilisateur[0]->getEmail() == $modificateur['email']) {
+            return "false";
+        }
 
         //        On modifie les droits
         $utilisateur[0]->setDroit($request->request->get('nouveaudroit'));

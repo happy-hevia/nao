@@ -24,6 +24,10 @@ header{
     border-color: #d34615;
 }
 
+.dropdown-menu {
+    right: 0;
+}
+
 #dropdownMenu1 > p {
     margin-bottom: 0;
 }
