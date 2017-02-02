@@ -72,16 +72,16 @@
                 </div >
                 <div class="col-md-12" style="display:flex;" >
                     <div style="margin:auto;" >
-                        <img data-on="{'connexionState' : 'online'}" src="{{ asset('bundles/naocore/images/internet_ok.png') }}" height="20px" alt="Internet OK" title="Internet OK" >
-                        <img data-on="{'connexionState' : 'offline'}" src="{{ asset('bundles/naocore/images/internet_ko.png') }}" height="20px" alt="Pas d'Internet" title="Pas d'Internet" >
+                        <img data-on="{'connexionState' : 'online'}" src="{{ asset('bundles/naocore/images/internet_ok.png') }}" height="20px" alt="Internet OK" title="Internet OK"  style="display: none;">
+                        <img data-on="{'connexionState' : 'offline'}" src="{{ asset('bundles/naocore/images/internet_ko.png') }}" height="20px" alt="Pas d'Internet" title="Pas d'Internet"  style="display: none;">
 
-                        <img data-on="{'syncState' : 'sync_ok'}" src="{{ asset('bundles/naocore/images/sync_ok.png') }}" height="20px" alt="Synchronisation OK" title="Synchronisation OK" >
-                        <img data-on="{'syncState' : 'sync_ec'}" src="{{ asset('bundles/naocore/images/sync_ec.png') }}" height="20px" alt="Synchronisation en cours" title="Synchronisation en cours" >
-                        <img data-on="{'syncState' : 'sync_ko'}" src="{{ asset('bundles/naocore/images/sync_ko.png') }}" height="20px" alt="Echec Synchronisation" title="Echec Synchronisation" >
-                        <img data-on="{'syncState' : 'sync_todo'}" src="{{ asset('bundles/naocore/images/sync_todo.png') }}" height="20px" alt="En attente de Synchronisation" title="En attente de Synchronisation" >
+                        <img data-on="{'syncState' : 'sync_ok'}" src="{{ asset('bundles/naocore/images/sync_ok.png') }}" height="20px" alt="Synchronisation OK" title="Synchronisation OK"  style="display: none;">
+                        <img data-on="{'syncState' : 'sync_ec'}" src="{{ asset('bundles/naocore/images/sync_ec.png') }}" height="20px" alt="Synchronisation en cours" title="Synchronisation en cours"  style="display: none;">
+                        <img data-on="{'syncState' : 'sync_ko'}" src="{{ asset('bundles/naocore/images/sync_ko.png') }}" height="20px" alt="Echec Synchronisation" title="Echec Synchronisation"  style="display: none;">
+                        <img data-on="{'syncState' : 'sync_todo'}" src="{{ asset('bundles/naocore/images/sync_todo.png') }}" height="20px" alt="En attente de Synchronisation" title="En attente de Synchronisation"  style="display: none;">
 
-                        <span data-on="{'gpsState' : 'gps_ok'}" class="glyphicon glyphicon-record" aria-hidden="true" style="color:green;" title="Localisation GPS disponible" ></span >
-                        <span data-on="{'gpsState' : 'gps_ko'}" class="glyphicon glyphicon-ban-circle" aria-hidden="true" style="color:red;" title="Localisation GPS indisponible" ></span >
+                        <span data-on="{'gpsState' : 'gps_ok'}" class="glyphicon glyphicon-record" aria-hidden="true" style="color:green;" title="Localisation GPS disponible"  style="display: none;"></span >
+                        <span data-on="{'gpsState' : 'gps_ko'}" class="glyphicon glyphicon-ban-circle" aria-hidden="true" style="color:red;" title="Localisation GPS indisponible"  style="display: none;"></span >
 
                     </div >
                 </div >
@@ -108,14 +108,14 @@
                 <div id="navbar" class="collapse navbar-collapse" >
                     <ul class="nav navbar-nav" >
                         <li ><a href="{{ url('nao_observer') }}" >Observer</a ></li >
-                        <li data-off="{'currentUser' : 'null' }" >
+                        <li data-off="{'currentUser' : 'null' }" style="display: none;">
                             <a href="{{ url('nao_mes_observations') }}" >Mes observations</a ></li >
-                        <li data-on="{'currentUser' : 'naturaliste' }" >
+                        <li data-on="{'currentUser' : 'naturaliste' }" style="display:none;">
                             <a href="{{ url('nao_observations_a_valider') }}" >Observations à valider</a >
                         </li >
-                        <li data-off="{'currentUser' : 'null' }" >
+                        <li data-off="{'currentUser' : 'null' }" style="display:none;" >
                             <a href="{{ url('nao_mon_compte') }}" >Mon compte</a ></li >
-                        <li data-on="{'currentUser' : 'administrateur','connexionState' : 'online' }" >
+                        <li data-on="{'currentUser' : 'administrateur','connexionState' : 'online' }" style="display:none;">
                             <a href="{{ url('nao_gestion_droits') }}" >Gestion des droits</a ></li >
                     </ul >
                 </div >
@@ -187,8 +187,9 @@
     var urlSynchroServeurLocal = "{{ url('observation_synchronisation_local') }}";
     var urlSynchronLocalServeur= "{{ url('observation_synchronisation')  }}";
     var urlSynchroStatut="{{ url('observation_change_statut') }}";
-    var urlAccueil ="{{ url('nao_accueil') }}";
+    var urlAccueil ="{{ url('nao_observer') }}";
     var urlServiceWorkerJS="/nao/web/service-worker.js";
+    var urlGestion ="{{ url('nao_gestion_droits') }}";
 </script >
 <script src="{{ asset('bundles/naocore/js/main.js') }}" ></script >
 

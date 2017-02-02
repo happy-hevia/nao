@@ -27,7 +27,7 @@ Connexion.isConnected = function() {
 
 Connexion.initListener = function() {
     console.log("\tLANCEMENT CONNEXION INIT-LISTENER");
-    Offline.options = {
+    /*Offline.options = {
         checkOnLoad: true,
         interceptRequests: true,
         reconnect: {
@@ -35,7 +35,7 @@ Connexion.initListener = function() {
             delay: 1
         },
         requests: true,
-        checks:{xhr: {url: '/nao/web/bundles/naocore/file/alive.txt'}},
+        checks:{xhr: {url: '/nao/web/app.php/admin'}},
         game: false
     };
     Offline.on('up', function(){
@@ -45,7 +45,8 @@ Connexion.initListener = function() {
     Offline.on('down', function(){
         Connexion.deconnecter();
         console.log("\tPASSAGE EN MODE HORS-CONNEXION");
-    });
+    });*/
+    window.setInterval(myConnexionAjax,1500);
 };
 
 function myConnexionAjax () {
@@ -53,7 +54,7 @@ function myConnexionAjax () {
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         url: "/nao/web/app.php/admin",
         type: "GET",
-        timeout: 2000,
+        timeout: 3000,
         success: connexionOk,
         error: connexionKO
     }).fail(connexionKO);
@@ -62,7 +63,6 @@ function connexionOk(data) {
     if (connexionState==="offline") {
         Connexion.connecter();
         console.log("Connexion Internet OK");
-        console.log(data);
         data=null;
     }
 }
@@ -70,7 +70,11 @@ function connexionKO(xhr, ajaxOptions, thrownError) {
     if (connexionState==="online") {
         console.log("Connexion Internet KO");
         Connexion.deconnecter();
+        var urlCourante = document.URL;
+        if (urlGestion === urlCourante) {
+            // Je redirige vers la page observer
+            document.location.href="//"+urlAccueil;
+        }
     }
 
 }
-window.setInterval(myConnexionAjax,2000);
