@@ -266,24 +266,34 @@ class GestionFormulaire
      */
     public function gestionFormulaireObservation($request)
     {
-
+        dump("1");
         $this->formObservation->handleRequest($request);
 
         //        Gestion soumission formulaire
         if ($this->formObservation->isSubmitted() && $this->formObservation->isValid()) {
+
+            dump(1);
 
             $this->observation->setStatut("toValidate"); // définit l'observation comme à valider
             $this->observation->setDateCreation(time()); // remplit la date de création à la date actuelle
             $this->observation->setValideur(null);
             $this->observation->setlastUpdate(time()); // initie lastUpdate à la date actuelle
 
+            dump(2);
+
             $em = $this->entityManager;
+            dump(3);
             $em->persist($this->observation);
+            dump(3);
             $em->flush($this->observation);
 
+            dump(3);
+
             $this->observation = new Observation();
+            dump(4);
             // Création du formulaire de création d'observation
             $this->formObservation = $this->formFactory->create('NAO\CoreBundle\Form\ObservationType', $this->observation);
+            dump(8);
 
             return array("validated", $this->formObservation->createView());
         } else {

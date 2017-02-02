@@ -121,7 +121,7 @@ header{
     z-index: 1000;
 }
 
-img[src="http://localhost/nao/web/bundles/naocore/images/marker-jaune.png"] {
+img[src="http://176.31.39.245/web/bundles/naocore/images/marker-jaune.png"] {
     display: none;
 }
 

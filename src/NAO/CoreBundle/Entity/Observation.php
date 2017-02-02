@@ -27,7 +27,6 @@ class Observation
     private $id;
 
     /**
-     * @var \DateTime
      *
      * @ORM\Column(name="dateCreation", type="bigint")
      */
@@ -117,8 +116,7 @@ class Observation
     /**
      * Set dateCreation
      *
-     * @param \DateTime $dateCreation
-     *
+     * @param $dateCreation
      * @return Observation
      */
     public function setDateCreation($dateCreation)
@@ -320,6 +318,7 @@ class Observation
      */
     public function setImageFile(File $image = null)
     {
+        dump("sdqf");
         $this->imageFile = $image;
 
         if ($image) {

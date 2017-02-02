@@ -1,0 +1,6 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^dev(.*) app_dev.php$1 [L]
+RewriteRule . app.php [L]
+</IfModule>

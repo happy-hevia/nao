@@ -322,7 +322,7 @@ var oiseauStorage = {
     storeData: [],
     loadAll: function () {
         // on charge le fichier JSON
-        $.getJSON("/nao/web/bundles/naocore/file/test.json", function (data) { // TODO: Changer URL par URL de prod window.location.host
+        $.getJSON("/web/bundles/naocore/file/test.json", function (data) { // TODO: Changer URL par URL de prod window.location.host
             // un petit espion...
             console.log("\t#########   Il y a " + data.length + " espèces");
 
@@ -344,7 +344,7 @@ var oiseauStorage = {
         });
     },
     getImage500300: function (nomEspece) { //window.location.host+
-        return "/nao/web/bundles/naocore/images/oiseaux/" + nomEspece + ".jpg";
+        return "/web/bundles/naocore/images/oiseaux/" + nomEspece + ".jpg";
     }
 };
 

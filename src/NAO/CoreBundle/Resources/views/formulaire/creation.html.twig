@@ -7,6 +7,6 @@
     {# Sinon affiche le formulaire de validation vide #}
 {% form_theme formulaire.creerFormulaireCreation 'bootstrap_3_horizontal_layout.html.twig' %}
 
-    {{ form_start(formulaire.creerFormulaireCreation, {'method' : 'POST', 'action' : 'http://localhost/nao/web/app_dev.php/utilisateur/nouveau'}) }} {#TODO: changer URL locale par URL prod#}
+    {{ form_start(formulaire.creerFormulaireCreation, {'method' : 'POST', 'action' : path('utilisateur_nouveau')}) }} {#TODO: changer URL locale par URL prod#}
     {{ form(formulaire.creerFormulaireCreation) }}
 {% endif %}

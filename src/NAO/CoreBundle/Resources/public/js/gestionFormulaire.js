@@ -28,7 +28,7 @@ function gestionFormulaireCreation() {
                 // si le formulaire est valide alors je ferme la modal et j'affiche le message d'information
                 if (html === "valide") {
                     $('#modal-sign-up').modal('hide');
-                    setMessage("Votre compte a bien été enregistré. Merci de vous connecter !");
+                    setMessage("Votre compte a bien été enregistré. Vous devez valider votre compte depuis l'email de confirmation qui vous a été envoyé par email avant de vous connecter !");
                 } else {
                     // sinon j'affiche le formulaire avec les erreurs
                     $('#emplacement__formulaire-creation').html(html);

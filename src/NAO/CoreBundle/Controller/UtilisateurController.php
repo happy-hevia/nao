@@ -33,14 +33,14 @@ class UtilisateurController extends Controller
         $data = $this->get('nao_core.gestion_formulaire')->gestionFormulaireCreation($request);
 
         if ($data instanceof Utilisateur) {
-            //            On envoie l'email
-//            $message = \Swift_Message::newInstance()
-            //                ->setSubject("NAO : Confirmer votre adresse mail")
-            //                ->setFrom('naoconfirmation@gmail.com')
-            //                ->setTo($data->getEmail())
-            //                ->setBody($this->get('templating')->renderResponse('@NAOCore/mail/mail.html.twig', array('utilisateur' => $data ))->getContent(), 'text/html');
-            //
-            //            $this->get('mailer')->send($message);
+//                        On envoie l'email
+            $message = \Swift_Message::newInstance()
+                            ->setSubject("NAO : Confirmer votre adresse mail")
+                            ->setFrom('naoconfirmation@gmail.com')
+                            ->setTo($data->getEmail())
+                            ->setBody($this->get('templating')->renderResponse('@NAOCore/mail/mail.html.twig', array('utilisateur' => $data ))->getContent(), 'text/html');
+
+                        $this->get('mailer')->send($message);
 
             return new Response("valide");
         }

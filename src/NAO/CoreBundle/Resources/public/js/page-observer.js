@@ -1,7 +1,7 @@
 /**
  * Created by marcd on 17/01/2017.
  */
-var normal = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+var normal = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
     maxZoom: 18
 });
@@ -94,7 +94,7 @@ function gestionCarte() {
         '<a href="http://www.esri.com/">Esri</a>';
     wholink =
         'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
-    var aerien = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    var aerien = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
         attribution: '&copy; ' + mapLink + ', ' + wholink,
         maxZoom: 18
     });
@@ -114,7 +114,7 @@ function gestionCarte() {
 
 
     var positionActuelle = L.icon({
-        iconUrl: 'http://localhost/nao/web/bundles/naocore/images/marker-bleue.png',
+        iconUrl: 'http://176.31.39.245/web/bundles/naocore/images/marker-bleue.png',
         iconSize: [40, 40], // size of the icon
         iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
     });
@@ -164,12 +164,12 @@ function afficheMarker() {
     // Création des icones des markers
 
     var observationValide = L.icon({
-        iconUrl: "http://localhost/nao/web/bundles/naocore/images/marker-vert.png",
+        iconUrl: "http://176.31.39.245/web/bundles/naocore/images/marker-vert.png",
         iconSize: [40, 40], // size of the icon
         iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
     });
     var observationAValider = L.icon({
-        iconUrl: 'http://localhost/nao/web/bundles/naocore/images/marker-jaune.png',
+        iconUrl: 'http://176.31.39.245/web/bundles/naocore/images/marker-jaune.png',
         iconSize: [40, 40], // size of the icon
         iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
     });
@@ -217,10 +217,10 @@ function afficheModalAjout(e) {
 function gestionCheckboxAvalider() {
     $('#checkbox-observation-a-valider').change(function () {
         if (!this.checked) {
-            $('img[src="http://localhost/nao/web/bundles/naocore/images/marker-jaune.png"]').fadeOut('slow');
+            $('img[src="http://176.31.39.245/web/bundles/naocore/images/marker-jaune.png"]').fadeOut('slow');
             $('.ligne-observation[data-state="toValidate"]').fadeOut('slow');
         } else {
-            $('img[src="http://localhost/nao/web/bundles/naocore/images/marker-jaune.png"]').fadeIn('slow');
+            $('img[src="http://176.31.39.245/web/bundles/naocore/images/marker-jaune.png"]').fadeIn('slow');
             $('.ligne-observation[data-state="toValidate"]').fadeIn('slow');
         }
     });
@@ -242,14 +242,14 @@ function gestionFormulaireTri() {
                 $('.ligne-observation').fadeIn('slow');
             } else {
             //    sinon affiche simplement les markeurs validé
-                $('img[src="http://localhost/nao/web/bundles/naocore/images/marker-vert.png"]').fadeIn('slow');
+                $('img[src="http://176.31.39.245/web/bundles/naocore/images/marker-vert.png"]').fadeIn('slow');
                 $('.ligne-observation[data-state="validated"]').fadeIn('slow');
             }
 
         } else {
             $('.leaflet-marker-icon').fadeOut('slow');
             $('.' + cleanClassName(valeurChampEspece)).fadeIn('slow');
-            $('img[src="http://localhost/nao/web/bundles/naocore/images/marker-bleue.png"]').fadeIn('slow');
+            $('img[src="http://176.31.39.245/web/bundles/naocore/images/marker-bleue.png"]').fadeIn('slow');
 
             $('.ligne-observation').fadeOut('slow');
             $('.ligne-observation[data-oiseau="' + cleanClassName(valeurChampEspece) + '"]').fadeIn('slow');
