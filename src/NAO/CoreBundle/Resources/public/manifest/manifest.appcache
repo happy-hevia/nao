@@ -2,18 +2,21 @@ CACHE MANIFEST
 # 2017-01-09 v1.0.1
 # TODO: remplacer http://localhost/nao et http://localhost/nao/web/app_dev.php/ par URL de prod
 CACHE:
+# Pages du site mises en cache
 http://localhost/nao/web/app_dev.php/
 http://localhost/nao/web/app_dev.php/observer
 http://localhost/nao/web/app_dev.php/mes_observations
 http://localhost/nao/web/app_dev.php/mon_compte
 http://localhost/nao/web/app_dev.php/mentions_legales
 http://localhost/nao/web/app_dev.php/cgu
+# Fichiers CSS
 http://localhost/nao/web/bundles/naocore/css/bootstrap.min.css
 http://localhost/nao/web/bundles/naocore/css/awesomplete.css
 http://localhost/nao/web/bundles/naocore/css/styles.css
 http://localhost/nao/web/bundles/naocore/css/parsley.css
-http://lorempixel.com/300/200/
+# Fichier JSON
 http://localhost/nao/web/bundles/naocore/file/test.json
+# Fichiers JS
 http://localhost/nao/web/bundles/naocore/js/jquery.min.js
 http://localhost/nao/web/bundles/naocore/js/bootstrap.min.js
 http://localhost/nao/web/bundles/naocore/js/offline-js.js
@@ -30,11 +33,11 @@ http://localhost/nao/web/bundles/naocore/js/listener.js
 http://localhost/nao/web/bundles/naocore/js/page-compte.js
 http://localhost/nao/web/bundles/naocore/js/page-mesObservations.js
 http://localhost/nao/web/bundles/naocore/js/page-observer.js
-http://lorempixel.com/400/200/
 http://localhost/nao/web/bundles/naocore/js/awesomplete.min.js
 http://localhost/nao/web/bundles/naocore/js/connexion.js
 http://localhost/nao/web/bundles/naocore/js/gps.js
 http://localhost/nao/web/bundles/naocore/js/stupidtable.min.js
+# Fichiers images
 http://localhost/nao/web/bundles/naocore/images/v3.png
 http://localhost/nao/web/bundles/naocore/images/v3-500.png
 http://localhost/nao/web/bundles/naocore/images/internet_ok.png
@@ -47,12 +50,16 @@ http://localhost/nao/web/bundles/naocore/images/facebook.png
 http://localhost/nao/web/bundles/naocore/images/linkedin.png
 http://localhost/nao/web/bundles/naocore/images/twitter.png
 http://localhost/nao/web/bundles/naocore/images/google_plus.png
+# Fichiers FONT
 http://localhost/nao/web/bundles/naocore/fonts/glyphicons-halflings-regular.woff2
 http://localhost/nao/web/bundles/naocore/fonts/glyphicons-halflings-regular.woff
 http://localhost/nao/web/bundles/naocore/fonts/glyphicons-halflings-regular.ttf
 https://fonts.googleapis.com/css?family=Ubuntu:400,700
 
-NETWORK:
-http://localhost/nao/web/app_dev.php/validations
-https://unpkg.com/leaflet@1.0.2/dist/leaflet.js
-https://unpkg.com/leaflet@1.0.2/dist/leaflet.css
+# NETWORK:
+# http://localhost/nao/web/app_dev.php/validations
+# https://unpkg.com/leaflet@1.0.2/dist/leaflet.js
+# https://unpkg.com/leaflet@1.0.2/dist/leaflet.css
+# http://localhost/nao/web/bundles/naocore/images/oiseaux/*
+# http://lorempixel.com/300/200/
+# http://lorempixel.com/400/200/

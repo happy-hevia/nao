@@ -9,7 +9,6 @@ var syncState;
 function Connexion() {} // Espace de nom
 Connexion.stateList=["online","offline"];
 Connexion.connecter =function(){
-    console.log("Internet=online");
     connexionState = Connexion.stateList[0];
 
     // Je synchronize les observations vers le serveur
@@ -18,7 +17,6 @@ Connexion.connecter =function(){
 
 };
 Connexion.deconnecter = function() {
-    console.log("Internet=offline");
     connexionState=Connexion.stateList[1];
     updateDOMElementVisibility();
     // TODO: Arrêter la synchronisation
@@ -30,30 +28,49 @@ Connexion.isConnected = function() {
 Connexion.initListener = function() {
     console.log("\tLANCEMENT CONNEXION INIT-LISTENER");
     Offline.options = {
-        checkOnLoad:true,
+        checkOnLoad: true,
         interceptRequests: true,
         reconnect: {
             initialDelay:3,
-            delay: 3
+            delay: 1
         },
-        requests:true,
-        checks:{
-            image : {
-                url: window.location.host+"\nao\web\bundles\naocore\images\favicon_back_end.ico",
-                active: 'image'
-            }
-        }
+        requests: true,
+        checks:{xhr: {url: '/nao/web/bundles/naocore/file/alive.txt'}},
+        game: false
     };
     Offline.on('up', function(){
         Connexion.connecter();
-        updateDOMElementVisibility();
         console.log("\tPASSAGE EN MODE CONNECTE");
-        // On synchronise la base locale -> Serveur
-        synchronizeObservation();
     });
     Offline.on('down', function(){
         Connexion.deconnecter();
         console.log("\tPASSAGE EN MODE HORS-CONNEXION");
-        updateDOMElementVisibility();
     });
 };
+
+function myConnexionAjax () {
+    $.ajax({
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+        url: "/nao/web/app.php/admin",
+        type: "GET",
+        timeout: 2000,
+        success: connexionOk,
+        error: connexionKO
+    }).fail(connexionKO);
+}
+function connexionOk(data) {
+    if (connexionState==="offline") {
+        Connexion.connecter();
+        console.log("Connexion Internet OK");
+        console.log(data);
+        data=null;
+    }
+}
+function connexionKO(xhr, ajaxOptions, thrownError) {
+    if (connexionState==="online") {
+        console.log("Connexion Internet KO");
+        Connexion.deconnecter();
+    }
+
+}
+window.setInterval(myConnexionAjax,2000);
