@@ -240,17 +240,14 @@ function onclick(observation) {
 
 
 }
-
+// Initialisation des variables globales
+statutStorage().load();
 
 
 /**
  *
  */
 $(function() {
-    // Initialisation des variables globales
-    connexionState= "online";
-    gpsState="gps_ko";
-    syncState="sync_ok";
     updateDOMElementVisibility();
     setMessage("");
     initSocialEvent();

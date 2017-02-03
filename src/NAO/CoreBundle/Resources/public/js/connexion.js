@@ -27,25 +27,6 @@ Connexion.isConnected = function() {
 
 Connexion.initListener = function() {
     console.log("\tLANCEMENT CONNEXION INIT-LISTENER");
-    /*Offline.options = {
-        checkOnLoad: true,
-        interceptRequests: true,
-        reconnect: {
-            initialDelay:3,
-            delay: 1
-        },
-        requests: true,
-        checks:{xhr: {url: '/nao/web/app.php/admin'}},
-        game: false
-    };
-    Offline.on('up', function(){
-        Connexion.connecter();
-        console.log("\tPASSAGE EN MODE CONNECTE");
-    });
-    Offline.on('down', function(){
-        Connexion.deconnecter();
-        console.log("\tPASSAGE EN MODE HORS-CONNEXION");
-    });*/
     window.setInterval(myConnexionAjax,1500);
 };
 
@@ -63,6 +44,7 @@ function connexionOk(data) {
     if (connexionState==="offline") {
         Connexion.connecter();
         console.log("Connexion Internet OK");
+        statutStorage().save();
         data=null;
     }
 }
@@ -70,10 +52,12 @@ function connexionKO(xhr, ajaxOptions, thrownError) {
     if (connexionState==="online") {
         console.log("Connexion Internet KO");
         Connexion.deconnecter();
+        statutStorage().save();
         var urlCourante = document.URL;
+        // Si on est déconnecté alors que la page d'administration des droits est active Alors on redirige vers la page observer
         if (urlGestion === urlCourante) {
             // Je redirige vers la page observer
-            document.location.href="//"+urlAccueil;
+            document.location.href=urlAccueil;
         }
     }
 

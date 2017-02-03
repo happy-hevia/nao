@@ -452,3 +452,29 @@ var storeDetector = function () {
         }
     }
 };
+//########################################################################
+//                  GESTION Mémorisation statuts
+//########################################################################
+var statutStorage = new MyWebStore("statut", sessionStorage);
+statutStorage.save = function () {
+    // Je crée l'objet contenant les statuts
+    var statutsObject = {
+        connexionState: connexionState,
+        syncState:syncState,
+        gpsState: gpsState
+    };
+    this.setAll(statutsObject);
+};
+statutStorage.load = function() {
+    this.getAll();
+    var statutsObject=this.coll;
+    if (statutsObject===null) {
+        connexionState= "online";
+        gpsState="gps_ko";
+        syncState="sync_ok";
+    } else {
+        connexionState= statutsObject.connexionState;
+        syncState= statutsObject.syncState;
+        gpsState= statutsObject.gpsState;
+    }
+};
