@@ -3,7 +3,7 @@
  **/
 
 /**
- * Permet de gérer la validation du formulaire de création
+ * Permet de gérer la validation du formulaire de création d'un nouveau compte utilisateur
  */
 function gestionFormulaireCreation() {
     var $formulaireCreation = $('form[name="nao_corebundle_utilisateur"]');
@@ -230,17 +230,23 @@ function gestionFormulaireAjoutObservation() {
 
             // je crée l'objet javascript observation
             var observation = new Observation(dateObservation, latitude, longitude, oiseauId, observateur);
+            observation.id=observationStorage.getLocalId();
 
             // je le stocke dans le bdd local
             observationStorage.add(observation);
 
-        //    je ferme la modal et j'affiche le message de confirmation
+            //    je ferme la modal et j'affiche le message de confirmation
             $('#modal-addObservation').modal('hide');
-            setMessage("L'observation a été enregistrée avec succès !")
             //On positionne l'indicateur syncState à "sync_todo"
             setSyncState("sync_todo");
-            // En mode connecté on lance immédiatement la synchronisation
-            if (Connexion.isConnected()) { synchronizeObservation();}
+
+            if (Connexion.isConnected()) {
+                // En mode connecté on lance immédiatement la synchronisation
+                setMessage("Sauvegarde locale effectuée, synchronisation en cours avec le serveur...");
+                synchronizeObservation();
+            } else {
+                setMessage("Sauvegarde locale effectuée, En attente de connexion internet pour synchronisation avec le serveur...");
+            }
 
     });
 
@@ -252,7 +258,7 @@ function gestionFormulaireAjoutObservation() {
         } else {
             setMessage("Impossible d'accéder à la localisation courante !")
         }
-    })
+    });
 
 //    Lorsque l'internaute change la valeur de l'oiseau, change l'image si elle existe
     $('#nao_corebundle_observation_oiseau').on("awesomplete-selectcomplete", function () {
@@ -270,7 +276,7 @@ function gestionFormulaireAjoutObservation() {
 
             })
         }
-    })
+    });
 }
 
 /**

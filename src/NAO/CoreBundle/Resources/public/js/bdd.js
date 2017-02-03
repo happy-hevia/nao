@@ -316,6 +316,19 @@ observationStorage.observationsPageObserver = function() {
     return false
 };
 
+/**
+ * Renvoie le premier id (entier négatif) libre.
+ * @returns {*}
+ */
+observationStorage.getLocalId = function() {
+    // On initie l'index à -1
+    var index=-1;
+        index--;
+    }
+    return index;
+};
+
+
 //########################################################################
 //                  GESTION OISEAUX
 //########################################################################
