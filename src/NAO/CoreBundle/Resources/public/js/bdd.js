@@ -323,6 +323,9 @@ observationStorage.observationsPageObserver = function() {
 observationStorage.getLocalId = function() {
     // On initie l'index à -1
     var index=-1;
+    // On recherche dans la base locale une correspondance
+    while (observationStorage.getById(index)!=false) {
+        // Si correspondance trouvée, on relance la recherche mais avec un incrément négatif.
         index--;
     }
     return index;
