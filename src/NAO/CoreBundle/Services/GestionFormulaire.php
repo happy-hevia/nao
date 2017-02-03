@@ -298,21 +298,24 @@ class GestionFormulaire
      */
     public function gestionStatut($request)
     {
-        //        récupère l'observation concernée
-        $observation = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findById($request->request->get("id"));
+        try {
+            //        récupère l'observation concernée
+            $observation = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findById($request->request->get("id"));
 
-        //        On modifie le statut
-        $observation[0]->setStatut($request->request->get('nouveaustatut'));
-        //        On modifie l'email du valideur
-        $observation[0]->setValideur($request->request->get('valideur'));
-        //        On modifie la date de la dernière modification
-        $observation[0]->setLastUpdate($request->request->get('lastUpdate'));
+            //        On modifie le statut
+            $observation[0]->setStatut($request->request->get('nouveaustatut'));
+            //        On modifie l'email du valideur
+            $observation[0]->setValideur($request->request->get('valideur'));
+            //        On modifie la date de la dernière modification
+            $observation[0]->setLastUpdate($request->request->get('lastUpdate'));
 
-        //        On enregistre dans la bdd
-        $this->entityManager->persist($observation[0]);
-        $this->entityManager->flush();
-
-        return "true";
+            //        On enregistre dans la bdd
+            $this->entityManager->persist($observation[0]);
+            $this->entityManager->flush();
+            return "true";
+        } catch(Exception $error) {
+            return $error;
+        }
     }
 
     /**

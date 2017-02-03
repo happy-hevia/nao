@@ -238,8 +238,7 @@ function gestionFormulaireAjoutObservation() {
             $('#modal-addObservation').modal('hide');
             setMessage("L'observation a été enregistrée avec succès !")
             //On positionne l'indicateur syncState à "sync_todo"
-            syncState="sync_todo";
-            updateDOMElementVisibility();
+            setSyncState("sync_todo");
             // En mode connecté on lance immédiatement la synchronisation
             if (Connexion.isConnected()) { synchronizeObservation();}
 
@@ -346,9 +345,7 @@ function updateObservationStatut(id, nouveauStatut) {
         // Je mets à jour la base locale
         observationStorage.setAll(observationStorage.coll);
         // Je positionne l'indicateur de synchronisation local -> Serveur à sync_todo
-        syncState="sync_todo";
-        // Je mets à jour l'affichage
-        updateDOMElementVisibility();
+        setSyncState("sync_todo");
         // Si on est connecté à internet, on lance la synchronisation
         var requestData ={
             id: id,
@@ -370,15 +367,16 @@ function updateObservationStatut(id, nouveauStatut) {
     }
 }
 function statutUpdateSuccess (data) { // Je récupère la réponse
-    if (data === "true") {
+
+    if (data) {
         // J'informe l'utilisateur que le statut a bien été modifié
         setMessage("Modifications bien mémorisée");
         // Je rafraichis la page validation
         window.location.reload();
     } else {
         setMessage("Impossible de modifier le statut");
+        console.log(data);
         // Dans ce cas on positionne l'indicateur de synchronisation en erreur
-        syncState = "Sync_ko";
-        updateDOMElementVisibility();
+        setSyncState("Sync_ko");
     }
 }
