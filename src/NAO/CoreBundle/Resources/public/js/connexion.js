@@ -3,7 +3,7 @@
  */
 
 var connexionState;
-var syncState;
+
 
 /* Définition des fonctions de l'espace de nom Connexion */
 function Connexion() {} // Espace de nom
@@ -31,28 +31,33 @@ Connexion.initListener = function() {
 };
 
 function myConnexionAjax () {
-    $.ajax({
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        url: "/nao/web/app.php/admin",
-        type: "GET",
-        timeout: 3000,
-        success: connexionOk,
-        error: connexionKO
-    }).fail(connexionKO);
+    try {
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            url: "/nao/web/app.php/admin",
+            type: "GET",
+            //timeout: 3000,
+            success: connexionOk,
+            error: connexionKO
+        }).fail(connexionKO);
+    } catch(err) {
+        connexionKO(null);
+    }
+
 }
 function connexionOk(data) {
-    if (connexionState==="offline") {
+    if (pageChange===false && connexionState==="offline") {
         Connexion.connecter();
         console.log("Connexion Internet OK");
-        statutStorage().save();
+        statutStorage.save();
         data=null;
     }
 }
 function connexionKO(xhr, ajaxOptions, thrownError) {
-    if (connexionState==="online") {
+    if (pageChange===false && connexionState==="online") {
         console.log("Connexion Internet KO");
         Connexion.deconnecter();
-        statutStorage().save();
+        statutStorage.save();
         var urlCourante = document.URL;
         // Si on est déconnecté alors que la page d'administration des droits est active Alors on redirige vers la page observer
         if (urlGestion === urlCourante) {

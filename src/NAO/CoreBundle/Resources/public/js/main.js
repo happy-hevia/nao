@@ -241,8 +241,13 @@ function onclick(observation) {
 
 }
 // Initialisation des variables globales
-statutStorage().load();
-
+statutStorage.load();
+var pageChange = false;
+window.onbeforeunload = function()
+{
+    // Positionnement de la variable pageChange à true
+    pageChange = true;
+};
 
 /**
  *
