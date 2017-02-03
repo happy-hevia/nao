@@ -50,6 +50,13 @@ Object.size = function(obj) {
     return size;
 };
 
+var syncState;
+function setSyncState(state) {
+    syncState=state;
+    statutStorage.save();
+    updateDOMElementVisibility();
+};
+
 //########################################################################
 //                  GESTION UTILISATEURS
 //########################################################################
@@ -174,8 +181,7 @@ observationStorage.clean = function() {
  */
 observationStorage.loadSuccess = function(data) {
     console.log("Téléchargement des données du Serveur -- Terminé !");
-    syncState="sync_ok";
-    updateDOMElementVisibility();
+    setSyncState("sync_ok");
     updateStorage.update();
     // Je récupère la réponse
     // console.log("Données AJAX Observations reçues");
@@ -294,7 +300,7 @@ observationStorage.observationsAValider = function() {
  * @returns {boolean}
  */
 observationStorage.observationsPageObserver = function() {
-    if (observationStorage.coll.length>0) {// Je vérifie que le stockage local d'observation n'est pas vide
+    if (observationStorage.coll!=null && observationStorage.coll.length>0) {// Je vérifie que le stockage local d'observation n'est pas vide
         var observationsAValider= new Array();
         // Je parcours les observations effectuées
         for (var i=0; i<observationStorage.coll.length; i++) {
@@ -309,6 +315,22 @@ observationStorage.observationsPageObserver = function() {
     }
     return false
 };
+
+/**
+ * Renvoie le premier id (entier négatif) libre.
+ * @returns {*}
+ */
+observationStorage.getLocalId = function() {
+    // On initie l'index à -1
+    var index=-1;
+    // On recherche dans la base locale une correspondance
+    while (observationStorage.getById(index)!=false) {
+        // Si correspondance trouvée, on relance la recherche mais avec un incrément négatif.
+        index--;
+    }
+    return index;
+};
+
 
 //########################################################################
 //                  GESTION OISEAUX
@@ -367,8 +389,7 @@ updateStorage.getLastUpdate = function() {
 };
 
 updateStorage.init = function() {
-    syncState="sync_ec";
-    updateDOMElementVisibility();
+    setSyncState("sync_ec");
     observationStorage.loadFromServeur();
 };
 
@@ -383,28 +404,26 @@ function synchronizeObservation(){
 
     // Je crée un tableau avec toutes les observations à envoyer au serveur
     var observationsAjax = [];
+    console.log("--------------------------------------------------------------");
+    console.log("Analyse Besoin synchronisation Observations locales -> serveur");
+    console.log("--------------------------------------------------------------");
     for (var observation in observations){
         // On transfert toutes les observations modifiées en locale
         var test = observations[observation].lastUpdate >= last_update;
-        console.log(""+observations[observation].lastUpdate+" >= "+last_update+" => "+test);
+        //console.log(""+observations[observation].lastUpdate+" >= "+last_update+" => "+test);
         if (test) {
             observationsAjax.push(observations[observation]);
         }
     }
-    console.log("--------------------------------------------------------------");
-    console.log("synchronizeObservation : Liste des observations à synchroniser");
-    console.log("--------------------------------------------------------------");
-    console.log(observationsAjax);
+
     if(observationsAjax.length == 0) {
-        console.log("Pas d'élément à synchroniser");
-        console.log("Synchronisation avec le serveur  -- Terminée");
+        console.log("Pas d'observation à synchroniser");
+        setSyncState("sync_ok");
         return;
     }
 
     // je définie la synchronisation comme en cours
-    syncState = "sync_ec";
-    updateDOMElementVisibility();
-
+    setSyncState("sync_ec");
 
     // J'envois les observations aux serveur
     $.ajax({
@@ -420,8 +439,7 @@ function synchronizeObservation(){
             observationStorage.loadFromServeur();
             // Je définie la synchronisation comme ok
             console.log("Synchronisation avec le serveur  -- Terminée");
-            syncState = "sync_ok";
-            updateDOMElementVisibility();
+            setSyncState("sync_ok");
 
             // Je met à jour la date de la dernière modification
             var dateCourrante = new Date();
@@ -432,8 +450,7 @@ function synchronizeObservation(){
         },
         error: function(){
             // Je définie la synchronisation comme ko en cas d'erreur
-            syncState = "sync_ko";
-            updateDOMElementVisibility();
+            setSyncState("sync_ko");
         }
     });
 }
@@ -450,5 +467,33 @@ var storeDetector = function () {
             // Il faut créer ici la base de données locale
             localStorage.setItem(this.key, new Date());
         }
+    }
+};
+//########################################################################
+//                  GESTION Mémorisation statuts
+//########################################################################
+var statutStorage = new MyWebStore("statut", sessionStorage);
+statutStorage.save = function () {
+    // Je crée l'objet contenant les statuts
+    var statutsObject = {
+        connexionState: connexionState,
+        syncState:syncState,
+        gpsState: gpsState
+    };
+    this.setAll(statutsObject);
+};
+statutStorage.load = function() {
+    this.getAll();
+    var statutsObject=this.coll;
+    console.log("load statuts");
+    console.log(statutsObject);
+    if (statutsObject===null) {
+        connexionState= "online";
+        gpsState="gps_ko";
+        syncState="sync_ok";
+    } else {
+        connexionState= statutsObject.connexionState;
+        syncState= statutsObject.syncState;
+        gpsState= statutsObject.gpsState;
     }
 };
