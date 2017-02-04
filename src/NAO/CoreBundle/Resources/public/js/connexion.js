@@ -3,7 +3,7 @@
  */
 
 var connexionState;
-var syncState;
+
 
 /* Définition des fonctions de l'espace de nom Connexion */
 function Connexion() {} // Espace de nom
@@ -27,50 +27,43 @@ Connexion.isConnected = function() {
 
 Connexion.initListener = function() {
     console.log("\tLANCEMENT CONNEXION INIT-LISTENER");
-    Offline.options = {
-        checkOnLoad: true,
-        interceptRequests: true,
-        reconnect: {
-            initialDelay:3,
-            delay: 1
-        },
-        requests: true,
-        checks:{xhr: {url: '/nao/web/bundles/naocore/file/alive.txt'}},
-        game: false
-    };
-    Offline.on('up', function(){
-        Connexion.connecter();
-        console.log("\tPASSAGE EN MODE CONNECTE");
-    });
-    Offline.on('down', function(){
-        Connexion.deconnecter();
-        console.log("\tPASSAGE EN MODE HORS-CONNEXION");
-    });
+    window.setInterval(myConnexionAjax,1500);
 };
 
 function myConnexionAjax () {
-    $.ajax({
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        url: "/nao/web/app.php/admin",
-        type: "GET",
-        timeout: 2000,
-        success: connexionOk,
-        error: connexionKO
-    }).fail(connexionKO);
+    try {
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            url: "/nao/web/app.php/admin",
+            type: "GET",
+            //timeout: 3000,
+            success: connexionOk,
+            error: connexionKO
+        }).fail(connexionKO);
+    } catch(err) {
+        connexionKO(null);
+    }
+
 }
 function connexionOk(data) {
-    if (connexionState==="offline") {
+    if (pageChange===false && connexionState==="offline") {
         Connexion.connecter();
         console.log("Connexion Internet OK");
-        console.log(data);
+        statutStorage.save();
         data=null;
     }
 }
 function connexionKO(xhr, ajaxOptions, thrownError) {
-    if (connexionState==="online") {
+    if (pageChange===false && connexionState==="online") {
         console.log("Connexion Internet KO");
         Connexion.deconnecter();
+        statutStorage.save();
+        var urlCourante = document.URL;
+        // Si on est déconnecté alors que la page d'administration des droits est active Alors on redirige vers la page observer
+        if (urlGestion === urlCourante) {
+            // Je redirige vers la page observer
+            document.location.href=urlAccueil;
+        }
     }
 
 }
-window.setInterval(myConnexionAjax,2000);
