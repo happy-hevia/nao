@@ -2,6 +2,13 @@
  * Created by marcd on 30/12/2016.
  */
 
+var sw = navigator.serviceWorker.register(urlServiceWorkerJS).then(function(reg){
+    console.log("Registration SUCCEEDED. Scope is "+reg.scope);
+}).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+});
+
 /**
  * String.replaceAll
  * Effet : Remplace toutes les occurences trouvées d'une chaine texte "search" et la remplace par "replacement"
@@ -127,6 +134,14 @@ function gestionBoutonConnexion(){
 function afficheMessageDepuisDom(){
     var contenuMessage = $('#message-dom').data('content');
     setMessage(contenuMessage);
+
+
+    //On positionne l'indicateur syncState à "sync_todo"
+    if (contenuMessage === "L'observation a été enregistré avec succès !") {
+        setSyncState("sync_todo");
+        observationStorage.loadFromServeur();
+        location.reload();
+    }
 }
 
 /**
@@ -233,17 +248,19 @@ function onclick(observation) {
 
 
 }
-
-
+// Initialisation des variables globales
+statutStorage.load();
+var pageChange = false;
+window.onbeforeunload = function()
+{
+    // Positionnement de la variable pageChange à true
+    pageChange = true;
+};
 
 /**
  *
  */
 $(function() {
-    // Initialisation des variables globales
-    connexionState= "online";
-    gpsState="gps_ko";
-    syncState="sync_ok";
     updateDOMElementVisibility();
     setMessage("");
     initSocialEvent();

@@ -21,6 +21,7 @@ Localisation.setIndisponible = function() {
     if (gpsState != Localisation.stateList[0]) {// Si changement d'état seulement
         console.log("GPS= Indisponible");
         gpsState = Localisation.stateList[0];
+        statutStorage().save();
         updateDOMElementVisibility();
     }
 };
@@ -28,6 +29,7 @@ Localisation.setDisponible = function() {
     if (gpsState != Localisation.stateList[1]) {// Si changement d'état seulement
         console.log("GPS= Disponible");
         gpsState = Localisation.stateList[1];
+        statutStorage().save();
         updateDOMElementVisibility();
     }
 };

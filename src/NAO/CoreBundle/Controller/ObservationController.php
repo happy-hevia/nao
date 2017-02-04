@@ -27,7 +27,7 @@ class ObservationController extends Controller
         if ($form === "valide") {
             return new Response("valide");
         } else {
-            return $this->render('@NAOCore/formulaire/observation.html.twig', array('formulaireObservation' => $form->createView()));
+            return $this->render('@NAOCore/Observer/observer.html.twig', array('tabForm' => $form));
         }
     }
     /**
@@ -67,7 +67,7 @@ class ObservationController extends Controller
     public function synchronisationLocalAction(Request $request)
     {
         $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservationLocal($request);
-        $json=$this->get('nao_core.gestion_encodage')->json($retour);
+        $json = $this->get('nao_core.gestion_encodage')->json($retour);
         return new Response($json);
     }
 }

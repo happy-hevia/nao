@@ -16,27 +16,21 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class GestionEncodage
 {
-    private $formFactory;
-    private $entityManager;
-    private $validator;
     private $encoders;
     private $normalizers;
     private $serializer;
 
-    public function __construct(FormFactory $formFactory, EntityManager $entityManager, $validator)
+    public function __construct()
     {
-        $this->formFactory = $formFactory;
-        $this->entityManager = $entityManager;
-        $this->validator = $validator;
+        $this->encoders = array(new JsonEncoder());
+        $this->normalizers = array(new ObjectNormalizer());
 
-        $this->encoders=array(new JsonEncoder());
-        $this->normalizers=array(new ObjectNormalizer());
-
-        $this->serializer=new Serializer($this->normalizers,$this->encoders);
+        $this->serializer = new Serializer($this->normalizers, $this->encoders);
     }
 
-    public function json($object) {
-        $jsonContent = $this->serializer->serialize($object,'json');
+    public function json($object)
+    {
+        $jsonContent = $this->serializer->serialize($object, 'json');
         return $jsonContent;
     }
 }

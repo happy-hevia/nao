@@ -3,7 +3,7 @@
  **/
 
 /**
- * Permet de gérer la validation du formulaire de création
+ * Permet de gérer la validation du formulaire de création d'un nouveau compte utilisateur
  */
 function gestionFormulaireCreation() {
     var $formulaireCreation = $('form[name="nao_corebundle_utilisateur"]');
@@ -211,13 +211,16 @@ function gestionFormulaireAjoutObservation() {
 
     $formulaireObservation.parsley();
 
+    // Si le formulaire a une erreur, j'affiche la modal
     if ($('#form-have-error').length >= 1) {
         $('#modal-addObservation').modal('show');
     }
 
     // Lorsque je soumets le formulaire
     $formulaireObservation.on('submit', function (e) {
-        $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
+
+            $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
+        if (!Connexion.isConnected()) {
             e.preventDefault();
 
             // Je récolte les informations de l'observation
@@ -230,18 +233,15 @@ function gestionFormulaireAjoutObservation() {
 
             // je crée l'objet javascript observation
             var observation = new Observation(dateObservation, latitude, longitude, oiseauId, observateur);
+            observation.id=observationStorage.getLocalId();
 
             // je le stocke dans le bdd local
             observationStorage.add(observation);
 
-        //    je ferme la modal et j'affiche le message de confirmation
+            //    je ferme la modal et j'affiche le message de confirmation
             $('#modal-addObservation').modal('hide');
-            setMessage("L'observation a été enregistrée avec succès !")
-            //On positionne l'indicateur syncState à "sync_todo"
-            syncState="sync_todo";
-            updateDOMElementVisibility();
-            // En mode connecté on lance immédiatement la synchronisation
-            if (Connexion.isConnected()) { synchronizeObservation();}
+            setMessage("Sauvegarde locale effectuée, En attente de connexion internet pour synchronisation avec le serveur...");
+        }
 
     });
 
@@ -253,7 +253,7 @@ function gestionFormulaireAjoutObservation() {
         } else {
             setMessage("Impossible d'accéder à la localisation courante !")
         }
-    })
+    });
 
 //    Lorsque l'internaute change la valeur de l'oiseau, change l'image si elle existe
     $('#nao_corebundle_observation_oiseau').on("awesomplete-selectcomplete", function () {
@@ -271,18 +271,18 @@ function gestionFormulaireAjoutObservation() {
 
             })
         }
-    })
+    });
 }
 
 /**
  * Permet l'affichage des détails d'une espèce dans l'onglet de la modale descriptionObservation
  */
 function activationDescriptionEspece() {
-    $("#onglet_espece").click(function() {
+    $("#onglet_espece").click(function () {
         //On récupère le nom de l'espèce dans le span form-observation__espece
         var espece = $("#form-observation__espece").text();
         // On récupère l'image et on lui change le href et sa description alt
-        $("#espece-image__").attr("src",oiseauStorage.getImage500300(espece)).attr("alt",espece).click(function() {
+        $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
             // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
             if (Connexion.isConnected()) {
                 window.open(oiseauStorage.storeData[espece].image);
@@ -314,12 +314,11 @@ function gestionPageValidation() {
     });
 
 
-
     //Lorsque on clique sur un nom d'oiseau
-    $('.observation_oiseau__').click(function() {
+    $('.observation_oiseau__').click(function () {
         var nom = $(this).text();
-        $('.modal-title').text('Observation faite le'+$(this).data('date'));
-        console.log('\t click sur '+nom);
+        $('.modal-title').text('Observation faite le' + $(this).data('date'));
+        console.log('\t click sur ' + nom);
         $('#modal-observation').modal('show');
         $('#form-observation__espece').html(nom);
         $('#form-observation__latitude').val($(this).data('latitude'));
@@ -341,16 +340,14 @@ function updateObservationStatut(id, nouveauStatut) {
     if (observation != false) {
         // Je mets à jour les champs de l'observation concernée
         observation.valideur = emailUtilisateur;
-        observation.statut=nouveauStatut;
-        observation.lastUpdate = Math.round(new Date().valueOf()/1000);
+        observation.statut = nouveauStatut;
+        observation.lastUpdate = Math.round(new Date().valueOf() / 1000);
         // Je mets à jour la base locale
         observationStorage.setAll(observationStorage.coll);
         // Je positionne l'indicateur de synchronisation local -> Serveur à sync_todo
-        syncState="sync_todo";
-        // Je mets à jour l'affichage
-        updateDOMElementVisibility();
+        setSyncState("sync_todo");
         // Si on est connecté à internet, on lance la synchronisation
-        var requestData ={
+        var requestData = {
             id: id,
             nouveaustatut: nouveauStatut,
             valideur: emailUtilisateur
@@ -359,7 +356,7 @@ function updateObservationStatut(id, nouveauStatut) {
         if (Connexion.isConnected()) {
             console.log("lancement de la synchronisation Local -> Serveur / Statut");
             // Envoi de la requête HTTP en mode asynchrone
-            myJsonAjax (urlSynchroStatut, requestData, statutUpdateSuccess);
+            myJsonAjax(urlSynchroStatut, requestData, statutUpdateSuccess);
         } else {
             // J'informe l'utilisateur que le statut a bien été modifié
             setMessage("En attente de synchronisation, mémorisation locale bien effectuée");
@@ -369,16 +366,17 @@ function updateObservationStatut(id, nouveauStatut) {
 
     }
 }
-function statutUpdateSuccess (data) { // Je récupère la réponse
-    if (data === "true") {
+function statutUpdateSuccess(data) { // Je récupère la réponse
+
+    if (data) {
         // J'informe l'utilisateur que le statut a bien été modifié
         setMessage("Modifications bien mémorisée");
         // Je rafraichis la page validation
         window.location.reload();
     } else {
         setMessage("Impossible de modifier le statut");
+        console.log(data);
         // Dans ce cas on positionne l'indicateur de synchronisation en erreur
-        syncState = "Sync_ko";
-        updateDOMElementVisibility();
+        setSyncState("Sync_ko");
     }
 }

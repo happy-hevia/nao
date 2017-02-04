@@ -3,13 +3,12 @@
  */
 
 var connexionState;
-var syncState;
+
 
 /* Définition des fonctions de l'espace de nom Connexion */
 function Connexion() {} // Espace de nom
 Connexion.stateList=["online","offline"];
 Connexion.connecter =function(){
-    console.log("Internet=online");
     connexionState = Connexion.stateList[0];
 
     // Je synchronize les observations vers le serveur
@@ -18,7 +17,6 @@ Connexion.connecter =function(){
 
 };
 Connexion.deconnecter = function() {
-    console.log("Internet=offline");
     connexionState=Connexion.stateList[1];
     updateDOMElementVisibility();
     // TODO: Arrêter la synchronisation
@@ -29,31 +27,43 @@ Connexion.isConnected = function() {
 
 Connexion.initListener = function() {
     console.log("\tLANCEMENT CONNEXION INIT-LISTENER");
-    Offline.options = {
-        checkOnLoad:true,
-        interceptRequests: true,
-        reconnect: {
-            initialDelay:3,
-            delay: 3
-        },
-        requests:true,
-        checks:{
-            image : {
-                url: window.location.host+"\nao\web\bundles\naocore\images\favicon_back_end.ico",
-                active: 'image'
-            }
-        }
-    };
-    Offline.on('up', function(){
-        Connexion.connecter();
-        updateDOMElementVisibility();
-        console.log("\tPASSAGE EN MODE CONNECTE");
-        // On synchronise la base locale -> Serveur
-        synchronizeObservation();
-    });
-    Offline.on('down', function(){
-        Connexion.deconnecter();
-        console.log("\tPASSAGE EN MODE HORS-CONNEXION");
-        updateDOMElementVisibility();
-    });
+    window.setInterval(myConnexionAjax,1500);
 };
+
+function myConnexionAjax () {
+    try {
+        $.ajax({
+            contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            url: "/nao/web/app.php/admin",
+            type: "GET",
+            //timeout: 3000,
+            success: connexionOk,
+            error: connexionKO
+        }).fail(connexionKO);
+    } catch(err) {
+        connexionKO(null);
+    }
+
+}
+function connexionOk(data) {
+    if (pageChange===false && connexionState==="offline") {
+        Connexion.connecter();
+        console.log("Connexion Internet OK");
+        statutStorage.save();
+        data=null;
+    }
+}
+function connexionKO(xhr, ajaxOptions, thrownError) {
+    if (pageChange===false && connexionState==="online") {
+        console.log("Connexion Internet KO");
+        Connexion.deconnecter();
+        statutStorage.save();
+        var urlCourante = document.URL;
+        // Si on est déconnecté alors que la page d'administration des droits est active Alors on redirige vers la page observer
+        if (urlGestion === urlCourante) {
+            // Je redirige vers la page observer
+            document.location.href=urlAccueil;
+        }
+    }
+
+}

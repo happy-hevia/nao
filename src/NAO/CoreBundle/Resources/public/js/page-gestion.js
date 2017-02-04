@@ -32,6 +32,7 @@ function gestionPageGestion() {
             success: function (data) { // Je récupère la réponse
                 if (data === "true"){
                     setMessage("les droits ont bien été modifiés");
+                    location.reload();
                 } else {
                     setMessage("Impossible de modifier le droit");
                 }

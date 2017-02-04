@@ -79,12 +79,12 @@ class GestionFormulaire
             $this->utilisateur->setDroit("particulier"); // définit l'utilisateur comme particulier
             $this->utilisateur->setDateCreation(new \DateTime()); // remplit la date de création à l'heure actuelle
 
-//            On crée le code pour la confirmation par mail
+            //            On crée le code pour la confirmation par mail
             $this->utilisateur->setMailCode(md5($this->utilisateur->getEmail()));
             $this->utilisateur->setEmailValide(false);
 
 
-//            On encode le mot de passe
+            //            On encode le mot de passe
             $this->utilisateur->setMdp(md5($this->utilisateur->getMdp()));
             $this->utilisateur->setMdpConfirmation(md5($this->utilisateur->getMdpConfirmation()));
 
@@ -107,41 +107,32 @@ class GestionFormulaire
      */
     public function gestionConnexion($request)
     {
-//        récupère l'utilisateur concerné si il existe
+        //        récupère l'utilisateur concerné si il existe
         $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
-//        Si l'utilisateur exite
+        //        Si l'utilisateur exite
         if (isset($utilisateur[0]) && $utilisateur[0] != null) {
 
-//            récupère le mot de passe encodé du serveur
+            //            récupère le mot de passe encodé du serveur
             $mdpServeur = $utilisateur[0]->getMdp();
 
-//            Si les identifiant renseigné ne sont pas correct alors retourne false
+            //            Si les identifiant renseigné ne sont pas correct alors retourne false
             if (md5($request->request->get('mdp')) != $mdpServeur) {
                 return "false";
             }
-        } else{
-//            Si l'utilisateur n'exite pas retourne false
+        } else {
+            //            Si l'utilisateur n'exite pas retourne false
             return "false";
         }
 
-//        Si le compte n'a pas été validé, on retourne false
-        if (!$utilisateur[0]->getEmailValide()){
+        //        Si le compte n'a pas été validé, on retourne false
+        if (!$utilisateur[0]->getEmailValide()) {
             return "false";
         }
 
-//        création de l'objet utilisateur pour le front
-        $utilisateurJs = array(
-            "valueList" => ["null", "particulier","naturaliste", "administrateur"],
-            "date" => $utilisateur[0]->getDateCreation()->format('d/m/Y'),
-            "nom" =>$utilisateur[0]->getNom(),
-            "prenom"=>$utilisateur[0]->getPrenom(),
-            "pseudo"=>$utilisateur[0]->getPseudo(),
-            "email"=>$utilisateur[0]->getEmail(),
-            "role"=>$utilisateur[0]->getDroit(),
-            "clef"=>md5($utilisateur[0]->getEmail() . $this->secret .  $utilisateur[0]->getDroit())
-        );
+        //        création de l'objet utilisateur pour le front
+        $utilisateurJs = array("valueList" => ["null", "particulier", "naturaliste", "administrateur"], "date" => $utilisateur[0]->getDateCreation()->format('d/m/Y'), "nom" => $utilisateur[0]->getNom(), "prenom" => $utilisateur[0]->getPrenom(), "pseudo" => $utilisateur[0]->getPseudo(), "email" => $utilisateur[0]->getEmail(), "role" => $utilisateur[0]->getDroit(), "clef" => md5($utilisateur[0]->getEmail() . $this->secret . $utilisateur[0]->getDroit()));
 
-//        Si les identifiants renseignés sont correct alors on retourne les informations de l'utilisateur
+        //        Si les identifiants renseignés sont correct alors on retourne les informations de l'utilisateur
         return json_encode($utilisateurJs);
 
     }
@@ -165,17 +156,15 @@ class GestionFormulaire
             if (md5($request->request->get('mdpancien')) != $mdpServeur) {
                 return "false";
             }
-        } else{
+        } else {
             //            Si l'utilisateur n'exite pas retourne false
             return "false";
         }
-//        Si les identifiants sont correct on continue
+        //        Si les identifiants sont correct on continue
 
-//        Si le nouveau mot de passe ne rempli pas les contraintes, on renvoie le message d'erreur
-      $validator = Validation::createValidator();
-        $violations = $validator->validate($request->request->get('mdpnouveau'), array(
-            new Regex(array("pattern" => "/^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,26}$/", "message" => "Le mot de passe doit être composé de 8 à 26 caractères (au moins 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial)."))
-        ));
+        //        Si le nouveau mot de passe ne rempli pas les contraintes, on renvoie le message d'erreur
+        $validator = Validation::createValidator();
+        $violations = $validator->validate($request->request->get('mdpnouveau'), array(new Regex(array("pattern" => "/^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8,26}$/", "message" => "Le mot de passe doit être composé de 8 à 26 caractères (au moins 1 minuscule, 1 majuscule, 1 chiffre et 1 caractère spécial)."))));
 
         if (0 !== count($violations)) {
             foreach ($violations as $violation) {
@@ -184,16 +173,15 @@ class GestionFormulaire
         }
 
 
-//        On modifie les nouveaux identifiant
+        //        On modifie les nouveaux identifiant
         $utilisateur[0]->setMdp(md5($request->request->get('mdpnouveau')));
         $utilisateur[0]->setMdpConfirmation(md5($request->request->get('mdpnouveau')));
 
-//        On enregistre dans la bdd
+        //        On enregistre dans la bdd
         $this->entityManager->persist($utilisateur[0]);
         $this->entityManager->flush();
 
         return "true";
-
 
 
     }
@@ -207,15 +195,15 @@ class GestionFormulaire
     {
         $modificateur = $request->request->get("modificateur");
 
-//        Si la clef de vérification n'est pas bonne (si l'utilisateur ment sur son rôle) alors on annule la modification
-        if (md5($modificateur['email'] . $this->secret . "administrateur" ) !==  $modificateur['clef'] ){
+        //        Si la clef de vérification n'est pas bonne (si l'utilisateur ment sur son rôle) alors on annule la modification
+        if (md5($modificateur['email'] . $this->secret . "administrateur") !== $modificateur['clef']) {
             return "false";
         }
 
         //        récupère l'utilisateur concerné
         $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByEmail($request->request->get("email"));
 
-//        L'utilisateur ne peux pas modifier son propre droit
+        //        L'utilisateur ne peux pas modifier son propre droit
         if ($utilisateur[0]->getEmail() == $modificateur['email']) {
             return "false";
         }
@@ -245,7 +233,7 @@ class GestionFormulaire
             return null;
         }
 
-//        Sinon on retourne l'utilisateur
+        //        Sinon on retourne l'utilisateur
         return $utilisateur[0];
 
     }
@@ -308,21 +296,24 @@ class GestionFormulaire
      */
     public function gestionStatut($request)
     {
-        //        récupère l'observation concernée
-        $observation = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findById($request->request->get("id"));
+        try {
+            //        récupère l'observation concernée
+            $observation = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findById($request->request->get("id"));
 
-        //        On modifie le statut
-        $observation[0]->setStatut($request->request->get('nouveaustatut'));
-        //        On modifie l'email du valideur
-        $observation[0]->setValideur($request->request->get('valideur'));
-        //        On modifie la date de la dernière modification
-        $observation[0]->setLastUpdate($request->request->get('lastUpdate'));
+            //        On modifie le statut
+            $observation[0]->setStatut($request->request->get('nouveaustatut'));
+            //        On modifie l'email du valideur
+            $observation[0]->setValideur($request->request->get('valideur'));
+            //        On modifie la date de la dernière modification
+            $observation[0]->setLastUpdate($request->request->get('lastUpdate'));
 
-        //        On enregistre dans la bdd
-        $this->entityManager->persist($observation[0]);
-        $this->entityManager->flush();
-
-        return "true";
+            //        On enregistre dans la bdd
+            $this->entityManager->persist($observation[0]);
+            $this->entityManager->flush();
+            return "true";
+        } catch (Exception $error) {
+            return $error;
+        }
     }
 
     /**
@@ -331,7 +322,7 @@ class GestionFormulaire
      * Permet de vérifier que l'email renseigné lors du formulaire d'inscription est correct
      * @return bool
      */
-    public function confirmerMail( $code)
+    public function confirmerMail($code)
     {
         //        récupère l'utilisateur concernée
         $utilisateur = $this->entityManager->getRepository("NAOCoreBundle:Utilisateur")->findByMailCode($code);
@@ -347,7 +338,7 @@ class GestionFormulaire
 
             return true;
 
-        } else{
+        } else {
             //            Si l'utilisateur n'exite pas retourne false
             return false;
         }

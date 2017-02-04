@@ -85,7 +85,7 @@ class Observation
      *
      * @Vich\UploadableField(mapping="observation_image", fileNameProperty="imageName")
      *
-     * @var UploadedFile
+     * @var File
      */
     private $imageFile;
 
@@ -97,8 +97,6 @@ class Observation
     private $imageName;
 
     /**
-     * @var \DateTime
-     *
      * @ORM\Column(name="lastUpdate", type="bigint")
      */
     private $lastUpdate;
@@ -115,6 +113,7 @@ class Observation
 
     /**
      * Set dateCreation
+     *
      *
      * @param $dateCreation
      * @return Observation
@@ -139,8 +138,7 @@ class Observation
     /**
      * Set dateCreation
      *
-     * @param \DateTime $lastUpdate
-     *
+     * @param $dateUpdate
      * @return Observation
      */
     public function setLastUpdate($dateUpdate)
@@ -318,14 +316,13 @@ class Observation
      */
     public function setImageFile(File $image = null)
     {
-        dump("sdqf");
         $this->imageFile = $image;
 
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->dateCreation = new \DateTimeImmutable();
-        }
+//        if ($image) {
+//            // It is required that at least one field changes if you are using doctrine
+//            // otherwise the event listeners won't be called and the file is lost
+//            $this->dateCreation = new \DateTimeImmutable();
+//        }
 
         return $this;
     }
