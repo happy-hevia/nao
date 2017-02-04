@@ -134,6 +134,14 @@ function gestionBoutonConnexion(){
 function afficheMessageDepuisDom(){
     var contenuMessage = $('#message-dom').data('content');
     setMessage(contenuMessage);
+
+
+    //On positionne l'indicateur syncState à "sync_todo"
+    if (contenuMessage === "L'observation a été enregistré avec succès !") {
+        setSyncState("sync_todo");
+        observationStorage.loadFromServeur();
+        location.reload();
+    }
 }
 
 /**

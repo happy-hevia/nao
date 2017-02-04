@@ -86,7 +86,7 @@ class Observation
      *
      * @Vich\UploadableField(mapping="observation_image", fileNameProperty="imageName")
      *
-     * @var UploadedFile
+     * @var File
      */
     private $imageFile;
 
@@ -98,8 +98,6 @@ class Observation
     private $imageName;
 
     /**
-     * @var \DateTime
-     *
      * @ORM\Column(name="lastUpdate", type="bigint")
      */
     private $lastUpdate;
@@ -117,8 +115,8 @@ class Observation
     /**
      * Set dateCreation
      *
-     * @param \DateTime $dateCreation
      *
+     * @param $dateCreation
      * @return Observation
      */
     public function setDateCreation($dateCreation)
@@ -141,8 +139,7 @@ class Observation
     /**
      * Set dateCreation
      *
-     * @param \DateTime $lastUpdate
-     *
+     * @param $dateUpdate
      * @return Observation
      */
     public function setLastUpdate($dateUpdate)
@@ -314,7 +311,7 @@ class Observation
      * must be able to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     * @param File | \Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
      * @return Observation
      */
@@ -322,11 +319,11 @@ class Observation
     {
         $this->imageFile = $image;
 
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->dateCreation = new \DateTimeImmutable();
-        }
+//        if ($image) {
+//            // It is required that at least one field changes if you are using doctrine
+//            // otherwise the event listeners won't be called and the file is lost
+//            $this->dateCreation = new \DateTimeImmutable();
+//        }
 
         return $this;
     }

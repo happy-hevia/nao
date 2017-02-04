@@ -80,6 +80,6 @@ vich_uploader:
             uri_prefix:         /images/observation
             upload_destination: '%kernel.root_dir%/../web/images/observation'
             namer:              vich_uploader.namer_uniqid
-            inject_on_load:     false
-            delete_on_update:   true
-            delete_on_remove:   true
+            inject_on_load:     true
+            delete_on_update:   false
+            delete_on_remove:   false
