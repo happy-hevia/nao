@@ -22,12 +22,13 @@ class ObservationController extends Controller
      * @return Response
      */
     public function nouveauAction(Request $request)
-    {
+    {   //return new Response("#".$request->request->get('nao_corebundle_observation')['oiseau']."#"); //$request->request->get('oiseau')
         $form = $this->get('nao_core.gestion_formulaire')->gestionFormulaireObservation($request);
-        if ($form === "valide") {
+
+        if ($form[0] === "toValidate") {
             return new Response("valide");
         } else {
-            return $this->render('@NAOCore/Observer/observer.html.twig', array('tabForm' => $form));
+            return $this->render('@NAOCore/Observer/observer.html.twig', array('tabForm' => $form[1]));
         }
     }
     /**

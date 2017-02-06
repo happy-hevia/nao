@@ -84,13 +84,18 @@ class Observation
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="observation_image", fileNameProperty="imageName")
-     *
+     * @Assert\Image(
+     *     minWidth=100,
+     *     maxWidth=800,
+     *     minHeight=100,
+     *     maxHeight=800
+     *     )
      * @var File
      */
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(name="imageName", type="string", length=255, nullable=true)
      *
      * @var string
      */
@@ -318,11 +323,11 @@ class Observation
     {
         $this->imageFile = $image;
 
-//        if ($image) {
+        if ($image) {
 //            // It is required that at least one field changes if you are using doctrine
 //            // otherwise the event listeners won't be called and the file is lost
-//            $this->dateCreation = new \DateTimeImmutable();
-//        }
+           $this->dateCreation = time();
+       }
 
         return $this;
     }

@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ObservationType extends AbstractType
 {
@@ -27,6 +28,8 @@ class ObservationType extends AbstractType
             ->add('imageFile', FileType::class, array('label' => 'Image :', 'attr' => array(
         'required' => false)))
             ->add('observateur', HiddenType::class)
+            ->add('dateCreation', HiddenType::class)
+            ->add('lastUpdate', HiddenType::class)
             ->add('oiseau', TextType::class, array('label' => 'Oiseau (*):', 'attr' => array(
                 'required' => 'required',
                 'placeholder' => 'Selectionner une espèce',

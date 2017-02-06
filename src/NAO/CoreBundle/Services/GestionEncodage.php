@@ -30,6 +30,7 @@ class GestionEncodage
 
     public function json($object)
     {
+        $this->normalizers[0]->setIgnoredAttributes(array('imageFile'));
         $jsonContent = $this->serializer->serialize($object, 'json');
         return $jsonContent;
     }

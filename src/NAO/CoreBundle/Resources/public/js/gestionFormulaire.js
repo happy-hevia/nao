@@ -218,14 +218,13 @@ function gestionFormulaireAjoutObservation() {
 
     // Lorsque je soumets le formulaire
     $formulaireObservation.on('submit', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        setSyncState("sync_ec");
 
-            $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
         if (!Connexion.isConnected()) {
-            e.preventDefault();
-
             // Je récolte les informations de l'observation
-            var dateCourrante = new Date();
-            var dateObservation = dateCourrante.getTime();
+            var dateObservation = $('#nao_corebundle_observation_dateCreation').val();
             var latitude = $('#nao_corebundle_observation_latitude').val();
             var longitude = $('#nao_corebundle_observation_longitude').val();
             var oiseauId = $('#nao_corebundle_observation_oiseau').val();
@@ -233,15 +232,33 @@ function gestionFormulaireAjoutObservation() {
 
             // je crée l'objet javascript observation
             var observation = new Observation(dateObservation, latitude, longitude, oiseauId, observateur);
-            observation.id=observationStorage.getLocalId();
+            observation.lastUpdate = $('#nao_corebundle_observation_lastUpdate').val();
+            observation.id = observationStorage.getLocalId();
 
             // je le stocke dans le bdd local
             observationStorage.add(observation);
-
-            //    je ferme la modal et j'affiche le message de confirmation
             $('#modal-addObservation').modal('hide');
+            setSyncState("sync_todo");
             setMessage("Sauvegarde locale effectuée, En attente de connexion internet pour synchronisation avec le serveur...");
+        } else {
+            console.log($this.serialize());
+            $.ajax({
+                url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                success: function(html) { // Je récupère la réponse du fichier PHP
+                    console.log(html); // J'affiche cette réponse
+                    setMessage("Sauvegarde serveur effectuée avec succès...Rechargement de la page en cours pour update ");
+                    $('#modal-addObservation').modal('hide');
+                    // on vide la base locale avant de rechargement
+                    observationStorage.clean();
+                    window.location.reload();
+                }
+            });
+            //    je ferme la modal et j'affiche le message de confirmation
         }
+
+
 
     });
 
@@ -267,7 +284,7 @@ function gestionFormulaireAjoutObservation() {
                     $('#modal__image').attr('src', image_url);
 
                 }).fail(function () {
-                $('#modal__image').attr('src', "http://lorempixel.com/500/300/");
+                $('#modal__image').attr('src', "/bundles/naocore/images/v3-500.png");
 
             })
         }

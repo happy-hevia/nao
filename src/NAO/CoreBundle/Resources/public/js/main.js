@@ -104,7 +104,7 @@ var updateDOMElementVisibility = function() {
  * @param aMessage
  */
 var setMessage = function(aMessage) {
-    if (aMessage=="") { // Si le message est vide, on masque le bandeau
+    if (aMessage == null) { // Si le message est vide, on masque le bandeau
         $('#cadre_message').hide();
     } else { // Sinon on met le message et on affiche le bandeau
         $('#message').html(aMessage);
@@ -140,7 +140,7 @@ function afficheMessageDepuisDom(){
     if (contenuMessage === "L'observation a été enregistré avec succès !") {
         setSyncState("sync_todo");
         observationStorage.loadFromServeur();
-        location.reload();
+        window.location.replace("https://nao.matthias-colin.fr/observer");
     }
 }
 
@@ -175,6 +175,9 @@ function onclick(observation) {
         $('#form-observation__longitude').val(observation.longitude);
         $('#form-observation__espece').text(observation.oiseau);
         $('#form-observation__date').text(dateFormatee);
+        if (observation.imageName != null) {
+            $('#observation-image').attr('src', 'https://nao.matthias-colin.fr/images/observation/' + observation.imageName);
+        }
 
         // On initialise l'onglet "espèce"
         var espece = observation.oiseau;
@@ -262,7 +265,7 @@ window.onbeforeunload = function()
  */
 $(function() {
     updateDOMElementVisibility();
-    setMessage("");
+    //setMessage("");
     initSocialEvent();
     Listeners.start();
 
@@ -284,7 +287,7 @@ $(function() {
     if (Connexion.isConnected()) {
         // Je teste l'existence d'un stockage local via la présence de la dernière date de synchronisation (updateStorage)
         updateStorage.getAll();
-        if (updateStorage.getLastUpdate != null) { // Si le stockage local existe,
+        if (updateStorage.getLastUpdate() != null) { // Si le stockage local existe,
             // Je teste l'existence d'un stockage local d'observation (observationStorage)
 
             if(observationStorage.coll!=null) { // Si le stockage local d'observation existe

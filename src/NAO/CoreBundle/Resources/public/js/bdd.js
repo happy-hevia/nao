@@ -219,7 +219,7 @@ observationStorage.loadFromServeur = function() {
     myJsonAjax(
         urlSynchroServeurLocal,
         {   status: status, // Etats des observations à récupérer
-            lastUpdate: updateStorage.getLastUpdate // On précise la date du dernier update de la base locale
+            lastUpdate: updateStorage.getLastUpdate() // On précise la date du dernier update de la base locale
         },
         this.loadSuccess // Fonction callback en cas de succès de la requête AJAX.
     )
@@ -344,7 +344,7 @@ var oiseauStorage = {
     storeData: [],
     loadAll: function () {
         // on charge le fichier JSON
-        $.getJSON("/web/bundles/naocore/file/test.json", function (data) { // TODO: Changer URL par URL de prod window.location.host
+        $.getJSON("/bundles/naocore/file/test.json", function (data) { // TODO: Changer URL par URL de prod window.location.host
             // un petit espion...
             console.log("\t#########   Il y a " + data.length + " espèces");
 
@@ -366,7 +366,7 @@ var oiseauStorage = {
         });
     },
     getImage500300: function (nomEspece) { //window.location.host+
-        return "/web/bundles/naocore/images/oiseaux/" + nomEspece + ".jpg";
+        return "/bundles/naocore/images/oiseaux/" + nomEspece + ".jpg";
     }
 };
 

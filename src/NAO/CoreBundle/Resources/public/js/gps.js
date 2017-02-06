@@ -80,12 +80,12 @@ Localisation.testGPS = function(){
     if (Localisation.isAvailable()) {
         if (gpsStateMemo!=gpsState) {
             // On vient de passer de l'état "gps_ko" à "gps_ok"
-            updateDOMElementVisibility();
+            Localisation.setDisponible();
         } // S'il n'y a pas de changement d'état, on ne fait rien
     } else {
         if (gpsStateMemo!=gpsState) {
             // On vient de passer de l'état "gps_ok" à "gps_ko"
-            updateDOMElementVisibility();
+            Localisation.setIndisponible
         } // S'il n'y a pas de changement d'état, on ne fait rien
     }
 };

@@ -2,34 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aea46f9-8220-48a1-b216-abd42da07253" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/var/sessions/.gitkeep" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587d45bd2847b.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587d45f8f3097.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587d4621c2d3e.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587d466557e6c.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587e0a362a48d.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587e0d5dbe68f.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587e0daf95fb3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587e0e1d026c5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587e11fe8af35.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587e12ac9a76a.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587e12f04f6fb.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/observation/587e1c4075c0c.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/deployment.xml" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/nao.iml" afterPath="$PROJECT_DIR$/.idea/nao.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Form/ObservationType.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Form/ObservationType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/css/styles.css" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/css/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/bdd.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/bdd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/connexion.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/connexion.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gps.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gps.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-gestion.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-gestion.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Modals/modal-addObservation.html.twig" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Modals/modal-addObservation.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/formulaire/observation.html.twig" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/formulaire/observation.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionEncodage.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionEncodage.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app_dev.php" afterPath="$PROJECT_DIR$/web/app_dev.php" />
     </list>
     <ignored path="nao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,81 +41,7 @@
     <favorites_list name="nao" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GestionFormulaire.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.0384617">
-              <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
-              <folding>
-                <element signature="e#6#89#0#PHP" expanded="false" />
-                <element signature="e#128#159#0#PHP" expanded="false" />
-                <element signature="e#3768#3795#1#PHP" expanded="false" />
-                <element signature="e#5590#5617#1#PHP" expanded="false" />
-                <element signature="e#8009#8036#1#PHP" expanded="false" />
-                <element signature="e#8869#8896#1#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6283084">
-              <caret line="188" column="66" selection-start-line="188" selection-start-column="66" selection-end-line="188" selection-end-column="66" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gestionFormulaire.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="222" column="30" selection-start-line="222" selection-start-column="30" selection-end-line="222" selection-end-column="30" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Observation.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.346154">
-              <caret line="121" column="42" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
-              <folding>
-                <element signature="e#41#92#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -144,7 +61,6 @@
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Utilisateur.php" />
         <option value="$PROJECT_DIR$/var/logs/dev.log" />
         <option value="$PROJECT_DIR$/../../logs/php_error.log" />
-        <option value="$PROJECT_DIR$/web/bundles/naocore/js/bdd.js" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionSynchronisation.php" />
         <option value="$PROJECT_DIR$/web/bundles/naocore/js/page-observer.js" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/DefaultController.php" />
@@ -159,22 +75,28 @@
         <option value="$PROJECT_DIR$/tests/NAOCoreBundle/Controller/DefaultControllerTest.php" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/config/services.yml" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/formulaire/ligneUtilisateur.html.twig" />
-        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js" />
-        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/css/styles.css" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/web/bundles/naocore/js/gestionFormulaire.js" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-gestion.js" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Modals/modal-addObservation.html.twig" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php" />
-        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/formulaire/observation.html.twig" />
-        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js" />
-        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionEncodage.php" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/connexion.js" />
+        <option value="$PROJECT_DIR$/web/bundles/naocore/js/bdd.js" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/bdd.js" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js" />
+        <option value="&lt;f7b5309f-86d6-4ce7-9311-3373d24cf347&gt;/src/NAO/CoreBundle/DataFixtures/ORM/LoadOiseau.php" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionEncodage.php" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js" />
+        <option value="&lt;f7b5309f-86d6-4ce7-9311-3373d24cf347&gt;/var/logs/prod.log" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php" />
+        <option value="&lt;f7b5309f-86d6-4ce7-9311-3373d24cf347&gt;/.htaccess" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/css/styles.css" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
       </list>
     </option>
   </component>
@@ -188,7 +110,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-16" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -248,74 +171,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bundles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="var" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="var" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nao" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="var" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cache" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -445,16 +300,103 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NAO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CoreBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataFixtures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ORM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AppBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="SearchEverywhereHistoryKey" value="observation&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/formulaire/observation.html.twig&#10;synchroni&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Services/GestionSynchronisation.php&#10;main&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/main.js&#10;base&#9;FILE&#9;file://C:/wamp/www/nao/app/Resources/views/base.html.twig&#10;gest&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js&#10;gestio&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js&#10;des&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig&#10;formulaire&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js&#10;connexion&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/connexion.js&#10;page&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/page-gestion.js&#10;add&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-addObservation.html.twig&#10;Observer&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Observer/observer.html.twig&#10;config&#9;FILE&#9;file://C:/wamp/www/nao/app/config/config.yml&#10;gestion&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js&#10;Observattype&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Form/ObservationType.php&#10;Observation&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Entity/Observation.php&#10;Appker&#9;null&#9;null&#10;ObservationTy&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Form/ObservationType.php&#10;bdd&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/bdd.js&#10;observer&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/page-observer.js&#10;utilis&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Entity/Utilisateur.php&#10;services&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;creat&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/formulaire/creation.html.twig&#10;addObser&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-addObservation.html.twig&#10;user&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/user.js&#10;desc&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig&#10;obser&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Entity/Observation.php&#10;observation.html&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig&#10;Utilis&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Entity/Utilisateur.php&#10;ser&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;serv&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;service&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;config.yml&#9;FILE&#9;file://C:/wamp/www/nao/app/config/config.yml&#10;services.ym&#9;FILE&#9;file://C:/wamp/www/nao/app/config/services.yml&#10;Utilisate&#9;null&#9;null&#10;Utilisa&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Controller/UtilisateurController.php" />
+    <property name="SearchEverywhereHistoryKey" value="base&#9;FILE&#9;file://C:/wamp/www/nao/app/Resources/views/base.html.twig&#10;gest&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Services/GestionFormulaire.php&#10;page&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/page-observer.js&#10;config&#9;FILE&#9;file://C:/wamp/www/nao/app/config/config.yml&#10;page-o&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/page-observer.js&#10;conf&#9;FILE&#9;file://C:/wamp/www/nao/app/config/config.yml&#10;gps&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/gps.js&#10;observation&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/formulaire/observation.html.twig&#10;synchroni&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Services/GestionSynchronisation.php&#10;main&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/main.js&#10;gestio&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js&#10;des&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig&#10;formulaire&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js&#10;connexion&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/connexion.js&#10;add&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-addObservation.html.twig&#10;Observer&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Observer/observer.html.twig&#10;gestion&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js&#10;Observattype&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Form/ObservationType.php&#10;Observation&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Entity/Observation.php&#10;Appker&#9;null&#9;null&#10;ObservationTy&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Form/ObservationType.php&#10;bdd&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/bdd.js&#10;observer&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/page-observer.js&#10;utilis&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Entity/Utilisateur.php&#10;services&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;creat&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/formulaire/creation.html.twig&#10;addObser&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-addObservation.html.twig&#10;user&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/public/js/user.js&#10;desc&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig&#10;obser&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Entity/Observation.php&#10;observation.html&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/views/Modals/modal-descriptionObservation.html.twig&#10;Utilis&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Entity/Utilisateur.php&#10;ser&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;serv&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;service&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Resources/config/services.yml&#10;config.yml&#9;FILE&#9;file://C:/wamp/www/nao/app/config/config.yml&#10;services.ym&#9;FILE&#9;file://C:/wamp/www/nao/app/config/services.yml&#10;Utilisate&#9;null&#9;null&#10;Utilisa&#9;FILE&#9;file://C:/wamp/www/nao/src/NAO/CoreBundle/Controller/UtilisateurController.php" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -560,33 +502,33 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="0" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19083156" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2739872" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20149253" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1017316" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5170576" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27345416" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32792208" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6760563" sideWeight="0.49573562" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18093175" sideWeight="0.48294243" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17965367" sideWeight="0.48294243" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="676" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.49791667" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20415778" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17910448" sideWeight="0.29127726" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32719395" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -617,6 +559,51 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="222" column="30" selection-start-line="222" selection-start-column="30" selection-end-line="222" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="5" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Repository/ObservationRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29462737">
@@ -726,7 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="102" selection-start-line="5" selection-start-column="102" selection-end-line="5" selection-end-column="102" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -744,33 +730,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.023383768">
-          <caret line="218" column="25" selection-start-line="218" selection-start-column="18" selection-end-line="218" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5211039">
-          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Utilisateur.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="122" column="41" selection-start-line="122" selection-start-column="41" selection-end-line="122" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -778,7 +741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -786,7 +748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="62" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -794,7 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.730769">
           <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -802,15 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.024216523">
           <caret line="31" column="113" selection-start-line="31" selection-start-column="113" selection-end-line="31" selection-end-column="113" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/connexion.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4162088">
-          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -818,7 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -826,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.653847">
           <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -834,9 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5569801">
           <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
-          <folding>
-            <element signature="e#1445#1486#0#Twig" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -844,22 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38746437">
           <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.0384617">
-          <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
-          <folding>
-            <element signature="e#6#89#0#PHP" expanded="false" />
-            <element signature="e#128#159#0#PHP" expanded="false" />
-            <element signature="e#3768#3795#1#PHP" expanded="false" />
-            <element signature="e#5590#5617#1#PHP" expanded="false" />
-            <element signature="e#8009#8036#1#PHP" expanded="false" />
-            <element signature="e#8869#8896#1#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -867,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.58831906">
           <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,45 +804,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.21794872">
           <caret line="9" column="88" selection-start-line="9" selection-start-column="88" selection-end-line="9" selection-end-column="88" />
-          <folding>
-            <element signature="e#530#549#0#Twig" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="222" column="30" selection-start-line="222" selection-start-column="30" selection-end-line="222" selection-end-column="30" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="140" column="34" selection-start-line="140" selection-start-column="34" selection-end-line="140" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.346154">
-          <caret line="121" column="42" selection-start-line="121" selection-start-column="42" selection-end-line="121" selection-end-column="42" />
-          <folding>
-            <element signature="e#41#92#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="2.9301994">
+          <caret line="121" column="5" selection-start-line="121" selection-start-column="5" selection-end-line="121" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -926,35 +823,101 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.75783473">
           <caret line="69" column="49" selection-start-line="69" selection-start-column="49" selection-end-line="69" selection-end-column="49" />
-          <folding>
-            <element signature="e#963#1001#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionEncodage.php">
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2905983">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.2802198">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gps.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="80" column="37" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/bundles/naocore/js/bdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.069139965">
+          <caret line="350" column="51" selection-start-line="350" selection-start-column="51" selection-end-line="350" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/connexion.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/bdd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44368133">
-          <caret line="205" column="7" selection-start-line="205" selection-start-column="7" selection-end-line="205" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="352" column="31" selection-start-line="352" selection-start-column="31" selection-end-line="352" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9532967">
+          <caret line="84" column="37" selection-start-line="84" selection-start-column="37" selection-end-line="84" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="278" column="3" selection-start-line="278" selection-start-column="3" selection-end-line="278" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionEncodage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.508547">
+          <caret line="30" column="33" selection-start-line="30" selection-start-column="33" selection-end-line="30" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.11659808">
+          <caret line="192" column="19" selection-start-line="192" selection-start-column="19" selection-end-line="192" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-170.65384">
+          <caret line="277" column="0" selection-start-line="277" selection-start-column="0" selection-end-line="277" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6283084">
-          <caret line="188" column="66" selection-start-line="188" selection-start-column="66" selection-end-line="188" selection-end-column="66" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#0;n#div#3;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.27031803">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.030035336">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.028716216">
+          <caret line="107" column="24" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

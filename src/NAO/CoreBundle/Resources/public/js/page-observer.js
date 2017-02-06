@@ -114,7 +114,7 @@ function gestionCarte() {
 
 
     var positionActuelle = L.icon({
-        iconUrl: 'http://176.31.39.245/web/bundles/naocore/images/marker-bleue.png',
+        iconUrl: 'https://nao.matthias-colin.fr/bundles/naocore/images/marker-bleue.png',
         iconSize: [40, 40], // size of the icon
         iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
     });
@@ -164,12 +164,12 @@ function afficheMarker() {
     // Création des icones des markers
 
     var observationValide = L.icon({
-        iconUrl: "http://176.31.39.245/web/bundles/naocore/images/marker-vert.png",
+        iconUrl: "https://nao.matthias-colin.fr/bundles/naocore/images/marker-vert.png",
         iconSize: [40, 40], // size of the icon
         iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
     });
     var observationAValider = L.icon({
-        iconUrl: 'http://176.31.39.245/web/bundles/naocore/images/marker-jaune.png',
+        iconUrl: 'https://nao.matthias-colin.fr/bundles/naocore/images/marker-jaune.png',
         iconSize: [40, 40], // size of the icon
         iconAnchor: [20, 40], // point of the icon which will correspond to marker's location
     });
@@ -208,19 +208,30 @@ function afficheModalAjout(e) {
 
     $('#nao_corebundle_observation_latitude').val(e.latlng.lat);
     $('#nao_corebundle_observation_longitude').val(e.latlng.lng);
+    $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
+    $('#nao_corebundle_observation_dateCreation').val(new Date().getTime()/1000);
+    $('#nao_corebundle_observation_lastUpdate').val(new Date().getTime()/1000);
     $('#modal-addObservation').modal('show');
 
     // ferme l'alert
     $("#position-alert").alert('close');
 }
 
+$("#btn-ajouter-observation").click(function() {
+    $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
+    var timestamp = new Date().getTime()/1000;
+    console.log('timestamp = '+timestamp);
+    $('#nao_corebundle_observation_dateCreation').val(timestamp);
+    $('#nao_corebundle_observation_lastUpdate').val(timestamp);
+});
+
 function gestionCheckboxAvalider() {
     $('#checkbox-observation-a-valider').change(function () {
         if (!this.checked) {
-            $('img[src="http://176.31.39.245/web/bundles/naocore/images/marker-jaune.png"]').fadeOut('slow');
+            $('img[src="https://nao.matthias-colin.fr/bundles/naocore/images/marker-jaune.png"]').fadeOut('slow');
             $('.ligne-observation[data-state="toValidate"]').fadeOut('slow');
         } else {
-            $('img[src="http://176.31.39.245/web/bundles/naocore/images/marker-jaune.png"]').fadeIn('slow');
+            $('img[src="https://nao.matthias-colin.fr/bundles/naocore/images/marker-jaune.png"]').fadeIn('slow');
             $('.ligne-observation[data-state="toValidate"]').fadeIn('slow');
         }
     });
@@ -242,14 +253,14 @@ function gestionFormulaireTri() {
                 $('.ligne-observation').fadeIn('slow');
             } else {
             //    sinon affiche simplement les markeurs validé
-                $('img[src="http://176.31.39.245/web/bundles/naocore/images/marker-vert.png"]').fadeIn('slow');
+                $('img[src="https://nao.matthias-colin.fr/bundles/naocore/images/marker-vert.png"]').fadeIn('slow');
                 $('.ligne-observation[data-state="validated"]').fadeIn('slow');
             }
 
         } else {
             $('.leaflet-marker-icon').fadeOut('slow');
             $('.' + cleanClassName(valeurChampEspece)).fadeIn('slow');
-            $('img[src="http://176.31.39.245/web/bundles/naocore/images/marker-bleue.png"]').fadeIn('slow');
+            $('img[src="https://nao.matthias-colin.fr/bundles/naocore/images/marker-bleue.png"]').fadeIn('slow');
 
             $('.ligne-observation').fadeOut('slow');
             $('.ligne-observation[data-oiseau="' + cleanClassName(valeurChampEspece) + '"]').fadeIn('slow');

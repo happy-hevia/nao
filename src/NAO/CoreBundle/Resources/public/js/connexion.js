@@ -34,7 +34,7 @@ function myConnexionAjax () {
     try {
         $.ajax({
             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-            url: "/nao/web/app.php/admin",
+            url: "/admin",
             type: "GET",
             //timeout: 3000,
             success: connexionOk,
