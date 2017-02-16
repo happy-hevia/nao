@@ -144,8 +144,8 @@ function gestionFormulaireModificationMotDePasse() {
             },
             success: function (data) { // Je récupère la réponse
                 if (data === "true") {
-                    $formulaireModification.reset();
-                    setMessage("Votre mot de passe a été validé avec succès");
+                    $formulaireModification[0].reset();
+                    setMessage("Votre mot de passe a été modifié avec succès");
                     $('#form-change__wrapper-error').html("");
                 } else if (data === "false") {
                     $('#form-change__wrapper-error').html("<div class='alert alert-warning'>Le mot de passe actuel renseigné n'est pas correct !</div>");

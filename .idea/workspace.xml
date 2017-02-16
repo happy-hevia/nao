@@ -4,23 +4,8 @@
     <list default="true" id="5aea46f9-8220-48a1-b216-abd42da07253" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/DefaultController.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/DefaultController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Repository/ObservationRepository.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Repository/ObservationRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/file/test.json" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/file/test.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/bdd.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/bdd.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/connexion.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/connexion.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gps.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gps.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-validation.js" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-validation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/mesObservations.html.twig" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/mesObservations.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/observer.html.twig" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/observer.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/formulaire/observation.html.twig" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/formulaire/observation.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionSynchronisation.php" afterPath="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionSynchronisation.php" />
     </list>
     <ignored path="nao.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,18 +30,51 @@
       <file leaf-file-name="observer.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/observer.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.23077">
-              <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.32692307">
+              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+              <folding>
+                <element signature="e#7776#7822#0#Twig" expanded="true" />
+                <element signature="e#7984#8038#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.87360597">
-              <caret line="337" column="23" selection-start-line="337" selection-start-column="23" selection-end-line="337" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="337" column="0" selection-start-line="337" selection-start-column="0" selection-end-line="337" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gestionFormulaire.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="146" column="55" selection-start-line="146" selection-start-column="55" selection-end-line="146" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="service-worker.js" pinned="true" current-in-tab="false">
+        <entry file="REMOTE_DEPLOYMENT_FS://&lt;f7b5309f-86d6-4ce7-9311-3373d24cf347&gt;/web/service-worker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -85,7 +103,7 @@
       <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/DefaultController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-0.65384614">
               <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
               <folding />
             </state>
@@ -95,7 +113,7 @@
       <file leaf-file-name="NAOCoreBundle.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/NAOCoreBundle.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-4.576923">
               <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
               <folding />
             </state>
@@ -111,16 +129,6 @@
                 <marker date="1487067894000" expanded="true" signature="5570:5638" placeholder="..." />
                 <marker date="1487067894000" expanded="true" signature="5750:5782" placeholder="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mesObservations.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/mesObservations.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -169,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Services/GestionFormulaire.php" />
         <option value="&lt;f7b5309f-86d6-4ce7-9311-3373d24cf347&gt;/.htaccess" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/css/styles.css" />
-        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Controller/ObservationController.php" />
         <option value="$PROJECT_DIR$/web/bundles/naocore/js/page-observer.js" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/formulaire/observation.html.twig" />
@@ -177,11 +184,12 @@
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/file/test.json" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Entity/Observation.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/mesObservations.html.twig" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/observer.html.twig" />
         <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js" />
+        <option value="$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js" />
+        <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
       </list>
     </option>
   </component>
@@ -557,7 +565,13 @@
       <option name="project" value="LOCAL" />
       <updated>1486402621378</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Correction des dernier bug">
+      <created>1487273929222</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1487273929222</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -567,16 +581,16 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2531983" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17910448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1017316" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5170576" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27345416" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261105" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.096320346" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0964247" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6760563" sideWeight="0.49573562" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17965367" sideWeight="0.48294243" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" x="92" y="92" width="1416" height="676" />
@@ -612,7 +626,8 @@
     <MESSAGE value="Fix nom fichier observation" />
     <MESSAGE value="Modification base" />
     <MESSAGE value="Adaptation pour la production" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adaptation pour la production" />
+    <MESSAGE value="Correction des dernier bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correction des dernier bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -785,13 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.8076925">
-          <caret line="135" column="20" selection-start-line="135" selection-start-column="20" selection-end-line="135" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Modals/modal-addObservation.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.307693">
@@ -867,13 +875,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64581007">
-          <caret line="231" column="0" selection-start-line="231" selection-start-column="0" selection-end-line="231" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/bundles/naocore/js/observations.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.037988827">
@@ -896,17 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
-          <folding>
-            <marker date="1487067894000" expanded="true" signature="5570:5638" placeholder="..." />
-            <marker date="1487067894000" expanded="true" signature="5750:5782" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Repository/OiseauRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -914,26 +904,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/NAOCoreBundle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/DefaultController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Default/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -948,14 +925,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/observer.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.23077">
-          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,11 +944,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Controller/DefaultController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/NAOCoreBundle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.576923">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/page-observer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding>
+            <marker date="1487067894000" expanded="true" signature="5570:5638" placeholder="..." />
+            <marker date="1487067894000" expanded="true" signature="5750:5782" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87360597">
-          <caret line="337" column="23" selection-start-line="337" selection-start-column="23" selection-end-line="337" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="337" column="0" selection-start-line="337" selection-start-column="0" selection-end-line="337" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/public/js/gestionFormulaire.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="146" column="55" selection-start-line="146" selection-start-column="55" selection-end-line="146" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NAO/CoreBundle/Resources/views/Observer/observer.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="12" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32692307">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding>
+            <element signature="e#7776#7822#0#Twig" expanded="true" />
+            <element signature="e#7984#8038#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -6,6 +6,7 @@
     <!-- META -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <meta name="description" content="Observer les oiseaux en France et en Outre-mer en mode en ligne ou hors ligne. Localiser et parter à la recherche des oiseaux grâce à la carte interactive." />
     {# Pour mettre les mots clés de chacune des pages #}
     {% block meta %} {% endblock %}
 
@@ -128,10 +129,6 @@
 
         {% endblock %}
 
-        {# Ce bloc test sert simplement pour l'environnement de developpement, il devra être enlevé par la suite#}
-        {% block test %}
-
-        {% endblock %}
         {# Il faut garder les inclusions ici #}
         {% include '@NAOCore/Modals/modal-addObservation.html.twig' %}
         {% include '@NAOCore/Modals/modal-connexion.html.twig' %}

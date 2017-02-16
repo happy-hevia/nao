@@ -335,7 +335,6 @@ $(function() {
 
     }
 
-    getServeurLastUpdate();
 
     gestionFormulaireCreation();
     gestionFormulaireConnexionHorsLigne();
