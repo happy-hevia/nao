@@ -8,13 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    //    /**
-    //     * @Route("/", name="nao_accueil")
-    //     */
-    //    public function accueilAction() {
-    //        return $this->render('@NAOCore/Default/index.html.twig');
-    //    }
-
     /**
      * @Route("/", name="nao_accueil")
      * @Route("/observer", name="nao_observer")
@@ -80,14 +73,6 @@ class DefaultController extends Controller
         return $this->render('NAOCoreBundle:Divers:cgu.html.twig');
     }
 
-
-    /**
-     * @Route("/test_base")
-     */
-    public function indexAction() // Utilisé seulement pour tester la définition de base.html.twig
-    {
-        return $this->render('NAOCoreBundle:Default:index.html.twig');
-    }
 
 
 }

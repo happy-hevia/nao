@@ -19,7 +19,6 @@ Localisation.stateList=["gps_ko","gps_ok"];
 
 Localisation.setIndisponible = function() {
     if (gpsState != Localisation.stateList[0]) {// Si changement d'état seulement
-        console.log("GPS= Indisponible");
         gpsState = Localisation.stateList[0];
         statutStorage.save();
         updateDOMElementVisibility();
@@ -27,7 +26,6 @@ Localisation.setIndisponible = function() {
 };
 Localisation.setDisponible = function() {
     if (gpsState != Localisation.stateList[1]) {// Si changement d'état seulement
-        console.log("GPS= Disponible");
         gpsState = Localisation.stateList[1];
         statutStorage.save();
         updateDOMElementVisibility();
@@ -38,7 +36,6 @@ Localisation.isAvailable = function() {
     return gpsState===Localisation.stateList[1];
 };
 Localisation.updatePosition = function (position) {
-    //console.log(position);
     gpsCoords = new Localisation.Coords(position.coords.latitude,position.coords.longitude,position.coords.altitude);
     $(".glyphicon-record").attr("title","Localisation Disponible");
     Localisation.setDisponible();
@@ -76,7 +73,6 @@ Localisation.testAvailable = function () {
 Localisation.testGPS = function(){
     // Mémorisation de l'état initial de la variable globale
     var gpsStateMemo = gpsState;
-    console.log("Latitude : "+gpsCoords.latitude+"\tLongitude : "+gpsCoords.longitude);
     if (Localisation.isAvailable()) {
         if (gpsStateMemo!=gpsState) {
             // On vient de passer de l'état "gps_ko" à "gps_ok"

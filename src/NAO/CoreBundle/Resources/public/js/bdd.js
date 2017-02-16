@@ -36,8 +36,6 @@ function myJsonAjax (url, requestData, successFunction) {
         data: requestData,                               //{ lastUpdate: new Date()    },
         success: successFunction,
         error: function (xhr, ajaxOptions, thrownError) {
-            console.log(xhr.status);
-            console.log(thrownError);
         }
     });
 }
@@ -113,7 +111,6 @@ currentUserStorage.setCurrentUser = function (currentUserEmail) {
         currentUser = usersStorage.coll[currentUserEmail].role;
     } else {
         currentUser = 'null';
-        console.log("Impossible de mémoriser "+currentUserEmail)
     }
     // Je met à jour les pages selon le nouveau utilisateur
     updateDOMElementVisibility()
@@ -180,11 +177,9 @@ observationStorage.clean = function() {
  * @param data
  */
 observationStorage.loadSuccess = function(data) {
-    console.log("Téléchargement des données du Serveur -- Terminé !");
     setSyncState("sync_ok");
     updateStorage.update();
     // Je récupère la réponse
-    // console.log("Données AJAX Observations reçues");
     // Lecture de chacun des éléments
     data.forEach(function(element) {
         // J'ajoute l'élément au stockage local
@@ -346,7 +341,6 @@ var oiseauStorage = {
         // on charge le fichier JSON
         $.getJSON("/bundles/naocore/file/test.json", function (data) { // TODO: Changer URL par URL de prod window.location.host
             // un petit espion...
-            console.log("\t#########   Il y a " + data.length + " espèces");
 
             for (var i = 0; i < data.length; i++) {
                 oiseauStorage.storeName.push(data[i]["name"]);
@@ -405,26 +399,20 @@ function synchronizeObservation(){
 
         // Je crée un tableau avec toutes les observations à envoyer au serveur
         var observationsAjax = [];
-        console.log("--------------------------------------------------------------");
-        console.log("Analyse Besoin synchronisation Observations locales -> serveur");
-        console.log("--------------------------------------------------------------");
         for (var observation in observations){
             // On transfert toutes les observations modifiées en locale
             var test = observations[observation].lastUpdate >= last_update;
-            console.log(""+observations[observation].lastUpdate+" >= "+last_update+" => "+test);
             if (test) {
                 observationsAjax.push(observations[observation]);
             }
         }
 
         if(observationsAjax.length == 0) {
-            console.log("Pas d'observation à synchroniser local-> serveur");
             // Je lance la synchronisation serveur -> local
             synchroServeurLocal();
         } else {
             // je définie la synchronisation comme en cours
             setSyncState("sync_ec");
-            console.log("Synchronisation local-> serveur en cours...");
             // J'envois les observations aux serveur
             $.ajax({
                 contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -432,11 +420,8 @@ function synchronizeObservation(){
                 type: "post", // La méthode indiquée dans le formulaire (get ou post)
                 data: { observations : observationsAjax }, // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
                 success: function (html) { // Je récupère la réponse du fichier PHP
-                    console.log(html);
                     if (html=="true") {
-                        console.log("Synchronisation local-> serveur terminée !")
                         // Je lance la synchronisation serveur -> local
-                        console.log("Synchronisation serveur-> local en cours...")
                         synchroServeurLocal();
                     } else {
                         // Je définie la synchronisation comme ko en cas d'erreur
@@ -458,7 +443,6 @@ function synchroServeurLocal() {
     // Je lance alors la synchronisation globale Serveur-> Locale
     observationStorage.loadFromServeur();
     // Je définie la synchronisation comme ok
-    console.log("Synchronisation serveur-> local  -- Terminée");
     setSyncState("sync_ok");
 
     // Je met à jour la date de la dernière modification
@@ -499,8 +483,6 @@ statutStorage.save = function () {
 statutStorage.load = function() {
     this.getAll();
     var statutsObject=this.coll;
-    console.log("load statuts");
-    console.log(statutsObject);
     if (statutsObject===null) {
         connexionState= "online";
         gpsState="gps_ko";

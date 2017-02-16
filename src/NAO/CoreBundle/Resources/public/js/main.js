@@ -3,10 +3,8 @@
  */
 
 var sw = navigator.serviceWorker.register(urlServiceWorkerJS).then(function(reg){
-    console.log("Registration SUCCEEDED. Scope is "+reg.scope);
 }).catch(function(error) {
     // registration failed
-    console.log('Registration failed with ' + error);
 });
 
 /**
@@ -43,7 +41,6 @@ var convertDataToJSON = function(uneData) {
  */
 var testConditions = function(unObjetJSON) {
     var numberOfConditions = Object.keys(unObjetJSON).length;
-    //console.log(unObjetJSON);
     var test=[];
     for (var i=0;i<numberOfConditions;i++) {
         var key = Object.keys(unObjetJSON)[i];
@@ -276,7 +273,6 @@ function onclick(observation) {
         $('#modal-observation').modal('show');
     } else {
         setMessage("Observation non trouvée dans la base locale !");
-        console.log("Observation non trouvée d'id :"+id);
     }
 
 
@@ -321,15 +317,12 @@ $(function() {
             // Je teste l'existence d'un stockage local d'observation (observationStorage)
 
             if(observationStorage.coll!=null) { // Si le stockage local d'observation existe
-                console.log("Le Stockage local OBSERVATION trouvé");
             } else { // Si le stockage local d'observation n'existe pas
                 // Je lance la récupération de l'ensemble des Observations du Serveur
-                console.log("Le Stockage local OBSERVATION n'existe PAS");
                 updateStorage.init();
             }
         } else { // Le Stockage local n'existe pas
             // Je lance la récupération de l'ensemble des Observations du Serveur
-            console.log("Le Stockage local n'existe PAS");
             updateStorage.init();
         }
 

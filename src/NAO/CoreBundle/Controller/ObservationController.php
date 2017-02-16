@@ -22,7 +22,7 @@ class ObservationController extends Controller
      * @return Response
      */
     public function nouveauAction(Request $request)
-    {   //return new Response("#".$request->request->get('nao_corebundle_observation')['oiseau']."#"); //$request->request->get('oiseau')
+    {
         $form = $this->get('nao_core.gestion_formulaire')->gestionFormulaireObservation($request);
 
         if ($form[0] === "validated") {

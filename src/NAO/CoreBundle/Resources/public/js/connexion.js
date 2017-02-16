@@ -37,7 +37,6 @@ Connexion.isConnected = function() {
 }
 
 Connexion.initListener = function() {
-    console.log("\tLancement INIT-LISTENER des tests cycliques de la CONNEXION");
     internetTimer = window.setInterval(myConnexionAjax,1500);
     if (Connexion.isConnected()) {
         timer = window.setInterval(getServeurLastUpdate,120000);
@@ -61,7 +60,6 @@ function myConnexionAjax () {
 function connexionOk(data) {
     if (pageChange===false && connexionState==="offline") {
         Connexion.connecter();
-        console.log("Connexion Internet OK");
         // On active le listener de récupération du dernier update du serveur
         timer = window.setInterval(getServeurLastUpdate,120000);
 
@@ -74,7 +72,6 @@ function connexionOk(data) {
 
 function connexionKO(xhr, ajaxOptions, thrownError) {
     if (pageChange===false && connexionState==="online") {
-        console.log("Connexion Internet KO");
         Connexion.deconnecter();
         statutStorage.save();
         var urlCourante = document.URL;
@@ -95,12 +92,9 @@ function getServeurLastUpdate() {
         success: function(lastupdate) {
             // Si les données serveurs sont plus récentes
             var localLastUpdate = updateStorage.coll;
-            console.log("lastupdate ("+lastupdate+") > localLastUpdate ("+localLastUpdate+"): "+((lastupdate>localLastUpdate)?"true":"false"));
             if (lastupdate>localLastUpdate) {
-                console.log("Nouvelle version base serveur disponible");
                 synchronizeObservation();
             } else {
-                //console.log("Version base locale à jour");
             }
         }
     });

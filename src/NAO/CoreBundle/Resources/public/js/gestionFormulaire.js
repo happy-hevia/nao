@@ -80,8 +80,6 @@ function gestionFormulaireConnexionEnLigne() {
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                console.log(xhr.status);
-                console.log(thrownError);
             }
         });
     });
@@ -354,7 +352,6 @@ function gestionPageValidation() {
     $('.observation_oiseau__').click(function () {
         var nom = $(this).text();
         $('.modal-title').text('Observation faite le' + $(this).data('date'));
-        console.log('\t click sur ' + nom);
         $('#modal-observation').modal('show');
         $('#form-observation__espece').html(nom);
         $('#form-observation__latitude').val($(this).data('latitude'));
@@ -390,7 +387,6 @@ function updateObservationStatut(id, nouveauStatut) {
         };
 
         if (Connexion.isConnected()) {
-            console.log("lancement de la synchronisation Local -> Serveur / Statut");
             // Envoi de la requête HTTP en mode asynchrone
             myJsonAjax(urlSynchroStatut, requestData, statutUpdateSuccess);
         } else {
@@ -411,7 +407,6 @@ function statutUpdateSuccess(data) { // Je récupère la réponse
         window.location.reload();
     } else {
         setMessage("Impossible de modifier le statut");
-        console.log(data);
         // Dans ce cas on positionne l'indicateur de synchronisation en erreur
         setSyncState("Sync_ko");
     }

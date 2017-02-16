@@ -4,7 +4,6 @@
 var normal = null;
 var map = null;
 
-//activationDescriptionEspece();
 fillTabObserver();
 affichageInformationObservation('#emplacement__ligne td:first-of-type');
 if (Connexion.isConnected()) {
@@ -25,20 +24,6 @@ gestionCheckboxAvalider();
 gestionFormulaireTri();
 
 
-//$("#onglet_espece").click(function () {
-//    //On récupère le nom de l'espèce dans le span form-observation__espece
-//    var espece = $("#form-observation__espece").text();
-//    // On récupère l'image et on lui change le href et sa description alt
-//    $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
-//        // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
-//        if (Connexion.isConnected()) {
-//            window.open(oiseauStorage.storeData[espece].image);
-//        }
-//    });
-//    // On met son nom et sa description
-//    $("#espece-nom__").text(espece);
-//    $("#espece-description__").html(oiseauStorage.storeData[espece].description);
-//});
 
 /**
  * Rempli le tableau des observations sur la page Observer
@@ -224,7 +209,6 @@ function afficheModalAjout(e) {
 $("#btn-ajouter-observation").click(function() {
     $('#nao_corebundle_observation_observateur').val(currentUserStorage.coll);
     var timestamp = new Date().getTime()/1000;
-    console.log('timestamp = '+timestamp);
     $('#nao_corebundle_observation_dateCreation').val(timestamp);
     $('#nao_corebundle_observation_lastUpdate').val(timestamp);
 

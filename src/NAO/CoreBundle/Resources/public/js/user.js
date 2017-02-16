@@ -17,22 +17,18 @@ function User(nom, prenom, email, pseudo, role, date ) {
     this.clef = null;
 }
 User.setNull = function () {
-    console.log("User=null");
     currentUser=this.valueList[0];
     updateDOMElementVisibility();
 };
 User.setVisiteur = function () {
-    console.log("User=particulier");
     currentUser=this.valueList[1];
     updateDOMElementVisibility();
 };
 User.setNaturaliste = function() {
-    console.log("User=naturaliste");
     currentUser=this.valueList[2];
     updateDOMElementVisibility();
 };
 User.setAdmin = function() {
-    console.log("User=administrateur");
     currentUser=this.valueList[3];
     updateDOMElementVisibility();
 };

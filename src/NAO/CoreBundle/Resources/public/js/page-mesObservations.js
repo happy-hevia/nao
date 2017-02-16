@@ -17,7 +17,6 @@ function gestionMesObservations() {
             ligneObservation+="<td class='observation_oiseau' data-id='"+mesObservations[i].id+"'>"+mesObservations[i].oiseau+"</td>";
             ligneObservation+="<td>"+mesObservations[i].latitude+"</td>";
             ligneObservation+="<td>"+mesObservations[i].longitude+"</td>";
-            console.log(mesObservations[i].dateCreation.timestamp);
             var date = new Date(mesObservations[i].dateCreation*1000);
             ligneObservation+="<td>"+date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()+"</td>";
             switch (mesObservations[i].statut) {
@@ -33,7 +32,6 @@ function gestionMesObservations() {
             }
 
             ligneObservation+="</tr>";
-            //console.log(ligneObservation);
             $('#mesObservation_table__').append(ligneObservation);
         }
 
