@@ -378,7 +378,7 @@ var oiseauStorage = {
 var updateStorage = new MyWebStore("last_update", localStorage);
 updateStorage.update = function () { // Ajoute ou met à jour l'objet
     var dateCourrante = new Date();
-    this.setAll(dateCourrante.getTime());
+    this.setAll(dateCourrante.getTime()/1000);
 };
 updateStorage.getLastUpdate = function() {
     if (typeof this.typeStockage == 'undefined' || this.typeStockage.getItem(this.cle) == null) {
@@ -394,65 +394,79 @@ updateStorage.init = function() {
 };
 
 function synchronizeObservation(){
-    // Je récupère les observations
-    observationStorage.getAll();
-    var observations = observationStorage.coll;
+    if(Connexion.isConnected()) {
+        // Je récupère les observations
+        observationStorage.getAll();
+        var observations = observationStorage.coll;
 
-    //Je récupère la date du dernier update
-    updateStorage.getAll();
-    var last_update = Math.ceil(updateStorage.coll/1000);
+        //Je récupère la date du dernier update
+        updateStorage.getAll();
+        var last_update = updateStorage.coll;
 
-    // Je crée un tableau avec toutes les observations à envoyer au serveur
-    var observationsAjax = [];
-    console.log("--------------------------------------------------------------");
-    console.log("Analyse Besoin synchronisation Observations locales -> serveur");
-    console.log("--------------------------------------------------------------");
-    for (var observation in observations){
-        // On transfert toutes les observations modifiées en locale
-        var test = observations[observation].lastUpdate >= last_update;
-        //console.log(""+observations[observation].lastUpdate+" >= "+last_update+" => "+test);
-        if (test) {
-            observationsAjax.push(observations[observation]);
+        // Je crée un tableau avec toutes les observations à envoyer au serveur
+        var observationsAjax = [];
+        console.log("--------------------------------------------------------------");
+        console.log("Analyse Besoin synchronisation Observations locales -> serveur");
+        console.log("--------------------------------------------------------------");
+        for (var observation in observations){
+            // On transfert toutes les observations modifiées en locale
+            var test = observations[observation].lastUpdate >= last_update;
+            console.log(""+observations[observation].lastUpdate+" >= "+last_update+" => "+test);
+            if (test) {
+                observationsAjax.push(observations[observation]);
+            }
+        }
+
+        if(observationsAjax.length == 0) {
+            console.log("Pas d'observation à synchroniser local-> serveur");
+            // Je lance la synchronisation serveur -> local
+            synchroServeurLocal();
+        } else {
+            // je définie la synchronisation comme en cours
+            setSyncState("sync_ec");
+            console.log("Synchronisation local-> serveur en cours...");
+            // J'envois les observations aux serveur
+            $.ajax({
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                url: urlSynchronLocalServeur,
+                type: "post", // La méthode indiquée dans le formulaire (get ou post)
+                data: { observations : observationsAjax }, // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                success: function (html) { // Je récupère la réponse du fichier PHP
+                    console.log(html);
+                    if (html=="true") {
+                        console.log("Synchronisation local-> serveur terminée !")
+                        // Je lance la synchronisation serveur -> local
+                        console.log("Synchronisation serveur-> local en cours...")
+                        synchroServeurLocal();
+                    } else {
+                        // Je définie la synchronisation comme ko en cas d'erreur
+                        setSyncState("sync_ko");
+                    }
+                },
+                error: function(){
+                    // Je définie la synchronisation comme ko en cas d'erreur
+                    setSyncState("sync_ko");
+                }
+            });
         }
     }
+}
 
-    if(observationsAjax.length == 0) {
-        console.log("Pas d'observation à synchroniser");
-        setSyncState("sync_ok");
-        return;
-    }
+function synchroServeurLocal() {
+    // Je vide de la base locale
+    observationStorage.clean();
+    // Je lance alors la synchronisation globale Serveur-> Locale
+    observationStorage.loadFromServeur();
+    // Je définie la synchronisation comme ok
+    console.log("Synchronisation serveur-> local  -- Terminée");
+    setSyncState("sync_ok");
 
-    // je définie la synchronisation comme en cours
-    setSyncState("sync_ec");
-
-    // J'envois les observations aux serveur
-    $.ajax({
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        url: urlSynchronLocalServeur,
-        type: "post", // La méthode indiquée dans le formulaire (get ou post)
-        data: { observations : observationsAjax }, // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-        success: function (html) { // Je récupère la réponse du fichier PHP
-            console.log(html);
-            // Je vide de la base locale
-            observationStorage.clean();
-            // Je lance alors la synchronisation globale Serveur-> Locale
-            observationStorage.loadFromServeur();
-            // Je définie la synchronisation comme ok
-            console.log("Synchronisation avec le serveur  -- Terminée");
-            setSyncState("sync_ok");
-
-            // Je met à jour la date de la dernière modification
-            var dateCourrante = new Date();
-            dateCourrante = dateCourrante.getTime();
-            updateStorage.setAll(dateCourrante);
-            // Je rafraichis la page
-            window.location.reload();
-        },
-        error: function(){
-            // Je définie la synchronisation comme ko en cas d'erreur
-            setSyncState("sync_ko");
-        }
-    });
+    // Je met à jour la date de la dernière modification
+    var dateCourrante = new Date();
+    dateCourrante = dateCourrante.getTime();
+    updateStorage.setAll(dateCourrante);
+    // Je rafraichis la page
+    window.location.reload();
 }
 
 var storeDetector = function () {

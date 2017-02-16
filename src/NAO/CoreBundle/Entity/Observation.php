@@ -319,9 +319,11 @@ class Observation
      *
      * @return Observation
      */
-    public function setImageFile(File $image = null)
+    public function setImageFile(File $image)
     {
-        $this->imageFile = $image;
+        if ($image != null) {
+            $this->imageFile = $image;
+        }
 
         if ($image) {
 //            // It is required that at least one field changes if you are using doctrine
@@ -347,7 +349,9 @@ class Observation
      */
     public function setImageName($imageName)
     {
-        $this->imageName = $imageName;
+        if ($imageName != null) {
+            $this->imageName = $imageName;
+        }
 
         return $this;
     }

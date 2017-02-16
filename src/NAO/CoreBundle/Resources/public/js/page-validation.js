@@ -3,7 +3,7 @@
  */
 oiseauStorage.loadAll();
 $(function() {
-    activationDescriptionEspece();
+    //activationDescriptionEspece();
     loadObservationsAValider();
     gestionPageValidation();
     affichageInformationObservation('td.observation_oiseau');

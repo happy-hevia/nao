@@ -4,11 +4,11 @@
     {% set form = formulaire.creerFormulaireObservation() %}
 {% endif %}
 {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
-    {% if not form.vars.valid %}
+{#{% if not form.vars.valid %}
         <div id="form-have-error"></div>
     {% elseif tabForm[0] is defined and tabForm[0] == "validated"  %}
         <div id="message-dom" data-content="L'observation a été enregistré avec succès !" ></div>
-    {% endif %}
+    {% endif %}#}
     {{ form_start(form, {'method' : 'POST', 'action' : path('observation_nouveau') } ) }}
     <div data-on="{'connexionState' : 'online'}" >
         {{ form_row(form.imageFile, {required : false}) }}

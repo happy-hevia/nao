@@ -37,42 +37,38 @@ class GestionSynchronisation
 //        récupération des observations envoyées
         $observations = $request->request->get('observations');
 //        Pour chaque observation
+        $message="";
         foreach ($observations as $observation) {
-//            Si l'observation existe déjà je l'ignore
-
             $dateTimeObservation = $observation['dateCreation'];
-            $observationBdd = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByDateCreation($dateTimeObservation);
+            $observateur=$observation['observateur'];
+            $observationBdd = $this->entityManager->getRepository("NAOCoreBundle:Observation")->findByDateCreationEtObservateur($dateTimeObservation,$observateur);
 //            Si l'observation existe on la mets à jour
             if (isset($observationBdd[0]) && $observationBdd[0] != null) {
+                $message+="Observation existante (".$observationBdd[0]->getId().")<br>";
                 $observationBdd[0]->setLastUpdate($observation['lastUpdate']);
                 $observationBdd[0]->setStatut($observation['statut']);
                 $observationBdd[0]->setValideur($observation['valideur']);
-                if (!$this->entityManager->contains($observationBdd[0])) {
-                    $this->entityManager->persist($observationBdd[0]);
-                }
-                continue;
+                $this->entityManager->persist($observationBdd[0]);
             } else {
 //                si elle n'existe pas alors je crée l'entité observation
+                $message+="Observation inexistante (".$observation['oiseau'].")";
                 $observationEntitee = new Observation();
-                $observationEntitee->setDateCreation($dateTimeObservation/1000);
-                $observationEntitee->setLastUpdate($dateTimeObservation/1000);
+                $observationEntitee->setDateCreation($dateTimeObservation);
+                $observationEntitee->setLastUpdate($dateTimeObservation);
                 $observationEntitee->setLatitude($observation['latitude']);
                 $observationEntitee->setLongitude($observation['longitude']);
                 $observationEntitee->setOiseau($observation['oiseau']);
-                $observationEntitee->setObservateur($observation['observateur']);
+                $observationEntitee->setObservateur($observateur);
                 $observationEntitee->setStatut($observation['statut']);
                 $observationEntitee->setValideur($observation['valideur']);
 
 //                ... et je la persist
                 $this->entityManager->persist($observationEntitee);
-
             }
-
-//            Je stocke tout dans la base de donnée
-            $this->entityManager->flush();
-
         }
-        return "true";
+        //            Je stocke tout dans la base de donnée
+        $this->entityManager->flush();
+        return ["true",$message];
     }
 
     /**

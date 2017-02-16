@@ -10,4 +10,18 @@ namespace NAO\CoreBundle\Repository;
  */
 class ObservationRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByDateCreationEtObservateur($dateCreation, $observateur) {
+        $qb = $this->createQueryBuilder('a');
+        $qb->where('a.dateCreation = :dateCreation')
+            ->setParameter('dateCreation', $dateCreation)
+            ->andWhere('a.observateur = :observateur')
+            ->setParameter('observateur',$observateur);
+        return $qb->getQuery()->getResult();
+    }
+
+    public function getLastUpdate() {
+        $qb = $this->createQueryBuilder('a')
+            ->select('MAX(a.lastUpdate)');
+        return $qb->getQuery()->getScalarResult();
+    }
 }

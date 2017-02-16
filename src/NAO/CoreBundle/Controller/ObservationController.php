@@ -25,10 +25,10 @@ class ObservationController extends Controller
     {   //return new Response("#".$request->request->get('nao_corebundle_observation')['oiseau']."#"); //$request->request->get('oiseau')
         $form = $this->get('nao_core.gestion_formulaire')->gestionFormulaireObservation($request);
 
-        if ($form[0] === "toValidate") {
+        if ($form[0] === "validated") {
             return new Response("valide");
         } else {
-            return $this->render('@NAOCore/Observer/observer.html.twig', array('tabForm' => $form[1]));
+            return $this->render('@NAOCore/formulaire/observation.html.twig', array('tabForm' => $form));
         }
     }
     /**
@@ -55,7 +55,7 @@ class ObservationController extends Controller
     public function synchronisationAction(Request $request)
     {
         $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservation($request);
-        return new Response($retour);
+        return new Response($retour[0]);
     }
     /**
      * Permet de synchroniser du Serveur vers le stockage local du client
@@ -70,5 +70,13 @@ class ObservationController extends Controller
         $retour = $this->get('nao_core.gestion_synchronisation')->gestionSynchronisationObservationLocal($request);
         $json = $this->get('nao_core.gestion_encodage')->json($retour);
         return new Response($json);
+    }
+
+    /**
+     * @Route("/last_update", name="serveur_lastupdate")
+     */
+    public function getServeurLastUpdateAction() {
+        $lastUpdate=$this->getDoctrine()->getManager()->getRepository("NAOCoreBundle:Observation")->getLastUpdate();
+        return new Response($lastUpdate[0][1]);
     }
 }

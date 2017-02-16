@@ -217,12 +217,12 @@ function gestionFormulaireAjoutObservation() {
     }
 
     // Lorsque je soumets le formulaire
-    $formulaireObservation.on('submit', function (e) {
-        e.preventDefault();
-        var $this = $(this);
+    $formulaireObservation.on('submit', submitAddObservation);
+    function submitAddObservation (e) {
         setSyncState("sync_ec");
-
         if (!Connexion.isConnected()) {
+            e.preventDefault();
+            var $this = $(this);
             // Je récolte les informations de l'observation
             var dateObservation = $('#nao_corebundle_observation_dateCreation').val();
             var latitude = $('#nao_corebundle_observation_latitude').val();
@@ -240,27 +240,46 @@ function gestionFormulaireAjoutObservation() {
             $('#modal-addObservation').modal('hide');
             setSyncState("sync_todo");
             setMessage("Sauvegarde locale effectuée, En attente de connexion internet pour synchronisation avec le serveur...");
-        } else {
-            console.log($this.serialize());
+        }
+        else {
+            e.preventDefault();
+            var $form = $(this);
+            var formdata = (window.FormData) ? new FormData($form[0]) : null;
+            var data = (formdata !== null) ? formdata : $form.serialize();
+
             $.ajax({
-                url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
-                type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-                data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                url: $form.attr('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $form.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                contentType: false,
+                processData: false,
+                data: data, // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
                 success: function(html) { // Je récupère la réponse du fichier PHP
-                    console.log(html); // J'affiche cette réponse
-                    setMessage("Sauvegarde serveur effectuée avec succès...Rechargement de la page en cours pour update ");
-                    $('#modal-addObservation').modal('hide');
-                    // on vide la base locale avant de rechargement
-                    observationStorage.clean();
-                    window.location.reload();
+                    if (html=="valide") {
+                        setMessage("Sauvegarde serveur effectuée avec succès...Rechargement de la page en cours pour update ");
+                        $('#modal-addObservation').modal('hide');
+                        // on vide la base locale avant de rechargement
+                        observationStorage.clean();
+                        window.location.reload();
+                    } else {
+                        $form.replaceWith(html);
+                        $('form[name="nao_corebundle_observation"]').on('submit', submitAddObservation);
+                    }
                 }
             });
-            //    je ferme la modal et j'affiche le message de confirmation
+           //    je ferme la modal et j'affiche le message de confirmation
         }
+        /*else {
+            observationStorage.clean();
+
+            setMessage("Enregistrement en cours, Rechargement de la page...");
+            setTimeout(function() {
+                $('#modal-addObservation').modal('hide');
+            }, 3000);*/
+            //window.location.reload();
+        //}
 
 
-
-    });
+    }
 
 //    Lorsque l'internaute clique sur le bouton emplacement actuel, rempli les champs longitude et latitude
     $('#btn-emplacement-actuel').click(function () {
@@ -291,25 +310,25 @@ function gestionFormulaireAjoutObservation() {
     });
 }
 
-/**
- * Permet l'affichage des détails d'une espèce dans l'onglet de la modale descriptionObservation
- */
-function activationDescriptionEspece() {
-    $("#onglet_espece").click(function () {
-        //On récupère le nom de l'espèce dans le span form-observation__espece
-        var espece = $("#form-observation__espece").text();
-        // On récupère l'image et on lui change le href et sa description alt
-        $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
-            // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
-            if (Connexion.isConnected()) {
-                window.open(oiseauStorage.storeData[espece].image);
-            }
-        });
-        // On met son nom et sa description
-        $("#espece-nom__").text(espece);
-        $("#espece-description__").html(oiseauStorage.storeData[espece].description);
-    });
-}
+///**
+// * Permet l'affichage des détails d'une espèce dans l'onglet de la modale descriptionObservation
+// */
+//function activationDescriptionEspece() {
+//    $("#onglet_espece").click(function () {
+//        //On récupère le nom de l'espèce dans le span form-observation__espece
+//        var espece = $("#form-observation__espece").text();
+//        // On récupère l'image et on lui change le href et sa description alt
+//        $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
+//            // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
+//            if (Connexion.isConnected()) {
+//                window.open(oiseauStorage.storeData[espece].image);
+//            }
+//        });
+//        // On met son nom et sa description
+//        $("#espece-nom__").text(espece);
+//        $("#espece-description__").html(oiseauStorage.storeData[espece].description);
+//    });
+//}
 
 // Formulaire d'ajout d'observation
 // @todo vérifier que l'espèce existe bien

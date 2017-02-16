@@ -131,7 +131,7 @@ function gestionBoutonConnexion(){
 /**
  * Affiche le message d'information depuis le dom #message
  */
-function afficheMessageDepuisDom(){
+/*function afficheMessageDepuisDom(){
     var contenuMessage = $('#message-dom').data('content');
     setMessage(contenuMessage);
 
@@ -139,10 +139,10 @@ function afficheMessageDepuisDom(){
     //On positionne l'indicateur syncState à "sync_todo"
     if (contenuMessage === "L'observation a été enregistré avec succès !") {
         setSyncState("sync_todo");
-        observationStorage.loadFromServeur();
+        observationStorage.clean();
         window.location.replace("https://nao.matthias-colin.fr/observer");
     }
-}
+}*/
 
 /**
  * Permet d'afficher la modal avec les informations de l'espèce quand l'internaute clique sur le nom de l'espèce
@@ -175,22 +175,52 @@ function onclick(observation) {
         $('#form-observation__longitude').val(observation.longitude);
         $('#form-observation__espece').text(observation.oiseau);
         $('#form-observation__date').text(dateFormatee);
-        if (observation.imageName != null) {
-            $('#observation-image').attr('src', 'https://nao.matthias-colin.fr/images/observation/' + observation.imageName);
-        }
+
+            // Si il trouve l'image sur le serveur alors il l'affiche, sinon il affiche l'image par défaut
+            $.get('https://nao.matthias-colin.fr/images/observation/' + observation.imageName)
+                .done(function() {
+                    $('#observation-image').attr('src', 'https://nao.matthias-colin.fr/images/observation/' + observation.imageName);
+
+                }).fail(function() {
+                    $('#observation-image').attr('src', 'https://nao.matthias-colin.fr/bundles/naocore/images/v3-500.png');
+
+            });
+
 
         // On initialise l'onglet "espèce"
         var espece = observation.oiseau;
-        // On récupère l'image et on lui change le href et sa description alt
-        $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
-            // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
-            if (Connexion.isConnected()) {
-                window.open(oiseauStorage.storeData[espece].image);
-            }
+
+        //Si l'image est disponible on l'affiche sinon on enlève l'image
+        $.get('https://nao.matthias-colin.fr/' + oiseauStorage.getImage500300(espece))
+            .done(function() {
+                // On supprime tous les events associés à l'image
+                var element = $("#espece-image__").get()[0];
+                var clone = element.cloneNode();
+                while (element.firstChild) {
+                    clone.appendChild(element.lastChild);
+                }
+                element.parentNode.replaceChild(clone,element);
+                // On récupère l'image et on lui change le href et sa description alt
+                $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
+                    // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
+                    if (Connexion.isConnected()) {
+                        window.open(oiseauStorage.storeData[espece].image);
+                    }
+                });
+            }).fail(function() {
+            $("#espece-image__").attr("src", "https://nao.matthias-colin.fr/bundles/naocore/images/v3-500.png").attr("alt", espece)
         });
+
+
         // On met son nom et sa description
         $("#espece-nom__").text(espece);
-        $("#espece-description__").html(oiseauStorage.storeData[espece].description);
+
+        // Si il a une description, on l'affiche sinon on affiche un message d'erreur
+        if (oiseauStorage.storeData[espece].description == "" || typeof oiseauStorage.storeData[espece].description == 'undefined') {
+            $("#espece-description__").html("<div class='alert alert-warning'>Aucune description trouvée pour cette espèce</div>");
+        } else {
+            $("#espece-description__").html(oiseauStorage.storeData[espece].description);
+        }
 
         // On filtre ou affiche les boutons d'action de la modale en fonction du contexte
         if (observation.statut==="validated" || observation.statut==="inValidated") {
@@ -292,8 +322,6 @@ $(function() {
 
             if(observationStorage.coll!=null) { // Si le stockage local d'observation existe
                 console.log("Le Stockage local OBSERVATION trouvé");
-                // Je lance la synchronisation avec le Serveur
-                synchronizeObservation();
             } else { // Si le stockage local d'observation n'existe pas
                 // Je lance la récupération de l'ensemble des Observations du Serveur
                 console.log("Le Stockage local OBSERVATION n'existe PAS");
@@ -307,6 +335,8 @@ $(function() {
 
     }
 
+    getServeurLastUpdate();
+
     gestionFormulaireCreation();
     gestionFormulaireConnexionHorsLigne();
     gestionFormulaireConnexionEnLigne();
@@ -314,7 +344,7 @@ $(function() {
     gestionFormulaireModificationMotDePasse();
     gestionFormulaireRechercheUtilisateur();
     gestionFormulaireAjoutObservation();
-    afficheMessageDepuisDom();
+    //afficheMessageDepuisDom();
     //gestionMesObservations();
 
 

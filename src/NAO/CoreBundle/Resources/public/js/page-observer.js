@@ -1,40 +1,44 @@
 /**
  * Created by marcd on 17/01/2017.
  */
-var normal = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-    maxZoom: 18
-});
+var normal = null;
+var map = null;
 
-var map = L.map('mapid', {
-    center: [46.935261, 2.779541],
-    zoom: 5,
-    layers: normal
-});
-
-
-activationDescriptionEspece();
+//activationDescriptionEspece();
 fillTabObserver();
 affichageInformationObservation('#emplacement__ligne td:first-of-type');
-gestionCarte();
+if (Connexion.isConnected()) {
+    normal = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+        maxZoom: 18
+    });
+
+    map = L.map('mapid', {
+        center: [46.935261, 2.779541],
+        zoom: 5,
+        layers: normal
+    });
+    gestionCarte();
+}
+
 gestionCheckboxAvalider();
 gestionFormulaireTri();
 
 
-$("#onglet_espece").click(function () {
-    //On récupère le nom de l'espèce dans le span form-observation__espece
-    var espece = $("#form-observation__espece").text();
-    // On récupère l'image et on lui change le href et sa description alt
-    $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
-        // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
-        if (Connexion.isConnected()) {
-            window.open(oiseauStorage.storeData[espece].image);
-        }
-    });
-    // On met son nom et sa description
-    $("#espece-nom__").text(espece);
-    $("#espece-description__").html(oiseauStorage.storeData[espece].description);
-});
+//$("#onglet_espece").click(function () {
+//    //On récupère le nom de l'espèce dans le span form-observation__espece
+//    var espece = $("#form-observation__espece").text();
+//    // On récupère l'image et on lui change le href et sa description alt
+//    $("#espece-image__").attr("src", oiseauStorage.getImage500300(espece)).attr("alt", espece).click(function () {
+//        // Sur click sur l'image et si la connexion est Ok on ouvre l'image source
+//        if (Connexion.isConnected()) {
+//            window.open(oiseauStorage.storeData[espece].image);
+//        }
+//    });
+//    // On met son nom et sa description
+//    $("#espece-nom__").text(espece);
+//    $("#espece-description__").html(oiseauStorage.storeData[espece].description);
+//});
 
 /**
  * Rempli le tableau des observations sur la page Observer
@@ -223,6 +227,8 @@ $("#btn-ajouter-observation").click(function() {
     console.log('timestamp = '+timestamp);
     $('#nao_corebundle_observation_dateCreation').val(timestamp);
     $('#nao_corebundle_observation_lastUpdate').val(timestamp);
+
+    $('#modal-addObservation').modal('show');
 });
 
 function gestionCheckboxAvalider() {
